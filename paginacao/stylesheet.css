@@ -1,0 +1,39 @@
+.page_numbers {
+	width: 600px;
+	padding: 5px 0px;
+	margin:0 auto;
+}
+
+.page_numbers ul {
+	margin: 0 auto;
+	list-style-type: none;
+	padding: 2px;
+	text-align: center;
+}
+
+.page_numbers li {
+	display: inline;
+	float: left;
+	margin:1px;
+	background: #FAFAD1;
+	width:25px;
+}
+
+.page_numbers li.current{
+  width:50px;
+}
+
+.page_numbers li a {
+	background: #FAF7D8;
+	border: 1px solid #76BC67;
+	padding: 2px;
+	text-decoration: none;
+	color: #000;
+	font:bold 10px verdana,sans-serif;
+	display:block;
+}
+
+.page_numbers a.current, .page_numbers li a:hover {
+	background: #D8FAD8;
+	color: #FF0000;
+}

@@ -1,0 +1,442 @@
+.txt {
+	
+}
+
+BODY { border: 0px; margin: 0px; }
+
+ .caixalistaclaro {
+	background-color:#E3E3FB;
+	color:#000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	text-align:left;
+	}
+ .caixalistaescuro {
+	background-color:#DADAFA;
+	color:#000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	text-align:left;
+	}	
+	
+.cor-inativa {
+padding: 1px 1px 1px 2px;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 11px;
+color: #000000;
+border-top: 1px solid #BBB;
+border-bottom: 1px solid #444;
+border-left: 1px solid #BBB;
+border-right: 1px solid #444;
+border-style:outset;
+}
+
+.cor-ativa {
+padding: 1px 1px 1px 2px;
+font-family: arial, sans serif;
+font-size: 12px;
+color: #444;
+border-top: 1px solid #BBB;
+border-bottom: 1px solid #444;
+border-left: 1px solid #BBB;
+border-right: 1px solid #444;
+background-color:#DDE4FF;
+border-style:inset;
+}
+
+ .aviso { 
+ 	color:#990000;
+	background-color:#FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	font:bold;
+	text-align:left;
+	border:none;
+	text-decoration: none;
+	}
+
+body{
+
+	width: 100%;
+ background-color:#ffffff;
+ scrollbar-face-color: #ffffff; 
+ scrollbar-highlight-color: #CCCC99;
+ scrollbar-shadow-color:#CCCC99; 
+ sscrollbar-3dlight-color: #ffffff; 
+ scrollbar-arrow-color: #CCCC99; 
+ scrollbar-track-color:#ffffff; 
+ scrollbar-darkshadow-color:#ffffff;
+
+ text-align: justify;
+ font-size:11px;
+ color:#000000;
+ font-family: verdana,arial;
+ margin-left:0;
+ margin-top:0;}
+ 
+ #container {
+	width: 778px;
+	w\idth: 766px;
+	padding: 5px;
+	border:1px solid #cccccc;
+	position: absolute;
+	left: 50%;
+	margin-left: -389px;
+}
+ 
+ 
+ 
+ td
+ {font-size:11px;
+ text-align: justify;
+ font-family: verdana,arial;}
+ 
+ .login {
+ font-size:11px;
+ text-align:justify;
+ color:#FFFFFF;
+ }
+ 
+  .corpo {
+ font-size:12px;
+ text-align:justify;
+ color:#000000;
+ }
+ 
+ .caixa {  
+	color: #000000;
+	background-color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px; 
+	border: 1px #000000 solid; 
+	text-decoration: none;
+	}
+	
+ .caixaoca {  
+	color: #000000;
+	background-color: #CCCC99;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	font:bold;
+	text-align:left;
+	border:none;
+	text-decoration: none;
+	}
+	
+ .caixainv {  
+	color: #FFFFFF;
+	background-color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	text-align:left;
+	border:none;
+	text-decoration: none;
+	}	
+	
+	
+ .caixaocaborda {  
+	color: #000000;
+	background-color: #CCCC99;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	font:bold;
+	text-align:left;
+	border: 1px #000000 solid;
+	text-decoration: none;
+	}
+	
+ .caixacor {  
+	color: #000000;
+	text-align:right;
+	background-color:#99CCCC;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	font:bold;
+	border:thin;
+	text-decoration: none;
+	}		
+
+ .caixabranca {  
+	color: #000000;
+	background-color: #ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	font:bold;
+	text-align:left;
+	border: 1px #000000 solid;
+	text-decoration: none;
+	}
+
+ .caixadestaque {  
+	color: #000000;
+	background-color:#D6D9F3;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	text-align:right;
+	border: 1px #000000 solid;
+	text-decoration: none;
+	}
+
+ .destaquecentro {  
+	color: #000000;
+	background-color:#FFCC00;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 12px;
+	text-align:centro;
+	border: 1px #000000 solid;
+	}
+
+
+ .caixadestaqueclara {  
+	color: #000000;
+	background-color:#F9E9AA;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	font:bold;
+	text-align:left;
+	border: 1px #000000 solid;
+	text-decoration: none;
+	}
+
+	
+ .caixaazul_old {
+ 	color: #000000;
+	background-color: #C0C4DE;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	font:bold;
+	text-align:left;
+	border: 1px #000000 solid;
+	text-decoration: none;
+	}
+	
+ .caixaamarela {
+	color: #000000;
+	text-align:center;
+	background-color:#99CCCC;
+	font-family: arial, sans serif;
+	font-size: 12px;
+	font:bold;
+	border:thin;
+	padding: 1px 1px 1px 2px;
+	border-top: 1px solid #BBB;
+	border-bottom: 1px solid #444;
+	border-left: 1px solid #BBB;
+	border-right: 1px solid #444;
+	border-style:outset;
+	text-decoration: none;
+	}
+
+ .caixaazul {
+	color: #000000;
+	text-align:center;
+	background-color:#96B4EB;
+	font-family: arial, sans serif;
+	font-size: 12px;
+	font:bold;
+	border:thin;
+	padding: 1px 1px 1px 2px;
+	border-top: 1px solid #BBB;
+	border-bottom: 1px solid #444;
+	border-left: 1px solid #BBB;
+	border-right: 1px solid #444;
+	border-style:outset;
+	text-decoration: none;	
+	}	
+	
+ .caixaverde {
+ 	color: #000000;
+	background-color:#C0C191;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	font:bold;
+	text-align:left;
+	border: 1px #000000 solid;
+	text-decoration: none;
+	}	
+
+ .caixatitulo {  
+	color:#0000FF;
+	background-color:#ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	font:bold;
+	text-align:right;
+	border:none;
+	text-decoration: none;
+	}		
+
+ .caixatitpesq {  
+	color:#000000;
+	background-color:#ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	text-align:left;
+	border: 1px #000000 solid;
+	text-decoration: none;
+	}
+
+ .caixamaillido {  
+	color:#0000FF;
+	background-color:#ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	text-align:right;
+	border: 1px #000000 solid;
+	text-decoration: none;
+	}			
+
+ .caixamailnaolido {  
+	color:#0000FF;
+	background-color:#ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+	font:bold;
+	text-align:right;
+	border: 1px #000000 solid;
+	text-decoration: none;
+	}
+
+ .caixaocaprot {  
+	color: #000000;
+	background-color: #CCCC99;
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 13px;
+	font:bold;
+	text-align:right;
+	border:none;
+	text-decoration: none;
+	}	
+		
+	
+	.titulo{  
+	background-color:#9999CC;
+	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	font:larger;
+	color:#FFFFFF;
+	margin-left:0;
+	font-family: ": Verdana", Arial, Helvetica, sans-serif;
+    border-left-style: groove;
+    border-left-color: inherit;
+    border-left-width: medium;
+    border-right-style: groove;
+    border-right-color: inherit;
+    border-right-width: medium;
+    border-bottom-style: groove;
+    border-bottom-color: inherit;
+    border-bottom-width: medium;
+}	
+
+	.titgrande{  
+	background-color:#669966;
+	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	font-size:18px;
+	color:#FFFFFF;
+	margin-left:0;
+	margin-top:0;	
+	border-bottom:groove;
+	border-left:groove;
+	border-right:groove;	
+	}
+
+	.titpreto{  
+	background-color:#9999CC;
+	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	font:bold;
+	color:#000000;
+	margin-left:0;
+	margin-top:0;	
+	}
+
+	.titpretonew{  
+	background-color:#9999CC;
+	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	font-size:12px;
+	font:bold;
+	color:#000000;
+	margin-left:0;
+	margin-top:0;	
+	}
+
+
+ .botao {  
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px; 
+	text-decoration: none; 
+	background-color: #BABCDC; 
+	border: 1px #000000 solid; 
+	color: #000000;
+	}
+
+ .botaoG {  
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 14px;
+	text-decoration: none; 
+	background-color: #FFFFFF; 
+	border: 1px #000000 solid; 
+	color: #000000;
+	}
+
+ .botaoG+ {  
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 18px; 
+	text-decoration: none; 
+	background-color: #FFFFFF; 
+	border: 1px #000000 solid; 
+	color: #000000;
+	}
+
+	.cabeçalho {
+	background-color:#666699;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: justify;
+	font-size:11px;
+	font:bold ;
+	color:#ffffff ;
+	margin-left:0;
+	margin-top:0;		
+	}
+	
+	.lista {
+	background-color:#CEDBFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: justify;
+	font-size:11px;
+	font:bold ;
+	color:#000000 ;
+	margin-left:0;
+	margin-top:0;		
+	}
+	
+	.listaclara {
+	background-color:#E4EDFC;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: justify;
+	font-size:11px;
+	font:bold ;
+	color:#000000 ;
+	margin-left:0;
+	margin-top:0;		
+	}		
+	
+ 
+ div
+ {font-size:11px;
+ font-family: verdana,arial;
+    text-align: left;
+}
+
+ a
+ {color:#000000;
+ text-decoration:none;x}
+ 
+ a:hover
+ {color:#ff0000;
+ text-decoration:none;}
+
+ img
+ {border:0px;}
