@@ -6,7 +6,7 @@ connect();
 ?>
 <html>
 <head>
-<title>SIGE</title>
+<title>Protocolo - Sistema de Gestão de Documentos</title>
 </head>
 <frameset framespacing="0" border="0" frameborder="0" rows="52,*">
   <frame name="faixa" scrolling="no" noresize target="conteÃƒÂºdo" src="superior.php">
