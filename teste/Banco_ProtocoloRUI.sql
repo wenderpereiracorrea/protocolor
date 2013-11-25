@@ -1,457 +1,489 @@
--- phpMyAdmin SQL Dump
--- version 3.3.0
--- http://www.phpmyadmin.net
+CREATE DATABASE  IF NOT EXISTS `protocolorui` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `protocolorui`;
+-- MySQL dump 10.13  Distrib 5.1.40, for Win32 (ia32)
 --
--- Host: 192.168.1.20
--- Generation Time: Nov 13, 2013 at 10:04 AM
--- Server version: 5.0.77
--- PHP Version: 5.3.10-1ubuntu3.7
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
+-- Host: localhost    Database: protocolorui
+-- ------------------------------------------------------
+-- Server version	5.5.24-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-
---
--- Database: `protocolorui`
---
-
--- --------------------------------------------------------
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `avisos`
 --
 
-CREATE TABLE IF NOT EXISTS `avisos` (
-  `id` int(11) NOT NULL auto_increment,
-  `destino` varchar(30) default NULL,
+DROP TABLE IF EXISTS `avisos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `avisos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `destino` varchar(30) DEFAULT NULL,
   `mensagem` blob,
-  `estado` char(1) default 'n',
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `estado` char(1) DEFAULT 'n',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `avisos`
 --
 
-INSERT INTO `avisos` (`id`, `destino`, `mensagem`, `estado`) VALUES
-(1, 'wender', NULL, 's');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `circulacao`
---
-
-CREATE TABLE IF NOT EXISTS `circulacao` (
-  `idprocesso` int(11) default NULL,
-  `nprocesso` varchar(20) default NULL,
-  `data` date default NULL,
-  `hora` time default NULL,
-  `origem` varchar(255) default NULL,
-  `destino` varchar(255) default NULL,
-  `despacho` varchar(255) default NULL,
-  `observacao` varchar(255) default NULL,
-  `idcircula` int(11) NOT NULL auto_increment,
-  PRIMARY KEY  (`idcircula`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+LOCK TABLES `avisos` WRITE;
+/*!40000 ALTER TABLE `avisos` DISABLE KEYS */;
+INSERT INTO `avisos` VALUES (1,'wender',NULL,'s');
+/*!40000 ALTER TABLE `avisos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Dumping data for table `circulacao`
+-- Table structure for table `malote`
 --
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `circulacao_antigo`
---
-
-CREATE TABLE IF NOT EXISTS `circulacao_antigo` (
-  `idcircula` int(11) NOT NULL auto_increment,
-  `idprocesso` int(11) default NULL,
-  `nprocesso` varchar(20) default NULL,
-  `data` date default NULL,
-  `hora` time default NULL,
-  `origem` varchar(255) default NULL,
-  `destino` varchar(255) default NULL,
-  `despacho` varchar(255) default NULL,
-  `observacao` varchar(255) default NULL,
-  PRIMARY KEY  (`idcircula`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+DROP TABLE IF EXISTS `malote`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `malote` (
+  `idmalote` int(11) NOT NULL AUTO_INCREMENT,
+  `nguia` varchar(12) DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  `destino` varchar(50) DEFAULT NULL,
+  `nmalote` varchar(12) DEFAULT NULL,
+  `conteudo` varchar(255) DEFAULT NULL,
+  `tipo` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`idmalote`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `circulacao_antigo`
+-- Dumping data for table `malote`
 --
 
+LOCK TABLES `malote` WRITE;
+/*!40000 ALTER TABLE `malote` DISABLE KEYS */;
+/*!40000 ALTER TABLE `malote` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- --------------------------------------------------------
+--
+-- Table structure for table `referencia`
+--
+
+DROP TABLE IF EXISTS `referencia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `referencia` (
+  `idrefer` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(100) DEFAULT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idrefer`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `referencia`
+--
+
+LOCK TABLES `referencia` WRITE;
+/*!40000 ALTER TABLE `referencia` DISABLE KEYS */;
+/*!40000 ALTER TABLE `referencia` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `especie`
 --
 
-CREATE TABLE IF NOT EXISTS `especie` (
-  `id` int(11) NOT NULL auto_increment,
-  `especie` varchar(100) default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=159 ;
+DROP TABLE IF EXISTS `especie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `especie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `indice` varchar(45) DEFAULT NULL,
+  `especie` varchar(100) DEFAULT NULL,
+  `descricao` varchar(555) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=331 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `especie`
 --
 
-INSERT INTO `especie` (`id`, `especie`) VALUES
-(1, 'AUTORIZAÇÃO DE VIAGEM'),
-(4, 'OFÍCIO'),
-(5, 'OFÍCIO CIRCULAR'),
-(7, 'CERTIFICADO'),
-(8, 'MANDADO DE CITAÇÃO'),
-(10, 'PENSÃO'),
-(148, 'SUPRIMENTO DE FUNDOS'),
-(13, 'REQUERIMENTO'),
-(14, 'CONVÊNIO'),
-(15, 'LICENÇA'),
-(16, 'NOTIFICAÇÃO'),
-(17, 'DESPACHO AVULSO'),
-(18, 'COMUNICAÇÃO INTERNA'),
-(19, 'MANDADO DE INTIMAÇÃO'),
-(154, 'PROJETO BÁSICO'),
-(22, 'NOMEAÇÃO'),
-(23, 'CARTÓRIO'),
-(25, 'DECLARAÇÃO'),
-(26, 'CONCESSÃO AJUDA DE CUSTO'),
-(27, 'EXONERAÇÃO'),
-(28, 'CARTA/DOAÇÃO'),
-(29, 'BORDERÔS'),
-(30, 'AUXÍLIO MORADIA'),
-(32, 'GUIA PARA FORMAÇÃO DE PROCESSO'),
-(34, 'MINUTA'),
-(39, 'AUTO INFRAÇÃO'),
-(36, 'CONFIDENCIAL'),
-(37, 'RECIBO'),
-(38, 'DOCUMENTO'),
-(41, 'FAX'),
-(43, 'CONTRATO'),
-(44, 'COMUNICADO'),
-(45, 'AVISO'),
-(47, 'PLANILHA VENDAS'),
-(48, 'MANDADO DE NOTIFICAÇÃO'),
-(50, 'ATESTADO MÉDICO'),
-(152, 'CENTRO DE PROGRAMAS INTEGRADOS'),
-(53, 'AÇÃO POPULAR'),
-(149, 'SOLICITAÇÃO DE EMPENHO'),
-(55, 'LAUDO MEDICO'),
-(58, 'INTIMAÇÃO'),
-(59, 'PEDIDO ADESÃO'),
-(60, 'ESTUDO'),
-(61, 'CIRCULAR'),
-(62, 'ALVARÁ'),
-(64, 'INFORMAÇAO'),
-(65, 'CONCESSÃO DE DIÁRIAS'),
-(66, 'CONSULTA'),
-(67, 'CERTIDÃO '),
-(69, 'Carta Precatória'),
-(70, 'CITAÇÃO'),
-(72, 'MANDADO DE SEGURANÇA'),
-(73, 'CARTA'),
-(156, 'CONCESSÃO DE SUPRIMENTOS DE FUNDOS'),
-(75, 'FATURA'),
-(76, 'AUTORIZAÇÃO'),
-(77, 'MANDATO DE REINTEGRAÇAO'),
-(80, 'AUTO DE INFRAÇÃO'),
-(81, 'AÇÃO RESCISÓRIAS'),
-(141, 'MEMORANDO'),
-(83, 'DOAÇÃO'),
-(85, 'MEDIDA CAUTELAR'),
-(86, 'AUDITORIA'),
-(87, 'ORÇAMENTO'),
-(97, 'MENSAGEM'),
-(90, 'AÇÃO ORDINÁRIA'),
-(91, 'LICITAÇÃO'),
-(92, 'PARECER'),
-(94, 'AJUDA DE CUSTO'),
-(95, 'AÇÃO DE EXECUÇÃO'),
-(96, 'RECURSO'),
-(99, 'CURRICULUM'),
-(101, 'PAGAMENTO'),
-(104, 'CARTA PROPOSTA'),
-(106, 'DECRETO'),
-(107, 'EDITAL'),
-(108, 'ESPECIFICAÇÃO'),
-(109, 'PROCESSO'),
-(110, 'Carta Convite'),
-(112, 'PROCESSO'),
-(113, 'PASEP'),
-(116, 'COPIA'),
-(117, 'COBRANÇA'),
-(118, 'ATO DECLARATÓRIO'),
-(147, 'COORDENAÇÃO DE TEATRO'),
-(121, 'REEMBOLSO'),
-(122, 'IPTU'),
-(123, 'GUIA DE RECOLHIMENTO'),
-(124, 'APOIO'),
-(126, 'TERMO DE CONVÊNIO '),
-(127, 'AVALIAÇAO'),
-(128, 'TELEX'),
-(155, 'CEACEN-CENTRO DE ARTES CÊNICAS'),
-(130, 'OBITO'),
-(131, 'DEVOLUÇAO'),
-(132, 'ORDEM SERVIÇO'),
-(133, 'APÓLICE SEGURO'),
-(134, 'ARRECADAÇOES '),
-(135, 'DEMONSTRATIVO'),
-(136, 'GUIA DE IMPOSTO'),
-(137, 'I PREDIAL'),
-(158, 'AUTORIZAÇÃO DE VIAGEM'),
-(139, 'LICENÇA MÉDICA');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `historico`
---
-
-CREATE TABLE IF NOT EXISTS `historico` (
-  `id` int(11) NOT NULL auto_increment,
-  `data` date default NULL,
-  `hora` time default NULL,
-  `usuario` varchar(60) default NULL,
-  `acao` varchar(255) default NULL,
-  `ip` varchar(15) default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5861 ;
-
-CREATE TABLE IF NOT EXISTS `malote` (
-  `idmalote` int(11) NOT NULL auto_increment,
-  `nguia` varchar(12) default NULL,
-  `data` date default NULL,
-  `destino` varchar(50) default NULL,
-  `nmalote` varchar(12) default NULL,
-  `conteudo` varchar(255) default NULL,
-  `tipo` varchar(30) default NULL,
-  PRIMARY KEY  (`idmalote`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `processo` (
-  `idprocesso` int(100) NOT NULL auto_increment,
-  `documento` varchar(100) default NULL,
-  `datadoc` date default NULL,
-  `numero` varchar(40) default NULL,
-  `dataent` date default NULL,
-  `nprocesso` varchar(50) default NULL,
-  `up` varchar(5) default NULL,
-  `processo` varchar(20) default NULL,
-  `ano` varchar(4) default NULL,
-  `dv` char(2) default NULL,
-  `procedencia` varchar(200) default NULL,
-  `setorsolicitante` varchar(200) default NULL,
-  `favorecido` varchar(200) default NULL,
-  `cpfcnpj` varchar(18) default NULL,
-  `assunto` longtext,
-  `anexos` varchar(255) default NULL,
-  `volumes` int(3) default '1',
-  `folhas` int(4) default '0',
-  `observacoes` longtext,
-  `setordestino` varchar(200) default NULL,
-  `localizacao` varchar(200) default 'PROTOCOLO',
-  `datasaida` date default NULL,
-  `situacao` int(1) default '0',
-  `datasit` date default NULL,
-  `data_cadastro` date default NULL COMMENT 'Data Real do Cadastro',
-  PRIMARY KEY  (`idprocesso`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `processo`
---
-
-
--- --------------------------------------------------------
+LOCK TABLES `especie` WRITE;
+/*!40000 ALTER TABLE `especie` DISABLE KEYS */;
+INSERT INTO `especie` VALUES (1,'1.1','OrganizaÃ§Ã£o e estrutura','Classificar os documentos que retratem a organizaÃ§Ã£o e estrutura da FundaÃ§Ã£o Casa de Rui Barbosa - FCRC; incluem-se as alteraÃ§Ãµes, propostas de alteraÃ§Ãµes e projetos de alteraÃ§Ãµes da instituiÃ§Ã£o.'),(2,'1.1.1','CriaÃ§Ã£o. SituaÃ§Ã£o jurÃ­dica','Classificar os documentos referentes Ã  criaÃ§Ã£o da FCRB, transformaÃ§Ãµes institucional e jurÃ­dica, bem como tombamento (de acordo com definiÃ§Ãµes do Poder PÃºblico no que tange Ã  concepÃ§Ã£o da FCRB como bem cultural e , portanto, como objeto de proteÃ§Ã£o).'),(3,'1.1.2','Estatuto. Regimento. Regulamento','Classificar os documentos sobre normas internas e atribuiÃ§Ãµes da FCRB'),(4,'1.1.3','EstruturaÃ§Ã£o. Organograma','Classificar os documentos referentes Ã  estrutura organizacional da FCRB. Inclui reformas, criaÃ§Ã£o, transformaÃ§Ã£o e  extinÃ§Ã£o de setores da FCRB , bem como as representaÃ§Ãµes grÃ¡ficas da estrutura da instituiÃ§Ã£o (organogramas).'),(5,'1.1.4','Coselhos','Classificar os documentos referentes ao Conselho Fiscal e Conselho Consultivo da FCRB. Abrir pasta especÃ­fica para cada conselho.'),(6,'1.1.5','Normas de trabalhos','Classificar os documentos referentes Ã s normas de preenchimento de formulÃ¡rios administrativos, Ã s normas de preenchimento de formulÃ¡rios administrativos, Ã s rotinas de trabalho na Ã¡rea administrativa e na Ã¡rea financeira, Ã s rotinas de reuniÃµes administrativas de carÃ¡ter geral, etc. Inclui legislaÃ§Ã£o sobre contratos, convÃªnios, acordos, Plano Real, SICAF, etc.'),(7,'1.2 ','Registros nos Ã“rgÃ£os competentes','Classificar os registros da FCRB como CGC, TÃ­tulos e Marcas, etc.'),(8,'1.3','ProgramaÃ§Ã£o de atividades','Classificar os documentos referentes Ã  programaÃ§Ã£o de atividades setoriais e Ã  programaÃ§Ã£o geral de atividades da FCRB.'),(9,'1.3.1','Projetos','Classificar os projetos desenvolvidos pela FCRB, em suas diferentes Ã¡reas de atuaÃ§Ã£o, que envolvam ou nÃ£o outras instituiÃ§Ãµes. Abrir pasta especÃ­fica para cada projeto. Os projetos que envolvam outras instituiÃ§Ãµes na forma de convÃªnios e contratos devem ser classificados em 1.6.5. Os projetos na Ã¡rea de informÃ¡tica devem ser classificados em 5.8 e /ou 5.8.1.'),(10,'1.4','RelatÃ³rios de atividades','classificar os relatÃ³rios setoriais e gerais de atividades da FCRB'),(11,'1.5','ComunicaÃ§Ã£o social',NULL),(12,'1.5.1','Publicidade','Classificar os documentos que retratem a relaÃ§Ã£o da FCRB com a mÃ­dia (anÃºncios e entrevistas). Quanto aos documentos referentes aos eventos, projetos, etc., devem ser classificados de acordo com  seu assunto especÃ­fico. E quando se tratar de divulgaÃ§Ã£o da FCRB propriamente dita, classificar em 2.5.2'),(13,'1.5.2','RelaÃ§Ãµes PÃºblicas','Classificar os documentos referentes Ã  relaÃ§Ã£o da FCRB com o pÃºblico em geral, que nÃ£o se enquadre em assunto especÃ­fico.'),(14,'1.5.2.1','Cartas de recomendaÃ§Ã£o','Classificar a correspondÃªncia recebida e /ou expedida pela FCRB que recomenda e/ou apresenta um cidadÃ£o.'),(15,'1.5.2.2','ComunicaÃ§Ãµes','Classificar os documentos referentes Ã  posse de cargos e atos administrativos, convites, etc., de diversas instituiÃ§Ãµes. Quando for necessÃ¡rio classificar algum convite especial, que nÃ£o se enquadre em assunto especÃ­fico, adotar esta codificaÃ§Ã£o.'),(16,'1.5.2.3','Oferencimento. Agradecimentos. Pedidos','Classificar os documentos referentes a oferecimentos, agradecimentos e pedidos feitos Ã  FCRB que nÃ£o se enquadrem em assuntos especÃ­ficos.'),(17,'1.5.2.4','Visitas Ã  FCRB','Classificar os documentos referentes Ã s visitas realizadas Ã  FCRB por autoridades, escolas, universidades e outras instituiÃ§Ãµes.'),(18,'1.6 ','RelaÃ§Ãµes com outras instituiÃ§Ãµes','Classificar os documentos referentes a programas, projetos, concursos, etc., de outras instituiÃ§Ãµes apresentados Ã  FCRB que nÃ£o se enquadram em assunto especÃ­fico ou nos itens abaixo.'),(19,'1.6.1','RelaÃ§Ãµes com o MinistÃ©rio da Cultura - MINc','Classificar os documentos que retratem a relaÃ§Ã£o da FCRB com o MinistÃ©rio da Cultura - MINC desde comunicaÃ§Ãµes gerais a participaÃ§Ã£o em projetos e comissÃµes do MinistÃ©rio. Manter uma pasta para primeiro caso e pastas especÃ­ficas para cada projeto ou comissÃ£o do MINC, como por exemplo: PolÃ­tica do Idoso, PolÃ­tica Nacional da FamÃ­lia.'),(20,'1.6.2','RelaÃ§Ãµes com o Congresso Nacional','Classificar requerimentos pedidos e fornecimento de informaÃ§Ãµes feitos pela FCRB ao Congresso Nacional e vice-versa, que nÃ£o justifiquem abertura de dossiÃª por assunto especÃ­fico.'),(21,'1.6.3','FiliaÃ§Ã£o a entidades nacionas e internacionais','Classificar documentos referentes ao registro e participaÃ§Ã£o FCRB junto a entidades nacionais e estrangeiras, tais como: ANPOCS, ABEU, etc.'),(22,'1.6.4','Grupos de trabalho. ComissÃµes','Classificar documentos referentes Ã  participaÃ§Ã£o da FCRB em comissÃµes, conselhos e grupos de trabalho interinstitucionais, exceto aqueles relacionados com o MINC, que devem ser classificados em 1.6.1'),(23,'1.6.5','ConvÃªnios',' Classificar os documentos referentes aos convÃªnios firmados entre a FFCRB e outras entidades para realizaÃ§Ã£o de atividades e/ou concretizaÃ§Ã£o de projetos. Abrir pasta especÃ­fica para cada convÃªnio.'),(24,'1.6.6','ComissÃ£o Nacional de Incentivo Ã  Cultura - CNIC','Classificar os documentos referentes Ã  participaÃ§Ã£o da FCRB na comissÃ£o Nacional de Incentivo Ã  Cultura'),(25,'1.6.7','Fundo Nacional de Cultura - FNC','Classificar os documentos referentes Ã  participaÃ§Ã£o da FCRB no Fundo Nacional de Cultura. Abrir pasta para os projetos julgados pela FCRB e outra para o Fundo Nacional de Cultura propriamente dito.'),(26,'1.6.8','Clube da Cultura','Classificar os documentos referentes Ã  participaÃ§Ã£o da FCRB no clube da Cultura (uma associaÃ§Ã£o informal que visa a promover  a Cultura)'),(27,'1.7','PrestaÃ§Ã£o de serviÃ§os',NULL),(28,'1.7.1','Pela FCRB','Classificar os documentos referentes Ã  prestaÃ§Ã£o de serviÃ§os pela FCXRB na Ã¡rea administrativa, a outras instituiÃ§Ãµes.'),(29,'1.7.2','Para a FCRB','Classificar os documentos referentes Ã  prestaÃ§Ã£o de serviÃ§os por pessoas fÃ­sicas ou jurÃ­dicas, na Ã¡rea administrativa, para a FCRB'),(30,'1.8','Pessoal',NULL),(31,'1.8.1','LegislaÃ§Ã£o trabalhista. Regime JurÃ­dico Ãšnico - RJU','Classificar os documentos referentes Ã  legislaÃ§Ã£o trabalhista. Regime JurÃ­dico Ãºnico dos Servidores federais e ConsolidaÃ§Ã£o das Leis de Trabalho -  CLT.'),(32,'1.8.2','LegislaÃ§Ã£o PrevidenciÃ¡ria','Classificar os documentos referentes Ã  legislaÃ§Ã£o dos institutos de previdÃªncia social, exceto nos casos de descontos. Quando tratar de descontos classificar em 1.8.14.3'),(33,'1.8.3','Normas de AdministraÃ§Ã§ao de Pessoal','Classificar os documentos referentes a normas e procedimentos na Ã¡rea de pessoal, incluindo o CÃ³digo de Ã‰tica do Servidor, Regime Disciplinar do RJU e outras instruÃ§Ãµes normativas oriundas do governo e/ou da FCRB.'),(34,'1.8.4','IdentificaÃ§Ã£o profissional','Classificar os documentos de registro profissional dos servidores, registro de servidores em Ã³rgÃ£os profissionais, na previdÃªncia social, na administraÃ§Ã£o pÃºblica, etc. Ex: Registros na carteira de trabalho, nos Conselhos Regionais e Federais, emissÃ£o de carteira de identidade funcional, etc.'),(35,'1.8.5','Auditorias','Classificar os documentos referentes aos processos de auditoria na Ã¡rea trabalhista.'),(36,'1.8.6','ReivindicaÃ§Ãµes trabalhistas','Classificar os documentos referentes Ã s  reivindicaÃ§Ãµes trabalhistas encaminhadas ao poder judiciÃ¡rio, ou nÃ£o , decorrentes de dissÃ­dio coletivo greves, manifestaÃ§Ãµes, etc., que envolvam questÃµes mais amplas do que reivindicaÃ§Ãµes salariais. No caso de reajustes de vencimento tos e que impliquem em medidas administrativas, classificar em 1.8.13.1'),(37,'1.8.7','RelaÃ§Ã£o Anual de InformaÃ§ao Salarial -  RAIS','Classificar a RelaÃ§Ã£o Anual de informaÃ§Ãµes Sociais -  RAIS.'),(38,'1.8.8','DuraÃ§Ã£o do trabalho',NULL),(39,'1.8.8.1','Jornada de trabalho','Classificar os documentos referentes Ã  jornada de trabalho: diÃ¡ria, semanal, mensal e anua, a solicitaÃ§Ãµes, pareceres e demais documentos sobre horas extras, plantÃµes, descanso e folgas. Inclui escalas de folgas.'),(40,'1.8.9','Controle de frequÃªncia',NULL),(41,'1.8.9.1','Folha de ponto',NULL),(42,'1.8.9.2','ApuraÃ§Ã£o de frequÃªncia','Classificar os documentos referentes a registro de faltas e apuraÃ§Ã£o de frequÃªncia; inclui normas e procedimentos'),(43,'1.8.10','Provimento. VacÃ¢ncia. Movimento',NULL),(44,'1.8.10.1','Provimento',NULL),(45,'1.8.10.1.1','AdmissÃ£o','Classificar documentos referentes a concursos pÃºblicos de provas ou de provas e tÃ­tulos, a nomeaÃ§Ãµes para cargo efetivo ou de carreira, Ã  posse , ao exercÃ­cio e ao estÃ¡gio probatÃ³rio.'),(46,'1.8.10.1.2','Estabilidade','Classificar documentos referentes Ã  estabilidade no serviÃ§o pÃºblico. Incluem-se as alteraÃ§Ãµes e legislaÃ§Ã£o.'),(47,'1.8.10.1.3','TransferÃªncia','Classificar documentos sobre a passagem de servidor de cargo efetivo para outro de igual denominaÃ§Ã£o, pertencente a quadro de pessoal diverso, de Ã³rgÃ£o ou instituiÃ§Ã£o do mesmo Poder.'),(48,'1.8.10.1.4','ReadaptaÃ§Ã£o. ReconduÃ§Ã£o','Classificar documentos referentes ao retorno Ã  atividade de servidor aposentado por invalidez, quando atravÃ©s de junta mÃ©dica oficial forem considerados insubsistentes os motivos de aposentadoria (reversÃ£o) e a investidura de servidor em cargo de atribuiÃ§Ãµes e responsabilidades compatÃ­veis com a limitaÃ§Ã£o que tenha sofrido em sua capacidade fÃ­sica ou mental atestada por inspeÃ§Ã£o mÃ©dica ( readaptaÃ§Ã£o). Abrir pasta para ReadaptaÃ§Ã£o e outra para ReversÃ£o, sob a mesma codificaÃ§Ã£o.'),(49,'1.8.10.1.5','ReintegraÃ§Ã£o. ReconduÃ§Ã£o','Classificar os documentos referentes Ã  reinvestidura de servidor no cargo anteriormente ocupado ou em cargo resultante de sua transformaÃ§Ã£o uma vez invalidada sua demissÃ£o por decisÃ£o administrativa ou judicial ( reintegraÃ§Ã£o) e documentos referentes ao retorno de servidor estÃ¡vel ao cargo anteriormente ocupado, por inabilitaÃ§Ã£o em estÃ¡gio probatÃ³rio relativo a outro cargo ou reintegraÃ§Ã£o do anterior ocupante ( reconduÃ§Ã£o). Inclui a readmissÃ£o de servidores anistiados, assunto da Lei 8.878 de 11 de maio de 1994. Abrir pasta para reintegraÃ§Ã£o e para '),(50,'1.8.10.1.6','Disponibilidade. Aproveitamento','Classificar os documentos referentes Ã  disponibilidade e retorno de servidor Ã  atividade, bem como o aproveitamento de servidores. Abrir pasta para Disponibilidade e outra para Aproveitamento quando o volume de documentos justificar.'),(51,'1.8.10.2','VacÃ¢ncia',NULL),(52,'1.8.10.2.1','ExoneraÃ§Ã£o de cargo efetivo','Classificar os documentos referentes Ã  exoneraÃ§Ã£o a pedido do servidor da administraÃ§Ã£o ou a juÃ­zo de autoridade competente. Inclui PDV ( Plano de DemissÃ£o VoluntÃ¡ria)'),(53,'1.8.10.2.2','ExoneraÃ§Ã£o de cargo em comissÃ£o','Classificar os documentos referentes Ã  exoneraÃ§Ã£o de cargo de confianÃ§a, a juÃ­zo de autoridade competente e a pedido do servidor.'),(54,'1.8.10.2.3','Abandono de emprego','Classificar os documentos sobre o afastamento definitivo de servidor por nÃ£o comparecer ao emprego caracterizando abandono do mesmo'),(55,'1.8.10.3','RemoÃ§Ã£o','Classificar  os documentos referentes ao deslocamento de servidor, a pedido ou de ofÃ­cio, no mesmo quadro, com ou sem mudanÃ§a de sede. '),(56,'1.8.10.4','RedistribuiÃ§Ã£o','Classificar os documentos referentes ao deslocamento de servidor, om respectivo cargo, para quadro de pessoal de outro Ã³rgÃ£o,  ou entidade do mesmo Poder, cujos planos de cargos e vencimentos sejam idÃªnticos.'),(57,'1.8.11','Quadros de servidores','Classificar os documentos referentes Ã  lotaÃ§Ã£o de servidor na FCRB. Ex.: Quadro de LotaÃ§Ã£o Ideal.'),(58,'1.8.11.1','Cadastro','Classificar  os documentos referentes Ã  relaÃ§Ã£o de funcionÃ¡rios, quadro demonstrativo de servidor e dados cadastrais como endereÃ§os, telefones, etc. de servidor. Inclui relaÃ§Ã£o e dados referentes aos dependentes do servidor.'),(59,'1.8.11.2','Plano de classificaÃ§Ã£o de cargos e salÃ¡rios','Classificar os documentos referentes Ã s carreiras, cargos e respectivos salÃ¡rios de servidores; inclui enquadramento de servidores, transformaÃ§Ãµes e extinÃ§Ã£o de cargos.'),(60,'1.8.11.3','PromoÃ§ao. AvaliaÃ§Ã£o de desempenho','Classificar os documentos  referentes Ã  promoÃ§Ã£o por merecimento e/ou antiguidade. Inclui as avaliaÃ§Ãµes de desempenho de servidor. Abrir pasta para Merecimento para Antiguidade, e para os formulÃ¡rios das avaliaÃ§Ãµes de desempenho.'),(61,'1.8.11.4','Assentamentos funcionais','Classificar os documentos que constituem as pastas funcionais dos servidores. Inclui as fichas de registros de servidores as pastas funcionais dos servidores na ativa sÃ£o arquivadas no Setor de Pessoal.'),(62,'1.8.11.5','AcumulaÃ§Ã£o de cargos','Classificar os documentos referentes Ã  acumulaÃ§Ã£o de cargos no magistÃ©rio com cargos tÃ©cnicos ou cientÃ­ficos e de dois cargos para magistÃ©rio com cargos tÃ©cnicos ou cientÃ­ficos e de dois cargos para magistÃ©rio e mÃ©dico. Inclui as permissÃµes e proibiÃ§Ãµes quando ocorrer acumulaÃ§Ã£o de cargos efetivos e de comissÃ£o.'),(63,'1.8.11.6','Medida administrativa e disciplinar','Classificar os documentos  referentes a sindicÃ¢ncias, advertÃªncias, afastamentos preventivos, julgamentos de processos administrativos, suspensÃµes. Inclui processos disciplinares e inquÃ©ritos administrativos na Ã¡rea de pessoal. Os inquÃ©ritos sobre outros assuntos receberÃ£o o cÃ³digo de seu assunto especÃ­fico.'),(64,'1.8.12','Quadro suplementar','Classificar os documentos referentes Ã  contrataÃ§Ã£o e manutenÃ§Ã£o de funcionÃ¡rios nÃ£o pertencentes ao quadro da FCRB que desempenhem, temporariamente, atividades na instituiÃ§Ã£o.'),(65,'1.8.12.1','EstagiÃ¡rio','Classificar documentos referentes Ã  seleÃ§Ã£o e contrataÃ§Ã£o de estagiÃ¡rios. Cada estagiÃ¡rio receberÃ¡ pasta especÃ­fica.'),(66,'1.8.12.2','AutÃ´nomo','Classificar documentos referentes Ã  seleÃ§Ã£o, contrataÃ§Ã£o de autÃ´nomos ou profissionais liberais, sem vÃ­nculo empregatÃ­cio. Cada profissional receberÃ¡ pasta especÃ­fica.'),(67,'1.8.13','Direitos. Vantagens. BenefÃ­cios',NULL),(68,'1.8.13.1','Vencimentos e remuneraÃ§Ã£o. Folha de pagamento de pessoal','Classificar os documentos referentes Ã  retribuiÃ§Ã£o pecuniÃ¡ria pelo exercÃ­cio de cargo pÃºblico (vencimento), ao vencimento acrescido e vantagens pecuniÃ¡rias permanentes, e Ã s folhas de pagamento. Inclui demonstrativo da despesas realizada com pessoal ( fichas financeiras), relaÃ§Ã£o bancÃ¡ria de consignaÃ§Ãµes, relaÃ§Ã£o financeira de pagamento a pensionista, listagem por faixa  salarial de salÃ¡rios, etc., e ao que se referir ao Sistema Integrado de AdministraÃ§Ã£o de Recursos Humanos - SIAPE. Classificar tambÃ©m os documentos sobre medidas administrativas que'),(69,'1.8.13.2','Vantagens','Classificar as gratificaÃ§Ãµes referentes ao estÃ­mulo Ã  pesquisa, mestrado, doutorado, GAE e /ou outras vantagens (indenizaÃ§Ãµes, gratificaÃ§Ãµes e adicionais) nÃ£o especificados no RJU.'),(70,'1.8.13.2.1','Ajuda de custo','Classificar os documentos referentes ao pagamento e restituiÃ§Ãµes de indenizaÃ§Ãµes de despesas de instalaÃ§Ã£o de servidor que passa a ter exercÃ­cio em nova sede implicando mudanÃ§a de domicÃ­lio ( permanente). Ex: Despesas de transporte do servidor e famÃ­lia do servidor que falecer em nova sede, para transporte do corpo para o local de origem, etc.'),(71,'1.8.13.2.2','DiÃ¡rias. Passagens','Classificar os documentos referentes ao pagamento de passagens, diÃ¡rias para cobrir despesas com pousada, transporte e alimentaÃ§Ã£o para o servidor. Abrir pasta para DiÃ¡rias e Passagens.'),(72,'1.8.13.2.3','Transporte','Classificar os documentos referentes ao ressarcimento de despesas com utilizaÃ§Ã£o de meio prÃ³prio de locomoÃ§Ã£o para execuÃ§Ã£o de serviÃ§os externos.'),(73,'1.8.13.2.4','GratificaÃ§Ã£o por ExercÃ­cio de FunÃ§Ã£o de DireÃ§Ã£o, Chefia ou Assessoramento. SubstituiÃ§Ã£o','Classificar os documentos referentes Ã s gratificaÃ§Ãµes por exercÃ­cio de funÃ§Ã£o de direÃ§Ã£o, chefia ou assessoramento e Ã s substituiÃ§Ãµes indicadas por regimento interno  e/ ou designadas por autoridade competente. Inclui documentos sobre posse em cargo de confianÃ§a, nÃºmeros de cargos de confianÃ§a e outros de carÃ¡ter geral que envolvam mais de um assunto especÃ­fico sobre a matÃ©ria Ex.: Portarias, Medidas ProvisÃ³rias sobre nomeaÃ§Ã£o, exoneraÃ§Ã£o e substituiÃ§Ã£o ( um Ãºnico documento tratando dos trÃªs assuntos).'),(74,'1.8.13.2.5','GratificaÃ§Ã£o Natalina','Classificar os documentos referentes Ã  remuneraÃ§Ã£o de 1/12 ( um doze avos) por mÃªs de exercÃ­cio o ano, paga ao servidor.'),(75,'1.8.13.2.6','Adicional por tempo de serviÃ§o','Classificar os documentos referentes ao pagamento de percentual por tempo de serviÃ§o pÃºblico efetivo. Ex: AnuÃªnios, biÃªnios, triÃªnios, quinquÃªnios etc.'),(76,'1.8.13.2.7','Adicionais de insalubridade, periculosidade ou atividade penosa','Classificar documentos referentes Ã s atividades e pagamento de adicionais para servidores que desenvolvem atividades em locais insalubres ou em contato com substÃ¢ncias tÃ³xicas, com risco de vida, etc. Inclui requisiÃ§Ãµes, visitas de especialistas, laudos , etc.'),(77,'1.8.13.2.8','Adicional por serviÃ§o extraordinÃ¡rio. Adicional noturno','Classificar os documentos relativos Ã  remuneraÃ§Ã£o de acrÃ©scimo de 50% em relaÃ§Ã£o Ã  hora normal de trabalho em caso de situaÃ§Ãµes excepcionais ( serviÃ§o extraordinÃ¡rio) e ao serviÃ§o noturno prestado em horÃ¡rio entre 22 horas de um dia e 5 horas do dia seguinte. Abrir pasta para Adicional por serviÃ§o ExtraordinÃ¡rio e outra para Adicional Noturno.'),(78,'1.8.13.2.9','Adicional de fÃ©rias','Classificar os documentos referentes ao pagamento de 1/3 ( um terÃ§o) da remuneraÃ§Ã£o do perÃ­odo das fÃ©rias.'),(79,'1.8.13.3','FÃ©rias','Classificar os documentos referentes a fÃ©rias. Inclui solicitaÃ§Ãµes, alteraÃ§Ãµes, pagamento, conversÃ£o em abono pecuniÃ¡rio, etc.'),(80,'1.8.13.4','LicenÃ§as','Classificar os documentos referentes Ã s licenÃ§as permitidas ao servidor como vantagem ou benefÃ­cio. Os documentos de carÃ¡ter pessoal apÃ³s tramitaÃ§Ã£o serÃ£o arquivados na pasta funcional do servidor. Para cada tipo de licenÃ§a serÃ¡ aberta uma pasta sob codificaÃ§Ã£o especÃ­fica , (quando o acumulo de documentos justificar) qual seja: 1.8.13.4.1 - por motivo de doenÃ§a em pessoa da famÃ­lia; 18.13.4.2 - por motivo de afastamento do cÃ´njuge; 1.8.13.4.3 - Para serviÃ§o militar; 1.8.13.4.4 - Para atividade polÃ­tica; 1.8.13.4.5 - PrÃªmio por assiduidade; 1.8.13.4.'),(81,'1.8.13.5','Afastamento para servir a outro Ã³rgÃ£o ou entidade','Classificar os documentos referentes Ã  cessÃ£o de servidor para ter exercÃ­cio em outro Ã³rgÃ£o dos Poderes da UniÃ£o, dos estados ou Distrito Federal e de municÃ­pios para cargo em comissÃ£o ou funÃ§Ã£o de confianÃ§a e/ou casos previstos em leis especÃ­ficas.'),(82,'1.8.13.6','Afastamento para exercÃ­cio de mandato eletivo','Classificar os documentos referentes a exercÃ­cio de mandato  eletivo seja federal, estadual, distrital e municipal.'),(83,'1.8.13.7','Afastamento para estudo no Brasil','Classificar os documentos referentes Ã  ausÃªncia de servidor do local de trabalho para estudo no Brasil, treinamento, aperfeiÃ§oamento profissional, etc. Inclui autorizaÃ§Ã£o , pedidos de empenho, de bolsas, relatÃ³rios, etc.'),(84,'1.8.13.8','Afastamento para estudo no exterior','Classificar os documentos referentes Ã  ausÃªncia de servidor do local de trabalho para estudo no exterior. Inclui autorizaÃ§Ã£o, pedidos de empenho, de bolsas, relatÃ³rios, etc.'),(85,'1.8.13.9','Afastamento para missÃ£o no exterior e no Brasil','Classificar os documentos referentes Ã  ausÃªncia de servidor do local de trabalho para cumprir missÃ£o oficial no exterior e no Brasil, com ou sem remuneraÃ§Ã£o. Abrir pasta para Exterior e para Brasil'),(86,'1.8.13.10','ConcessÃµes','Classificar os documentos referentes Ã  ausÃªncia de servidor do serviÃ§o. Inclui a convocaÃ§Ã£o do TER para trabalhar em eleiÃ§Ãµes. Abrir pasta especÃ­fica para cada tipo de concessÃ£o, quando o acÃºmulo de documentos justificar, obedecendo Ã  seguinte codificaÃ§Ã£o: 1.8.13.10.1 - DoaÃ§Ã£o de sangue; 1.8.13.10.2 - Alistamento como Eleitor; 1.8.13.10.3 - Casamento; 1.8.13.10.4 - Falecimento; 1.8.13.10.5 - HorÃ¡rio Especial; 1.8.13.101.6 - MatrÃ­cula em InstituiÃ§Ã£o de Ensino.'),(87,'1.8.13.11','BenefÃ­cios',NULL),(88,'1.8.13.11.1','Aposentadoria','Classificar os documentos referentes Ã  aposentadoria por invalidez, por compulsÃ³ria (aos setenta anos de idade) e voluntÃ¡ria  (por tempo de serviÃ§o e proporcional ao tempo de serviÃ§o)'),(89,'1.8.13.11.2','Auxilio natalidade','Classificar documentos referentes ao pagamento de menor vencimento dentro do serviÃ§o pÃºblico a servidor em  caso de nascimento de filho, inclusive natimorto.'),(90,'1.8.13.11.3','SalÃ¡rio-famÃ­lia','Classificar os documentos referentes ao pagamento devido ao servidor por dependentes econÃ´micos'),(91,'1.8.13.11.4','AuxÃ­lio prÃ©-escola','Classificar os documentos referentes ao pagamento devido ao servidor por filho (s) em idade prÃ© - escolar.'),(92,'1.8.13.11.5','AuxÃ­lio RefeiÃ§Ã£o','Classificar os documentos referentes ao auxÃ­lios, em forma de ticket, para alimentaÃ§Ã£o, utilizado em supermercados, aÃ§ougues, etc. e para refeiÃ§Ã£o utilizado em restaurantes e em lanches. Inclui o termo de opÃ§Ã£o e normas. Abrir pasta especÃ­fica para AuxÃ­lio RefeiÃ§Ã£o e para AuxÃ­lio AlimentaÃ§Ã£o e para cada uma destas, abrir pasta especÃ­fica para Recibos e Faturas e para Termo de OpÃ§Ã£o.'),(93,'1.8.13.11.6','AuxÃ­lio funeral. Auxilio reclusÃ£o','Classificar os documentos referentes ao pagamento Ã  famÃ­lia de servidor falecido na atividade, inclusive no exterior, ou aposentado, equivalente a um mÃªs de remuneraÃ§Ã£o e provento. Inclui documentos referentes ao pagamento de parte da remuneraÃ§Ã£o do servidor Ã  famÃ­lia, quando este for afastado por motivo de prisÃ£o e /ou condenaÃ§Ã£o. Abrir pasta especÃ­fica para AuxÃ­lio Funeral e para AuxÃ­lio ReclusÃ£o.'),(94,'1.8.13.11.7','AuxÃ­lio transporte','Classificar os documentos referentes ao fornecimento de auxÃ­lio transporte. Inclui normas, legislaÃ§Ã£o, etc.'),(95,'1.8.13.11.8','AssistÃªncia mÃ©dica complementar','Classificar os documentos referentes a pano de saÃºde que atenda aos servidores. Inclui normas, legislaÃ§Ã£o, termos de opÃ§Ã£o, etc. Abrir pasta especÃ­fica para Recibos e Faturas e para Termo de OpÃ§Ã£o.'),(96,'1.8.13.11.9','PensÃ£o','Classificar os documentos referentes aos direitos e pagamentos  de pensÃ£o alimentÃ­cia e pensÃ£o a cÃ´njuge e / ou aos dependentes econÃ´micos de servidor'),(97,'1.8.14','Descontos',NULL),(98,'1.8.14.1','Imposto de Renda','Classificar os documentos sobre normas e legislaÃ§Ã£o referentes a imposto de renda. Inclui as solicitaÃ§Ãµes de cÃ³pias de declaraÃ§Ã£o de renda e recibo da entrega do mesmo'),(99,'1.8.14.2','Imposto Sindical','Classificar os documentos sobre normas e legislaÃ§Ã£o sobre imposto sindical que nÃ£o se refira ao SINTRASEF.'),(100,'1.8.14.3','INSS. PSSS','Classificar os documentos sobre normas e legislaÃ§Ã£o referente aos descontos do Instituto Nacional de Seguridade Social e ao Plano de Seguridade Social do Servidor.'),(101,'1.8.15','OrganizaÃ§Ã£o sindical','Classificar os documentos referentes Ã  filiaÃ§Ã£o , contribuiÃ§Ã£o sindical, normas, SINTRASEF, etc.'),(102,'1.8.16','SeguranÃ§a e Medicina do Trabalho','Classificar os documentos referentes Ã  seguranÃ§a e medicina do trabalho, nÃ£o contemplados em Exame mÃ©dico e em Acidente de trabalho.'),(103,'1.8.16.1','Exame mÃ©dico','Classificar os documentos referentes Ã  avaliaÃ§Ã£o do estado de saÃºde fÃ­sica e mental dos servidores, no local de trabalho.'),(104,'1.8.16.2','Acidente de trabalho','Classificar os documentos referentes Ã s perÃ­cias, relatÃ³rios de acidentes do trabalho, etc. Inclui os documentos sobre seguros. O que for referente Ã s licenÃ§as deve ser classificado sob a codificaÃ§Ã£o especÃ­fica adotada para LicenÃ§as.'),(105,'1.8.17','CurrÃ­culos','Classificar os dados cadastrais de pessoas que nÃ£o pertenÃ§am ao quadro de servidores'),(106,'1.8.18','SolicitaÃ§Ã£o de funcionÃ¡rio para serviÃ§o interno e externo','Classificar os documentos referentes Ã  solicitaÃ§Ã£o de servidor para realizaÃ§Ã£o de serviÃ§os externos ou internos que nÃ£o possam ser classificados pelo assunto especÃ­fico. No caso de ida de servidor para pegar nÃºmero de ISBN na Biblioteca Nacional, classificar  em EditoraÃ§Ã£o.'),(107,'1.8.19','PASEP','Classificar os documentos referentes Ã  contribuiÃ§Ã£o da FCR para PASEP. Inclui as modificaÃ§Ãµes de PIS para PASEP.'),(108,'1.9','ImÃ³veis','Classificar os documentos referentes aos bens imÃ³veis e ao patrimÃ´nio tombado, exceto os acervos documentais. Os documentos referentes aos acervos arquivÃ­sticos, bibliogrÃ¡ficos e museolÃ³gicos recebem codificaÃ§Ã£o especÃ­fica dentro da classe 5.'),(109,'1.9.1','Escrituras. Tombamento','Classificar os documentos referentes Ã  situaÃ§Ã£o jurÃ­dica dos imÃ³veis e tombamento pelo PatrimÃ´nio HistÃ³rico. Ex: CertidÃµes, escrituras, etc.'),(110,'1.9.2','OperaÃ§Ãµes imobiliÃ¡rias','Classificar os documentos referentes Ã  compra, arrendamento, locaÃ§Ã£o, permuta, alienaÃ§Ã£o, desapropriaÃ§Ã£o e doaÃ§Ã£o de bens imÃ³veis da FCRB e /ou para a FCRB. Abrir pasta para cada modalidade de operaÃ§Ã£o imobiliÃ¡ria. Ex.: ImÃ³vel, DesapropriaÃ§Ã£o. Terreno, Arrendamento.'),(111,'1.9.3','Desenhos e projetos (somente para documentos grÃ¡ficos)','(Somente para Documentos GrÃ¡ficos) Classificar as plantas, projetos, croquis (documentos nÃ£o textuais) que retratem as edificaÃ§Ãµes e ambiÃªncia ( jardins, muros, etc.) da FCRB. Estes documentos se encontram arquivados na mapoteca.'),(112,'1.9.3.1','Museu',NULL),(113,'1.9.3.1.1','Levantamento geral','Classificar plantas gerais , fachadas, cortes do Museu, Plantas de instalaÃ§Ãµes prediais ( elÃ©tricas, hidrÃ¡ulicas e de esgoto), etc.'),(114,'1.9.3.1.2','Projetos de restauraÃ§Ã£o de bens imÃ³veis','Classificar os levantamentos parciais, croquis, detalhes de esquadrias referentes aos projetos de restauraÃ§Ã£o de bens imÃ³veis.'),(115,'1.9.3.2','Jardim',NULL),(116,'1.9.3.2.1','Sistema elÃ©trico de iluminaÃ§Ã£o','Classificar as pranchas de desenhos da General Electric e /ou outros projetos de restauraÃ§Ã£o de redes elÃ©tricas e /ou iluminaÃ§Ã£o do jardim.'),(117,'1.9.3.2.2','Sistema hidrÃ¡ulico e de irrigaÃ§Ã£o','Classificar as pranchas de desenhos e /ou outros projetos de restauraÃ§Ã£o da rede de Ã¡gua instalada no jardim.'),(118,'1.9.3.3','LAMIC (laboratÃ³rio de Microfilmagem)','Classificar o projeto de reforma da construÃ§Ã£o, ampliaÃ§Ã£o, etc. do LaboratÃ³rio de Microfilmagem  - LAMIC'),(119,'1.9.3.4','Terreno 130','Classificar os projetos da construÃ§Ã£o do almoxarifado, o prÃ©dio anexo II, e os desenhos referentes Ã s construÃ§Ãµes no terreno na Rua SÃ£o Clemente nÃºmero 130.'),(120,'1.9.3.5','EspaÃ§o AmÃ©rico Jacobina Lacombe',NULL),(121,'1.9.3.5.1','Projeto inicial','Classificar croquis, estudos preliminares, anteprojetos, etc.., referentes Ã  construÃ§Ã£o do prÃ©dio na Rua AssunÃ§Ã£o nÃºmero 520.'),(122,'1.9.3.5.2','Projeto executivo','Classificar pranchas de desenhos da obra de construÃ§Ã£o propriamente dita do prÃ©dio na Rua AssunÃ§Ã£o nÃºmero 520. Inclui as plantas da COBE.'),(123,'1.9.3.5.2.1','Arquitetura','Classificar os documentos de arquitetura referentes ao prÃ©dio na Rua AssunÃ§Ã£o nÃºmero 520'),(124,'1.9.3.5.2.2','Estrutura','Classificar os desenhos de estrutura de concreto armado referentes ao prÃ©dio na Rua AssunÃ§Ã£o nÃºmero 520.'),(125,'1.9.3.5.2.3','InstalaÃ§Ãµes prediais','Classificar os desenhos das redes elÃ©tricas, hidrÃ¡ulicas, de esgoto, de telefonia, etc. referentes ao prÃ©dio na Rua AssunÃ§Ã£o nÃºmero 520.'),(126,'1.9.3.5.2.4','InstalaÃ§Ãµes especiais','Classificar os desenhos do sistema de alarme e outros especÃ­ficos referentes ao prÃ©dio na Rua AssunÃ§Ã£o nÃºmero 520. No caso das instalaÃ§Ãµes especiais do auditÃ³rio classificar em 1.9.3.5.3'),(127,'1.9.3.5.2.5','OcupaÃ§Ã£o','Classificar os layouts das Ã¡reas privativas do prÃ©dio na Rua AssunÃ§Ã£o nÃºmero 520.'),(128,'19.3.5.3','AuditÃ³rio','Classificar os desenhos referentes a todos os projetos sobre o auditÃ³rio tais como: arquitetura, estrutura, instalaÃ§Ãµes especiais, de sistemas de audiovisual, de ar condicionado, acÃºstica, elÃ©trica, etc.'),(129,'1.9.4','ServiÃ§os bÃ¡sicos',NULL),(130,'1.9.4.1','InstalaÃ§Ãµes elÃ©tricas. IluminaÃ§Ã£o','Classificar os documentos referentes Ã  instalaÃ§Ã£o, manutenÃ§Ã£o, pagamento dos serviÃ§os de fornecimento de energia elÃ©trica e de iluminaÃ§Ã£o.'),(131,'1.9.4.2','InstalaÃ§Ãµes hidro-sanitÃ¡rias e de gÃ¡s','Classificar os documentos referentes Ã  instalaÃ§Ã£o, manutenÃ§Ã£o, conservaÃ§Ã£o, pagamento dos serviÃ§os de fornecimento de Ã¡gua, esgoto e gÃ¡s.'),(132,'1.9.4.3','Telefones. Fax. Telex. Internet','Classificar os documentos referentes Ã  aquisiÃ§Ã£o, instalaÃ§Ã£o, manutenÃ§Ã£o, transferÃªncia, registro e pagamento de serviÃ§os de telefones, faz e telex. Abrir pasta Telefones, para Telex, para Fax e para Internet, quando o volume de documentos justificar.'),(133,'1.9.4.4','Elevadores','Classificar os documentos referentes Ã  aquisiÃ§Ã£o e manutenÃ§Ã£o dos elevadores que atendem Ã  FCRB.'),(134,'1.9.4.5','Ar refrigerado','Classificar os documentos referentes Ã  instalaÃ§Ã£o e manutenÃ§Ã£o de ar refrigerado.'),(135,'1.9.4.6','ImunizaÃ§Ã£o. Limpeza','Classificar os documentos referentes ao controle biolÃ³gico e limpeza dos edifÃ­cios e jardim pertencentes Ã  FCRB. Abrir pasta especÃ­fica para cada edificaÃ§Ã£o no caso de limpeza e para controle biolÃ³gico ( dedetizaÃ§Ã£o, descupinizaÃ§Ã£o, desratizaÃ§Ã£o, etc.). Ex.: Museu, Limpeza; EspaÃ§o AmÃ©rico Jacobina Lacombe, Limpeza.'),(136,'1.9.5','Obras de conservaÃ§Ã£o e restauraÃ§Ã£o','classificar os documentos referentes aos trabalhos de recuperaÃ§Ã£o, reformas e restauraÃ§Ã£o dos bens culturais. Ex.: Museu, Obras de ConservaÃ§Ã£o e RestauraÃ§Ã£o; Jardim, Obras de ConservaÃ§Ã£o e RestauraÃ§Ã£o.'),(137,'1.9.6','Obras de manutenÃ§Ã£o','Classificar os documentos referentes Ã s obras civis gerais e pequenos reparos. Inclui troca de azulejos de banheiros, reparos de revestimentos, troca de tapetes, troca de divisÃ³rias, etc. Ex.: EdifÃ­cio AmÃ©rico Jacobina Lacombe, Obras de ManutenÃ§Ã£o.'),(138,'1.9.7','Ãreas',NULL),(139,'1.9.7.1','Ãrea privativa','Classificar os documentos referentes Ã s Ã¡reas de trabalho'),(140,'1.9.7.1.1','OcupaÃ§Ã£o','Classificar os documentos referentes Ã  distribuiÃ§Ã£o de espaÃ§os entre os setores da FCRB, Ã  elaboraÃ§Ã£o de layouts para os setores, alteraÃ§Ã£o no uso dos espaÃ§os, etc.'),(141,'1.9.7.2','Ãrea de uso comum','Classificar os documentos referentes Ã s Ã¡reas comuns tais como : Hall, saguÃ£o, escada, banheiros, etc.'),(142,'1.9.7.3','Ãrea cultural','Classificar os documentos referentes ao auditÃ³rio, ao salÃ£o de exposiÃ§Ãµes, Biblioteca, Arquivo, Arquivo- Museu de Literatura, Museu e jardim.'),(143,'1.9.7.3.1','CessÃ£o e utilizaÃ§Ã£o','Classificar os documentos referentes Ã  cessÃ£o, interdiÃ§Ã£o e preparaÃ§Ã£o de dependÃªncias da FCRB para realizaÃ§Ã£o de eventos, filmagens, cursos, etc.'),(144,'1.9.7.4','AcrÃ©scimo de Ã¡reas','Classificar os documentos referentes Ã s expansÃµes da FCRB tais como : mudanÃ§as, construÃ§Ã£o de prÃ©dios, etc.'),(145,'1.9.8','Estacionamento','Classificar os documentos referentes ao controle de uso e de pagamento, por parte dos servidores da FCRB do estacionamento de veÃ­culos que funciona em terreno da FCRB.'),(146,'1.9.9','SeguranÃ§a ','Classificar os documentos referentes Ã s medidas de seguranÃ§a como troca de fechaduras, vedaÃ§Ã£o de janelas, fechamento de portÃ£o ou portaria, etc.'),(147,'1.9.9.1','IncÃªndio ','Classificar os documentos referentes Ã  prevenÃ§Ã£o contra incÃªndios, instalaÃ§Ã£o e manutenÃ§Ã£o de extintores, e equipamento de detenÃ§Ã£o e combate a incÃªndio.'),(148,'1.9.9.2','Furto. Arrombamento. Extravio','Classificar os documentos referentes aos furtos, arrombamentos, extravios, sinistros de bens e materiais da FCRB. Inclui as tentativas de furtos e perÃ­cias decorrentes.'),(149,'1.9.9.3','Seguro','Classificar os documentos referentes aos contratos de seguros em casos de incÃªndio furos, arrombamentos, extravios, etc.'),(150,'1.9.9.4','VigilÃ¢ncia','Classificar os documentos referentes ao serviÃ§o da guarda municipal e /ou equipes de seguranÃ§a contratados para garantir e proteger o patrimÃ´nio e o material da FCRB.'),(151,'1.9.9.5','Acesso fora do expediente','Classificar os documentos referentes Ã  entrada de pessoas nos edifÃ­cios da FCRB fora do horÃ¡rio de expediente.'),(152,'1.9.9.6','Controle de portaria','Classificar os documentos referentes ao controle de entrada de pessoas nas dependÃªncias da FCRB.'),(153,'1.9.10','Moradia de servidor','Classificar os documentos referentes ao uso de dependÃªncia da FCRB para fins residenciais de servidor.'),(154,'1.10','VeÃ­culos',NULL),(155,'1.10.1','AquisiÃ§Ã£o. LocaÃ§Ã£o','Classificar os documentos referentes Ã  compra de viaturas, doaÃ§Ã£o de veÃ­culos feitas para a FCRB a permuta de veÃ­culos com outras instituiÃ§Ãµes na pasta AquisiÃ§Ã£o. Classificar os documentos referentes ao aluguel de veÃ­culos pela FCRB na pasta LocaÃ§Ã£o.'),(156,'1.10.2','AlienaÃ§Ã£o. Tombamento','Classificar os documentos referentes Ã  transferÃªncia de posse e arrolamento de veÃ­culos. Abrir pasta para AlienaÃ§Ã£o e outra para Tombamento.'),(157,'1.10.3','ManutenÃ§Ã£o','Classificar os documentos referentes Ã  limpeza, reparos, revisÃ£o mecÃ¢nicas dos veÃ­culos, etc.'),(158,'1.10.4','Acidente. Seguro','Classificar os documentos referentes a batidas, atropelamentos, etc. ocorridos com os veÃ­culos na pasta Acidentes e os contratos e utilizaÃ§Ã£o de seguros de veÃ­culos na pasta Seguros.'),(159,'1.10.5','Abastecimento','Classificar os documentos referentes ao abastecimento dos veÃ­culos.'),(160,'1.10.6','InfraÃ§Ãµes e multas de trÃ¢nsito','Classificar os documentos referentes a infraÃ§Ãµes cometidas no trÃ¢nsito com os veÃ­culos e multas decorrentes das mesmas.'),(161,'1.10.7','Registros. Emplacamento. Cadastro','Classificar os documentos referentes Ã  inscriÃ§Ã£o dos veÃ­culos junto aos Ã³rgÃ£os competentes, inclusive junto ao MinistÃ©rio e tambÃ©m referentes ao pagamento do IPVA. Na pasta Registro classificar os documentos referentes a inscriÃ§Ã£o e regulamentaÃ§Ã£o dos veÃ­culos, na pasta Emplacamento arquivar os documentos referentes a emplacamento, mudanÃ§a de placa e na pasta Cadastro arquivar os documentos referentes ao censo de carros oficiais.'),(162,'1.10.8','Controle',NULL),(163,'1.10.8.1','RequisiÃ§Ã£o','Classificar os documentos referentes Ã  solicitaÃ§Ã£o (autorizada ou nÃ£o), bem como demais procedimentos administrativos para o uso de veÃ­culos oficiais durante o expediente.'),(164,'1.10.8.2','AutorizaÃ§Ã£o para o uso fora do horÃ¡rio de expediente','Classificar os documentos referentes  Ã  solicitaÃ§Ã£o (autorizada ou nÃ£o) do uso de veÃ­culos oficiais fora do horÃ¡rio do expediente.'),(165,'1.11','Material',NULL),(166,'1.11.1','Cadastro de fornecedor. CatÃ¡logo. Tabela de preÃ§os','Classificar os documentos referentes ao cadastramento de fornecedores, aos processos de cadastramento, Ã s listagens e/ou catÃ¡logos de fornecedores, documentos de firmas, folders promocionais, tabelas de preÃ§os materiais, etc. Abrir pasta para Material Permanente e para Material de Consumo, quando necessÃ¡rio. Ex: Material de consumo, CatÃ¡logos; Material Permanente, CatÃ¡logos.'),(167,'1.11.2','PadronizaÃ§Ã£o, especificaÃ§Ã£o e codificaÃ§Ã£o','Classificar os documentos referentes Ã s instruÃ§Ãµes e/ou instrumentos que definam a padronizaÃ§Ã£o de materiais de consumo e/ou permanente, suas especificaÃ§Ãµes e cÃ³digos.'),(168,'1.11.3','InventÃ¡rio patrimonial e controle de estoque','Classificar os inventÃ¡rios dos bens patrimoniais e do material de consumo da FCRB. Inclui os instrumentos de controle de estoque.'),(169,'1.11.4','Material de consumo','Classificar o material utilizado pela administraÃ§Ã£o que nÃ£o receba nÃºmero de patrimÃ´nio. Abrir pasta para cada tipo de material quando o volume de documentos e a constÃ¢ncia da utilizaÃ§Ã£o dos mesmos justificar. EX: Material de papelaria; Material grÃ¡fico; Uniformes, etc.'),(170,'1.11.4.1','AquisiÃ§Ã£o','Classificar os documentos referentes Ã  compra e/ou doaÃ§Ã£o de material de consumo para a FCRB. Inclui relaÃ§Ã£o de compras.'),(171,'1.11.4.2','DistribuiÃ§Ã£o','Classificar os documentos referentes Ã  entrega de material de consumo para os setores da FCRB. EX: InstruÃ§Ãµes, definiÃ§Ãµes de dias para solicitaÃ§Ãµes, etc.'),(172,'1.11.4.2.1','RequisiÃ§Ã£o de material','Classificar os documentos referentes Ã s solicitaÃ§Ãµes referentes da FCRB de material de consumo, a disponibilidade ou nÃ£o de verba, Ã  autorizaÃ§Ã£o de servidores para requisitar material e recebÃª-lo, etc.'),(173,'1.11.4.2.2','CessÃ£o','Classificar os documentos referentes Ã  transferÃªncia de direitos, posse ou propriedade de determinado material de consumo para e/ou pela FCRB e entre outros setores da instituiÃ§Ã£o.'),(174,'1.11.4.3','EmprÃ©stimo','Classificar os documentos referentes ao uso de material de consumo de propriedade de outra instituiÃ§Ã£o pela FCRB, ao uso de material de consumo de propriedade da FCRB por outra instituiÃ§Ã£o, bem como ao uso de material de consumo de um setor da FCRB por outro.'),(175,'1.11.4.4','Permuta','Classificar os documentos referentes Ã  troca de materiais de consumo entra a FCRB e outra instituiÃ§Ã£o e/ou entre setores da FCRB.'),(176,'1.11.5','Material permanente','Classificar os documentos referentes a aparelhos, bebedouros, equipamentos, ferramentas, mÃ¡quinas, mobiliÃ¡rio, etc. que recebam nÃºmero de patrimÃ´nio da FCRB.'),(177,'1.11.5.1','AquisiÃ§Ã£o','Classificar os documentos referentes Ã  compra de material permanente feita pela FCRB e/ou doaÃ§Ã£o de bens patrimoniais feitas Ã  FCRB. Inclui relaÃ§Ã£o de compras.'),(178,'1.11.5.2','DistribuiÃ§Ã£o','Classificar os documentos referentes Ã  entrega de bens patrimoniais aos setores da FCRB.'),(179,'1.11.5.2.1','RequisiÃ§Ã£o de material',NULL),(180,'1.11.5.2.2','Termo de responsabilidade','Classificar os documentos referentes Ã  descriÃ§Ã£o e nÃºmero do material permanente  sob a responsabilidade de algum servidor. Inclui comunicaÃ§Ãµes internas passando a responsabilidade para outro servidor, as fichas de material e de assinaturas, etc.'),(181,'1.11.5.2.3','DepÃ³sito','Classificar os documentos referentes Ã  colocaÃ§Ã£o de bens patrimoniais que nÃ£o mais utilizados na Ã¡rea de depÃ³sito.'),(182,'1.11.5.3','AlienaÃ§Ã£o','Classificar os documentos referentes Ã  transferÃªncia de domÃ­nio material permanente.'),(183,'1.11.5.3.1','Venda','Classificar os documentos referentes Ã  venda de bens materiais alienados da FCRB.'),(184,'1.11.5.3.2','CessÃ£o','Classificar os documentos referentes Ã  transferÃªncia de direitos, posse ou propriedade de determinado material permanente para e/ou pela FCRB ou entre os setores da instituiÃ§Ã£o.'),(185,'1.11.5.3.3','Permuta','Classificar os documentos referentes Ã  troca  de material permanente entre a FCRB e outra instituiÃ§Ã£o e/ou entre os setores da prÃ³pria FCRB.'),(186,'1.11.5.4','EmprÃ©stimo','Classificar os documentos referentes ao ato de outra instituiÃ§Ã£o confiar a FCRB, ou ao fato de a FCRB confiar a outra instituiÃ§Ã£o ou ao ato de um setor da FCRB confiara a outro setor, temporariamente, o uso de material permanente.'),(187,'1.11.5.5','LocaÃ§Ã£o','Classificar os documentos referentes ao aluguel de material permanente da FCRB e/ou pela FCRB. No caso de locaÃ§Ã£o do equipamento eletrostÃ¡tico arquivar em 1.20.2.'),(188,'1.11.5.6','ManutenÃ§Ã£o','Classificar os documentos referentes Ã  recuperaÃ§Ã£o, conservaÃ§Ã£o, revisÃ£o e limpeza do material permanente da FCRB.'),(189,'1.11.6','Bens importados','Classificar os documentos referentes Ã  importaÃ§Ã£o de bens patrimoniais ou de consumo pela FCRB.'),(190,'1.11.7','Certficado de regularidade jurÃ­dico-fiscal. Atestado de capacidade fÃ­sica','Classificar os atestados de cumprimento de atividades pelas empresas prestadoras de serviÃ§os e fornecedoras da FCRB na pasta Atestado de Capacidade TÃ©cnica. Classificar os atestados de regularidade jurÃ­dico-fiscal de empresas que querem constar do cadastro de fornecedores da FCRB e outros documentos referentes ao assunto, na pasta Certificado de Regularidade JurÃ­dico-Fiscal.'),(191,'1.12','GestÃ£o e finanÃ§as',NULL),(192,'1.12.1','Auditorias','Classificar os documentos referentes ao processo de auditoria nas contas e gestÃ£o da FCRB.'),(193,'1.12.2','Sistema Integrado de AdministraÃ§Ã£o Financeira do Governo Federal - SIAFI','Classificar os documentos referentes ao SIAFI, que objetiva controlar desde a dotaÃ§Ã£o orÃ§amentÃ¡ria atÃ© o saldo de execuÃ§Ã£o financeira. Inclui os documentos referentes Ã  representaÃ§Ã£o da FCRB junto ao SIAFI.'),(194,'1.12.3','Sistema Integrado de Dados OrÃ§amentÃ¡rios - SIDOR','Classificar os documentos referentes ao SIDOR, que objetiva controlar desde a proposta orÃ§amentÃ¡ria atÃ© a dotaÃ§Ã£o orÃ§amentÃ¡ria. '),(195,'1.13','OrÃ§amento e finanÃ§as',NULL),(196,'1.13.1','Proposta orÃ§amentÃ¡ria','Classificar a proposta de orÃ§amento apresentada ao governo federal, anualmente, os crÃ©ditos adicionais â€“ autorizaÃ§Ã£o de despesas nÃ£o computadas ou insuficientemente dotadas na Lei de OrÃ§amento. Podem ser: CrÃ©dito Suplementar (reforÃ§o na dotaÃ§Ã£o orÃ§amentÃ¡ria); CrÃ©dito Especial (reforÃ§o para as despesas para as quais nÃ£o haja dotaÃ§Ã£o orÃ§amentÃ¡ria especÃ­fica) e CrÃ©dito ExtraordinÃ¡rio (reforÃ§o para despesas imprevisÃ­veis e urgentes como decorrentes da guerra, comoÃ§Ã£o interna ou calamidade pÃºblica). Inclui o Quadro de Detalhamento de SolicitaÃ§Ã£o â€“ QDS, o'),(197,'1.13.2','ExecuÃ§Ã£o orÃ§amentÃ¡ria','Classificar os documentos referentes ao empenho da dotaÃ§Ã£o orÃ§amentÃ¡ria'),(198,'1.13.2.1','Controle orÃ§amentÃ¡rio','Classificar os documentos referentes Ã  relaÃ§Ã£o  entre  a dotaÃ§Ã£o orÃ§amentÃ¡ria, a execuÃ§Ã£o orÃ§amentÃ¡ria, e o saldo da dotaÃ§Ã£o orÃ§amentÃ¡ria.'),(199,'1.13.3','Recursos orÃ§amentÃ¡rios','Classificar os documentos referentes ao orÃ§amento para ser empenhado.'),(200,'1.13.4','Recursos de convÃªnios','Classificar os documentos referentes Ã  celebraÃ§Ã£o de convÃªnios entre a FCRB e outras instituiÃ§Ãµes visando a captaÃ§Ã£o de recursos. Inclui propostas, dotaÃ§Ã£o e execuÃ§Ã£o orÃ§amentÃ¡rias prÃ³prias, bem como prestaÃ§Ã£o de contas especÃ­ficas.'),(201,'1.13.5','Proposta financeira','Classificar os documentos referentes ao planejamento mensal dos gastos da FCRB.'),(202,'1.13.6','LiberaÃ§ao de verba','Classificar os documentos referentes aos recursos liberados pelo governo federal para a FCRB, previsto no orÃ§amento.'),(203,'1.13.7','Receita','Classificar os documentos referentes aos recursos econÃ´micos e financeiros previstos no orÃ§amento do Estado e arrecadados para fazer face Ã s despesas.'),(204,'1.13.7.1','AplicaÃ§Ã£o financeira','Classificar os documentos referentes Ã  aplicaÃ§Ã£o dos recursos prÃ³prios em caderneta de poupanÃ§a.'),(205,'1.13.7.2','Recursos prÃ³prios','Classificar os documentos referentes Ã  arrecadaÃ§Ã£o da prÃ³pria FCRB (com venda de publicaÃ§Ãµes, de ingressos, aluguel de auditÃ³rio, etc.).'),(206,'1.13.8','Despesas',NULL),(207,'1.13.8.1','Despesas de exercÃ­cios anteriores','Classificar os documentos referentes Ã s dÃ­vidas antigas nÃ£o pagas no prÃ³prio exercÃ­cio. SÃ£o inscritas como despesas de exercÃ­cios anteriores as despesas de exercÃ­cios encerrados, para os quais o orÃ§amento respectivo consigna crÃ©dito prÃ³prio com saldo suficiente para atendÃª-las, que nÃ£o se tenham processado na Ã©poca prÃ³pria, compromisso decorrentes de obrigaÃ§Ã£o de pagamento criada em virtude de lei e reconhecidos apÃ³s encerramento de exercÃ­cio.'),(208,'1.13.8.2','Suprimento de fundos','Classificar os documentos referentes Ã s despesas miÃºdas de passagens de Ã´nibus, metrÃ´, tiragem de xerox fora da FCRB, etc.'),(209,'1.13.8.3','Resto a pagar','Classificar os documentos referentes Ã  despesas lÃ­quidas e nÃ£o pagas, ou nÃ£o liquidadas, desde que o vigente prazo para cumprimento de obrigaÃ§Ã£o assumida pelo credor, indicado na nota de empenho,  ou vencido o prazo para cumprimento da obrigaÃ§Ã£o assumida pelo credor mas que esteja em curso a liquidaÃ§Ã£o da despesa ou seja da AdministraÃ§Ã£o exigir o cumprimento da obrigaÃ§Ã£o do credor, ou se destinem a atender transferÃªncias para as instituiÃ§Ãµes pÃºblicas ou privadas, e que correspondam aos compromissos assumidos no exterior. Em suma, despesas previstas '),(210,'1.13.8.4','Acompanhamento de Desembolso Mensal com Pessoal e ForÃ§a de Trabalho ADMP','Classificar os documentos referentes Ã  despesa pessoal e forÃ§a de trabalho mensais. Inclui cÃ³pia de formulÃ¡rio ADMP.'),(211,'1.13.9','PrestaÃ§Ã£o de contas  ',NULL),(212,'1.13.9.1','ExercÃ­cio','Classificar os documentos referentes Ã  demonstraÃ§Ã£o das contas da FCRB, ou seja, Ã  apresentaÃ§Ã£o da prestaÃ§Ã£o de contas do total dos recursos recebidos. Inclui normas para fechamento do exercÃ­cio, instruÃ§Ã£o para o preenchimento de formulÃ¡rios, cronograma e balanÃ§o anual.'),(213,'1.13.9.2','Conselho Fiscal','Classificar os documentos referentes Ã s relaÃ§Ãµes da FCRB com os trÃªs conselheiros a cerca das contas da instituiÃ§Ã£o e os balancetes (mensais).'),(214,'1.13.9.3','Rol dos responsÃ¡veis','Classificar os documentos referentes Ã  responsabilidade de gerir as contas da FCRB, pela PresidÃªncia, DireÃ§Ã£o Executiva e pela Diretoria de AdministraÃ§Ã£o, bem como pelos substitutos.'),(215,'1.14','OperaÃ§Ãµes bancÃ¡rias',NULL),(216,'1.14.1','Conta-SalÃ¡rio','Classificar os documentos referentes Ã  abertura, fechamento e manutenÃ§Ã£o de conta-salÃ¡rio de servidor.'),(217,'1.14.2','Contas -Correntes','Classificar os documentos referentes Ã  conta para pequenas despesas (tipo C) e Ã  Conta Ãšnica do Tesouro Nacional que tem por finalidade acolher as disponibilidades financeiras da UniÃ£o a serem movimentadas pelas Unidades Gestoras-UGS da AdministraÃ§Ã£o Federal, direta e indireta, participante do Sistema Integrado de AdministraÃ§Ã£o Financeira â€“ SIAFI.'),(218,'1.14.2.1','TransferÃªncias','Classificar os documentos referentes Ã  passagem de recursos da conta tipo C para a conta Ãºnica de Tesouro Nacional. Classificar as contas, faturas, etc. pagas pela FCRB organizadas em sequÃªncia numÃ©rica'),(219,'1.14.2.2','Assinaturas autorizadas','Classificar os documentos referentes Ã  autorizaÃ§Ã£o de assinaturas para movimento das contas bancÃ¡rias: PresidÃªncia, DireÃ§Ã£o Executiva e Diretoria de AdministraÃ§Ã£o. '),(220,'1.14.3','CÃ¢mbio','Classificar os documentos referentes  Ã  troca de moeda, a pagamentos em moeda estrangeira, etc.'),(221,'1.15','Contabilidade',NULL),(222,'1.15.1','Plano de contas','Classificar os documentos referentes Ã  atribuiÃ§Ã£o de cÃ³digo que define o que estÃ¡ se pagando ou recebendo, relacionando a natureza de despesa, valores, etc.'),(223,'1.15.2','Tabela de eventos','Classificar os documentos referentes Ã  atribuiÃ§Ã£o de cÃ³digo para eventos de carÃ¡ter financeiro. EX.: Pagamentos da manutenÃ§Ã£o do jardim.'),(224,'1.15.3','Contas pagas','Classificar as contas, faturas, etc., pagas pela FCRB, organizadas em sequÃªncia numÃ©rica.'),(225,'1.15.4','Plano interno','Classificar os documentos referentes Ã  codificaÃ§Ã£o das unidades executoras da FCRB â€“ DA, DE, CMD, CP, PRE - das metas setoriais (objetivo geral da unidade executora), das metas setoriais especÃ­ficas (o que pode ser feito) e das aÃ§Ãµes (objetivos especÃ­ficos).'),(226,'1.16','IntervenÃ§Ã£o judicial','Classificar os documentos referentes Ã s aÃ§Ãµes ordinÃ¡rias, mandados de seguranÃ§a, etc. NÃ£o inclui os processos na Ã¡rea trabalhista.'),(227,'1.17','AssociaÃ§Ãµes',NULL),(228,'1.17.1','Servidores','Classificar os documentos referentes aos procedimentos, objetivos, etc. para a formaÃ§Ã£o e manutenÃ§Ã£o de associaÃ§Ãµes de servidores.'),(229,'1.17.2','Amigos da casa de Rui Barbosa','Classificar os documentos referentes Ã  formaÃ§Ã£o, objetivos e atuaÃ§Ã£o da AssociaÃ§Ã£o dos Amigos da Casa de Rui Barbosa. EX: PrestaÃ§Ã£o de contas, contratos, atas de reuniÃ£o, correspondÃªncias, etc.'),(230,'1.17.2.1','OrganizaÃ§Ã£o e estrutura','Classificar os documentos  que retratem a organizaÃ§Ã£o e a estrutura da AssociaÃ§Ã£o de Amigos da Casa de Rui Barbosa. Incluem-se as alteraÃ§Ãµes, propostas e projetos de alteraÃ§Ãµes, os documentos referentes Ã  criaÃ§Ã£o, transformaÃ§Ãµes institucionais e jurÃ­dicas, atribuiÃ§Ãµes, estatutos, regimentos, regulamentos, Conselhos, Juntas registro nos Ã³rgÃ£os competentes, atas, etc.'),(231,'1.17.2.2','Contratos.ConvÃªnios. Projetos','Classificar os documentos referentes aos convÃªnios, contratos e projetos firmados entre a AssociaÃ§Ã£o dos Amigos da Casa de Rui Barbosa e outras instituiÃ§Ãµes.'),(232,'1.17.2.3','ContÃ¡bil-Financeira','Classificar os documentos referentes aos recursos financeiros, Ã  arrecadaÃ§Ã£o, Ã  despesas, Ã  demonstraÃ§Ã£o de contas , abertura, fechamento e manutenÃ§Ã£o de contas bancÃ¡rias, sua gestÃ£o e movimentaÃ§Ã£o, etc. Incluem-se os balancetes, extratos bancÃ¡rios, recibos, notas fiscais, etc.'),(233,'1.18','Tributos.Multas','Classificar os documentos referentes aos impostos como IPTU, taxas municipais de coleta de lixo, taxa de armazenagem de portos, isenÃ§Ãµes de impostos, etc. Abre- se uma pasta para cada tipo de taxa. Inclui pareceres, consultas, solicitaÃ§Ãµes etc. sobre a matÃ©ria.'),(234,'1.19','LicitaÃ§Ã£o','Classificar os documentos referentes aos processos licitatÃ³rios da administraÃ§Ã£o pÃºblica e na FCRB, as CertidÃµes Negativas de DÃ©bito, etc. Os procedimentos propriamente ditos serÃ£o arquivados de acordo com o assunto.'),(235,'1.20','ServiÃ§o de reproduÃ§Ã£o eletrostÃ¡tica (xerox)',NULL),(236,'1.20.1','CÃ³pias','Classificar os documentos referentes Ã  reproduÃ§Ã£o por processos eletrostÃ¡ticos (xerox), fixaÃ§Ã£o de preÃ§os, direito de solicitar o serviÃ§o, etc. Inclui pedidos de conta de cÃ³pias  de documentos, envio de notas para pagamento, pedidos de cÃ³pias de publicaÃ§Ãµes, etc.'),(237,'1.20.2','LocaÃ§Ã£o. ManutenÃ§Ã£o','Classificar os documentos referentes aos procedimentos para locaÃ§Ã£o e manutenÃ§Ã£o de equipamento para a reproduÃ§Ã£o eletrostÃ¡tica de documentos (xerox). NÃ£o hÃ¡ necessidade de abrir pasta  para locaÃ§Ã£o e outra para manutenÃ§Ã£o, porque a locaÃ§Ã£o e contrato de manutenÃ§Ã£o constarÃ£o de processo de licitaÃ§Ã£o.'),(238,'2','DifusÃ£o Cultural',NULL),(239,'2.1','Eventos culturais (FCRB)','Classificar os documentos referentes a outros eventos nÃ£o descritos nos itens abaixo. Inclui atividades ao ar livre (exceto ColÃ´nia de FÃ©rias e atividades didÃ¡ticas que se enquadram em Programas Especiais 3.3 e desdobramentos) e/ou eventos que envolvam mais de uma das atividades descritas.'),(240,'2.1.1','Recitais. Concertos','Classificar os documentos referentes Ã  apresentaÃ§Ã£o de mÃºsicos e cantores na FCRB. Abrir pasta para cada Recital e Concerto.'),(241,'2.1.2','Teatros','Classificar os documentos referentes Ã  apresentaÃ§Ã£o de peÃ§as de teatros e Ã s oficinas de teatro. Abrir pasta para cada peÃ§a e/ou oficina.'),(242,'2.1.3','Filmes','Classificar os documentos referentes a mostras de filmes na FCRB.'),(243,'2.1.4','ExposiÃ§Ãµes','Classificar os documentos referentes Ã s exposiÃ§Ãµes realizadas na FCRB e referentes a Rui Barbosa. Abrir pasta para cada exposiÃ§Ã£o.'),(244,'2.1.5','Feiras. Feiras de livros','Classificar os documentos referentes Ã  realizaÃ§Ã£o de feiras literÃ¡rias e/ou a participaÃ§Ã£o em feiras de livros. Abrir pasta para cada feira, quando o volume de documentos justificar.'),(245,'2.1.6','LanÃ§amentos de publicaÃ§Ãµes, discos, etc.','Classificar os documentos referentes aos lanÃ§amentos de publicaÃ§Ãµes e discos que ocorrerem na FCRB. Os lanÃ§amentos de publicaÃ§Ãµes da FCRB serÃ£o classificados em EditoraÃ§Ã£o na pasta especÃ­fica da publicaÃ§Ã£o'),(246,'2.1.7','ComemoraÃ§Ãµes. Homenagens','Classificar os documentos referentes Ã s homenagens a Rui Barbosa e outros personagens ilustres, Ã  participaÃ§Ã£o da FCRB em solenidades dentro e fora da FCRB como formaturas, aulas inaugurais, comemoraÃ§Ãµes em geral, etc. Inclui documento referentes ao calendÃ¡rio medalhÃ­stico e filatÃ©lico.'),(247,'2.2','Eventos Culturais (outras instituiÃ§Ãµes)','Classificar os documentos referentes Ã  realizaÃ§Ã£o de recitais, concertos, peÃ§as teatro, filmes, feiras de livros, lanÃ§amentos de publicaÃ§Ãµes, discos, solenidades ( sem a participaÃ§Ã£o da FCRB), etc. em outras instituiÃ§Ãµes'),(248,'2.3','SeminÃ¡rios. Congresso. Mesas-redondas (FCRB)','Classificar os documentos referentes Ã  realizaÃ§Ã£o de semanÃ¡rios, Congressos, Mesas-redondas na FCRB. Abrir pasta especÃ­fica para cada evento.'),(249,'2.4','SeminÃ¡rios. Congresso. Mesas-redondas (Outras instituiÃ§Ãµes)','Classificar os documentos referentes Ã  realizaÃ§Ã£o de SeminÃ¡rios, Congressos, Mesas-redondas, etc. em outras instruÃ§Ãµes. Inclui a participaÃ§Ã£o de servidor em eventos fora da FCRB, mesmo que nÃ£o estejam em missÃ£o oficial. NÃ£o abrir pasta especÃ­fica.'),(250,'2.5','DivulgaÃ§Ã£o','Classificas os documentos de carÃ¡ter geral que visem Ã  divulgaÃ§Ã£o da FCRB e seus setores junto ao pÃºblico. Ex: Folders.'),(251,'2.5.1','Mala -Direta','Classificar os documentos referentes ao cadastro de pessoas e instituiÃ§Ãµes de interesse da FCRB para divulgaÃ§Ã£o de eventos, publicaÃ§Ãµes, comunicados, etc. da instituiÃ§Ã£o.'),(252,'2.5.2','Impresa. Agenda','Classificar os documentos referentes Ã  divulgaÃ§Ã£o da FCB na imprensa, releases  etc. na pasta Imprensa, em caso de assuntos nÃ£o especÃ­ficos. Classificar os documentos referentes aos informes internos no formato Agenda, ou semelhante, na pasta com o nome do informe. Ex : Agenda'),(253,'2.6','Semana da Cultura','Classificar os documentos referentes Ã  programaÃ§Ã£o da semana da Cultura ou Dia da Cultura na FCRB. Inclui todos os eventos realizados. Manter referÃªncia cruzada entre a Semana da Cultura e os eventos realizados em conjunto.'),(254,'2.7','Concursos e prÃªmios','Classificar os documentos referentes aos concursos e premiaÃ§Ãµes patrocinadas pela FCRB e/ou outras instituiÃ§Ãµes. Abrir pasta especÃ­fica sob a mesma codificaÃ§Ã£o, para os concursos e premiaÃ§Ãµes promovidos pela FCRB e outra pasta para os de outras instituiÃ§Ãµes.'),(255,'2.8','Venda de ingresso','Classificar os documentos referentes Ã  venda de ingressos  para a participaÃ§Ã£o em eventos e visitaÃ§Ã£o ao Museu.'),(256,'2.9','Logomarca da FCRB','Classificar os documentos referentes Ã  identidade visual da FCRB.'),(257,'3','Atividades didÃ¡ticas',NULL),(258,'3.1','Cursos (FCRB)','Classificar os documentos referentes aos cursos realizados na FCRB promovido ou nÃ£o pela instituiÃ§Ã£o. Abrir pasta para casa curso, quando o nÃºmero de documentos justificar.'),(259,'3.2','Cursos (outras instituiÃ§Ãµes)','Classificar os documentos referentes aos cursos realizados fora da FCRB. Quando ocorrer participaÃ§Ã£o de servidor que implique seu afastamento do serviÃ§o deve-se adotar a codificaÃ§Ã£o: 1.8.13.7- Para o Brasil e 1.8.13.8 â€“ Para o Exterior.'),(260,'3.3','Programas especiais','Classificar os documentos referentes aos programas especÃ­ficos na Ã¡rea de atividades didÃ¡ticas, em geral voltados para o pÃºblico infanto-juvenil. Abrir pasta para cada programa sob a mesma codificaÃ§Ã£o.'),(261,'3.3.1','IntegraÃ§Ã£o arquivo - escola','Classificar os documentos referentes ao programa jÃ¡ institucionalizado, que envolve atividades entre escolas e o Arquivo.'),(262,'3.3.2','IntegraÃ§Ã£o museu - escola','Classificas os documentos referentes ao programa, jÃ¡ institucionalizado, que envolve atividades entre escolas e o Museu.'),(263,'3.3.3','ColÃ´nia de fÃ©rias','Classificar os documentos referentes ao programa, jÃ¡ institucionalizado, que envolve atividades voltadas para crianÃ§as no perÃ­odo de fÃ©rias escolares.'),(264,'3.3.4','Treinamento e reciclagem (LAPRE)','Classificar os documentos referentes ao treinamento de profissionais na Ã¡rea de conservaÃ§Ã£o e restauraÃ§Ã£o de documentos'),(265,'4','Pesquisas e estudos',NULL),(266,'4.1','Pesquisas histÃ³ricas','Classificar os documentos referentes Ã s atividades especÃ­ficas, desenvolvidas pelo setor de Pesquisa HistÃ³rica da FCRB.'),(267,'4.2','Pesquisa ruiana','Classificar os documentos referentes Ã s atividades especÃ­ficas, desenvolvidas pelo setor de Pesquisa Ruiana da FCRB.'),(268,'4.3','Pesquisa jurÃ­dica','Classificar os documentos referentes Ã s atividades especÃ­ficas, desenvolvidas pelo setor de Pesquisa de Direito da FCRB.'),(269,'4.4','Pesquisa filolÃ³gica','Classificas os documentos referentes Ã s atividades especÃ­ficas, desenvolvidas pelo setor de Pesquisa de Filologia da FCRB.\nInclui as pesquisas sobre literatura e cordel.\n'),(270,'5','DocumentaÃ§Ã£o e InformaÃ§Ã£o',NULL),(271,'5.1','AssistÃªncia tÃ©cnica','Classificar os documentos resultantes da prestaÃ§Ã£o de serviÃ§os de assistÃªncia tÃ©cnica em todas as Ã¡reas referentes a documentaÃ§Ã£o e informaÃ§Ã£o. Inclui a elaboraÃ§Ã£o de pareceres.  Abrir pasta para cada tipo de serviÃ§o.\nEx. AssistÃªncia TÃ©cnica, RestauraÃ§Ã£o; AssistÃªncia TÃ©cnica, Microfilmagem, etc.\n'),(272,'5.2','RelatÃ³rios tÃ©cnicos','Classificar os relatÃ³rios tÃ©cnicos elaborados pelos setores ligados Ã  Ã¡rea de documentaÃ§Ã£o e informaÃ§Ã£o, etc.'),(273,'5.3','IntercÃ¢mbio de informaÃ§Ãµes','Classificar os documentos de divulgaÃ§Ã£o de outras instituiÃ§Ãµes culturais e/ou referentes Ã  permuta de instrumentos de recuperaÃ§Ã£o da informaÃ§Ã£o.'),(274,'5.4','Normas tÃ©cnicas','Classificar as normas e diretrizes tÃ©cnicas que envolvam Ã¡reas de documentaÃ§Ã£o e informaÃ§Ã£o.\nEx.: Normas sobre emprÃ©stimo de acervos, linha de acervo, etc.\n'),(275,'5.5','EdiÃ§Ã£o','Classificar os documentos referentes Ã  editoraÃ§Ã£o de publicaÃ§Ãµes da FCRB e suas respectivas fases.'),(276,'5.5.1','EditoraÃ§Ã£o','Classificar os documentos referentes Ã  preparaÃ§Ã£o, impressÃ£o, arte-final, pedido de ISBN, etc. das obras da FCBR. Abrir pasta para cada publicaÃ§Ã£o. Os fotolitos devem ser arquivados no LAMIC, os laserfilms devem ser arquivados juntamente com a documentaÃ§Ã£o textual, devidamente acondicionados.'),(277,'5.5.2','PublicaÃ§Ã£o e impressos','Classificar os documentos sobre as publicaÃ§Ãµes, impressos ( folders, cartazes, postais, etc.) da FCRB. Incluem-se camisetas, adesivos e outros matÃ©rias de divulgaÃ§Ã£o da FCRB.'),(278,'5.5.2.1','Direitos autorais','Classificar os documentos referentes ao pagamento e propostas de direitos autorais das publicaÃ§Ãµes da FCRB.'),(279,'5.5.2.2','DepÃ³sito legal','Classificar os documentos referentes ao depÃ³sito legal, junto Ã  Biblioteca Nacional, das publicaÃ§Ãµes da FCRB.'),(280,'5.5.2.3','Propostas de publicaÃ§Ã£o','Classificar os documentos referentes Ã  apresentaÃ§Ã£o de propostas de publicaÃ§Ã£o da FCRB.'),(281,'5.5.2.4','Co-ediÃ§Ã£o','Classificar os documentos referentes Ã s publicaÃ§Ãµes editadas pela FCRB com auxÃ­lio de outra instituiÃ§Ã£o. Em geral, constam convites, entendimentos para publicaÃ§Ã£o, etc. Neste caso, fotolitos, arte-final, etc. ficam comumente com a editora.'),(282,'5.5.2.5','DivulgaÃ§Ã£o','Classificar os documentos utilizados para a divulgaÃ§Ã£o de publicaÃ§Ãµes da FCRB. O material de divulgaÃ§Ãµes de publicaÃ§Ãµes de outras instituiÃ§Ãµes deve tramitar na FCRB com Guia de Encaminhamento, e apÃ³s ciÃªncia do(s) setor(es) interessado(s) ser eliminado.'),(283,'5.5.2.6','DistribuiÃ§Ã£o','Classificar os documentos que se referem a mais de uma forma de distribuiÃ§Ã£o de publicaÃ§Ã£o e impressos da FCRB.'),(284,'5.5.2.6.1','Venda','Classificar os documentos referentes Ã  venda de publicaÃ§Ãµes da FCRB. Ex.: Pedidos, notas, etc.'),(285,'5.5.2.6.2','Permuta','Classificar os documentos referentes Ã  permuta (troca) de publicaÃ§Ãµes da FCRB pelas publicaÃ§Ãµes de outras instituiÃ§Ãµes.'),(286,'5.5.2.6.3','DoaÃ§Ã£o','Classificar os documentos referentes Ã  doaÃ§Ã£o pela FCRB de suas publicaÃ§Ãµes, inclusive as co-editadas.\nEx.: Pedidos, notas, cartas de agradecimentos, comunicaÃ§Ã£o internas, etc.\n'),(287,'5.5.2.6.4','AlienaÃ§Ã£o','Classificar os documentos referentes Ã  alienaÃ§Ã£o das publicaÃ§Ãµes da FCRB por motivo de calamidade pÃºblica, sinistro ou deterioraÃ§Ã£o.'),(288,'5.5.2.7','CatÃ¡logo','Classificar as relaÃ§Ãµes de publicaÃ§Ãµes da FCRB e outros documentos referentes Ã s mesmas. Ex.: SolicitaÃ§Ãµes de catÃ¡logos.'),(289,'5.6','Assinaturas ',NULL),(290,'5.6.1','DiÃ¡rio Oficial','Classificar os documentos referentes Ã  assinatura do DiÃ¡rio Oficial da UniÃ£o pela FCRB. Inclui documentos referentes ao D.O.U que nÃ£o se enquadram em assuntos especÃ­ficos. Ex: Recusa de publicaÃ§Ã£o de matÃ©ria no D.O.U.'),(291,'5.6.2','Outros periÃ³dicos','Classificar os documentos referentes Ã s assinaturas de periÃ³dicos. As assinaturas de revistas acadÃªmicas e outras compatÃ­veis com a linha de acervo devem ser classificadas em Acervo BibliogrÃ¡fico, compra.'),(292,'5.7','Acervo arquivÃ­stico.Acervo bibliogrÃ¡fico. Acervo museolÃ³gico','Classificar de acordo com os assuntos, separadamente, formando conjuntos diferentes: Acervo ArquivÃ­stico, Acervo BibliogrÃ¡fico e Acervo MuseolÃ³gico.'),(293,'5.7.1','AquisiÃ§Ã£o de acervos','Classificar os documentos referentes Ã s modalidades de aquisiÃ§Ã£o de acervos, propostas e estabelecimentos de prioridades. Inclui as aquisiÃ§Ãµes de Literatura de Cordel.'),(294,'5.7.1.1','DoaÃ§Ã£o','Classificar os documentos referentes Ã  doaÃ§Ã£o de acervos para a FCRB. Inclui os termos de doaÃ§Ã£o firmados.'),(295,'5.7.1.2','Compra','Classificar os documentos referentes Ã  compra de acervos pela FCRB. No caso de acervos bibliogrÃ¡ficos estÃ£o incluÃ­das as revistas e periÃ³dicos (exceto o D.O.U e outros jornais).'),(296,'5.7.1.3','Permuta',NULL),(297,'5.7.1.4','ComplementaÃ§Ã£o','Classificar os documentos referentes ao(s) procedimento(s) de adquirir acervos documentos nÃ£o originais (microfilmes, cÃ³pias eletrostÃ¡ticas, etc.) a tÃ­tulo de completar os acervos da FCRB'),(298,'5.7.2','Acesso aos acervos e Ã s informaÃ§Ãµes','Classificar os documentos referentes Ã  pesquisa aos bancos de dados da FCRB, tais como: ruiano, filolÃ³gico, etc. No caso de acesso aos acervos classificar em 5.7.2.1.'),(299,'5.7.2.1','Consultas. Pesquisa bibliogrÃ¡fica ou documental','Classificar os documentos referentes ao acesso Ã s informaÃ§Ãµes contidas nos acervos documentos da FCRB, atravÃ©s de correspondÃªncia, de visita de usuÃ¡rios, de telefonemas, etc. Abrir pasta especÃ­fica para os procedimentos rotineiros de consultas e outra para a pesquisa aos acervos realizadas por funcionÃ¡rios da FCRB a pedido do usuÃ¡rio. Ex.: Consultas (inclui horÃ¡rio de funcionamento, informes gerais de conteÃºdo dos acervos, telefonemas atendidos; Pesquisa BibliogrÃ¡fica ou Documental (inclui solicitaÃ§Ã£o de buscas e trabalhos resultantes da pesquisa a '),(300,'5.7.2.2','EmprÃ©stimo','Classificar os documentos referentes a emprÃ©stimo de acervos  a outras instituiÃ§Ãµes. Ex.: Pedidos, consentimentos ou negativas, listagens, etc.'),(301,'5.7.2.2.1','Seguro','Classificar os documentos referentes ao seguro que Ã© feito quando ocorre o transporte de acervos documentais para fora das dependÃªncias da instituiÃ§Ã£o.'),(302,'5.7.2.3','VisitaÃ§Ã£o ao museu','Classificar os documentos referentes Ã  visitaÃ§Ã£o ao museu Casa de Rui Barbosa. Abrir pasta para Visitas Escolares, para Turismo e tambÃ©m uma pasta com informaÃ§Ãµes de interesse comum ou de informaÃ§Ãµes como preÃ§o de visitaÃ§Ã£o, horÃ¡rio de visitaÃ§Ã£o, manifestaÃ§Ãµes sobre dia e horÃ¡rio de visitaÃ§Ã£o, etc.'),(303,'5.7.3','PreservaÃ§Ã£o dos acervos','Classificar os documentos referentes aos procedimentos para a preservaÃ§Ã£o dos acervos. Inclui diagnÃ³stico, estabelecimento de prioridades, etc.'),(304,'5.7.3.1','CondiÃ§Ãµes ambientais','Classificar os documentos referentes Ã s definiÃ§Ãµes, manutenÃ§Ã£o de condiÃ§Ãµes ambientais para a preservaÃ§Ã£o de documentos.'),(305,'5.7.3.2','Armazenagem. DepÃ³sito temporÃ¡rio. Arquivo de seguranÃ§a','Classificar os documentos referentes ao armazenamento e depÃ³sito temporÃ¡rio e definitiva de documentos no arquivo de seguranÃ§a da FCRB, guarda de documentos da FCRB em depÃ³sito de outra instituiÃ§Ã£o, etc. Abrir pasta para cada caso especÃ­fico  se o acÃºmulo de documentos justificar.'),(306,'5.7.3.3','ImunizaÃ§Ã£o. HigienizaÃ§Ã£o','Classificar os documentos referentes a desinfestaÃ§Ã£o, descupinizaÃ§Ã£o, desratizaÃ§Ã£o na pasta ImunizaÃ§Ã£o e Ã  retirada de poeira, sujidades e outros agentes de deterioraÃ§Ã£o do acervo na pasta HigienizaÃ§Ã£o. Ex.: Acervo ArquivÃ­stico, ImunizaÃ§Ã£o; Acervo BibliogrÃ¡fico, ImunizaÃ§Ã£o e Acervo MuseolÃ³gico, ImunizaÃ§Ã£o.'),(307,'5.7.3.4','RestauraÃ§Ã£o','Classificar os documentos referentes Ã  atividade de restauraÃ§Ã£o dos documentos da FCRB, nÃ£o importa o tipo do documento : foto, carta, peÃ§a, livro, carro de Rui Barbosa, etc.\nEx.: Acervo ArquivÃ­stico, RestauraÃ§Ã£o.\n'),(308,'5.7.3.5','EncadernaÃ§Ã£o','Classificar os documentos referentes Ã  atividade de encadernaÃ§Ã£o de obras do acervo da FCRB. Quando tratar-se de restauro de encadernaÃ§Ã£o, classificar em restauraÃ§Ã£o. Ex.: Acervo BibliogrÃ¡fico, EncadernaÃ§Ã£o.'),(309,'5.7.4','Sistema de arquivos da FCRB','Classificar os documentos referentes Ã  implantaÃ§Ã£o e manutenÃ§Ã£o do Sistema de Arquivos da FCRB e a gestÃ£o de documentos em carÃ¡ter geral.'),(310,'5.7.4.1','CorrespondÃªncia e outros documentos',NULL),(311,'5.7.4.1.1','ExpediÃ§Ã£o. MÃ¡quina de franquear','Classificar os documentos referentes Ã  expediÃ§Ã£o de correspondÃªncia e outros documentos, e aluguel, compra e utilizaÃ§Ã£o de mÃ¡quina de franquear, inclusive atualizaÃ§Ã£o de preÃ§os. Abrir pasta para ExpediÃ§Ã£o e outra para MÃ¡quina de Franquear.'),(312,'5.7.4.1.2','Malote','Classificar os documentos referentes Ã  utilizaÃ§Ã£o do serviÃ§o de malote com o MinistÃ©rio da Cultura.'),(313,'5.7.4.1.3','Caixa postal','Classificar os documentos referentes Ã  utilizaÃ§Ã£o dos serviÃ§os de caixas postais.'),(314,'5.7.4.1.4','ServiÃ§o de Reembolso Postal. Sedex','Classificar os documentos referentes Ã  utilizaÃ§Ã£o pela FCRB dos serviÃ§os da Empresa Brasileira '),(315,'5.7.4.1.5','Recebimento. ClassificaÃ§Ã£o. DistribuiÃ§Ã£o. TramitaÃ§Ã£o. Arquivamento','Classificar os documentos referentes Ã s atividades de protocolo e arquivamento. Abrir pasta Recebimento, para ClassificaÃ§Ã£o, para DistribuiÃ§Ã£o, para TramitaÃ§Ã£o e para Arquivamento. Inclui as fases corrente, intermediÃ¡ria e permanente.'),(316,'5.7.5','ServiÃ§o de Rota','Classificar os documentos referentes Ã  implantaÃ§Ã£o, manutenÃ§Ã£o e modificaÃ§Ãµes no serviÃ§o de rota.'),(317,'5.7.6','Processamento tÃ©cnico','Classificar os instrumentos de recuperaÃ§Ã£o da informaÃ§Ã£o e/ou pesquisa e outros documentos produzidos durante o tratamento tÃ©cnico dos acervos documentais.'),(318,'5.7.7','AvaliaÃ§Ã£o e destinaÃ§Ã£o de acervo',NULL),(319,'5.7.7.1','ComissÃ£o de AvaliaÃ§Ã£o e DestinaÃ§Ã£o de Documentos','Classificar os documentos referentes Ã  convocaÃ§Ã£o, estudos, atuaÃ§Ã£o da ComissÃ£o de AvaliaÃ§Ã£o e DestinaÃ§Ã£o de Documentos da FCRB.'),(320,'5.7.7.2','Tabela de teporalidade de documentos','Classificar, alÃ©m da prÃ³pria tabela de temporalidade da FCRB, a legislaÃ§Ã£o, os estudos, os pareceres, as fundamentaÃ§Ãµes, etc. que a originaram. Inclui os documentos referentes Ã  aprovaÃ§Ã£o da tabela pela AdministraÃ§Ã£o.'),(321,'5.7.7.3','TransferÃªncia. Recolhimento','Classificar as listagens e outros documentos referentes Ã  transferÃªncia de documentos da fase corrente para a intermediÃ¡ria e ao recolhimento da documentaÃ§Ã£o da fase corrente e/ou intermediÃ¡ria para a permanente. Abrir pasta TransferÃªncia e outra para Recolhimento.'),(322,'5.7.7.4','Descarte. ElimininaÃ§Ã£o','ClassificaÃ§Ã£o as listagens, termos e outros documentos referentes Ã  eliminaÃ§Ã£o de acervo, bem como o envio a outras instituiÃ§Ãµes de documentaÃ§Ã£o incompatÃ­vel com a linha de acervo da FCRB. Abrir pasta para cada tipo de acervo: arquivÃ­stico, bibliogrÃ¡fico e museolÃ³gico.'),(323,'5.7.8','ReproduÃ§Ã£o de documentos',NULL),(324,'5.7.8.1','Microfilmagem','Classificar os documentos referentes ao serviÃ§o de microfilmagem de acervos da FCRB, visando Ã  preservaÃ§Ã£o da informaÃ§Ã£o e eliminaÃ§Ã£o de originais, a preservaÃ§Ã£o de originais, o acesso a documentos e o atendimento ao usuÃ¡rio. Inclui o Plano Nacional de Microfilmagem.'),(325,'5.7.8.2','Fotografia. Fita de video. Filme. Fita sonora','Classificar os documentos referentes ao serviÃ§o de reproduÃ§Ã£o de documentos pelo processo fotogrÃ¡ficos, filmagem em vÃ­deo ou filme em rolo e gravaÃ§Ãµes sonoras. Abrir pasta para cada processo de reproduÃ§Ã£o.'),(326,'5.7.9','CustÃ³dia de acervos','Classificar os documentos referentes Ã  colocaÃ§Ã£o de acervos sob a responsabilidade da FCRB sem que haja a transferÃªncia de posse ou de propriedade.'),(327,'5.8','AutomaÃ§Ã£o da informaÃ§Ã£o. Processamento de dados',NULL),(328,'5.8.1','Programas de informatizaÃ§Ã£o de dados','Classificar os documentos referentes aos planos e estudos de informatizaÃ§Ã£o de dados que envolvam a FCRB como um todo (a Ã¡rea tÃ©cnica e a Ã¡rea administrativa). Os projetos de informatizaÃ§Ã£o serÃ£o arquivados na mesma codificaÃ§Ã£o. Ex.: CALCO'),(329,'5.8.2','UtilizaÃ§Ã£o de software','Classificar os documentos referentes ao uso de programas (softwares) de computador pela FCRB. Inclui sugestÃµes de softwares, desenvolvimentos de programas especÃ­ficos, etc.'),(330,'5.8.3','Manuais','Classificar os manuais tÃ©cnicos e manuais de usuÃ¡rios.');
+/*!40000 ALTER TABLE `especie` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `processo_ant`
 --
 
-CREATE TABLE IF NOT EXISTS `processo_ant` (
-  `idprocesso` int(100) NOT NULL auto_increment,
-  `documento` varchar(100) default NULL,
-  `datadoc` date default NULL,
-  `numero` varchar(40) default NULL,
-  `dataent` date default NULL,
-  `up` varchar(5) default NULL,
-  `nprocesso` varchar(8) default NULL,
-  `ano` int(4) default NULL,
-  `dv` int(2) default NULL,
-  `procedencia` varchar(200) default NULL,
-  `setorsolicitante` varchar(200) default NULL,
-  `favorecido` varchar(200) default NULL,
-  `cpfcnpj` varchar(18) default NULL,
+DROP TABLE IF EXISTS `processo_ant`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `processo_ant` (
+  `idprocesso` int(100) NOT NULL AUTO_INCREMENT,
+  `documento` varchar(100) DEFAULT NULL,
+  `datadoc` date DEFAULT NULL,
+  `numero` varchar(40) DEFAULT NULL,
+  `dataent` date DEFAULT NULL,
+  `up` varchar(5) DEFAULT NULL,
+  `nprocesso` varchar(8) DEFAULT NULL,
+  `ano` int(4) DEFAULT NULL,
+  `dv` int(2) DEFAULT NULL,
+  `procedencia` varchar(200) DEFAULT NULL,
+  `setorsolicitante` varchar(200) DEFAULT NULL,
+  `favorecido` varchar(200) DEFAULT NULL,
+  `cpfcnpj` varchar(18) DEFAULT NULL,
   `assunto` longtext,
-  `anexos` varchar(255) default NULL,
-  `volumes` int(3) default '1',
-  `folhas` int(4) default '0',
+  `anexos` varchar(255) DEFAULT NULL,
+  `volumes` int(3) DEFAULT '1',
+  `folhas` int(4) DEFAULT '0',
   `observacoes` longtext,
-  `setordestino` varchar(200) default NULL,
-  `datasaida` date default NULL,
-  `situacao` int(1) default '0',
-  `datasit` date default NULL,
-  PRIMARY KEY  (`idprocesso`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `setordestino` varchar(200) DEFAULT NULL,
+  `datasaida` date DEFAULT NULL,
+  `situacao` int(1) DEFAULT '0',
+  `datasit` date DEFAULT NULL,
+  PRIMARY KEY (`idprocesso`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `processo_ant`
 --
 
+LOCK TABLES `processo_ant` WRITE;
+/*!40000 ALTER TABLE `processo_ant` DISABLE KEYS */;
+/*!40000 ALTER TABLE `processo_ant` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- --------------------------------------------------------
+--
+-- Table structure for table `processo`
+--
+
+DROP TABLE IF EXISTS `processo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `processo` (
+  `idprocesso` int(100) NOT NULL AUTO_INCREMENT,
+  `documento` varchar(100) DEFAULT NULL,
+  `datadoc` date DEFAULT NULL,
+  `numero` varchar(40) DEFAULT NULL,
+  `dataent` date DEFAULT NULL,
+  `nprocesso` varchar(50) DEFAULT NULL,
+  `up` varchar(5) DEFAULT NULL,
+  `processo` varchar(20) DEFAULT NULL,
+  `ano` varchar(4) DEFAULT NULL,
+  `dv` char(2) DEFAULT NULL,
+  `procedencia` varchar(200) DEFAULT NULL,
+  `setorsolicitante` varchar(200) DEFAULT NULL,
+  `favorecido` varchar(200) DEFAULT NULL,
+  `cpfcnpj` varchar(18) DEFAULT NULL,
+  `assunto` longtext,
+  `anexos` varchar(255) DEFAULT NULL,
+  `volumes` int(3) DEFAULT '1',
+  `folhas` int(4) DEFAULT '0',
+  `observacoes` longtext,
+  `setordestino` varchar(200) DEFAULT NULL,
+  `localizacao` varchar(200) DEFAULT 'PROTOCOLO',
+  `datasaida` date DEFAULT NULL,
+  `situacao` int(1) DEFAULT '0',
+  `datasit` date DEFAULT NULL,
+  `data_cadastro` date DEFAULT NULL COMMENT 'Data Real do Cadastro',
+  PRIMARY KEY (`idprocesso`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `processo`
+--
+
+LOCK TABLES `processo` WRITE;
+/*!40000 ALTER TABLE `processo` DISABLE KEYS */;
+INSERT INTO `processo` VALUES (2,'AUTORIZAÃ‡ÃƒO','2013-11-21','','2013-11-21','01530.000001/2006-22','01530','000001','2006','22','FUNARTE','Setor de Protocolo','','','DDD','',1,0,'',NULL,'Setor de Protocolo',NULL,0,NULL,'2013-11-21'),(3,'AÃ‡ÃƒO DE EXECUÃ‡ÃƒO','2013-11-22','','2013-11-22','01530.000002/2006-77','01530','000002','2006','77','FUNARTE','Setor de Protocolo','2','','122','',1,0,'',NULL,'Setor de Protocolo',NULL,0,NULL,'2013-11-22'),(4,'1.10.8.2','2013-11-22','','2013-11-22','01530.000003/2013-41','01530','000003','2013','41','FUNARTE','Setor de Protocolo','WENDER','1054086485','2','',1,0,'',NULL,'Setor de Protocolo',NULL,0,NULL,'2013-11-22');
+/*!40000 ALTER TABLE `processo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuario` (
+  `idusuario` int(2) NOT NULL AUTO_INCREMENT,
+  `login` varchar(50) NOT NULL,
+  `senha` varchar(12) NOT NULL,
+  `nome` varchar(200) NOT NULL,
+  `lembrete` varchar(255) NOT NULL,
+  `perfil` int(1) NOT NULL DEFAULT '0',
+  `cpf` varchar(14) DEFAULT NULL,
+  `setor` varchar(200) DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  PRIMARY KEY (`idusuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=443 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'usuario','funarte','Consulta','',0,'111','CONSULTA','2008-11-07'),(2,'ronaldo','lucena','Ronaldo Lucena','',1,'076.974.807-43','Setor de Protocolo','2009-03-25'),(442,'wendercorrea','123@mudar','wender correa','',1,NULL,'Setor de Protocolo',NULL);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `numeros`
+--
+
+DROP TABLE IF EXISTS `numeros`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `numeros` (
+  `NUM` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `numeros`
+--
+
+LOCK TABLES `numeros` WRITE;
+/*!40000 ALTER TABLE `numeros` DISABLE KEYS */;
+INSERT INTO `numeros` VALUES ('01530.000001/1991-95'),('01530.000001/1991-95'),('01530.000002/1991-30'),('01530.000002/1991-30'),('01530.000003/1991-84'),('01530.000003/1991-84'),('01530.000004/1991-29'),('01530.000004/1991-29'),('01530.000005/1991-73'),('01530.000005/1991-73'),('01530.000006/1991-18'),('01530.000006/1991-18'),('01530.000007/1991-62'),('01530.000007/1991-62'),('01530.000008/1991-15'),('01530.000008/1991-15'),('01530.000009/1991-51'),('01530.000009/1991-51'),('01530.000010/1991-86'),('01530.000010/1991-86'),('01530.000011/1991-21'),('01530.000011/1991-21'),('01530.000012/1991-75'),('01530.000012/1991-75'),('01530.000013/1991-10'),('01530.000013/1991-10'),('01530.000014/1991-64'),('01530.000014/1991-64'),('01530.000015/1991-17'),('01530.000015/1991-17'),('01530.000016/1991-53'),('01530.000016/1991-53'),('01530.000017/1991-06'),('01530.000017/1991-06'),('01530.000018/1991-42'),('01530.000018/1991-42'),('01530.000019/1991-97'),('01530.000019/1991-97'),('01530.000020/1991-11'),('01530.000020/1991-11'),('01530.000021/1991-66'),('01530.000021/1991-66'),('01530.000022/1991-19'),('01530.000022/1991-19'),('01530.000023/1991-55'),('01530.000023/1991-55'),('01530.000024/1991-08'),('01530.000024/1991-08'),('01530.000025/1991-44'),('01530.000025/1991-44'),('01530.000026/1991-99'),('01530.000026/1991-99'),('01530.000027/1991-33'),('01530.000027/1991-33'),('01530.000028/1991-88'),('01530.000028/1991-88'),('01530.000029/1991-22'),('01530.000029/1991-22'),('01530.000030/1991-57'),('01530.000030/1991-57'),('01530.000031/1991-00'),('01530.000031/1991-00'),('01530.000032/1991-46'),('01530.000032/1991-46'),('01530.000033/1991-91'),('01530.000033/1991-91'),('01530.000034/1991-35'),('01530.000034/1991-35'),('01530.000035/1991-80'),('01530.000035/1991-80'),('01530.000036/1991-24'),('01530.000036/1991-24'),('01530.000037/1991-79'),('01530.000037/1991-79'),('01530.000038/1991-13'),('01530.000038/1991-13'),('01530.000039/1991-68'),('01530.000039/1991-68'),('01530.000040/1991-92'),('01530.000040/1991-92'),('01530.000041/1991-37'),('01530.000041/1991-37'),('01530.000042/1991-81'),('01530.000042/1991-81'),('01530.000043/1991-26'),('01530.000043/1991-26'),('01530.000044/1991-71'),('01530.000044/1991-71'),('01530.000045/1991-15'),('01530.000045/1991-15'),('01530.000046/1991-60'),('01530.000046/1991-60'),('01530.000047/1991-12'),('01530.000047/1991-12'),('01530.000048/1991-59'),('01530.000048/1991-59'),('01530.000049/1991-01'),('01530.000049/1991-01'),('01530.000050/1991-28'),('01530.000050/1991-28'),('01530.000051/1991-72'),('01530.000051/1991-72'),('01530.000052/1991-17'),('01530.000052/1991-17'),('01530.000053/1991-61'),('01530.000053/1991-61'),('01530.000054/1991-14'),('01530.000054/1991-14'),('01530.000055/1991-51'),('01530.000055/1991-51'),('01530.000056/1991-03'),('01530.000056/1991-03'),('01530.000057/1991-40'),('01530.000057/1991-40'),('01530.000058/1991-94'),('01530.000058/1991-94'),('01530.000059/1991-39'),('01530.000059/1991-39'),('01530.000060/1991-63'),('01530.000060/1991-63'),('01530.000061/1991-16'),('01530.000061/1991-16'),('01530.000062/1991-52'),('01530.000062/1991-52'),('01530.000063/1991-05'),('01530.000063/1991-05'),('01530.000064/1991-41'),('01530.000064/1991-41'),('01530.000065/1991-96'),('01530.000065/1991-96'),('01530.000066/1991-31'),('01530.000066/1991-31'),('01530.000067/1991-85'),('01530.000067/1991-85'),('01530.000068/1991-20'),('01530.000068/1991-20'),('01530.000069/1991-74'),('01530.000069/1991-74'),('01530.000070/1991-07'),('01530.000070/1991-07'),('01530.000071/1991-43'),('01530.000071/1991-43'),('01530.000072/1991-98'),('01530.000072/1991-98'),('01530.000073/1991-32'),('01530.000073/1991-32'),('01530.000074/1991-87'),('01530.000074/1991-87'),('01530.000075/1991-21'),('01530.000075/1991-21'),('01530.000076/1991-76'),('01530.000076/1991-76'),('01530.000077/1991-11'),('01530.000077/1991-11'),('01530.000078/1991-65'),('01530.000078/1991-65'),('01530.000079/1991-18'),('01530.000079/1991-18'),('01530.000080/1991-34'),('01530.000080/1991-34'),('01530.000081/1991-89'),('01530.000081/1991-89'),('01530.000082/1991-23'),('01530.000082/1991-23'),('01530.000083/1991-78'),('01530.000083/1991-78'),('01530.000084/1991-12'),('01530.000084/1991-12'),('01530.000085/1991-67'),('01530.000085/1991-67'),('01530.000086/1991-10'),('01530.000086/1991-10'),('01530.000087/1991-56'),('01530.000087/1991-56'),('01530.000088/1991-09'),('01530.000088/1991-09'),('01530.000089/1991-45'),('01530.000089/1991-45'),('01530.000090/1991-70'),('01530.000090/1991-70'),('01530.000091/1991-14'),('01530.000091/1991-14'),('01530.000092/1991-69'),('01530.000092/1991-69'),('01530.000093/1991-11'),('01530.000093/1991-11'),('01530.000094/1991-58'),('01530.000094/1991-58'),('01530.000095/1991-01'),('01530.000095/1991-01'),('01530.000096/1991-47'),('01530.000096/1991-47'),('01530.000097/1991-91'),('01530.000097/1991-91'),('01530.000098/1991-36'),('01530.000098/1991-36'),('01530.000099/1991-81'),('01530.000099/1991-81'),('01530.000100/1991-77'),('01530.000100/1991-77'),('01530.000101/1991-11'),('01530.000101/1991-11'),('01530.000102/1991-66'),('01530.000102/1991-66'),('01530.000103/1991-19'),('01530.000103/1991-19'),('01530.000104/1991-55'),('01530.000104/1991-55'),('01530.000105/1991-08'),('01530.000105/1991-08'),('01530.000106/1991-44'),('01530.000106/1991-44'),('01530.000107/1991-99'),('01530.000107/1991-99'),('01530.000108/1991-33'),('01530.000108/1991-33'),('01530.000109/1991-88'),('01530.000109/1991-88'),('01530.000110/1991-11'),('01530.000110/1991-11'),('01530.000111/1991-57'),('01530.000111/1991-57'),('01530.000112/1991-00'),('01530.000112/1991-00'),('01530.000113/1991-46'),('01530.000113/1991-46'),('01530.000114/1991-91'),('01530.000114/1991-91'),('01530.000115/1991-35'),('01530.000115/1991-35'),('01530.000116/1991-80'),('01530.000116/1991-80'),('01530.000117/1991-24'),('01530.000117/1991-24'),('01530.000118/1991-79'),('01530.000118/1991-79'),('01530.000119/1991-13'),('01530.000119/1991-13'),('01530.000120/1991-48'),('01530.000120/1991-48'),('01530.000121/1991-92'),('01530.000121/1991-92'),('01530.000122/1991-37'),('01530.000122/1991-37'),('01530.000123/1991-81'),('01530.000123/1991-81'),('01530.000124/1991-26'),('01530.000124/1991-26'),('01530.000125/1991-71'),('01530.000125/1991-71'),('01530.000126/1991-15'),('01530.000126/1991-15'),('01530.000127/1991-60'),('01530.000127/1991-60'),('01530.000128/1991-12'),('01530.000128/1991-12'),('01530.000129/1991-59'),('01530.000129/1991-59'),('01530.000130/1991-83'),('01530.000130/1991-83'),('01530.000131/1991-28'),('01530.000131/1991-28'),('01530.000132/1991-72'),('01530.000132/1991-72'),('01530.000133/1991-17'),('01530.000133/1991-17'),('01530.000134/1991-61'),('01530.000134/1991-61'),('01530.000135/1991-14'),('01530.000135/1991-14'),('01530.000136/1991-51'),('01530.000136/1991-51'),('01530.000137/1991-03'),('01530.000137/1991-03'),('01530.000138/1991-40'),('01530.000138/1991-40'),('01530.000139/1991-94'),('01530.000139/1991-94'),('01530.000140/1991-19'),('01530.000140/1991-19'),('01530.000141/1991-63'),('01530.000141/1991-63'),('01530.000142/1991-16'),('01530.000142/1991-16'),('01530.000143/1991-52'),('01530.000143/1991-52'),('01530.000144/1991-05'),('01530.000144/1991-05'),('01530.000145/1991-41'),('01530.000145/1991-41'),('01530.000146/1991-96'),('01530.000146/1991-96'),('01530.000147/1991-31'),('01530.000147/1991-31'),('01530.000148/1991-85'),('01530.000148/1991-85'),('01530.000149/1991-20'),('01530.000149/1991-20'),('01530.000150/1991-54'),('01530.000150/1991-54'),('01530.000151/1991-07'),('01530.000151/1991-07'),('01530.000152/1991-43'),('01530.000152/1991-43'),('01530.000153/1991-98'),('01530.000153/1991-98'),('01530.000154/1991-32'),('01530.000154/1991-32'),('01530.000155/1991-87'),('01530.000155/1991-87'),('01530.000156/1991-21'),('01530.000156/1991-21'),('01530.000157/1991-76'),('01530.000157/1991-76'),('01530.000158/1991-11'),('01530.000158/1991-11'),('01530.000159/1991-65'),('01530.000159/1991-65'),('01530.000160/1991-90'),('01530.000160/1991-90'),('01530.000161/1991-34'),('01530.000161/1991-34'),('01530.000162/1991-89'),('01530.000162/1991-89'),('01530.000163/1991-23'),('01530.000163/1991-23'),('01530.000164/1991-78'),('01530.000164/1991-78'),('01530.000165/1991-12'),('01530.000165/1991-12'),('01530.000166/1991-67'),('01530.000166/1991-67'),('01530.000167/1991-10'),('01530.000167/1991-10'),('01530.000168/1991-56'),('01530.000168/1991-56'),('01530.000169/1991-09'),('01530.000169/1991-09'),('01530.000170/1991-25'),('01530.000170/1991-25'),('01530.000171/1991-70'),('01530.000171/1991-70'),('01530.000172/1991-14'),('01530.000172/1991-14'),('01530.000173/1991-69'),('01530.000173/1991-69'),('01530.000174/1991-11'),('01530.000174/1991-11'),('01530.000175/1991-58'),('01530.000175/1991-58'),('01530.000176/1991-01'),('01530.000176/1991-01'),('01530.000177/1991-47'),('01530.000177/1991-47'),('01530.000178/1991-91'),('01530.000178/1991-91'),('01530.000179/1991-36'),('01530.000179/1991-36'),('01530.000180/1991-61'),('01530.000180/1991-61'),('01530.000181/1991-13'),('01530.000181/1991-13'),('01530.000182/1991-50'),('01530.000182/1991-50'),('01530.000183/1991-02'),('01530.000183/1991-02'),('01530.000184/1991-49'),('01530.000184/1991-49'),('01530.000185/1991-93'),('01530.000185/1991-93'),('01530.000186/1991-38'),('01530.000186/1991-38'),('01530.000187/1991-82'),('01530.000187/1991-82'),('01530.000188/1991-27'),('01530.000188/1991-27'),('01530.000189/1991-71'),('01530.000189/1991-71'),('01530.000190/1991-04'),('01530.000190/1991-04'),('01530.000191/1991-41'),('01530.000191/1991-41'),('01530.000192/1991-95'),('01530.000192/1991-95'),('01530.000193/1991-30'),('01530.000193/1991-30'),('01530.000194/1991-84'),('01530.000194/1991-84'),('01530.000195/1991-29'),('01530.000195/1991-29'),('01530.000196/1991-73'),('01530.000196/1991-73'),('01530.000197/1991-18'),('01530.000197/1991-18'),('01530.000198/1991-62'),('01530.000198/1991-62'),('01530.000199/1991-15'),('01530.000199/1991-15'),('01530.000200/1991-01'),('01530.000200/1991-01'),('01530.000201/1991-48'),('01530.000201/1991-48'),('01530.000202/1991-92'),('01530.000202/1991-92'),('01530.000203/1991-37'),('01530.000203/1991-37'),('01530.000204/1991-81'),('01530.000204/1991-81'),('01530.000205/1991-26'),('01530.000205/1991-26'),('01530.000206/1991-71'),('01530.000206/1991-71'),('01530.000207/1991-15'),('01530.000207/1991-15'),('01530.000208/1991-60'),('01530.000208/1991-60'),('01530.000209/1991-12'),('01530.000209/1991-12'),('01530.000210/1991-39'),('01530.000210/1991-39'),('01530.000211/1991-83'),('01530.000211/1991-83'),('01530.000212/1991-28'),('01530.000212/1991-28'),('01530.000213/1991-72'),('01530.000213/1991-72'),('01530.000214/1991-17'),('01530.000214/1991-17'),('01530.000215/1991-61'),('01530.000215/1991-61'),('01530.000216/1991-14'),('01530.000216/1991-14'),('01530.000217/1991-51'),('01530.000217/1991-51'),('01530.000218/1991-03'),('01530.000218/1991-03'),('01530.000219/1991-40'),('01530.000219/1991-40'),('01530.000220/1991-74'),('01530.000220/1991-74'),('01530.000221/1991-19'),('01530.000221/1991-19'),('01530.000222/1991-63'),('01530.000222/1991-63'),('01530.000223/1991-16'),('01530.000223/1991-16'),('01530.000224/1991-52'),('01530.000224/1991-52'),('01530.000225/1991-05'),('01530.000225/1991-05'),('01530.000226/1991-41'),('01530.000226/1991-41'),('01530.000227/1991-96'),('01530.000227/1991-96'),('01530.000228/1991-31'),('01530.000228/1991-31'),('01530.000229/1991-85'),('01530.000229/1991-85'),('01530.000230/1991-18'),('01530.000230/1991-18'),('01530.000231/1991-54'),('01530.000231/1991-54'),('01530.000232/1991-07'),('01530.000232/1991-07'),('01530.000233/1991-43'),('01530.000233/1991-43'),('01530.000234/1991-98'),('01530.000234/1991-98'),('01530.000235/1991-32'),('01530.000235/1991-32'),('01530.000236/1991-87'),('01530.000236/1991-87'),('01530.000237/1991-21'),('01530.000237/1991-21'),('01530.000238/1991-76'),('01530.000238/1991-76'),('01530.000239/1991-11'),('01530.000239/1991-11'),('01530.000240/1991-45'),('01530.000240/1991-45'),('01530.000241/1991-90'),('01530.000241/1991-90'),('01530.000242/1991-34'),('01530.000242/1991-34'),('01530.000243/1991-89'),('01530.000243/1991-89'),('01530.000244/1991-23'),('01530.000244/1991-23'),('01530.000245/1991-78'),('01530.000245/1991-78'),('01530.000246/1991-12'),('01530.000246/1991-12'),('01530.000247/1991-67'),('01530.000247/1991-67'),('01530.000248/1991-10'),('01530.000248/1991-10'),('01530.000249/1991-56'),('01530.000249/1991-56'),('01530.000250/1991-81'),('01530.000250/1991-81'),('01530.000251/1991-25'),('01530.000251/1991-25'),('01530.000252/1991-70'),('01530.000252/1991-70'),('01530.000253/1991-14'),('01530.000253/1991-14'),('01530.000254/1991-69'),('01530.000254/1991-69'),('01530.000255/1991-11'),('01530.000255/1991-11');
+/*!40000 ALTER TABLE `numeros` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sedex`
+--
+
+DROP TABLE IF EXISTS `sedex`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sedex` (
+  `idsedex` int(11) NOT NULL AUTO_INCREMENT,
+  `nregistro` varchar(10) DEFAULT NULL,
+  `data_registro` date DEFAULT NULL,
+  `data_postagem` date DEFAULT NULL,
+  `procedencia` varchar(255) DEFAULT NULL,
+  `setor` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`idsedex`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sedex`
+--
+
+LOCK TABLES `sedex` WRITE;
+/*!40000 ALTER TABLE `sedex` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sedex` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `recados`
 --
 
-CREATE TABLE IF NOT EXISTS `recados` (
-  `idrecado` int(11) NOT NULL auto_increment,
+DROP TABLE IF EXISTS `recados`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `recados` (
+  `idrecado` int(11) NOT NULL AUTO_INCREMENT,
   `data` varchar(8) NOT NULL,
   `hora` varchar(5) NOT NULL,
   `to_login` varchar(50) NOT NULL,
   `from_login` varchar(50) NOT NULL,
   `message` text NOT NULL,
   `lido` char(3) NOT NULL,
-  PRIMARY KEY  (`idrecado`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`idrecado`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `recados`
 --
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `referencia`
---
-
-CREATE TABLE IF NOT EXISTS `referencia` (
-  `idrefer` int(11) NOT NULL auto_increment,
-  `tipo` varchar(100) default NULL,
-  `descricao` varchar(255) default NULL,
-  PRIMARY KEY  (`idrefer`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+LOCK TABLES `recados` WRITE;
+/*!40000 ALTER TABLE `recados` DISABLE KEYS */;
+/*!40000 ALTER TABLE `recados` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Dumping data for table `referencia`
+-- Table structure for table `historico`
 --
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sedex`
---
-
-CREATE TABLE IF NOT EXISTS `sedex` (
-  `idsedex` int(11) NOT NULL auto_increment,
-  `nregistro` varchar(10) default NULL,
-  `data_registro` date default NULL,
-  `data_postagem` date default NULL,
-  `procedencia` varchar(255) default NULL,
-  `setor` varchar(80) default NULL,
-  PRIMARY KEY  (`idsedex`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+DROP TABLE IF EXISTS `historico`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `historico` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data` date DEFAULT NULL,
+  `hora` time DEFAULT NULL,
+  `usuario` varchar(60) DEFAULT NULL,
+  `acao` varchar(255) DEFAULT NULL,
+  `ip` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sedex`
+-- Dumping data for table `historico`
 --
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `setor`
---
-
-CREATE TABLE IF NOT EXISTS `setor` (
-  `idsetor` int(11) NOT NULL auto_increment,
-  `codigo` varchar(5) default NULL,
-  `setor` varchar(150) NOT NULL,
-  `descricao` varchar(150) NOT NULL,
-  `genero` varchar(2) default NULL,
-  PRIMARY KEY  (`idsetor`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `setor`
---
-
-INSERT INTO `setor` (`idsetor`, `codigo`, `setor`, `descricao`, `genero`) VALUES
-(1, NULL, 'Setor de Protocolo', 'Setor de Protocolo', NULL);
-
--- --------------------------------------------------------
+LOCK TABLES `historico` WRITE;
+/*!40000 ALTER TABLE `historico` DISABLE KEYS */;
+/*!40000 ALTER TABLE `historico` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `temp_processo`
 --
 
-CREATE TABLE IF NOT EXISTS `temp_processo` (
-  `documento` varchar(100) default NULL,
-  `datadoc` date default NULL,
-  `numero` varchar(40) default NULL,
-  `dataent` date default NULL,
-  `nprocesso` varchar(20) default NULL,
-  `up` varchar(5) default NULL,
-  `processo` varchar(20) default NULL,
-  `ano` int(4) default NULL,
-  `dv` char(2) default NULL,
-  `procedencia` varchar(200) default NULL,
-  `setorsolicitante` varchar(200) default NULL,
-  `favorecido` varchar(200) default NULL,
-  `cpfcnpj` varchar(18) default NULL,
+DROP TABLE IF EXISTS `temp_processo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `temp_processo` (
+  `documento` varchar(100) DEFAULT NULL,
+  `datadoc` date DEFAULT NULL,
+  `numero` varchar(40) DEFAULT NULL,
+  `dataent` date DEFAULT NULL,
+  `nprocesso` varchar(20) DEFAULT NULL,
+  `up` varchar(5) DEFAULT NULL,
+  `processo` varchar(20) DEFAULT NULL,
+  `ano` int(4) DEFAULT NULL,
+  `dv` char(2) DEFAULT NULL,
+  `procedencia` varchar(200) DEFAULT NULL,
+  `setorsolicitante` varchar(200) DEFAULT NULL,
+  `favorecido` varchar(200) DEFAULT NULL,
+  `cpfcnpj` varchar(18) DEFAULT NULL,
   `assunto` longtext,
-  `anexos` varchar(255) default NULL,
-  `volumes` int(3) default '1',
-  `folhas` int(4) default '0',
+  `anexos` varchar(255) DEFAULT NULL,
+  `volumes` int(3) DEFAULT '1',
+  `folhas` int(4) DEFAULT '0',
   `observacoes` longtext,
-  `setordestino` varchar(200) default NULL,
-  `localizacao` varchar(200) default 'PROTOCOLO',
-  `datasaida` date default NULL,
-  `situacao` int(1) default '0',
-  `datasit` date default NULL,
-  `usuario` varchar(12) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `setordestino` varchar(200) DEFAULT NULL,
+  `localizacao` varchar(200) DEFAULT 'PROTOCOLO',
+  `datasaida` date DEFAULT NULL,
+  `situacao` int(1) DEFAULT '0',
+  `datasit` date DEFAULT NULL,
+  `usuario` varchar(12) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `temp_processo`
 --
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usuario`
---
-
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `idusuario` int(2) NOT NULL auto_increment,
-  `login` varchar(50) NOT NULL,
-  `senha` varchar(12) NOT NULL,
-  `nome` varchar(200) NOT NULL,
-  `lembrete` varchar(255) NOT NULL,
-  `perfil` int(1) NOT NULL default '0',
-  `cpf` varchar(14) default NULL,
-  `setor` varchar(200) default NULL,
-  `data` date default NULL,
-  PRIMARY KEY  (`idusuario`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=441 ;
+LOCK TABLES `temp_processo` WRITE;
+/*!40000 ALTER TABLE `temp_processo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `temp_processo` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Dumping data for table `usuario`
+-- Table structure for table `circulacao_antigo`
 --
 
-INSERT INTO `usuario` (`idusuario`, `login`, `senha`, `nome`, `lembrete`, `perfil`, `cpf`, `setor`, `data`) VALUES
-(1, 'usuario', 'funarte', 'Consulta', '', 0, '111', 'CONSULTA', '2008-11-07'),
-(2, 'ronaldo', 'lucena', 'Ronaldo Lucena', '', 1, '076.974.807-43', 'Setor de Protocolo', '2009-03-25');
+DROP TABLE IF EXISTS `circulacao_antigo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `circulacao_antigo` (
+  `idcircula` int(11) NOT NULL AUTO_INCREMENT,
+  `idprocesso` int(11) DEFAULT NULL,
+  `nprocesso` varchar(20) DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  `hora` time DEFAULT NULL,
+  `origem` varchar(255) DEFAULT NULL,
+  `destino` varchar(255) DEFAULT NULL,
+  `despacho` varchar(255) DEFAULT NULL,
+  `observacao` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idcircula`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `circulacao_antigo`
+--
+
+LOCK TABLES `circulacao_antigo` WRITE;
+/*!40000 ALTER TABLE `circulacao_antigo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `circulacao_antigo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `circulacao`
+--
+
+DROP TABLE IF EXISTS `circulacao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `circulacao` (
+  `idprocesso` int(11) DEFAULT NULL,
+  `nprocesso` varchar(20) DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  `hora` time DEFAULT NULL,
+  `origem` varchar(255) DEFAULT NULL,
+  `destino` varchar(255) DEFAULT NULL,
+  `despacho` varchar(255) DEFAULT NULL,
+  `observacao` varchar(255) DEFAULT NULL,
+  `idcircula` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`idcircula`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `circulacao`
+--
+
+LOCK TABLES `circulacao` WRITE;
+/*!40000 ALTER TABLE `circulacao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `circulacao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `setor`
+--
+
+DROP TABLE IF EXISTS `setor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `setor` (
+  `idsetor` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(5) DEFAULT NULL,
+  `setor` varchar(150) NOT NULL,
+  `descricao` varchar(150) NOT NULL,
+  `genero` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`idsetor`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `setor`
+--
+
+LOCK TABLES `setor` WRITE;
+/*!40000 ALTER TABLE `setor` DISABLE KEYS */;
+INSERT INTO `setor` VALUES (1,NULL,'Setor de Protocolo','Setor de Protocolo',NULL);
+/*!40000 ALTER TABLE `setor` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-11-22 17:07:46
