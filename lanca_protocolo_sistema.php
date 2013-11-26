@@ -46,11 +46,12 @@ if ($_POST["gravar"] != "")
 	$sql="insert into 	
 		processo(dataent,nprocesso,up,processo,ano,dv,documento,datadoc,
 		numero,procedencia,setorsolicitante,favorecido,cpfcnpj,assunto,anexos,volumes,
-		folhas,observacoes, localizacao, data_cadastro)";
+		folhas,observacoes, localizacao, data_cadastro,tipo)";
+		//"1" procolo
 	$sql = $sql." values ('".tdate($dataent,0)."','".$nprocesso."','".$up."',
 		'".$processo."','".$ano."','".$dv."','".$documento."','".tdate($datadoc,0)."','".$numero."',
 		'".$procedencia."','".$setorsolicitante."','".$favorecido."','".$cpf."',
-		'".$assunto."','".$anexos."',".$volumes.",".$folhas.",'".$observacoes."','".$localatual."', '".tdate($datalancamento,0)."')";
+		'".$assunto."','".$anexos."',".$volumes.",".$folhas.",'".$observacoes."','".$localatual."', '".tdate($datalancamento,0)."', '1')";
 	$process = mysql_query($sql);
 		include "validaerrobanco.php";
 
@@ -93,69 +94,6 @@ if ($_POST["gravar"] != "")
   <? //**************************  CÁLCULO DÍGITO VERIFICADOR   ************************* ?>
   <? if ($gerar != "") {
 
-				//Pega o num do processo e tira o ponto e a barra
-/*				$numprocesso = substr($nprocesso1,0,5).substr($nprocesso1,6,6).$j.substr($nprocesso1,13,4);
-				
-				$up = substr($nprocesso1,0,5);
-				$processo = substr($nprocesso1,6,6);
-				$ano = substr($nprocesso1,13,4);
-				
-				$M=1;
-				$NUM=$numprocesso;
-				$TOTD1=0;
-				//Loop para os 14 dígitos (sem barra e sem ponto)
-				for ($i=14; $i>=0;$i--) 
-				{ 
-					//Incrementa a variável M
-					$M=$M+1;
-					//Faz um cálculo em cada substring e soma na variável TOTD1
-					$TOTD1 = $TOTD1+(substr($NUM,$i,1)*$M); 
-				}
-				
-				//Cálculo do dígito 1
-				$D1=11-($TOTD1 % 11);
-				if ($D1 > 9) 
-				{ 
-					$D1=$D1-10; 
-				}
-				$M=1;
-				$NUM=$numprocesso.$D1;
-				$TOTD2=0;
-				for ($i=15; $i>=1;$i--) 
-				{ 
-					$M=$M+1;
-					$TOTD2 = $TOTD2+(substr($NUM,$i,1)*$M); 
-				}
-				//Cálculo do dígito 2
-				$D2=11-($TOTD2 % 11);
-				if ($D2 > 9) 
-				{ 
-					$D2=$D2-10; 
-				} 
-				if (strlen($numprocesso) == 15) 
-				{ 
-					$nprocesso=substr($numprocesso,0,5).".".substr($numprocesso,5,6)."/".substr($numprocesso,11,4)."-".$D1.$D2;
-					$dv = $D1.$D2;
-				} 
-				else {
-				?><script>alert('Numeração incorreta!!!')</script><?
-				}
-
-
-		$sql = "select * from processo where nprocesso = '".$nprocesso."'";
-		$process = mysql_query($sql) or die("Erro: " . $sql);
-		if (mysql_num_rows($process) > 0) { ?>
-		<script>
-		    alert('Este número de processo já foi cadastrado na base de dados!');
-		</script>
-		<? 
-		unset ($nlancamento);unset ($dataent);unset ($nprocesso);unset ($documento);unset ($datadoc);
-		unset ($numero);unset ($procedencia);unset ($setorsolicitante);unset ($favorecido);unset ($cpf);
-		unset ($assunto);unset ($anexos);unset ($volumes);unset ($folhas);unset ($observacoes);
-		} 
-		
-		} // if			
-*/
 if (strlen($nprocesso1) != 15) { ?>
 <script>alert('Numeração Incorreta!')</script>
 <? } else {

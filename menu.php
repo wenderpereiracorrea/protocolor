@@ -30,12 +30,23 @@
     <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
+    <a target="principal" style="text-decoration: none" href="lanca_protocolo_sistema.php?modolan=0">
+    <font color="#FFFFFF">Protocolar</font></a></a></font></b></td>
+    <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
+  </tr>
+<? } ?>  
+<? if ($_SESSION["perfil"] == 1) { ?>
+  <tr>
+    <td width="35" height="30" bgcolor="#FFFFFF">
+    <img border="0" src="imagebox/lancamento.png" width="30" height="30"></td>
+    <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
+    <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
+    <font face="verdana" size="1">
     <a target="principal" style="text-decoration: none" href="lanca_processo.php?modolan=0">
-    <font color="#FFFFFF">Lançamento</font></a></a></font></b></td>
+    <font color="#FFFFFF">Lançar processo</font></a></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
 <? } ?>
-
 <? if ($_SESSION["setor_usuario"] == "Presidência" || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'ronaldo') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
