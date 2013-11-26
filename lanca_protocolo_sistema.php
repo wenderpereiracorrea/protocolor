@@ -83,7 +83,7 @@ unset ($assunto);unset ($anexos);unset ($volumes);unset ($folhas);unset ($observ
 ?>
 <script>
     alert('Lançamento efetuado com sucesso!');
-    window.location.href = 'mostra_processo.php?idprocesso=<? echo $_POST[nprocesso]; ?>';
+    window.location.href = 'adicionaprocessoaoprotocolo.php?idprocesso=<? echo $_POST[nprocesso]; ?>';
 </script>
 <?
 } 
