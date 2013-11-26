@@ -165,9 +165,9 @@ function send3(codigo5, codigo4, codigo3, codigo2, codigo1, codigo){
 <!-- jQUERY PARA VALIDAÇÃO-->
 <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css" />
 <link rel="stylesheet" href="css/template.css" type="text/css" />
-<script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<!--<script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="js/languages/jquery.validationEngine-pt_BR.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>-->
 </head>
 <script>
 	    jQuery(document).ready(function () {  // binds form submission and fields to the validation engine
