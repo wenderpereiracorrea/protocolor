@@ -1,17 +1,12 @@
 ﻿<? import_request_variables("gP"); error_reporting(0); ?>
 <?	@session_start();	
-
 include "conexao.php";
 include "valida_user.php";
 connect();
-
 include "ajax.php";
-
-
 $date = date("d/m/Y");
 $datas = date("Y/m/d");
 $hora= gmdate("H:i" ,time()-(3570*2));
-
 // REAPROVEITEI ESTE BLOCO DO EDSON ********************************************
 	if ($modolan==0) {
 		$sql = "delete from temp_processo";
@@ -20,12 +15,10 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 	}
 // *****************************************************************************
 ?>
-
 <?
 if ($_POST[gravar] != "") 
 {
-
-		$sql = "select * from processo where nprocesso = '".$nprocesso."'";
+    	$sql = "select * from processo where nprocesso = '".$nprocesso."'";
 		$process = mysql_query($sql) or die("Erro: " . $sql);
 		if (mysql_num_rows($process) > 0) { ?>
 		<script>
@@ -470,7 +463,7 @@ function avalia_gravar(form) {
 		
 		<td class="caixaazul"><div align='right'>Procedência:&nbsp;</div></td>
     	<td width="350" colspan="3"> 
-   	  	<input type='text' name='procedencia' id="procedencia" size='40' maxlength='60' class="cor-inativa" value='<? if ($procedencia == "") { echo "FUNARTE"; } else { echo $procedencia; } ?>' onChange="javascript:this.value=this.value.toUpperCase();"></td>
+   	  	<input type='text' name='procedencia' id="procedencia" size='40' maxlength='60' class="cor-inativa" value='<? if ($procedencia == "") { echo "Fundação Casa de Rui Barbosa"; } else { echo $procedencia; } ?>' onChange="javascript:this.value=this.value.toUpperCase();"></td>
 	</tr>
 
 	<tr>
