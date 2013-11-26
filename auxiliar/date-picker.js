@@ -1,8 +1,8 @@
-<!-- Original:  Kedar R. Bhave (softricks@hotmail.com) -->
-<!-- Web Site:  http://www.softricks.com -->
-
-<!-- This script and many more are available free online at -->
-<!-- The JavaScript Source!! http://javascript.internet.com -->
+//<!-- Original:  Kedar R. Bhave (softricks@hotmail.com) -->
+//<!-- Web Site:  http://www.softricks.com -->
+//
+//<!-- This script and many more are available free online at -->
+//<!-- The JavaScript Source!! http://javascript.internet.com -->
 
 var weekend = [0,6];
 var weekendColor = "#e0e0e0";
@@ -14,7 +14,7 @@ var ggWinCal;
 isNav = (navigator.appName.indexOf("Netscape") != -1) ? true : false;
 isIE = (navigator.appName.indexOf("Microsoft") != -1) ? true : false;
 
-Calendar.Months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+Calendar.Months = ["Janeiro", "Fevereiro", "Marï¿½o", "Abril", "Maio", "Junho",
 "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
 // Non-Leap year Month days..
@@ -195,7 +195,7 @@ Calendar.prototype.show = function() {
 	var nextMM = nextMMYYYY[0];
 	var nextYYYY = nextMMYYYY[1];
 
-this.wwrite("Use as setas para mover o mês ou ano!");
+this.wwrite("Use as setas para mover o mï¿½s ou ano!");
 
 this.wwrite("<TABLE WIDTH='95%' BORDER=1 CELLSPACING=0 CELLPADDING=0 BGCOLOR='#e0e0e0'><TR><TD ALIGN=center>");
 			
