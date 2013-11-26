@@ -51,7 +51,7 @@
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/lancamento.png" width="30" height="30"></td>
-    <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px http://localhost:8080/protocolorui/trunk/logout.phpsolid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
+    <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
     <a target="principal" style="text-decoration: none" href="lanca_processo_jupiara.php?modolan=0">

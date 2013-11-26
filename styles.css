@@ -303,9 +303,9 @@ body{
 	
 	.titulo{  
 	background-color:#9999CC;
-	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: center;
-	font-size::8pt;
+	font-size:8pt;
 	font:larger ;
 	color:#FFFFFF ;
 	margin-left:0;
@@ -317,7 +317,7 @@ body{
 
 	.titgrande{  
 	background-color:#669966;
-	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: center;
 	font-size:18px;
 	color:#FFFFFF;
@@ -330,7 +330,7 @@ body{
 
 	.titpreto{  
 	background-color:#9999CC;
-	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: center;
 	font:bold;
 	color:#000000;
@@ -340,7 +340,7 @@ body{
 
 	.titpretonew{  
 	background-color:#9999CC;
-	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: center;
 	font-size:14px;
 	font:bold;
@@ -377,7 +377,7 @@ body{
 	color: #000000;
 	}
 
-	.cabeçalho {
+	.cabeï¿½alho {
 	background-color:#666699;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: justify;
@@ -417,7 +417,7 @@ body{
 
  a
  {color:#000000;
- text-decoration:none;x}
+ text-decoration:none;}
  
  a:hover
  {color:#ff0000;

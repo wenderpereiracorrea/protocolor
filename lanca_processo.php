@@ -46,11 +46,11 @@ if ($_POST["gravar"] != "")
 	$sql="insert into 	
 		processo(dataent,nprocesso,up,processo,ano,dv,documento,datadoc,
 		numero,procedencia,setorsolicitante,favorecido,cpfcnpj,assunto,anexos,volumes,
-		folhas,observacoes, localizacao, data_cadastro)";
+		folhas,observacoes, localizacao, data_cadastro,tipoprocesso_idtipoprocesso)";
 	$sql = $sql." values ('".tdate($dataent,0)."','".$nprocesso."','".$up."',
 		'".$processo."','".$ano."','".$dv."','".$documento."','".tdate($datadoc,0)."','".$numero."',
 		'".$procedencia."','".$setorsolicitante."','".$favorecido."','".$cpf."',
-		'".$assunto."','".$anexos."',".$volumes.",".$folhas.",'".$observacoes."','".$localatual."', '".tdate($datalancamento,0)."')";
+		'".$assunto."','".$anexos."','".$volumes."','".$folhas."','".$observacoes."','".$localatual."', '".tdate($datalancamento,0)."', '2')";
 	$process = mysql_query($sql);
 		include "validaerrobanco.php";
 
