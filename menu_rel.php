@@ -35,40 +35,33 @@ session_start();
 	<tr>
 	<tr>
 		<td><center>
-			<input name="bt_historico" type="button" class="botao" value='Histórico'  onclick='javascript:window.location.href="rel_movimento.php";' onMouseMove='document.form.aviso.value="Histórico de movimentação de usuários"' onMouseOut='document.form.aviso.value=""'>
+			<a  target="_Blank" name="bt_historico" class="botao" href="rel_movimento.php" style="text-decoration: none"><i class="icon-question-sign icon-white"></i> Histórico</a>
+			
 		</center></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td></tr>
 	<tr>
 		<td><center>
-			<input name="bt_lancamento" type="button"  class="botao" value='Lançamentos' onclick='javascript:window.location.href="rel_lancamento.php";' onMouseMove='document.form.aviso.value="Relatório de lançamentos de processos"' onMouseOut='document.form.aviso.value=""'>
-		</center></td>
+			<a  target="_Blank" name="bt_historico" class="botao" href="rel_lancamento.php" style="text-decoration: none"><i class="icon-question-sign icon-white"></i> Lançamento  </a>
+			</center></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td></tr>
 	<tr>
 	<tr>
 		<td><center>
-			<input name='bt_transito' type='button' class='botao' value='Em Trânsito' onclick='javascript:window.location.href="rel_transito.php";' onMouseMove='document.form.aviso.value="Relatório de processos em trânsito"' onMouseOut='document.form.aviso.value=""'>
-		</center></td>
+			<a  target="_Blank" name="bt_historico" class="botao" href="rel_transito.php" style="text-decoration: none"><i class="icon-question-sign icon-white"></i> Em Trânsito  </a>
+			</center></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td></tr>
 	<tr>	
 	<tr>
 		<td><center>
-			<input name='bt_setor' type='button' class='botao' value='Distribuição' onclick='javascript:window.location.href="listagem_setor.php";' onMouseMove='document.form.aviso.value="Relatório de distribuição de processos nos setores"' onMouseOut='document.form.aviso.value=""'>
-		</center></td>
+			<a  target="_Blank" name="bt_historico" class="botao" href="listagem_setor.php" style="text-decoration: none"><i class="icon-question-sign icon-white"></i> Distribuição </a>
+			</center></td>
 	</tr>
-	<!--tr>
-		<td>&nbsp;</td></tr>
-	<tr>	
-	<tr>
-		<td><center>
-			<input name="Sair" value="Sair" class="botao" onclick='javascript: window.location.href = "corpo_do_sistema.php"' type="button">
-		</center></td>
-	</tr-->	
 	</form>
 </table>
 </body>

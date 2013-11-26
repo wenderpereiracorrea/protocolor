@@ -1,5 +1,6 @@
 ﻿<?
 session_start(); // Inicializa a sessao
+$data = date('Y-m-d H:i:s');
 if (empty($_SESSION["login"])){
 	header("Location: index.php");
 	exit;
@@ -34,7 +35,7 @@ if (empty($_SESSION["login"])){
 		<a  class="brand" target="principal" href="corpo_do_sistema.php" style="text-decoration: none"><i class="icon-th-large icon-white"></i> Home</a>
 		<div class="nav-collapse collapse">
                 <p class="navbar-text pull-right">
-                Login:<a href="#" class="navbar-link"> <? echo $_SESSION["nome"];?> - <? echo $_SESSION["login"];?> </a>
+                Sejá Bem Vindo(a)<a href="#" class="navbar-link"> <? echo $_SESSION["nome"];?> Login: <? echo $_SESSION["login"];?></a>
                 </p>
                 <ul class="nav">
 				<!--<li><a  target="_Blank" href="view/html/Introducao.html" style="text-decoration: none"><i class="icon-question-sign icon-white"></i> Help</a></li>-->
