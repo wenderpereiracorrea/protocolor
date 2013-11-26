@@ -1,4 +1,4 @@
-<? import_request_variables("gP"); error_reporting(0); ?>
+ï»¿<? import_request_variables("gP"); error_reporting(0); ?>
 <?	@session_start();	
 
 include "conexao.php";
@@ -29,7 +29,7 @@ if ($_POST[gravar] != "")
 		$process = mysql_query($sql) or die("Erro: " . $sql);
 		if (mysql_num_rows($process) > 0) { ?>
 		<script>
-		alert('Este número de processo já foi cadastrado na base de dados!');
+		alert('Este nÃºmero de processo jÃ¡ foi cadastrado na base de dados!');
 		</script>
 		<? 
 		unset ($nlancamento);unset ($dataent);unset ($nprocesso);unset ($documento);unset ($datadoc);
@@ -64,19 +64,19 @@ if ($_POST[gravar] != "")
 
 //	echo "<br>SQL = ".$sql;
 	$sql="insert into historico (data,hora,usuario,acao,ip) 
-			values ('".$datas."','".$hora."','".upper($login)."','Inseriu o processo n° ".$nprocesso."','".get_ip()."')";	
+			values ('".$datas."','".$hora."','".upper($login)."','Inseriu o processo nÂ° ".$nprocesso."','".get_ip()."')";	
 	$process = mysql_query($sql) or die("Erro: " . $sql);		
 //	echo "<br>SQL = ".$sql;
 	unset ($nlancamento);unset ($dataent);unset ($nprocesso);unset ($documento);unset ($datadoc);
 	unset ($numero);unset ($procedencia);unset ($setorsolicitante);unset ($favorecido);unset ($cpf);
 	unset ($assunto);unset ($anexos);unset ($volumes);unset ($folhas);unset ($observacoes);
-?><script>alert('Lançamento efetuado com sucesso!')</script><?
+?><script>alert('LanÃ§amento efetuado com sucesso!')</script><?
 } 
 
 }
 ?>
 
-  <? //**************************  CÁLCULO DÍGITO VERIFICADOR   ************************* ?>
+  <? //**************************  CÃLCULO DÃGITO VERIFICADOR   ************************* ?>
   <? if ($gerar != "") {
 
 				//Pega o num do processo e tira o ponto e a barra
@@ -89,16 +89,16 @@ if ($_POST[gravar] != "")
 				$M=1;
 				$NUM=$numprocesso;
 				$TOTD1=0;
-				//Loop para os 14 dígitos (sem barra e sem ponto)
+				//Loop para os 14 dÃ­gitos (sem barra e sem ponto)
 				for ($i=14; $i>=0;$i--) 
 				{ 
-					//Incrementa a variável M
+					//Incrementa a variÃ¡vel M
 					$M=$M+1;
-					//Faz um cálculo em cada substring e soma na variável TOTD1
+					//Faz um cÃ¡lculo em cada substring e soma na variÃ¡vel TOTD1
 					$TOTD1 = $TOTD1+(substr($NUM,$i,1)*$M); 
 				}
 				
-				//Cálculo do dígito 1
+				//CÃ¡lculo do dÃ­gito 1
 				$D1=11-($TOTD1 % 11);
 				if ($D1 > 9) 
 				{ 
@@ -112,7 +112,7 @@ if ($_POST[gravar] != "")
 					$M=$M+1;
 					$TOTD2 = $TOTD2+(substr($NUM,$i,1)*$M); 
 				}
-				//Cálculo do dígito 2
+				//CÃ¡lculo do dÃ­gito 2
 				$D2=11-($TOTD2 % 11);
 				if ($D2 > 9) 
 				{ 
@@ -124,7 +124,7 @@ if ($_POST[gravar] != "")
 					$dv = $D1.$D2;
 				} 
 				else {
-				?><script>alert('Numeração incorreta!!!')</script><?
+				?><script>alert('NumeraÃ§Ã£o incorreta!!!')</script><?
 				}
 
 
@@ -132,7 +132,7 @@ if ($_POST[gravar] != "")
 		$process = mysql_query($sql) or die("Erro: " . $sql);
 		if (mysql_num_rows($process) > 0) { ?>
 		<script>
-		alert('Este número de processo já foi cadastrado na base de dados!');
+		alert('Este nÃºmero de processo jÃ¡ foi cadastrado na base de dados!');
 		</script>
 		<? 
 		unset ($nlancamento);unset ($dataent);unset ($nprocesso);unset ($documento);unset ($datadoc);
@@ -143,7 +143,7 @@ if ($_POST[gravar] != "")
 		} // if			
 */
 if (strlen($nprocesso1) != 15) { ?>
-<script>alert('Numeração Incorreta!')</script>
+<script>alert('NumeraÃ§Ã£o Incorreta!')</script>
 <? } else {
     $processo = $nprocesso1;
 	$d1 = (($processo{14} * 2) + ($processo{13} * 3) + ($processo{12} * 4) + ($processo{11} * 5) + ($processo{10} * 6) + ($processo{9} * 7) + ($processo{8} * 8) + ($processo{7} * 9) + ($processo{6} * 10) + ($processo{5} * 11) + ($processo{4} * 12) + ($processo{3} * 13) + ($processo{2} * 14) + ($processo{1} * 15) + ($processo{0} * 16));
@@ -226,7 +226,7 @@ if (strlen($nprocesso1) != 15) { ?>
 		$process = mysql_query($sql) or die("Erro: " . $sql);
 		if (mysql_num_rows($process) > 0) { ?>
 		<script>
-		alert('Este número de processo já foi cadastrado no banco de dados!');
+		alert('Este nÃºmero de processo jÃ¡ foi cadastrado no banco de dados!');
 		</script>
 		<? 
 		unset ($nlancamento);unset ($dataent);unset ($nprocesso);unset ($documento);unset ($datadoc);
@@ -238,11 +238,11 @@ if (strlen($nprocesso1) != 15) { ?>
 } // if			
 
 			?>
-  <? // **************************  FIM DO CÁLCULO DÍGITO VERIFICADOR   ************************* ?>
+  <? // **************************  FIM DO CÃLCULO DÃGITO VERIFICADOR   ************************* ?>
 
 
 
-<? // ******************** INÍCIO DA PÁGINA HTML ****************************** ?>
+<? // ******************** INÃCIO DA PÃGINA HTML ****************************** ?>
 <HTML>
 <HEAD>
 <SCRIPT src="funcoes.js" type=text/javascript></SCRIPT>
@@ -252,22 +252,22 @@ if (strlen($nprocesso1) != 15) { ?>
 function avalia_gravar(form) {
  
  if (calform.nprocesso.value == "") {
-     alert("O campo Número do Processo precisa ser gerado!");
+     alert("O campo NÃºmero do Processo precisa ser gerado!");
 	 calform.nprocesso1.focus();
      return false;
   }
  if (calform.documento.value == "") {
-     alert("O campo Espécie deve ser selecionado!");
+     alert("O campo EspÃ©cie deve ser selecionado!");
 	 calform.documento.focus();
      return false;
   }
  if (calform.datadoc.value == "") {
-     alert("O campo Data, localizado ao lado do campo Espécie não pode estar em branco!");
+     alert("O campo Data, localizado ao lado do campo EspÃ©cie nÃ£o pode estar em branco!");
 	 calform.datadoc.focus();
      return false;
   }
  if (calform.procedencia.value == "") {
-     alert("O campo Procedência deve ser preenchido!");
+     alert("O campo ProcedÃªncia deve ser preenchido!");
 	 calform.procedencia.focus();
      return false;
   }
@@ -282,7 +282,7 @@ function avalia_gravar(form) {
      return false;
   }
  if (calform.localatual.value == "") {
-     alert("O campo Localização deve ser preenchido!");
+     alert("O campo LocalizaÃ§Ã£o deve ser preenchido!");
 	 calform.localatual.focus();
      return false;
   }
@@ -399,13 +399,13 @@ function avalia_gravar(form) {
 <table width ="38%" align='center' border="1" cellpadding="1" cellspacing="2">
 	<tr>
 		<td class="caixaazul">
-		<b>Digite o número do processo e o sistema irá calcular o dígito verificador:</b>
+		<b>Digite o nÃºmero do processo e o sistema irÃ¡ calcular o dÃ­gito verificador:</b>
 		</td>
 	</tr>
 	<tr>
 		<td class="caixaazul">
 		<input type="text" name="nprocesso1" maxlength="15" onKeyPress="return txtBoxFormat(this, '999999999999999', event);">&nbsp;
-		<input name='gerar' type='submit' value='Gerar Número' class='botao'>
+		<input name='gerar' type='submit' value='Gerar NÃºmero' class='botao'>
 		</td>
 	</tr>
 </table>
@@ -413,10 +413,10 @@ function avalia_gravar(form) {
 <br><br>
 
 <table width ="80%" align='center' border="1" cellpadding="1" cellspacing="2">
-	<tr class="cabeçalho">
+	<tr class="cabeÃ§alho">
 		<td colspan="4"><center>PROCESSO</center></td>
 	</tr>
-	<? 	// ************** Busca o último número de lançamento ******************
+	<? 	// ************** Busca o Ãºltimo nÃºmero de lanÃ§amento ******************
 		$sql = "select max(idprocesso) as max from processo";
 		$process = mysql_query($sql) or die("Erro10: " . mysql_error());
 		if (mysql_num_rows($process) > 0) 
@@ -427,9 +427,9 @@ function avalia_gravar(form) {
 
 <? // ********* CAMPOS DE PROCESSO  ********** ?>
 	<tr>
-		<td class="caixaazul"><div align='right'>Lançamento nº:&nbsp;</div></td>
+		<td class="caixaazul"><div align='right'>LanÃ§amento nÂº:&nbsp;</div></td>
 		<td>
-		<input type="text" name="nlancamento" class="cor-inativa" value="<? echo $idprocesso; ?>" size="6" readonly title="Número de Lançamento">
+		<input type="text" name="nlancamento" class="cor-inativa" value="<? echo $idprocesso; ?>" size="6" readonly title="NÃºmero de LanÃ§amento">
 		</td>
       	
 		<td class="caixaazul"><div align='right'>Data:&nbsp;</div></td>
@@ -446,11 +446,11 @@ function avalia_gravar(form) {
 		</td>
 	</tr>
 
-	<tr class="cabeçalho">
+	<tr class="cabeÃ§alho">
     	<td colspan='4'  ><center>ORIGEM</center></td>
 	</tr>
 	<tr>      
-    	<td class="caixaazul"><div align='right'>Espécie:&nbsp;</div></td>
+    	<td class="caixaazul"><div align='right'>EspÃ©cie:&nbsp;</div></td>
 		<td colspan="3">
 
 <input type="text" id="singleBirdRemote3" name="documento" size="60" />
@@ -463,12 +463,12 @@ function avalia_gravar(form) {
     </tr>
 
     <tr>
-    	<td class="caixaazul"><div align='right'>Número:&nbsp;</div></td>
+    	<td class="caixaazul"><div align='right'>NÃºmero:&nbsp;</div></td>
     	<td>
 		<input type='text' name='numero' id="numero" size='15'maxlength='30'  class="cor-inativa" value='<? echo $numero; ?>'>
 		</td>
 		
-		<td class="caixaazul"><div align='right'>Procedência:&nbsp;</div></td>
+		<td class="caixaazul"><div align='right'>ProcedÃªncia:&nbsp;</div></td>
     	<td width="350" colspan="3"> 
    	  	<input type='text' name='procedencia' id="procedencia" size='40' maxlength='60' class="cor-inativa" value='<? if ($procedencia == "") { echo "FUNARTE"; } else { echo $procedencia; } ?>' onChange="javascript:this.value=this.value.toUpperCase();"></td>
 	</tr>
@@ -482,7 +482,7 @@ function avalia_gravar(form) {
 
 <? // ********* CAMPOS DE DETALHES  ********** ?>
 
-	<tr class="cabeçalho">
+	<tr class="cabeÃ§alho">
     	<td colspan='4'><center>DETALHES</center></td>
 	</tr>  
 	<tr>
@@ -514,13 +514,13 @@ function avalia_gravar(form) {
 		<input type='text' name='folhas' id="folhas" size='5' maxlength="5" class="cor-inativa" value ='<? if ($folhas!='') { echo $folhas; } else { ?>0<? } ?>' onKeyPress="return txtBoxFormat(this, '99999', event);"></td>
 	</tr>
 	<tr>
-    	<td class="caixaazul" ><div align='right'>Observações :&nbsp;</div></td>
+    	<td class="caixaazul" ><div align='right'>ObservaÃ§Ãµes :&nbsp;</div></td>
     	<td colspan="3">
         	<textarea name="observacoes" id="observacoes" cols="74" rows="2" wrap="hard" class="cor-inativa" onChange="javascript:this.value=this.value.toUpperCase();" ><? echo $observacoes; ?></textarea></td>
 	</tr>
 
 		<tr>
-   		  <td class="caixaazul"><div align='right'>Localização:&nbsp;</div></td>
+   		  <td class="caixaazul"><div align='right'>LocalizaÃ§Ã£o:&nbsp;</div></td>
 			<td colspan="3" >
 
 <input type="text" id="singleBirdRemote2" name="localatual" size="60" />
@@ -543,9 +543,9 @@ function avalia_gravar(form) {
 		</td>
 	</tr>
 
-<? // *****************  BOTÕES  *********************  ?>
+<? // *****************  BOTÃ•ES  *********************  ?>
 
-	<tr class="cabeçalho">
+	<tr class="cabeÃ§alho">
     	<td colspan="4" style="text-align:center;">
 		<input name='gravar' id="gravar" type='submit' value='GRAVAR' class='botao' onClick="return avalia_gravar(this);">
 		</td>
