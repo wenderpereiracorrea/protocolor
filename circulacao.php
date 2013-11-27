@@ -44,7 +44,10 @@ if ($_POST[alterar] == "Atualizar" and $_POST[id] == "") { ?>
 <script>alert('Selecione um Setor!!!')</script> <? }
 
 if ($_POST[alterar] == "Atualizar"  and $_POST[id] != "") {
-
+        mysql_query("SET NAMES 'utf8'");
+        mysql_query('SET character_set_connection=utf8');
+        mysql_query('SET character_set_client=utf8');
+        mysql_query('SET character_set_results=utf8');		
 $sqlquery = "UPDATE circulacao SET nprocesso = '".$_POST[nprocesso]."', data = '".tdate($_POST[data],0)."', hora = '".$_POST[hora]."', origem = 'PROTOCOLO', destino = '".$_POST[destino]."', despacho = '".$_POST[despacho]."' WHERE idcircula = ".$_POST[id].""; 
 	$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
@@ -62,6 +65,10 @@ unset($alterar); }
 if ($_POST[enviar] == "Cadastrar") {
 
 		$sql2 = "select idprocesso from processo where nprocesso = '".$_POST[nprocesso]."'";
+		mysql_query("SET NAMES 'utf8'");
+        mysql_query('SET character_set_connection=utf8');
+        mysql_query('SET character_set_client=utf8');
+        mysql_query('SET character_set_results=utf8');		
 		$Resultado2 = mysql_query($sql2) or die("Erro: " . mysql_error());
 
 		if (mysql_num_rows($Resultado2) > 0) {
@@ -95,6 +102,10 @@ if ($_POST[consultar] == "Consultar") {
 
 		$sql2 = "select nprocesso, hora, origem, destino, despacho, date_format(data, '%d/%m/%Y') as 'data', idcircula
 		 from circulacao where nprocesso like '%".$_POST[cons_circulacao]."%' order by nprocesso";
+		mysql_query("SET NAMES 'utf8'");
+        mysql_query('SET character_set_connection=utf8');
+        mysql_query('SET character_set_client=utf8');
+        mysql_query('SET character_set_results=utf8');		
 		$Resultado2 = mysql_query($sql2) or die("Erro: " . mysql_error());
 
  }
@@ -195,7 +206,10 @@ function send3(codigo6, codigo5, codigo4, codigo3, codigo2, codigo1, codigo){
 if ($_POST[consultar] == "Consultar") {
 
 		if (mysql_num_rows($Resultado2) > 0) {
-
+			mysql_query("SET NAMES 'utf8'");
+			mysql_query('SET character_set_connection=utf8');
+			mysql_query('SET character_set_client=utf8');
+			mysql_query('SET character_set_results=utf8');		
 			while ($array_exibir = mysql_fetch_array($Resultado2)) {
 			
 				$codigo = $array_exibir['idcircula'];

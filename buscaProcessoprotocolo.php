@@ -1,4 +1,4 @@
-<?php 
+ï»¿<?php 
 session_start();
 header ("Content-Type:text/html; charset=iso-8859-1");
 
@@ -15,8 +15,8 @@ $database_connTutoiMasters = $dbname;
 <tr>
 <td style="background-color:#9999CC; color:#FFFFFF;"><b>Processo</b></td>
 <td style="background-color:#9999CC; color:#FFFFFF;"><b>Assunto</b></td>
-<td style="background-color:#9999CC; color:#FFFFFF;"><b>Favorecido</b></td>
-<td style="background-color:#9999CC; color:#FFFFFF;"><b>Empilhar</b></td>
+<td style="background-color:#9999CC; color:#FFFFFF;"><b>Tipo de documento</b></td>
+
 </tr>
 
 <?php
@@ -25,27 +25,26 @@ if (isset($_GET['q'])) {
   $colname_rsBusca = (get_magic_quotes_gpc()) ? $_GET['q'] : addslashes($_GET['q']);
 }
 
-$query_rsBusca = sprintf("select nprocesso, idprocesso, assunto, favorecido
-from  processo
-where (nprocesso LIKE '%%%s%%' OR assunto LIKE '%%%s%%') LIMIT 15", $colname_rsBusca,$colname_rsBusca);
+$query_rsBusca = sprintf("select procedencia,nprocesso, idprocesso, assunto,tipoproc.nome
+from  processo as proc,tipoprocesso as tipoproc
+where (nprocesso LIKE '%%%s%%' OR assunto LIKE '%%%s%%') and
+tipoprocesso_idtipoprocesso = '1' and
+proc.tipoprocesso_idtipoprocesso = tipoproc.idtipoprocesso", $colname_rsBusca,$colname_rsBusca);
 $rsBusca = mysql_query($query_rsBusca) or die("Erro");
 $row_rsBusca = mysql_fetch_assoc($rsBusca);
 $totalRows_rsBusca = mysql_num_rows($rsBusca);
 ?>
 <?php $counter = 3; do { ?>
-
-
 <?
 				$codigo = $row_rsBusca['nprocesso'];
 				$idprocesso = $row_rsBusca['idprocesso'];
 				$assunto = $row_rsBusca['assunto'];
 				$favorecido = $row_rsBusca['favorecido'];
-
-				// Colorir linha sim, linha não ####################
+				// Colorir linha sim, linha nÃ£o ####################
 				$cont = $cont + 1;
 				if ($cont % 2) { $bg = "#FFF"; } else {
 				$bg = "#E2E2E2"; }
-				// Colorir linha sim, linha não ####################
+				// Colorir linha sim, linha nÃ£o ####################
 				
 ?>
 
@@ -63,11 +62,7 @@ $totalRows_rsBusca = mysql_num_rows($rsBusca);
 
 <td style="background-color:<? echo $bg; ?>">
 <? echo "<a href='mostra_processo.php?modo=parc&idprocesso=$idprocesso'>"; ?>
-<?php echo urlencode($row_rsBusca['favorecido']); ?></a>
-</td>
-
-<td style="background-color:<? echo $bg; ?>">
-<a href="adicionaprocessoaoprotocolo.php?modo=parc&idprocesso=<?php echo urlencode($row_rsBusca['nprocesso']); ?>&idmovimentacao=<?php echo urlencode($row_rsBusca['nprocesso']) ?>&idnomesetor=<?php echo $array_exibir['idprocesso'] ?>" onclick="return confirm('confirme as informação antes de empilhar o registro: <?php echo urlencode($row_rsBusca['nprocesso']) ?>')"><i class="icon-pencil icon-white"></i> Empilhar</a>
+<?php echo urlencode($row_rsBusca['nome']); ?></a>
 </td>
 </tr>
 
