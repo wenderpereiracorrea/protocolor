@@ -6,6 +6,7 @@ include "valida_user.php";
 connect();
 if($modo=='gravando'){ 
 $data = tdate($data,0);
+$senha_usuario = md5($senha_usuario);
  $sql = "UPDATE usuario SET nome = '$nome_usuario', login = '$login_usuario',senha = '$senha_usuario', lembrete = '$lembrete', perfil = '$perfila', cpf = '$cpf', setor = '$setor' WHERE idusuario = '$idusuario'";
 	mysql_query("SET NAMES 'utf8'");
 	mysql_query('SET character_set_connection=utf8');
@@ -96,7 +97,7 @@ $data = tdate($data,0);
 <? if ($_SESSION['perfil']==1) { ?>
 				<tr>
 					<td><div align='right'>Senha:&nbsp;</div></td> 
-					<td><input name='senha_usuario' type="password" id='senha_usuario' size='8' maxlength='8' class='caixa' value='<? echo $senha_usuario?>' onChange='javascript:document.form.Gravar.style.visibility = "visible";'></td>
+					<td><input name='senha_usuario' type="password" id='senha_usuario' size='8' maxlength='18' class='caixa' value='<? echo $senha_usuario?>' onChange='javascript:document.form.Gravar.style.visibility = "visible";'></td>
 				</tr>
 				<tr>
 					<td><div align='right'>Lembrete:&nbsp;</div></td> 

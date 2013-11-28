@@ -92,7 +92,7 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 &nbsp;</center></td></tr>
 </TABLE><br><br>
 <input name="pesquisar" value="Pesquisar" class="botao" type="submit">
-
+<a href="#" onclick="window.print(); return false;">Imprimir</a>
 <BR><BR>	
 <TABLE width="80%" BORDER=0 align="center" cellpadding="1" cellspacing="1">
 	<tr>
@@ -151,5 +151,5 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 </form>
 </center>
 </HEAD>
-<? include "footer.php" ?>
+
 </HTML>

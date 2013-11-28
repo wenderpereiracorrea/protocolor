@@ -71,6 +71,7 @@ function FormataDataFim(pForm, pCampo,pTeclaPres) {
 <input name="Voltar" value="Sair" class="botao" onClick="javascript: window.location.href='corpo_do_sistema.php';" type="button">
 <BR><BR>	
 <TABLE width="80%" BORDER=0 align="center" cellpadding="1" cellspacing="1">
+<a href="#" onclick="window.print(); return false;">Imprimir</a>
 	<tr>
 	  <td width="3%" style="visibility:hidden"><center>ID</center></td>
 	  <td width="20%" class="caixadestaque">

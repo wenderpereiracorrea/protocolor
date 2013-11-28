@@ -13,6 +13,7 @@ connect();
 </head>
 <body>
 <TABLE width="80%" BORDER=0 align="center" cellpadding="1" cellspacing="1">
+<a href="#" onclick="window.print(); return false;">Imprimir</a>
 	<tr>
 	  <td width="3%" style="visibility:hidden;"><center>ID</center></td>
 	  

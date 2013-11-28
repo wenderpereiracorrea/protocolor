@@ -79,6 +79,7 @@ function avalia_gravar(form) {
 
 <table width="95%" style="border:solid 1px #333333;" cellpadding="4" cellspacing="4">
 <tr>
+<a href="#" onclick="window.print(); return false;">Imprimir</a>
 <td style="background-color:#333; color:#FFFFFF; width:130px;">
 <b>Processo</b>
 </td>
@@ -172,5 +173,5 @@ echo "<br>";
 </center>
 
 </body>
-<? include "footer.php" ?>
+
 </HTML>

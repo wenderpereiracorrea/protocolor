@@ -103,6 +103,7 @@ Data Inicial:
 
 <tr><td>
 <div align="right"><input name="pesquisar" value="Pesquisar" class="botao" onClick="return avalia_pesquisar(this);" type="submit">
+<a href="#" onclick="window.print(); return false;">Imprimir</a>
 </div>
 </td></tr>
 </TABLE>

@@ -76,7 +76,7 @@ connect();
 </table>
 </form>
 </center>
-<? include "footer.php" ?>
+
 </BODY>
 </HTML>
 
