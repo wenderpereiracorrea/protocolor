@@ -6,7 +6,7 @@ $date = date("d/m/y");
 
 $hora= gmdate("H:i" ,time()-(3570*2));
 $login = addslashes($_POST["login"]);
-$senha  = addslashes($_POST["senha"]);
+$senha  = md5(addslashes($_POST["senha"]));
 if ($login=="" and ($senha == "" or $senha == "***")) 
 {
 ?>
@@ -16,6 +16,7 @@ if ($login=="" and ($senha == "" or $senha == "***"))
 <?php 
 	$login = 'usuario';
 	$senha = 'funarte';
+	$senha = md5($senha);
 }
 $sql = "select U.idusuario, U.nome, U.login, U.senha, U.perfil,U.setor,S.codigo";
 $sql = $sql. " from usuario U, setor S";

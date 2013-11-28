@@ -44,7 +44,7 @@ if ($_POST[alterar] == "Atualizar" and $_POST[id] == "") { ?>
 if ($_POST[alterar] == "Atualizar"  and $_POST[id] != "") {
 
 
-$sqlquery = "UPDATE usuario SET senha = '".$_POST[senha]."', nome = '".$_POST[nome]."', perfil = '".$_POST[perfil]."', setor = '".$_POST[setor]."' WHERE idusuario = ".$_POST[id].""; 
+$sqlquery = "UPDATE usuario SET senha = '".md5($_POST[senha])."', nome = '".$_POST[nome]."', perfil = '".$_POST[perfil]."', setor = '".$_POST[setor]."' WHERE idusuario = ".$_POST[id].""; 
 	$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
 ?><script language="javascript1.2">alert('Registro Atualizado com Sucesso!!!');</script><? 
@@ -67,7 +67,7 @@ if ($_POST[enviar] == "Cadastrar") {
 $insere = "insert into usuario
              (login, senha, nome, perfil, setor)
 			 values
-			 ('".$_POST[login]."', '".$_POST[senha]."', '".$_POST[nome]."', '".$_POST[perfil]."', '".$_POST[setor]."')";
+			 ('".$_POST[login]."', '".md5($_POST[senha])."', '".$_POST[nome]."', '".$_POST[perfil]."', '".$_POST[setor]."')";
 				mysql_query("SET NAMES 'utf8'");
 				mysql_query('SET character_set_connection=utf8');
 				mysql_query('SET character_set_client=utf8');
@@ -211,7 +211,7 @@ if ($_POST[consultar] == "Consultar") {
 			
 				$codigo = $array_exibir['idusuario'];
 				$codigo1 = $array_exibir['login'];
-				$codigo2 = $array_exibir['senha'];
+				$codigo2 = md5($array_exibir['senha']);
 				$codigo3 = $array_exibir['nome'];
 				$codigo4 = $array_exibir['perfil'];
 				$codigo5 = $array_exibir['setor'];

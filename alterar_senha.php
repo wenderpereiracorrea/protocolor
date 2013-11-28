@@ -9,11 +9,11 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 
 
 if ($_POST[gravar] != "") {
-if ($_SESSION[senha] != $_POST[senha_atual]) {
+if ($_SESSION[senha] != md5($_POST[senha_atual])) {
 echo "<center><b>A senha atual não está correta!</b></center><br><br>";
 } else {
 		$sql = "update usuario set ";
-		$sql.= "senha = '". $_POST[senha_nova]."' ";
+		$sql.= "senha = '". md5($_POST[senha_nova])."' ";
 		$sql.= "where idusuario = ". $_SESSION[idusuario]."";
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 echo "<center><b>Senha atualizada com sucesso!</b></center><br><br>";
