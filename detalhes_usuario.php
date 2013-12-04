@@ -5,7 +5,7 @@ session_start();
 include "conexao.php";
 include "valida_user.php";
 connect();
-if($modo=='gravando'){ 
+if ($_POST[Gravar] == "Gravar"){ 
 $data = tdate($data,0);
 $senha_usuario = md5($senha_usuario);
  $sql = "UPDATE usuario SET nome = '$nome_usuario', login = '$login_usuario',senha = '$senha_usuario', lembrete = '$lembrete', perfil = '$perfila', cpf = '$cpf', setor = '$setor' WHERE idusuario = '$idusuario'";
@@ -17,7 +17,8 @@ $senha_usuario = md5($senha_usuario);
 ?>
 <script language="javascript">alert('Registro Atualizado com Sucesso!');window.location.href='corpo_do_sistema.php';</script>
 <? } ?>
-<? if($modo=='alterarsetor'){ 
+<? if ($_POST[alterarsetor] == "alterarsetor")
+{
 		$sql = "UPDATE usuario SET nome = '$nome_usuario', login = '$login_usuario', lembrete = '$lembrete', perfil = '$perfila', cpf = '$cpf', setor = '$setor' WHERE idusuario = '$idusuario'";
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 		?><script language="javascript">alert(' Atualizado setor');window.location.href='corpo_do_sistema.php';</script><?
@@ -61,6 +62,7 @@ $senha_usuario = md5($senha_usuario);
 						<div align="center">&nbsp;DETALHES DO USUÁRIO&nbsp;</strong></div>
 			</td>
 	</table>
+
 	<?	
 		$sql="select * from usuario";
 		$sql = $sql." where idusuario = ".$idusu."";	
@@ -102,7 +104,7 @@ $senha_usuario = md5($senha_usuario);
 					<td><div align='right'>Login:&nbsp;</div></td>
 					<td><input type='text' name='login_usuario' size='12'maxlength='12' class='caixa' value='<? echo $login_usuario?>' onClick='javascript:document.form.Gravar.style.visibility = "visible";'></td>
 				</tr> 
-<? if ($_SESSION['perfil']==1) { ?>
+        <? if ($_SESSION['perfil']==1) { ?>
 				<tr>
 					<td><div align='right'>Senha:&nbsp;</div></td> 
 					<td><input name='senha_usuario' type="password" id='senha_usuario' size='8' maxlength='18' class='caixa' value='<? echo $senha_usuario?>' onChange='javascript:document.form.Gravar.style.visibility = "visible";'></td>
@@ -120,7 +122,7 @@ $senha_usuario = md5($senha_usuario);
 					<td><div align='right'>CPF:&nbsp;</div></td> 
 			 	<td><input name='cpf' type='text' id='cpf' size='15' maxlength='15' class='caixa' value='<? echo $cpf?>' onClick='javascript:document.form.Gravar.style.visibility = "visible";' ></td>
 				</tr> 		
-<? } ?>
+            <? } ?>
 				<tr>
 					<td><div align='right'>Setor:&nbsp;</div></td> 
 					<td><select name='setor' id='setor' onFocus='Focus();' class="cor-inativa" title='Setor do Usuário (Funarte)' onChange='javascript:document.form.Gravar.style.visibility = "visible";document.form.Gravar.focus();' onBlur="Blur(this);"><? 
@@ -159,10 +161,10 @@ $senha_usuario = md5($senha_usuario);
 	<br><br>
 	<center>
 	<? if ($_SESSION['perfil']==1) { ?>
-			<input type="button" onClick="javascript:confirmausu();" name="Gravar" class="botao" id="Gravar" value="GRAVAR" alt="Gravar">
-			<input type="hidden" name="modo" value="gravando">
-			<input type="button" onClick="javascript:window.location.href='detalhes_usuario.php?modo=alterarsetor';" name="alterarsetor" class="botao" id="alterarsetor" value="alterarsetor" alt="alterarsetor">
-			<input type="button" onClick="javascript:window.location.href='detalhes_usuario.php?modo=excluindo';" name="Excluir" class="botao" id="Excluir" value="EXCLUIR" alt="Excluir Usuário">&nbsp;&nbsp;
+			<button type="submit" id="Gravar" class="botao" onClick="javascript:confirmausu();" name="Gravar" value="Gravar" alt="Gravar"> <i class="icon-plus icon-white"></i> Gravar </button>
+			<button type="submit" id="alterarsetor" class="botao" name="alterarsetor" value="alterarsetor"> <i class="icon-plus icon-white"></i> Alterar Setor </button>
+			
+			<input type="button" onClick="javascript:confirmausu();" name="Excluir" class="botao" id="Excluir" value="EXCLUIR" alt="Excluir Usuário">&nbsp;&nbsp;
 	<? } ?>
 	<? // *****************  BOTÕES  *********************  ?>
 	<input name='Retornar' type='button' value='RETORNAR' class='botao' onclick='javascript:history.back();'>&nbsp;&nbsp;<input name='Encerrar' type='button' value='ENCERRAR' class='botao' onClick="javascript:window.location.href='corpo_do_sistema.php';">&nbsp;&nbsp;
@@ -176,6 +178,15 @@ $senha_usuario = md5($senha_usuario);
 		function confirmausu() {
 		        if (confirm('Confirma Alteração?')){
  	           		form.submit();
+				}
+		}
+
+	</script>
+        	<script language="javascript">
+		function confirmaaltesetor() {
+		        if (confirm('Confirma Alteração?')){
+ 	           		form.submit();
+                                window.location.href='detalhes_usuario.php?modo=alterarsetor;
 				}
 		}
 
