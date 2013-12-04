@@ -1,9 +1,9 @@
-<? import_request_variables("gP"); ?>
+ï»¿<? import_request_variables("gP"); ?>
 <? 
 session_start();
 include "conexao.php";
 connect();
-	// ******************* TRANSFORMA A APRESENTAÇÃO DA DATA ****** INÍCIO *********************// ******************* TRANSFORMA A APRESENTAÇÃO DA DATA ****** FIM *********************	
+	// ******************* TRANSFORMA A APRESENTAÃ‡ÃƒO DA DATA ****** INÃCIO *********************// ******************* TRANSFORMA A APRESENTAÃ‡ÃƒO DA DATA ****** FIM *********************	
 
 ?>
 <html>
@@ -77,7 +77,7 @@ connect();
 					}
 echo "<center>"."<b>";
 echo mysql_num_rows($process);
-echo " ocorrências"."</center>"."</b>"."<br>";
+echo " ocorrÃªncias"."</center>"."</b>"."<br>";
 		}
 				mysql_free_result($process);					
 

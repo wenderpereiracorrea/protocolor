@@ -1,4 +1,4 @@
-<?	@session_start();	
+Ôªø<?	@session_start();	
 import_request_variables("gP");
 include "conexao.php";
 include "valida_user.php";
@@ -18,7 +18,7 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 		if (mysql_num_rows($process) > 0) { ?>
 
 <script language="javascript">
-if (confirm("O processo <? echo $nprocesso; ?> est· em tr‚nsito!\nDeseja fazer o acolhimento?") == true) {
+if (confirm("O processo <? echo $nprocesso; ?> est√° em tr√¢nsito!\nDeseja fazer o acolhimento?") == true) {
 window.location.href='recebimento.php?recebe=SIM&num=<? echo $nprocesso; ?>';
 } else {
 window.location.href='recebimento.php?excluir=';
@@ -26,7 +26,7 @@ window.location.href='recebimento.php?excluir=';
 </script>
 <? } else { ?>
 <script language="javascript">
-alert('O processo <? echo $nprocesso; ?> n„o est· em tr‚nsito!');
+alert('O processo <? echo $nprocesso; ?> n√£o est√° em tr√¢nsito!');
 </script>
 <? } } ?>
 
@@ -53,7 +53,7 @@ $sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SE
 		if (mysql_num_rows($process) > 0) { ?>
 
 <script language="javascript">
-if (confirm("O processo <? echo $nprocesso; ?> est· em tr‚nsito!\nDeseja fazer o acolhimento?") == true) {
+if (confirm("O processo <? echo $nprocesso; ?> est√° em tr√¢nsito!\nDeseja fazer o acolhimento?") == true) {
 window.location.href='recebimento.php?recebe2=SIM&num=<? echo $nprocesso2; ?>';
 } else {
 window.location.href='recebimento.php?excluir=';
@@ -61,7 +61,7 @@ window.location.href='recebimento.php?excluir=';
 </script>
 <? } else { ?>
 <script language="javascript">
-alert('O processo <? echo $nprocesso; ?> n„o est· em tr‚nsito!');
+alert('O processo <? echo $nprocesso; ?> n√£o est√° em tr√¢nsito!');
 </script>
 <? } } ?>
 
@@ -81,7 +81,7 @@ $sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SE
 
 
 
-<? // ******************** INÕCIO DA P¡GINA HTML ****************************** ?>
+<? // ******************** IN√çCIO DA P√ÅGINA HTML ****************************** ?>
 <HTML>
 <HEAD>
 <SCRIPT src="funcoes.js" type=text/javascript></SCRIPT>
@@ -97,7 +97,7 @@ $sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SE
 <table width ="38%" align='center' border="1" cellpadding="1" cellspacing="2">
 	<tr>
 		<td class="caixaazul">
-		<b>Digite o n˙mero do processo:</b>
+		<b>Digite o n√∫mero do processo:</b>
 		</td>
 	</tr>
 	<tr>
@@ -109,15 +109,15 @@ $sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SE
 </table>
 
 <br><br><br><br>
-Informe o <b>n˙mero completo</b> do processo. Ex: <b>(01530.000000/0000-00)</b>.<br>
-O sistema ir· emitir uma mensagem, caso o processo esteja em tr‚nsito, para que o usu·rio possa confirmar o acolhimento.
+Informe o <b>n√∫mero completo</b> do processo. Ex: <b>(01530.000000/0000-00)</b>.<br>
+O sistema ir√° emitir uma mensagem, caso o processo esteja em tr√¢nsito, para que o usu√°rio possa confirmar o acolhimento.
 </center>
 
 <br><br><br><hr><br>
 <table width ="38%" align='center' border="1" cellpadding="1" cellspacing="2">
 	<tr>
 		<td class="caixaazul">
-		<b>Digite o n˙mero do processo (processos antigos com 2 dÌgitos para representar o ano):</b>
+		<b>Digite o n√∫mero do processo (processos antigos com 2 d√≠gitos para representar o ano):</b>
 		</td>
 	</tr>
 	<tr>
@@ -130,8 +130,8 @@ O sistema ir· emitir uma mensagem, caso o processo esteja em tr‚nsito, para que 
 
 </form>
 <br><br><br><br>
-Informe o <b>n˙mero completo</b> do processo. Ex: <b>(01530.000000/00-00)</b>.<br>
-O sistema ir· emitir uma mensagem, caso o processo esteja em tr‚nsito, para que o usu·rio possa confirmar o acolhimento.
+Informe o <b>n√∫mero completo</b> do processo. Ex: <b>(01530.000000/00-00)</b>.<br>
+O sistema ir√° emitir uma mensagem, caso o processo esteja em tr√¢nsito, para que o usu√°rio possa confirmar o acolhimento.
 </center>
 
 </BODY>

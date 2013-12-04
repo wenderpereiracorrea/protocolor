@@ -1,4 +1,5 @@
-﻿<?php
+﻿<?php header("Content-type: text/html; charset=UTF-8");?> 
+<?php
 session_start(); // Inicializa a sessão
 include "conexao.php";
 connect();
@@ -35,6 +36,7 @@ if (mysql_num_rows($process) > 0)
         $_SESSION["login"] = $line['login'];
         $_SESSION["senha"] = $line['senha'];
         $_SESSION["perfil"] = $line['perfil'];
+		$_SESSION["codigosetor"] = $line['codigo'];
         $_SESSION["setor_usuario"] = $line['setor'];
         $_SESSION["codigo"] = $line['codigo'];
         ?>

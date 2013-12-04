@@ -1,13 +1,13 @@
+ï»¿<?php header("Content-type: text/html; charset=UTF-8");?> 
 <?php 
 session_start();
-
 include "conexao.php";
 connect();
 $date = date("d/m/y");
 $hora= gmdate("H:i" ,time()-(3570*2));
 
 
-// Qd clica no botão consultar
+// Qd clica no botÃ£o consultar
 if ($_POST[consultar] == "Consultar") {
 
 		$sql2 = "select nprocesso, favorecido, assunto, idprocesso
@@ -108,11 +108,11 @@ if ($_POST[consultar] == "Consultar") {
 				$assunto = $array_exibir['assunto'];
 				$idprocesso = $array_exibir['idprocesso'];
 
-				// Colorir linha sim, linha não ####################
+				// Colorir linha sim, linha nÃ£o ####################
 				$cont = $cont + 1;
 				if ($cont % 2) { $bg = "#FFF"; } else {
 				$bg = "#E2E2E2"; }
-				// Colorir linha sim, linha não ####################
+				// Colorir linha sim, linha nÃ£o ####################
 
 								
 echo "<tr><td style='background-color:$bg'>";

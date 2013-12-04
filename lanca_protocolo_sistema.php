@@ -1,4 +1,4 @@
-
+<?php header("Content-type: text/html; charset=UTF-8");?> 
 <? import_request_variables("gP"); error_reporting(0); ?>
 <?	@session_start();	
 //include "header.php";

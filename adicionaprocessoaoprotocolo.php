@@ -1,4 +1,5 @@
-﻿<? import_request_variables("gP");
+﻿<?php header("Content-type: text/html; charset=UTF-8");?> 
+<? import_request_variables("gP");
 $data = date('Y-m-d H:i:s');  
 $nprocesso = isset( $_GET['idprocesso'] ) ? $_GET['idprocesso'] : '-1';
 ?>
@@ -221,7 +222,7 @@ jQuery("#form1").validationEngine();
 					<td style="background-color: #96B4EB; color: #FFFFFF;"><b>nº processo</b></td>
 					<td style="background-color: #96B4EB; color: #FFFFFF;"><b>Data empilhamento</b></td>
 					<td style="background-color: #96B4EB; color: #FFFFFF;"><b>Assunto</b>
-					<? if ($_SESSION["tipousuario"] == '1') { ?>	
+					<? if ($_SESSION["tipousuario"] == '1' || $_SESSION["setor_usuario"] == 'Setor de Protocolo' ) { ?>	
 					<td style="background-color: #96B4EB; color: #FFFFFF;"><b><i class="icon-pencil icon-white"></i> Desempilhar</b></td>
 					<? } ?>  <!-- Fim Desenvolvedor -->
 					</tr>
@@ -235,7 +236,7 @@ jQuery("#form1").validationEngine();
 						<td><label><?php echo $array_exibir['nprocesso'] ?></label>
 						<td><label><?php echo $array_exibir['data'] ?></label>
 						<td><label><?php echo $array_exibir['assunto'] ?></label>
-						<? if ($_SESSION["tipousuario"] == '1') { ?>	
+						<? if ($_SESSION["tipousuario"] == '1' || $_SESSION["setor_usuario"] == 'Setor de Protocolo' ) { ?>	
 						<td><a href="removeempilhamento.php?modo=parc&idproduto=<?php echo $array_exibir['nprocesso'] ?>&idremover=<?php echo $array_exibir['nprotocolo'] ?>&idnomesetor=<?php echo $array_exibir['nprocesso'] ?>" onclick="return confirm('Confirma o desempilhamento do registro Id: <?php echo $array_exibir['codsetor'] ?>')"><i class="icon-pencil icon-white"></i> Desempilhar</a>
 						<? } ?>  <!-- Fim Desenvolvedor -->
 				   </tr>

@@ -1,4 +1,5 @@
-﻿<? import_request_variables("gP"); ?>
+﻿<?php header("Content-type: text/html; charset=UTF-8");?> 
+<? import_request_variables("gP"); ?>
 <? 
 session_start ();
 include "conexao.php";

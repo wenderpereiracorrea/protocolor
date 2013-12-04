@@ -1,4 +1,4 @@
-<?	
+Ôªø<?	
 error_reporting(0);
 session_start();	
 import_request_variables("gP");
@@ -20,7 +20,7 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 		if (mysql_num_rows($process) > 0) { ?>
 
 <script language="javascript">
-if (confirm("O processo <? echo $nprocesso; ?> est· em tr‚nsito!\nDeseja fazer o acolhimento?") == true) {
+if (confirm("O processo <? echo $nprocesso; ?> est√° em tr√¢nsito!\nDeseja fazer o acolhimento?") == true) {
 window.location.href='recebimento.php?recebe=SIM&num=<? echo $nprocesso; ?>';
 } else {
 window.location.href='recebimento.php?excluir=';
@@ -28,7 +28,7 @@ window.location.href='recebimento.php?excluir=';
 </script>
 <? } else { ?>
 <script language="javascript">
-alert('O processo <? echo $nprocesso; ?> n„o est· em tr‚nsito!');
+alert('O processo <? echo $nprocesso; ?> n√£o est√° em tr√¢nsito!');
 </script>
 <? } } ?>
 
@@ -55,7 +55,7 @@ $sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SE
 		if (mysql_num_rows($process) > 0) { ?>
 
 <script language="javascript">
-if (confirm("O processo <? echo $nprocesso; ?> est· em tr‚nsito!\nDeseja fazer o acolhimento?") == true) {
+if (confirm("O processo <? echo $nprocesso; ?> est√° em tr√¢nsito!\nDeseja fazer o acolhimento?") == true) {
 window.location.href='recebimento.php?recebe2=SIM&num=<? echo $nprocesso2; ?>';
 } else {
 window.location.href='recebimento.php?excluir=';
@@ -63,7 +63,7 @@ window.location.href='recebimento.php?excluir=';
 </script>
 <? } else { ?>
 <script language="javascript">
-alert('O processo <? echo $nprocesso; ?> n„o est· em tr‚nsito!');
+alert('O processo <? echo $nprocesso; ?> n√£o est√° em tr√¢nsito!');
 </script>
 <? } } ?>
 
@@ -83,7 +83,7 @@ $sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SE
 
 
 
-<? // ******************** INÕCIO DA P¡GINA HTML ****************************** ?>
+<? // ******************** IN√çCIO DA P√ÅGINA HTML ****************************** ?>
 <HTML>
 <HEAD>
 <SCRIPT src="funcoes.js" type=text/javascript></SCRIPT>
@@ -113,8 +113,8 @@ function atual() {
 <BODY>
 <center>
 <br>
-<a href="#" onClick="antigo()"><b>Processo com 2 dÌgitos para representar o ano</b></a><br><br>
-<a href="#" onClick="atual()"><b>Processo com 4 dÌgitos para representar o ano</b></a><br><br>
+<a href="#" onClick="antigo()"><b>Processo com 2 d√≠gitos para representar o ano</b></a><br><br>
+<a href="#" onClick="atual()"><b>Processo com 4 d√≠gitos para representar o ano</b></a><br><br>
 <br>
 
 <form action="recebimento.php" method="POST" name="calform" target="_self">
@@ -122,12 +122,12 @@ function atual() {
 <table width ="38%" align='center' border="1" cellpadding="1" cellspacing="2">
 	<tr>
 		<td class="caixaazul">
-		<b>Digite o n˙mero do processo:</b>
+		<b>Digite o n√∫mero do processo:</b>
 		</td>
 	</tr>
 	<tr id="at">
 		<td class="caixaazul">
-		<br><b>Ano com quatro dÌgitos</b><br><br>
+		<br><b>Ano com quatro d√≠gitos</b><br><br>
 		<input type="text" name="nprocesso" onKeyPress="return txtBoxFormat(this, '99999.999999/9999-99', event);" maxlength="20">&nbsp;
 		<input name='gerar' type='submit' value='OK' class='botao'>
 		</td>
@@ -135,7 +135,7 @@ function atual() {
 
 	<tr id="ant" style="visibility:hidden">
 		<td class="caixaazul">
-		<br><b>Ano com dois dÌgitos</b><br><br>
+		<br><b>Ano com dois d√≠gitos</b><br><br>
 		<input type="text" name="nprocesso2" onKeyPress="return txtBoxFormat(this, '99999.999999/99-99', event);" maxlength="18">&nbsp;
 		<input name='gerar2' type='submit' value='OK' class='botao'>
 		</td>
@@ -144,8 +144,8 @@ function atual() {
 </table>
 
 <br><br><br><br>
-Informe o <b>n˙mero completo</b> do processo.<br>
-O sistema ir· emitir uma mensagem, caso o processo esteja em tr‚nsito, para que o usu·rio possa confirmar o acolhimento.
+Informe o <b>n√∫mero completo</b> do processo.<br>
+O sistema ir√° emitir uma mensagem, caso o processo esteja em tr√¢nsito, para que o usu√°rio possa confirmar o acolhimento.
 </center>
 
 

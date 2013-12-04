@@ -1,4 +1,5 @@
-﻿<?	@session_start();	
+﻿<?php header("Content-type: text/html; charset=UTF-8");?> 
+<?	@session_start();	
 include "conexao.php";
 include "valida_user.php";
 connect();
