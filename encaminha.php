@@ -294,5 +294,4 @@ if ($processocom=="" && $processored=="" && $pchave=="" && $setorsolicita=="")
 </CENTER>
  </form>
 </HEAD>
-<? include "footer.php" ?>
 </HTML>

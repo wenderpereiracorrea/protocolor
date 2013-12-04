@@ -15,9 +15,13 @@
 		</div>
 	</div>
 	<div align="center">
-		Copyright Central IT 2013. All rights reserved. <img
+	
+		<img
 			src="imagens/logo.png" alt="" width="20%"
 			height="20%" style="display: block;" />
+				<img
+		src="http://www.funarte.gov.br/wp-content/uploads/2010/11/funarte-footer.png" alt="" width="10%"
+		height="10%" style="display: block;" />
 	</div>
 	</div>
 	

@@ -646,7 +646,6 @@ unset ($assunto);unset ($anexos);unset ($volumes);unset ($folhas);unset ($observ
 
     </form>
 </center>
-<? include "footer.php" ?>
 </BODY>
 </HTML>
 

@@ -128,4 +128,4 @@ $data_atual = mktime(0,0,0,$mes_atual,$dia_atual,$ano_atual);
 		window.location.href="grava_usuario.php?modo=novo";
 		}
 	</script> 
-	<? include "footer.php" ?>
+	

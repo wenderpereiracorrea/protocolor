@@ -309,5 +309,4 @@ echo "<hr>";
 
       </form>
 </body>
-<? include "footer.php" ?>
 </html>

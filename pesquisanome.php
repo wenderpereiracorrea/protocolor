@@ -146,5 +146,4 @@ echo "</tr>";
 </center>
 
 </body>
-<? include "footer.php" ?>
 </HTML>

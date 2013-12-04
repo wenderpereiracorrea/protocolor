@@ -65,5 +65,5 @@ session_start();
 	</form>
 </table>
 </body>
-<? include "footer.php" ?>
+
 </html>

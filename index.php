@@ -80,7 +80,7 @@
         </div>
 
         <footer class="footer-inverse ">
-            <p align="center">Copyright Central IT 2013. All rights reserved.</p>
+            <p align="center">Copyright 2013. All rights reserved.</p>
         </footer>
     </form>
 

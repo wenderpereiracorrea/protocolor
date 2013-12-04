@@ -17,6 +17,7 @@ echo "<center><b>A senha atual não está correta!</b></center><br><br>";
 		$sql.= "where idusuario = ". $_SESSION[idusuario]."";
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 echo "<center><b>Senha atualizada com sucesso!</b></center><br><br>";
+$_SESSION["senha"] = md5($_POST[senha_nova]);
 }
 }
 ?>
@@ -96,7 +97,7 @@ function avalia_gravar(form) {
 		<b>Digite a nova senha:</b>
 		</td>
 		<td class="caixaazul">
-		<input type="password" class="validate[required,minSize[4]]" name="senha_nova" size="40">&nbsp;
+		<input type="password" class="validate[required,minSize[4]]" id="senha_nova" name="senha_nova" size="40">&nbsp;
 		</td>
 	</tr>
 
@@ -105,7 +106,7 @@ function avalia_gravar(form) {
 		<b>Redigite a nova senha:</b>
 		</td>
 		<td class="caixaazul">
-		<input type="password" class="validate[required,minSize[4]]" name="senha_nova2" size="40">&nbsp;
+		<input type="password" class="validate[required,minSize[4]],equals[senha_nova]]" id= "senha_nova2" name="senha_nova2" size="40">&nbsp;
 		</td>
 	</tr>
 

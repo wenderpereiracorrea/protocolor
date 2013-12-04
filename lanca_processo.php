@@ -704,7 +704,6 @@ if ($_POST[nprocesso] != "") {
 
 </form>
 </center>
-<? include "footer.php" ?>
 </BODY>
 </HTML>
 

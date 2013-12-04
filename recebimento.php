@@ -164,7 +164,6 @@ O sistema irá emitir uma mensagem, caso o processo esteja em trânsito, para qu
 </center>
 
 </BODY>
-<? include "footer.php" ?>
 </HTML>
 
 

@@ -16,6 +16,12 @@ $senha_usuario = md5($senha_usuario);
 ?>
 <script language="javascript">alert('Registro Atualizado com Sucesso!');window.location.href='corpo_do_sistema.php';</script>
 <? } ?>
+<? if($modo=='alterarsetor'){ 
+		$sql = "UPDATE usuario SET nome = '$nome_usuario', login = '$login_usuario', lembrete = '$lembrete', perfil = '$perfila', cpf = '$cpf', setor = '$setor' WHERE idusuario = '$idusuario'";
+		$process = mysql_query($sql) or die("Erro: " . mysql_error());
+		?><script language="javascript">alert(' Atualizado setor');window.location.href='corpo_do_sistema.php';</script><?
+		} ?>
+
 <? if($modo=='excluindo'){ 
 		$sql = "delete from usuario where idusuario = $idusuario";
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
@@ -62,7 +68,8 @@ $senha_usuario = md5($senha_usuario);
 		mysql_query('SET character_set_connection=utf8');
 		mysql_query('SET character_set_client=utf8');
 		mysql_query('SET character_set_results=utf8');		
-		$process = mysql_query($sql) or die("Erro: " . mysql_error());	
+
+                $process = mysql_query($sql) or die("Erro: " . mysql_error());	
 		if (mysql_num_rows($process) > 0) 
 		{
 			$line = mysql_fetch_array($process);
@@ -153,6 +160,7 @@ $senha_usuario = md5($senha_usuario);
 	<? if ($_SESSION['perfil']==1) { ?>
 			<input type="button" onClick="javascript:confirmausu();" name="Gravar" class="botao" id="Gravar" value="GRAVAR" alt="Gravar">
 			<input type="hidden" name="modo" value="gravando">
+			<input type="button" onClick="javascript:window.location.href='detalhes_usuario.php?modo=alterarsetor';" name="alterarsetor" class="botao" id="alterarsetor" value="alterarsetor" alt="alterarsetor">
 			<input type="button" onClick="javascript:window.location.href='detalhes_usuario.php?modo=excluindo';" name="Excluir" class="botao" id="Excluir" value="EXCLUIR" alt="Excluir Usuário">&nbsp;&nbsp;
 	<? } ?>
 	<? // *****************  BOTÕES  *********************  ?>

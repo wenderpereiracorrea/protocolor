@@ -641,5 +641,4 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 </script>
   </form>
 </HEAD>
-<? include "footer.php" ?>
 </HTML>
