@@ -515,7 +515,7 @@ if (strlen($nprocesso1) != 15) { ?>
     	<tr>      
     	<td class="caixaazul"><div align='right'>Procedência:&nbsp;</div></td>
 		<td colspan="3">
-		<input type='text' name='procedencia' id="procedencia" size='40' maxlength='60' class="cor-inativa" value='<? if ($procedencia == "") { echo "FUNARTE"; } else { echo $procedencia; } ?>' onChange="javascript:this.value=this.value.toUpperCase();"></td>
+		<input type='text' name='procedencia' id="procedencia" size='40' maxlength='60' class="cor-inativa" value='<? if ($procedencia == "") { echo "Fundação Casa de Rui Barbosa"; } else { echo $procedencia; } ?>' onChange="javascript:this.value=this.value.toUpperCase();"></td>
 		</td>
 	    <tr class="cabeçalho">
     	<td colspan='4'><center>NOME DO INTERESSADO</center></td>

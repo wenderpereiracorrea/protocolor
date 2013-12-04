@@ -453,7 +453,7 @@ unset ($assunto);unset ($anexos);unset ($volumes);unset ($folhas);unset ($observ
             <tr>      
                 <td class="caixaazul"><div align='right'>Procedência:&nbsp;</div></td>
                 <td colspan="3">
-                    <input type='text' name='procedencia' id="procedencia" size='40' maxlength='60' class="cor-inativa" value='<? if ($procedencia == "") { echo "FUNARTE"; } else { echo $procedencia; } ?>' onChange="javascript:this.value = this.value.toUpperCase();"></td>
+                    <input type='text' name='procedencia' id="procedencia" size='40' maxlength='60' class="cor-inativa" value='<? if ($procedencia == "") { echo "Fundação Casa de Rui Barbosa"; } else { echo $procedencia; } ?>' onChange="javascript:this.value = this.value.toUpperCase();"></td>
                 </td>
                 <!--
                     <tr class="cabeçalho">
