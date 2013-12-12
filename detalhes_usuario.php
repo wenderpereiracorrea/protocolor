@@ -1,4 +1,5 @@
-﻿<?php header("Content-type: text/html; charset=UTF-8");?> 
+﻿<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<?php header("Content-type: text/html; charset=UTF-8");?> 
 <? import_request_variables("gP"); ?>
 <? 
 session_start();
@@ -19,6 +20,10 @@ $senha_usuario = md5($senha_usuario);
 <? } ?>
 <? if ($_POST[alterarsetor] == "alterarsetor")
 {
+	   	mysql_query("SET NAMES 'utf8'");
+		mysql_query('SET character_set_connection=utf8');
+		mysql_query('SET character_set_client=utf8');
+		mysql_query('SET character_set_results=utf8');
 		$sql = "UPDATE usuario SET nome = '$nome_usuario', login = '$login_usuario', lembrete = '$lembrete', perfil = '$perfila', cpf = '$cpf', setor = '$setor' WHERE idusuario = '$idusuario'";
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 		?><script language="javascript">alert(' Atualizado setor');window.location.href='corpo_do_sistema.php';</script><?
