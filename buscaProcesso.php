@@ -11,7 +11,7 @@ $database_connTutoiMasters = $dbname;
 
 ?>
 <br><br>
-<table style="width:70%; border:solid 1px #333333;" cellpadding="4" cellspacing="4">
+<table style="width:80%; border:solid 1px #333333;" cellpadding="4" cellspacing="4">
 <tr>
 <td style="background-color:#9999CC; color:#FFFFFF;"><b>Processo</b></td>
 <td style="background-color:#9999CC; color:#FFFFFF;"><b>Assunto</b></td>
@@ -41,11 +41,11 @@ $totalRows_rsBusca = mysql_num_rows($rsBusca);
 				$assunto = $row_rsBusca['assunto'];
 				$favorecido = $row_rsBusca['favorecido'];
 
-				// Colorir linha sim, linha não ####################
+				// Colorir linha sim, linha nï¿½o ####################
 				$cont = $cont + 1;
 				if ($cont % 2) { $bg = "#FFF"; } else {
 				$bg = "#E2E2E2"; }
-				// Colorir linha sim, linha não ####################
+				// Colorir linha sim, linha nï¿½o ####################
 				
 ?>
 
@@ -67,7 +67,7 @@ $totalRows_rsBusca = mysql_num_rows($rsBusca);
 </td>
 
 <td style="background-color:<? echo $bg; ?>">
-<a href="adicionaprocessoaoprotocolo.php?modo=parc&idprocesso=<?php echo urlencode($row_rsBusca['nprocesso']); ?>&idmovimentacao=<?php echo urlencode($row_rsBusca['nprocesso']) ?>&idnomesetor=<?php echo $array_exibir['idprocesso'] ?>" onclick="return confirm('confirme as informação antes de empilhar o registro: <?php echo urlencode($row_rsBusca['nprocesso']) ?>')"><i class="icon-pencil icon-white"></i> Empilhar</a>
+<a href="adicionaprocessoaoprotocolo.php?modo=parc&idprocesso=<?php echo urlencode($row_rsBusca['nprocesso']); ?>&idmovimentacao=<?php echo urlencode($row_rsBusca['nprocesso']) ?>&idnomesetor=<?php echo $array_exibir['idprocesso'] ?>" onclick="return confirm('confirme as informaï¿½ï¿½o antes de empilhar o registro: <?php echo urlencode($row_rsBusca['nprocesso']) ?>')"><i class="icon-pencil icon-white"></i> Empilhar</a>
 </td>
 </tr>
 

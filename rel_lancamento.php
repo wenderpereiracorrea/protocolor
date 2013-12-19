@@ -112,5 +112,5 @@ Data Inicial:
 
 </center>
 </HEAD>
-<? include "footer.php" ?>
+
 </HTML>

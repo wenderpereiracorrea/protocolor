@@ -76,6 +76,10 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 <select name='pesqnome'  class="caixa" onChange="form.submit();" >
 				<?
 					$sqlquery = "select * from usuario order by login";
+					mysql_query("SET NAMES 'utf8'");
+					mysql_query('SET character_set_connection=utf8');
+					mysql_query('SET character_set_client=utf8');
+					mysql_query('SET character_set_results=utf8');
 					$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 					if ($pesqnome<>'') {
 						echo "<option value='$pesqnome'>$pesqnome</option>\n";
@@ -103,6 +107,11 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 		if ($datainipesq<>"" && $datainipesq<>"") { 
 
 		$sqlquery = "select * from historico ";
+		mysql_query("SET NAMES 'utf8'");
+		mysql_query('SET character_set_connection=utf8');
+		mysql_query('SET character_set_client=utf8');
+		mysql_query('SET character_set_results=utf8');
+
 		
 		//if ($pesqnome<>"") {
 		$sqlquery = $sqlquery." where usuario <> '".$pesqnome."'";
@@ -115,10 +124,10 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 			$sqlquery = $sqlquery." and data <= '".tdate($datafimpesq,0)."'";
 		}
 		if ($ordem == "") {			
-			$sqlquery = $sqlquery." order by id desc, hora desc";
+			$sqlquery = $sqlquery." order by id desc";
 		}
 		if ($ordem == "data") {			
-			$sqlquery = $sqlquery." order by data desc, hora desc";
+			$sqlquery = $sqlquery." order by data desc";
 		}
 		if ($ordem == "maquina") {			
 			$sqlquery = $sqlquery." order by ip";
@@ -129,18 +138,21 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 		if ($ordem == "acao") {			
 			$sqlquery = $sqlquery." order by acao";
 		} 
+		mysql_query("SET NAMES 'utf8'");
+		mysql_query('SET character_set_connection=utf8');
+		mysql_query('SET character_set_client=utf8');
+		mysql_query('SET character_set_results=utf8');
 		$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 		if (mysql_num_rows($process) > 0) {
 					while ($line = mysql_fetch_array($process)) {
 						$id = $line['id'];
 						$data = $line['data'];
-						$hora = $line['hora'];
 						$usuario_hist = $line['usuario'];
 						$ip = $line['ip'];
 						$acao = $line['acao'];
 						?>
 						<tr>
-							<td style="visibility:hidden"><? echo ($id); ?></td><td class="caixa"><? echo tdate($data,1); ?></td><td class="caixa"><? echo ($hora); ?></td><td class="caixa"><? echo ($ip); ?></td><td class="caixa"><? echo ($usuario_hist); ?></td><td class="caixa"><? echo ($acao); ?></td>
+							<td style="visibility:hidden"><? echo ($id); ?></td><td class="caixa"><? //echo tdate($data,1); ?></td><td class="caixa"><? echo ($hora); ?></td><td class="caixa"><? echo ($ip); ?></td><td class="caixa"><? echo ($usuario_hist); ?></td><td class="caixa"><? echo ($acao); ?></td>
 						</tr>
 						<?
 					}

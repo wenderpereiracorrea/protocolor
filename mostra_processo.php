@@ -14,13 +14,21 @@ if ($tipo=="confirma")
 	mysql_query('SET character_set_results=utf8');
 	$sql="update circulacao set observacao = 'EM USO' where idprocesso = ".$idprocesso."";
 	$sql=$sql." and observacao='EM TRÂNSITO'";
+	mysql_query("SET NAMES 'utf8'");
+	mysql_query('SET character_set_connection=utf8');
+	mysql_query('SET character_set_client=utf8');
+	mysql_query('SET character_set_results=utf8');
 	$process = mysql_query($sql) or die("Erro: " . mysql_error());
 	$sql="update processo set localizacao = '".$setor_usuario."' where idprocesso = ".$idprocesso."";
+	mysql_query("SET NAMES 'utf8'");
+	mysql_query('SET character_set_connection=utf8');
+	mysql_query('SET character_set_client=utf8');
+	mysql_query('SET character_set_results=utf8');
 	$process = mysql_query($sql) or die("Erro: " . mysql_error());
-	$sql="insert into historico (data,hora,usuario,acao,ip) 
-		values ('" . tdate($date,0) . "','" . $hora  . "','". $_SESSION["nome"]."','Confirmou recebimento do processo n° ".$nprocesso."','".get_ip()."')";	
-	$process = mysql_query($sql) or die("Erro: " . $sql);
-	$tipo="confirmado";			
+	//$sql="insert into historico (data,hora,usuario,acao,ip) 
+	//	values ('" . tdate($date,0) . "','" . $hora  . "','". $_SESSION["nome"]."','Confirmou recebimento do processo n° ".$nprocesso."','".get_ip()."')";	
+	//$process = mysql_query($sql) or die("Erro: " . $sql);
+	//$tipo="confirmado";			
 	
 }
 //****************************************************************************************
@@ -36,10 +44,10 @@ if (is_numeric($idprocesso))
 		$sqlquery = $sqlquery."  and setorsolicitante = '".$setorsolicita."'";
 	}
 } else {
-		mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
+	mysql_query("SET NAMES 'utf8'");
+	mysql_query('SET character_set_connection=utf8');
+	mysql_query('SET character_set_client=utf8');
+	mysql_query('SET character_set_results=utf8');
 	$sqlquery="select * from processo where";
 	$sqlquery=$sqlquery." (assunto like '%".$idprocesso."%'";
 	$sqlquery=$sqlquery." or favorecido like '%".$idprocesso."%')";
@@ -56,7 +64,6 @@ if (is_numeric($idprocesso))
 		$numero = $line['numero'];
 		$dataent = $line['dataent'];
 		$up = $line['up'];
-		$nprocesso = $line['nprocesso'];
 		$ano = $line['ano'];
 		$dv = $line['dv'];
 		$procedencia = $line['procedencia'];
@@ -163,7 +170,7 @@ if (mysql_num_rows($process) > 0)  //  ****** SE EXISTIR HISTÓRICO O USUÁRIO  
 <?
 		$mudacor=1;
 		$i = 0;
-				mysql_query("SET NAMES 'utf8'");
+		mysql_query("SET NAMES 'utf8'");
 		mysql_query('SET character_set_connection=utf8');
 		mysql_query('SET character_set_client=utf8');
 		mysql_query('SET character_set_results=utf8');
@@ -182,20 +189,20 @@ if (mysql_num_rows($process) > 0)  //  ****** SE EXISTIR HISTÓRICO O USUÁRIO  
 			if ($contloop==0) { $localatual=$contloop; }
 			if ($mudacor > 0) { $corcaixa="caixalistaclaro"; } else { $corcaixa="caixalistaescuro"; } 
 ?>		<tr> 
-<? 	 //		if ($_SESSION['setor_usuario']=='PROTOCOLO') 
-	//		{ 			
-?>				<td name="landatahist" class="<? echo $corcaixa; ?>" readonly="readonly" bordercolor="#000000"><? echo tdate($data,1); ?></td>
-					<td name='local' type='text' id='local' class="<? echo $corcaixa; ?>" readonly="readonly" ><?  echo($destino); ?></td>
-
-					<td name="despacho" type="text" id="despacho" class="<? echo $corcaixa; ?>" readonly="readonly"><?  echo upper(($despacho)); ?><font color="#CC0000"><?  if ($observacao=='EM TRÂNSITO') { echo " - OBS.: ".$observacao; $refobs=$destino; } ?></font></td>	
-
-<?					}
+<? 	if (strstr($_SESSION['setor_usuario'],'Protocolo')) 
+		{ 			
+?>		<td name="landatahist" class="<? echo $corcaixa; ?>" readonly="readonly" bordercolor="#000000"><? echo tdate($data,1); ?></td>
+		<td name='local' type='text' id='local' class="<? echo $corcaixa; ?>" readonly="readonly" ><?  echo($destino); ?></td>
+                <td name="despacho" type="text" id="despacho" class="<? echo $corcaixa; ?>" readonly="readonly"><?  echo strtoupper($despacho); ?>
+                    <font color="#CC0000"><?  if ($observacao=='EM TRANSITO') { echo " - OBS.: ".$observacao; $refobs=$destino; } ?></font></td>	
+<?		}
 ?>		</tr> 
-<?	/*		$contloop = $contloop + 1;
+<?			$contloop = $contloop + 1;
 			$mudacor=$mudacor * (-1);	
-		} */
+		} 
 ?>	</table>
-<?	}	mysql_free_result($process);   // ********** ENCERRA "SE EXISTIR HISTÓRICO"  ************** ?>
+<?	}	
+mysql_free_result($process);   // ********** ENCERRA "SE EXISTIR HISTÓRICO"  ************** ?>
 <?	
 //****************************************************************************************
 //****************************************************************************************
@@ -205,7 +212,7 @@ if (mysql_num_rows($process) > 0)  //  ****** SE EXISTIR HISTÓRICO O USUÁRIO  
 ?>
 <center><br>
 <br><br>
-<? if ($modo==parc || $modo==comp) { ?>
+<? if ($modo == parc || $modo == comp) { ?>
 	<input name='Voltar' type='button' value='VOLTAR' class='botao' onClick="javascript:window.location.href='pesquisa.php';">
 	<? } else { ?>
 	<input name='Voltar' type='button' value='VOLTAR' class='botao' onClick="javascript:history.back();">
@@ -216,7 +223,7 @@ if (mysql_num_rows($process) > 0)  //  ****** SE EXISTIR HISTÓRICO O USUÁRIO  
 <? } ?>
 
 <?
-if ($_SESSION[perfil] != "0")
+if ($_SESSION[perfil] == "1")
 { ?>
 	<input type="button" onClick="javascript:Encaminha();" name="Encaminhar" class="botao" id="Encaminhar" value="ENCAMINHAR" alt="Encaminhar Processo">
 <? } ?>
@@ -235,5 +242,4 @@ if ($_SESSION[perfil] != "0")
 	}
 </script>	
 </HEAD>
-<? include "footer.php" ?>
 </HTML>

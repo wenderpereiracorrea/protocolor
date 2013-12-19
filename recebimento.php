@@ -38,8 +38,8 @@ if ($_GET[recebe] == "SIM") {
 $sqlquery = "UPDATE circulacao SET observacao = 'TRANSFERIDO' WHERE nprocesso = '".$_GET[num]."'"; 
 $process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
-$sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SESSION["nome"]."','" .tdate($date,0). "','" . $hora  . "','Recebeu o Processo $_GET[num]','".get_ip()."')";
-    mysql_query($sql_ins);
+//$sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SESSION["nome"]."','" .tdate($date,0). "','" . $hora  . "','Recebeu o Processo $_GET[num]','".get_ip()."')";
+  //  mysql_query($sql_ins);
 
 ?><script language="javascript1.2">alert('Processo Recebido!!!');</script><? 
  }

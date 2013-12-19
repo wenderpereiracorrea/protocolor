@@ -1,5 +1,5 @@
 ﻿<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<?php header("Content-type: text/html; charset=UTF-8");?> 
+<? header("Content-type: text/html; charset=UTF-8");?> 
 <? import_request_variables("gP"); ?>
 <? 
 session_start ();

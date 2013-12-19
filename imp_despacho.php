@@ -1,4 +1,4 @@
-<? 
+ï»¿<? 
 session_start();
 import_request_variables("gP");
 include("conexao.php");
@@ -9,12 +9,12 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 ?>
 <HTML>
 <HEAD>
-<TITLE>Relatório</TITLE>
+<TITLE>RelatÃ³rio</TITLE>
 
 
 <link href='styles_print.css' rel='stylesheet' type='text/css'>
 <SCRIPT LANGUAGE=JAVASCRIPT>
-// Identificação de browser
+// IdentificaÃ§Ã£o de browser
 var isNav4, isNav, isIE;
 if (parseInt(navigator.appVersion.charAt(0)) >= 4) {
 	isNav = (navigator.appName=="Netscape") ? true : false;
@@ -70,6 +70,10 @@ PRE { page-break-after: always; }
 <p><br><br>
 <?
 $sql="select * from setor where setor = '".$_GET[setor_usuario]."'";
+mysql_query("SET NAMES 'utf8'");
+mysql_query('SET character_set_connection=utf8');
+mysql_query('SET character_set_client=utf8');
+mysql_query('SET character_set_results=utf8');
 $process = mysql_query($sql) or die("Erro: " . mysql_error());
 $line = mysql_fetch_array($process);
 $genero = $line['genero'];
@@ -105,7 +109,7 @@ $despachoimp = $line['despacho'];
 <TR><TD>&nbsp;</TD></TR>
 
 <? if ($genero == "f") { ?>
-<TR><TD><font size="3">À</font></TD></TR>
+<TR><TD><font size="3">Ã€</font></TD></TR>
 <? } ?>
 
 <? if ($genero == "m") { ?>
@@ -120,7 +124,7 @@ $despachoimp = $line['despacho'];
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD>&nbsp;</TD></TR>
-<TR><TD><font size="3">Encaminhamos o processo acima referenciado a este setor para as seguintes providências:</font></TD></TR>
+<TR><TD><font size="3">Encaminhamos o processo acima referenciado a este setor para as seguintes providÃªncias:</font></TD></TR>
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD><font size="3"><center><font size="3"><b><? echo ucwords(lower($despachoimp)); ?></b></font></center></TD></TR>

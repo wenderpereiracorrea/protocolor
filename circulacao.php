@@ -26,9 +26,9 @@ if ($_GET[excluir] == "EXCLUIR2" and $_GET[cod] != "") {
     $sqlquery = "DELETE FROM circulacao WHERE idcircula = ".$_GET[cod]."";
 	$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
-	$hist="insert into historico (data,hora,usuario,acao) 
-		values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Excluiu circulacao para o processo n° ".$_POST[nprocesso]."')";	
-	$process_hist = mysql_query($hist) or die("Erro: " . $hist);
+	//$hist="insert into historico (data,hora,usuario,acao) 
+		//values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Excluiu circulacao para o processo n° ".$_POST[nprocesso]."')";	
+	//$process_hist = mysql_query($hist) or die("Erro: " . $hist);
 
 ?><script language="javascript1.2">alert('Registro Excluido com Sucesso!!!');</script><? 
 unset($excluir); }
@@ -51,9 +51,9 @@ if ($_POST[alterar] == "Atualizar"  and $_POST[id] != "") {
 $sqlquery = "UPDATE circulacao SET nprocesso = '".$_POST[nprocesso]."', data = '".tdate($_POST[data],0)."', hora = '".$_POST[hora]."', origem = 'PROTOCOLO', destino = '".$_POST[destino]."', despacho = '".$_POST[despacho]."' WHERE idcircula = ".$_POST[id].""; 
 	$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
-	$hist="insert into historico (data,hora,usuario,acao) 
-		values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Alterou circulacao para o processo n° ".$_POST[nprocesso]."')";	
-	$process_hist = mysql_query($hist) or die("Erro: " . mysql_error());
+	//$hist="insert into historico (data,hora,usuario,acao) 
+		//values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Alterou circulacao para o processo n° ".$_POST[nprocesso]."')";	
+	//$process_hist = mysql_query($hist) or die("Erro: " . mysql_error());
 
 ?><script language="javascript1.2">alert('Registro Atualizado com Sucesso!!!');</script><? 
 unset($alterar); }
@@ -87,9 +87,9 @@ $insere = "insert into circulacao
 $resultado = mysql_query($insere)
 or die ("Falha na execução da consulta");
 
-	$hist="insert into historico (data,hora,usuario,acao) 
-		values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Inseriu circulacao para o processo n° ".$_POST[nprocesso]."')";	
-	$process_hist = mysql_query($hist) or die("Erro: " . $hist);
+//	$hist="insert into historico (data,hora,usuario,acao) 
+//		values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Inseriu circulacao para o processo n° ".$_POST[nprocesso]."')";	
+//	$process_hist = mysql_query($hist) or die("Erro: " . $hist);
 
 ?>
 <script language="javascript" type="text/javascript">

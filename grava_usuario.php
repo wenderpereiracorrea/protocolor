@@ -5,8 +5,31 @@ include "valida_user.php";
 $date = date("d/m/y");
 $hora= gmdate("H:i" ,time()-(3570*2));
 connect();
-if($modo=='gravando')
+
+if ($_POST[inserir] == "Gravar") 
 { 
+            mysql_query("SET NAMES 'utf8'");
+            mysql_query('SET character_set_connection=utf8');
+            mysql_query('SET character_set_client=utf8');
+            mysql_query('SET character_set_results=utf8');
+            $sqlquery = "select * from usuario where login = '".$_POST[login]."'";
+            $processq = mysql_query($sqlquery) or die("Erro: " . mysql_error());
+            if (mysql_num_rows($processq) > 0) 
+            { echo "Este login já está sendo utilizado por outro usuário!"; } else {
+
+$insere = "insert into usuario
+             (login, senha, nome, perfil, setor)
+			 values
+			 ('".$_POST[login]."', '".md5($_POST[senha])."', '".$_POST[nome]."', '".$_POST[perfil]."', '".$_POST[setor]."')";
+				mysql_query("SET NAMES 'utf8'");
+				mysql_query('SET character_set_connection=utf8');
+				mysql_query('SET character_set_client=utf8');
+				mysql_query('SET character_set_results=utf8');
+				$resultado = mysql_query($insere)
+or die ("Falha na execução da consulta");  
+       
+  //antigo  
+       
 	$sql="select * from usuario";
 	$sql = $sql." where login = '".$novologin."'";	
 	$process = mysql_query($sql) or die("Erro: " . mysql_error());	
@@ -98,7 +121,8 @@ $sql = "UPDATE usuario SET nome = '$nome_usuario', login = '$login_usuario',senh
 				</tr>
 				<tr>
 					<td><div align='right'>Nome:&nbsp;</div></td> 
-					<td><input name='novonome' class="validate[required,minSize[4]]" type='text' id='novonome' size='40' maxlength='40' class='caixa' value='<? echo ($novonome); ?>' onClick='javascript:document.form.Gravar.style.visibility = "visible";'  onFocus='Focus(this);document.form.aviso.value="Digite o nome do usuário.";' onBlur='Blur(this);'></td>
+
+                                        <td><input name='novonome' class="validate[required,minSize[4]]" type='text' id='novonome' size='40' maxlength='40' class='caixa' value='<? echo ($novonome); ?>' onClick='javascript:document.form.Gravar.style.visibility = "visible";'  onFocus='Focus(this);document.form.aviso.value="Digite o nome do usuário.";' onBlur='Blur(this);'></td>
 				</tr>  
 				<tr>
 					<td><div align='right'>Login:&nbsp;</div></td>
@@ -154,7 +178,8 @@ $sql = "UPDATE usuario SET nome = '$nome_usuario', login = '$login_usuario',senh
 			</table> 		
 	<br><p><center><input name="aviso" id="aviso" style="text-align:center;" size="100" class="aviso" readonly></center></p><br>
 	<center>
-			<input type="button" onClick="javascript:confirmausu();" name="Gravar" class="botao" id="Gravar" value="GRAVAR" alt="Gravar">
+                        <input type="submit" name="inserir" value="Gravar" style="color:#006600" onClick="return avalia_enviar(this);">&nbsp;
+			<!--<input type="button" onClick="javascript:confirmausu();" name="Gravar" class="botao" id="Gravar" value="GRAVAR" alt="Gravar">-->
 			<input type="hidden" name="modo" value="gravando">
 	<? // *****************  BOTÕES  *********************  ?>
 	<input name='Retornar' type='button' value='RETORNAR' class='botao' onclick='javascript:history.back();'>&nbsp;&nbsp;<input name='Encerrar' type='button' value='ENCERRAR' class='botao' onClick="javascript:window.location.href='corpo_do_sistema.php';">&nbsp;&nbsp;
