@@ -397,7 +397,7 @@ unset ($assunto);unset ($anexos);unset ($volumes);unset ($folhas);unset ($observ
                     <b>Digite o número que o sistema irá calcular o dígito verificador:</b>
                 </td>
             </tr>
-            <label>Ex.: 01530.000439/2006 (15 números)</label>
+            <label>Ex.: 01550.000439/2006 (15 números)</label>
             <tr>
                 <td class="caixaazul">
                     <input type="text" name="nprocesso1" maxlength="15" onKeyPress="return txtBoxFormat(this, '999999999999999', event);">&nbsp;

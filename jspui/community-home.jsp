@@ -78,7 +78,7 @@
   <table border="0" cellpadding="5" width="100%">
     <tr>
       <td width="100%">
-        <h1><%= name %>
+        <h3><%= name %>
         <%
             if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))
             {
@@ -87,7 +87,7 @@
 <%
             }
 %>
-        </h1>
+        </h3>
 		<h3><fmt:message key="jsp.community-home.heading1"/></h3>
       </td>
       <td valign="top">

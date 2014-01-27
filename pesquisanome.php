@@ -63,7 +63,7 @@ if ($_POST[consultar] == "Consultar") {
        <tr> 
        <td colspan="6" class="caixaazul">
        Origem:&nbsp;
-			<input name="up" value="01530" type="text" size="5" class="cor-inativa">
+			<input name="up" value="01550" type="text" size="5" class="cor-inativa">
 			&nbsp;
 
        Informe o assunto ou interessado:&nbsp;

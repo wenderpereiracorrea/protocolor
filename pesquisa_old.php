@@ -40,7 +40,7 @@ if ($processocom!="")
 	{ 
 ?>
 		<script>
-			alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nUP (5 números).Ex.: 01530\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
+			alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nUP (5 números).Ex.: 01550\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
 		</script>
 <?	
 		$processocom = "";

@@ -67,7 +67,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			<script language="javascript">
 			var frase;
 			frase="ERRO\nNão foram digitados todos os números.\n\nVerifique:\nUP (5 números).";
-			frase=frase + "Ex.: 01530\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).";
+			frase=frase + "Ex.: 01550\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).";
 			frase=frase + "Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>";
 			alert(frase);
 			</script><?
@@ -266,7 +266,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		if (strlen($processocom) < 17) // Verifica se o nº do processo está completo
 			{ ?>
 				<script language="javascript">
-					alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nUP (5 números).Ex.: 01530\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
+					alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nUP (5 números).Ex.: 01550\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
 				</script><?
 				$processocom = "";
 				$fase = "Digitacao";
@@ -574,7 +574,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			<? if ($processocom=="") 
 				{ ?>
 				 <tr>
-					<td align="center" colspan="10" class="caixaazul"><center>Digite o nº completo do processo. Ex.: 01530.000439/2006 (15 números)</center></td>
+					<td align="center" colspan="10" class="caixaazul"><center>Digite o nº completo do processo. Ex.: 01550.000439/2006 (15 números)</center></td>
 				</tr>
 			<? 	} ?>
 			<tr><td>&nbsp;</td></tr>

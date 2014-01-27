@@ -49,6 +49,35 @@
         <link rel="stylesheet" href="<%= request.getContextPath() %>/styles.css" type="text/css" />
         <link rel="stylesheet" href="<%= request.getContextPath() %>/print.css" media="print" type="text/css" />
         <link rel="shortcut icon" href="<%= request.getContextPath() %>/favicon.ico" type="image/x-icon"/>
+		
+		<%-- DSpace HEADER WENDER --%>
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+		<link rel="shortcut icon" href="assets/ico/favicon.png">
+		
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		<%-- DSpace HEADER WENDER --%>
+		<link href="<%= request.getContextPath() %>/barra.css" rel="stylesheet" type="text/css" />
+		<link href="<%= request.getContextPath() %>/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="<%= request.getContextPath() %>/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="<%= request.getContextPath() %>/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+		<link href="<%= request.getContextPath() %>/bootstrap/css/docs.css" rel="stylesheet" type="text/css" />
+		<link href="<%= request.getContextPath() %>/bootstrap/js/google-code-prettify/prettify.css" rel="stylesheet" type="text/css" />
+		<link href="<%= request.getContextPath() %>/bootstrap/js/bootstrap.js" rel="stylesheet" type="text/css" />
+		<link href="<%= request.getContextPath() %>/bootstrap/js/bootstrap.min.js" rel="stylesheet" type="text/css" />
+		<%-- DSpace HEADER WENDER --%>
+		
+		<div id="barra-brasil">
+		  <div class="barra">
+			<ul>
+			  <li>
+			  <a href="http://www.acessoainformacao.gov.br" class="ai" title="Acesso à informação">www.sic.gov.br</a></li>
+			  <li><a href="http://www.brasil.gov.br" class="brasilgov" title="Portal de Estado do Brasil">www.brasil.gov.br</a></li>
+			</ul>
+		  </div>
+		  </div>
 <%
     if (!"NONE".equals(feedRef))
     {
@@ -89,13 +118,26 @@
         <%-- DSpace top-of-page banner --%>
         <%-- HACK: width, border, cellspacing, cellpadding: for non-CSS compliant Netscape, Mozilla browsers --%>
 
-<div height="276" border="0" leftmargin="0" rightmargin="0" topmargin="0" marginheight="0" marginwidth="0" cellspacing="0" cellpadding="0" align="left">
-          
-         <a href="<%= request.getContextPath() %>/">
-         <img src="<%= request.getContextPath() %>/image/fcrbbarra.jpg" alt="<fmt:message key="jsp.layout.header-default.alt"/>" width="100%" height="100%" border="0"/></a>
-       <%--      <a href="<%= request.getContextPath() %>/">
-      <img src="<%= request.getContextPath() %>/image/fcrbbarratira.jpg" width="100%" height="276" border="0"></a>--%>
- </table>
+	<div height="276" border="0" leftmargin="0" rightmargin="0" topmargin="0" marginheight="0" marginwidth="0" cellspacing="0" cellpadding="0" align="left">
+
+			<table class="pageBanner" width="100%" border="0" cellpadding="0" cellspacing="0">
+
+            <%-- DSpace logo --%>
+            <tr>
+			<td class="tagLine">
+			<a href="<%= request.getContextPath() %>/">
+			<%-- DSpace HEADER WENDER --%>
+			<img src="<%= request.getContextPath() %>/image/header2.jpg" alt="<fmt:message key="jsp.layout.header-default.alt"/>" width="100%" height="100%" border="0"/>
+			</a>
+			</td>
+            </tr>
+            <tr class="stripe"> <%-- Blue stripe --%>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+        </table>
+      
+		</table>
+ </div>
        
         <%-- Localization --%>
 <%--  <c:if test="${param.locale != null}">--%>

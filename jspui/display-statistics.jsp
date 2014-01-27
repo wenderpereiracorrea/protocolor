@@ -32,8 +32,8 @@
 
 
 <dspace:layout titlekey="jsp.statistics.title">
-<h1><fmt:message key="jsp.statistics.title"/></h1>
-<h2><fmt:message key="jsp.statistics.heading.visits"/></h2>
+<h3><fmt:message key="jsp.statistics.title"/></h3>
+<h4><fmt:message key="jsp.statistics.heading.visits"/></h4>
 <table class="statsTable">
 <tr>
 <th><!-- spacer cell --></th>

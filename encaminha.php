@@ -50,7 +50,7 @@ if ($processocom!="")
 	{ 
 ?>
 		<script>
-			alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nUP (5 números).Ex.: 01530\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
+			alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nUP (5 números).Ex.: 01550\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
 		</script>
 <?	
 		$processocom = "";
@@ -192,7 +192,7 @@ if (!isset($processocom) &&  !isset($processored) && !isset($pchave))
 ?>
 	<table align="center" width="50%" cellpadding="0" cellspacing="0">
 		<tr>
-			<td align="center" colspan="10" class="caixaazul"><center>Digite o nº completo do processo. Ex.: 01530.000439/2006 (15 números)</center></td>
+			<td align="center" colspan="10" class="caixaazul"><center>Digite o nº completo do processo. Ex.: 01550.000439/2006 (15 números)</center></td>
 		</tr>
 		<tr>
         	<td>&nbsp;</td>

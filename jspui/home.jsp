@@ -112,29 +112,34 @@ for (int i = supportedLocales.length-1; i >= 0; i--)
         </tr>
     </table>
     <br/>
-    <div align="justify"> Bem-vindo à Biblioteca Digital da Fundação Casa de Rui Barbosa. 
+    <div class="oddRowEvenCol" align="justify">
+	<p class="text-info"> <em>Bem-vindo à Biblioteca Digital da Fundação Casa de Rui Barbosa. 
+	Nosso meta é possibilitar, de forma integrada, a gestão e divulgação de documentos em meio digital. 
+	Você encontrará aqui dois tipos de material: a produção técnico-científica da instituição e o acervo
+	documental adquirido pela FCRB através de doação, compra ou intercâmbio. 
+	</em>
+	</p>
 
-Nosso meta é possibilitar, de forma integrada, a gestão e divulgação de documentos em meio digital. 
-
-Você encontrará aqui dois tipos de material: a produção técnico-científica da instituição e o acervo documental adquirido pela FCRB através de doação, compra ou intercâmbio. </div>
     <form action="<%= request.getContextPath() %>/simple-search" method="get">
         <table class="miscTable" width="85%" align="center">
             <tr>
                 <td class="oddRowEvenCol">
                  <h3><fmt:message key="jsp.home.search1"/>
                   <a href="<%= request.getContextPath() %>/advanced-search"><fmt:message key="jsp.layout.navbar-default.advanced"/></a>
-<%
+				<%
                         if (ConfigurationManager.getBooleanProperty("webui.controlledvocabulary.enable"))
                         {
-%>
-              <br/><a href="<%= request.getContextPath() %>/subject-search"><fmt:message key="jsp.layout.navbar-default.subjectsearch"/></a>
-<%
-            }
-%>
-</h3>
+				%>
+				<br/>
+				<a href="<%= request.getContextPath() %>/subject-search"><fmt:message key="jsp.layout.navbar-default.subjectsearch"/></a>
+				<%
+				}
+				%>
+				</h3>
                    <p><label for="tquery"><fmt:message key="jsp.home.search2"/></label></p>
                       <p><input type="text" name="query" size="20" id="tquery" />&nbsp;
-                         <input type="submit" name="submit" value="<fmt:message key="jsp.general.search.button"/>" /></p>
+                         <input type="submit" name="submit" value="<fmt:message key="jsp.general.search.button"/>" />
+				   </p>
 
               </td>
                    
@@ -158,15 +163,16 @@ Você encontrará aqui dois tipos de material: a produção técnico-científica
 
     for (int i = 0; i < communities.length; i++)
     {
-%>                  <tr>
-                        <td class="standard">
-       <div> <a href="<%= request.getContextPath() %>/handle/<%= communities[i].getHandle() %>"><%= communities[i].getMetadata("name") %></a>
-<div>
-<img src="<%= request.getContextPath() %>/image/prodteccient.jpg" width="211" height="123" border="0">
-</div>
-                            <a href="<%= request.getContextPath() %>/handle/<%= communities[i].getHandle() %>"><%= communities[i].getMetadata("name") %></a>
-</div>
-
+%>                 
+	    <tr>
+        <td class="standard">
+        <div align="center"> 
+	    <a href="<%= request.getContextPath() %>/handle/<%= communities[i].getHandle() %>"><%= communities[i].getMetadata("name") %></a>
+	    <div>
+		<a href="<%= request.getContextPath() %>/handle/<%= communities[i].getHandle() %>">
+		<img src="<%= request.getContextPath() %>/image/prodteccient.jpg" class="img-rounded" width="311" height="223" border="0">
+		</a>
+		</div>
 <%
         if (ConfigurationManager.getBooleanProperty("webui.strengths.show"))
         {
@@ -176,9 +182,8 @@ Você encontrará aqui dois tipos de material: a produção técnico-científica
         }
 
 %>
-                        </td>
-                  
-                    </tr>
+         </td>
+         </tr>
 <%
     }
 %>
@@ -186,8 +191,7 @@ Você encontrará aqui dois tipos de material: a produção técnico-científica
 <%                
  }
 %>  
-
-            </td>
+		</td>
         </tr>
     </table>
     <dspace:sidebar>
@@ -200,7 +204,9 @@ Você encontrará aqui dois tipos de material: a produção técnico-científica
 <form method="get" action="http://scholar.google.com/scholar">
 <table bgcolor="#FFFFFF">
   <tr>
-    <td align="center"><a href="http://scholar.google.com/"> <img src="http://scholar.google.com/scholar/scholar_sm.gif" alt="Google Scholar" width="100" height="35" border="0" align="absmiddle" /></a><br />
+    <td align="center"><a href="http://scholar.google.com/">
+	<img src="http://scholar.google.com/scholar/scholar_sm.gif" alt="Google Scholar" width="100" height="35" border="0" align="absmiddle" /></a>
+	<br />
     <input type="hidden" name="hl" value="en">
     <input type="text" name="q" size="10" maxlength="255" value="" /><br />
     <input type="submit" name="btnG" size="7" value="Search" />
@@ -215,6 +221,8 @@ Você encontrará aqui dois tipos de material: a produção técnico-científica
 	%>
 	    <center>
 	   <%-- <h4><fmt:message key="jsp.home.feeds"/></h4> --%>
+	   
+	   
 	<%
 	    	String[] fmts = feedData.substring(feedData.indexOf(':')+1).split(",");
 	    	String icon = null;

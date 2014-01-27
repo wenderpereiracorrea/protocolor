@@ -109,7 +109,7 @@ $sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SE
 </table>
 
 <br><br><br><br>
-Informe o <b>número completo</b> do processo. Ex: <b>(01530.000000/0000-00)</b>.<br>
+Informe o <b>número completo</b> do processo. Ex: <b>(01550.000000/0000-00)</b>.<br>
 O sistema irá emitir uma mensagem, caso o processo esteja em trânsito, para que o usuário possa confirmar o acolhimento.
 </center>
 
@@ -130,7 +130,7 @@ O sistema irá emitir uma mensagem, caso o processo esteja em trânsito, para qu
 
 </form>
 <br><br><br><br>
-Informe o <b>número completo</b> do processo. Ex: <b>(01530.000000/00-00)</b>.<br>
+Informe o <b>número completo</b> do processo. Ex: <b>(01550.000000/00-00)</b>.<br>
 O sistema irá emitir uma mensagem, caso o processo esteja em trânsito, para que o usuário possa confirmar o acolhimento.
 </center>
 

@@ -44,22 +44,29 @@
             </tr>
 
             <%-- Page footer --%>
-             <tr class="pageFooterBar">
+             <tr class="container">
                 <td colspan="<%= overallColSpan %>" class="pageFootnote">
                     <table class="pageFooterBar" width="100%">
                         <tr>
-                            <td>
+							<td>
                                 <a href="http://validator.w3.org/check?uri=referer"><img
                                     src="<%= request.getContextPath() %>/image/valid-xhtml10.png"
-                                    alt="Valid XHTML 1.0!" height="31" width="88" /></a>
+                                    alt="Valid XHTML 1.0!" height="15" width="68" />
+								</a>
                             </td>
-                            <td class="pageFootnote">
+							<td class="pageFootnote">
                                 <fmt:message key="jsp.layout.footer-default.text"/>&nbsp;-
                                 <a target="_blank" href="<%= request.getContextPath() %>/feedback"><fmt:message key="jsp.layout.footer-default.feedback"/></a>
                                 <a href="<%= request.getContextPath() %>/htmlmap"></a>
                             </td>
-                            <td nowrap="nowrap" valign="middle"> <%-- nowrap, valign for broken NS 4.x --%>
+							<td class="pageFootnote">
+							
+								<img src="<%= request.getContextPath() %>/image/logoFCRB.gif" alt="" width="50%"
+									height="50%" style="display: block;" />
+							</td>
+							<td nowrap="nowrap" valign="middle"> <%-- nowrap, valign for broken NS 4.x --%>
                             </td>
+
                         </tr>
                     </table>
                 </td>

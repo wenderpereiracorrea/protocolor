@@ -153,7 +153,7 @@
     else
     {
 %>
-	<h1><fmt:message key="jsp.community-list.title"/></h1>
+	<h3><fmt:message key="jsp.community-list.title"/></h3>
 	<p><fmt:message key="jsp.community-list.text1"/></p>
 <%
     }

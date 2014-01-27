@@ -26,7 +26,7 @@ if (isset($_GET['q'])) {
 
 $query_rsBusca = sprintf("select nprocesso, idprocesso, assunto, favorecido
 from  processo
-where (favorecido LIKE '%%%s%%') LIMIT 15", $colname_rsBusca,$colname_rsBusca);
+where (favorecido LIKE '%%%s%%') LIMIT 150", $colname_rsBusca,$colname_rsBusca);
 $rsBusca = mysql_query($query_rsBusca) or die("Erro");
 $row_rsBusca = mysql_fetch_assoc($rsBusca);
 $totalRows_rsBusca = mysql_num_rows($rsBusca);

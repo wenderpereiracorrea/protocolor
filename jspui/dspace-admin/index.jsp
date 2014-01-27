@@ -44,7 +44,7 @@
 <dspace:layout locbar="link" navbar="admin" titlekey="jsp.administer">
 
     <%-- <h1>Administration Tools</h1> --%>
-    <h1><fmt:message key="jsp.dspace-admin.index.heading"/></h1>
+    <h3><fmt:message key="jsp.dspace-admin.index.heading"/></h3>
     
     <%-- <p>Please select an operation from the navigation bar on the left.</p> --%>
     <p><fmt:message key="jsp.dspace-admin.index.text"/></p>

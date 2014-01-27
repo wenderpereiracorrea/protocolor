@@ -20,7 +20,7 @@
 	
 <dspace:layout titlekey="jsp.tombstone.title">
 
-    <h1><fmt:message key="jsp.tombstone.title"/></h1>
+    <h3><fmt:message key="jsp.tombstone.title"/></h3>
 
     <p><fmt:message key="jsp.tombstone.text"/></p>
 	
