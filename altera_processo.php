@@ -1,6 +1,4 @@
-<?php header("Content-type: text/html; charset=UTF-8");?> 
- <?
- error_reporting(0); ?>
+﻿<? import_request_variables("gP"); error_reporting(0); ?>
 <? 
 session_start();
 include "conexao.php";
@@ -67,7 +65,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			<script language="javascript">
 			var frase;
 			frase="ERRO\nNão foram digitados todos os números.\n\nVerifique:\nUP (5 números).";
-			frase=frase + "Ex.: 01550\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).";
+			frase=frase + "Ex.: 01530\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).";
 			frase=frase + "Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>";
 			alert(frase);
 			</script><?
@@ -266,7 +264,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		if (strlen($processocom) < 17) // Verifica se o nº do processo está completo
 			{ ?>
 				<script language="javascript">
-					alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nUP (5 números).Ex.: 01550\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
+					alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nUP (5 números).Ex.: 01530\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
 				</script><?
 				$processocom = "";
 				$fase = "Digitacao";
@@ -407,7 +405,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 							<td class="caixadestaque">Processo :</td><td><input name="nprocesso" class="caixa" value="<? echo $up; ?>.<? echo substr($nprocesso,6,11); ?>" onChange="javascript:var stringer = document.form.nprocesso.value;document.form.up.value = stringer.substr(0,5);document.form.processo.value = stringer.substr(6,6);document.form.ano.value = stringer.substr(13,4);" readonly="true"></td>
 						</tr>
 						<tr> 
-							<td class="caixadestaque">Assunto :</td><td><textarea name="assunto" cols="80%" rows="1" wrap="hard" class="caixa"><? echo ucwords(strtoupper($assunto)); ?></textarea ></td>
+							<td class="caixadestaque">Assunto :</td><td><textarea name="assunto" cols="80%" rows="1" wrap="hard" class="caixa"><? echo utf8_encode (ucwords(strtoupper($assunto))); ?></textarea ></td>
 						</tr>
 						<tr> 
 						<tr> 
@@ -437,7 +435,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		$sqlquery = "select * from setor order by descricao";
 		$processA = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 		if (mysql_num_rows($processA) > 0) {
-					echo "<option value='$setorsolicitante'>".$setorsolicitante."</option>\n";
+					echo "<option value='$setorsolicitante'>".utf8_encode ($setorsolicitante)."</option>\n";
 					while ($line = mysql_fetch_array($processA)) {
 						$setor = $line['setor'];
 						$descricao = $line['descricao'];
@@ -574,7 +572,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			<? if ($processocom=="") 
 				{ ?>
 				 <tr>
-					<td align="center" colspan="10" class="caixaazul"><center>Digite o nº completo do processo. Ex.: 01550.000439/2006 (15 números)</center></td>
+					<td align="center" colspan="10" class="caixaazul"><center>Digite o nº completo do processo. Ex.: 01530.000439/2006 (15 números)</center></td>
 				</tr>
 			<? 	} ?>
 			<tr><td>&nbsp;</td></tr>
