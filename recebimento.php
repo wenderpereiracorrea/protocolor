@@ -1,6 +1,6 @@
-﻿<?	
+﻿<? 
 error_reporting(0);
-session_start();	
+session_start(); 
 import_request_variables("gP");
 include "conexao.php";
 include "valida_user.php";
@@ -10,14 +10,25 @@ $datas = date("Y/m/d");
 $hora= gmdate("H:i" ,time()-(3570*2));
 
 ?>
+<?
+
+if(empty($num)){
+    $sql1 = "select MAX(destino) destino from circulacao where nprocesso = '".$nprocesso."'";
+}else{
+    $sql1 = "select MAX(destino) destino from circulacao where nprocesso = '".$num."'";
+}
+$test = mysql_query($sql1);
+$array_exibir = mysql_fetch_array($test);
+$destino = $array_exibir['destino'];
+?>
 
 
   <? if ($_POST[gerar] != "") {
 
-		$sql = "select * from circulacao where nprocesso = '".$nprocesso."' and observacao like '%".transito."%'";
-		$process = mysql_query($sql) or die("Erro: " . $sql);
+  $sql = "select * from circulacao where nprocesso = '".$nprocesso."' and observacao like '%".transito."%'";
+  $process = mysql_query($sql) or die("Erro: " . $sql);
 
-		if (mysql_num_rows($process) > 0) { ?>
+  if (mysql_num_rows($process) > 0) { ?>
 
 <script language="javascript">
 if (confirm("O processo <? echo $nprocesso; ?> está em trânsito!\nDeseja fazer o acolhimento?") == true) {
@@ -33,7 +44,7 @@ alert('O processo <? echo $nprocesso; ?> não está em trânsito!');
 <? } } ?>
 
 <?
-if ($_GET[recebe] == "SIM") {
+if (($_SESSION[setor_usuario] == $destino && $_GET[recebe] == "SIM") || $_SESSION[setor_usuario] == 'Servico de Arquivo Historico e Institucional' && $_GET[recebe] == "SIM") {
 
 $sqlquery = "UPDATE circulacao SET observacao = 'TRANSFERIDO' WHERE nprocesso = '".$_GET[num]."'"; 
 $process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
@@ -43,16 +54,15 @@ $process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
 ?><script language="javascript1.2">alert('Processo Recebido!!!');</script><? 
  }
-
 ?>
 
 
   <? if ($_POST[gerar2] != "") {
 
-		$sql = "select * from circulacao where nprocesso = '".$nprocesso2."' and observacao like '%".transito."%'";
-		$process = mysql_query($sql) or die("Erro: " . $sql);
+  $sql = "select * from circulacao where nprocesso = '".$nprocesso2."' and observacao like '%".transito."%'";
+  $process = mysql_query($sql) or die("Erro: " . $sql);
 
-		if (mysql_num_rows($process) > 0) { ?>
+  if (mysql_num_rows($process) > 0) { ?>
 
 <script language="javascript">
 if (confirm("O processo <? echo $nprocesso; ?> está em trânsito!\nDeseja fazer o acolhimento?") == true) {
@@ -73,8 +83,8 @@ if ($_GET[recebe2] == "SIM") {
 $sqlquery = "UPDATE circulacao SET observacao = 'TRANSFERIDO' WHERE nprocesso = '".$_GET[num]."'"; 
 $process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
-$sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SESSION["nome"]."','" .tdate($date,0). "','" . $hora  . "','Recebeu o Processo $_GET[num]','".get_ip()."')";
-    mysql_query($sql_ins);
+//$sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SESSION["nome"]."','" .tdate($date,0). "','" . $hora  . "','Recebeu o Processo $_GET[num]','".get_ip()."')";
+   // mysql_query($sql_ins);
 
 ?><script language="javascript1.2">alert('Processo Recebido!!!');</script><? 
  }
@@ -94,15 +104,15 @@ $sql_ins = "insert into historico (usuario, data, hora, acao,ip) values ('".$_SE
 <script type="text/javascript">
 function antigo() {
 
-	document.getElementById('ant').style.visibility = 'visible';
-	document.getElementById('at').style.visibility = 'hidden';
+ document.getElementById('ant').style.visibility = 'visible';
+ document.getElementById('at').style.visibility = 'hidden';
 
 }
 
 function atual() {
 
-	document.getElementById('at').style.visibility = 'visible';
-	document.getElementById('ant').style.visibility = 'hidden';
+ document.getElementById('at').style.visibility = 'visible';
+ document.getElementById('ant').style.visibility = 'hidden';
 
 }
 
@@ -139,7 +149,7 @@ function atual() {
 	<tr id="at">
 		<td class="caixaazul">
 		<br><b>Ano com quatro dígitos.<br> Ex: (99999.999999/9999-99)</b><br><br>
-		<input type="text" name="nprocesso" onKeyPress="return txtBoxFormat(this, '99999.999999/9999-99', event);" maxlength="20">&nbsp;
+		<input type="text" name="nprocesso" value="<? echo $nprocesso; ?>" onKeyPress="return txtBoxFormat(this, '99999.999999/9999-99', event);" maxlength="20">&nbsp;
 		<input name='gerar' type='submit' value='OK' class='botao'>
 		</td>
 	</tr>
@@ -147,7 +157,7 @@ function atual() {
 	<tr id="ant" style="visibility:hidden">
 		<td class="caixaazul">
 		<br><b>Ano com dois dígitos.<br> Ex: (99999.999999/99-99)</b><br><br>
-		<input type="text" name="nprocesso2" onKeyPress="return txtBoxFormat(this, '99999.999999/99-99', event);" maxlength="18">&nbsp;
+		<input type="text" name="nprocesso2" value="<? echo $nprocesso; ?>" onKeyPress="return txtBoxFormat(this, '99999.999999/99-99', event);" maxlength="18">&nbsp;
 		<input name='gerar2' type='submit' value='OK' class='botao'>
 		</td>
 	</tr>

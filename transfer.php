@@ -10,7 +10,12 @@ $datanova = date("Y/m/d");
 //$horanova = date("H:m");
 $horanova= gmdate("H:i" ,time()-(3570*2));
 
-if ($_SESSION[setor_usuario] == $_SESSION[setor] or $_SESSION[setor_usuario] == "Setor de Protocolo") {
+$sql1 = "select MAX(destino) destino from circulacao where idprocesso = '$idprocesso'";
+$test = mysql_query($sql1);
+$array_exibir = mysql_fetch_array($test);
+$destino = $array_exibir['destino'];
+
+if ($_SESSION[setor_usuario] == $destino || $_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional') {
 
 // VERIFICA SE ESTÁ EM TRÂNSITO ******************************************
 		$sql = "select * from circulacao where idprocesso = '".$_GET[idprocesso]."' and observacao like '%".transito."%'";
@@ -37,7 +42,7 @@ if ($btgravar=="GRAVAR")
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 	if ($novolocal != 'ARQUIVO') 
 	{
-		$sql="insert into circulacao (idprocesso,nprocesso,data,hora,origem,destino,despacho,observacao) values ('$idprocesso','$nprocesso','$novadata','$novahora','$setor_usuario','$novolocal','$despacho','EM TRÂNSITO')";
+		$sql="insert into circulacao (idprocesso,nprocesso,data,hora,origem,destino,despacho,observacao) values ('$idprocesso','$nprocesso','$novadata','$novahora','$setor_usuario','$novolocal','$despacho','EM TRANSITO')";
 	} else {
 		$sql="insert into circulacao (idprocesso,nprocesso,data,hora,origem,destino,despacho,observacao) values ('$idprocesso','$nprocesso','$novadata','$novahora','$setor_usuario','$novolocal','$despacho','TRANSFERIDO')";
 	}
@@ -77,7 +82,7 @@ if ($btgravar=="GRAVAR")
 	<?
 ?><script>    var answer = confirm('Encaminhamento gravado com sucesso!\nDeseja imprimir o despacho?')
     		if (answer){
-			window.location.href="imp_despacho.php?setor_usuario=<? echo $_SESSION[setor_usuario]; ?>&&destino=<? echo $novolocal; ?>&&nprocesso=<? echo $nprocesso; ?>"
+			window.location.href="imp_despacho.php?setor_usuario=<? echo $_SESSION["setor_usuario"]; ?>&&destino=<? echo $novolocal; ?>&&nprocesso=<? echo $nprocesso; ?>"
     		} else {
 			window.location.href='mostra_processo.php?idprocesso=<? echo $idprocesso; ?>';
 			}
@@ -308,7 +313,7 @@ if ($idprocesso!="")
 			<tr> 
 				<td width="24%" class="caixadestaque">Destino:</td>
 				<td class="caixatitpesq">
-                	<select name='novolocal' class="caixa" onChange="javascript:form.submit();">
+                	<select name='novolocal' class="caixa" >
 <? 		
 					$sqlquery = "select * from setor";
 					//$sqlquery = $sqlquery." where grupo ='".$_SESSION['grupo']."'";
@@ -322,7 +327,7 @@ if ($idprocesso!="")
 						} else {
 							echo "<option value='$novolocal'>$novolocal</option>\n";
 						}
-						if ($_SESSION['setor_usuario']=='SETOR DE PROTOCOLO') 
+						if ($_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional') 
 						{
 ?>							<option value='ARQUIVO'>ARQUIVO - ARQUIVO MORTO</option>
 <?						}
@@ -417,7 +422,7 @@ function MostraMais() {
 <? 	if ($despacho=="") { ?>
 	document.form.despacho.focus();
 <?	}	?>
-<? 	if ($novolocal!="" && $despacho=="" && $setor_usuario=='PROTOCOLO') {
+<? 	if ($novolocal!="" && $despacho=="" && ($_SESSION["setor_usuario"] != $destino || $_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional')) {
 	$sql="update circulacao set despacho = 'TRANSFERIDO PELO PROTOCOLO' where idprocesso = ".$idprocesso." and destino = '".$local."'";
 	$process = mysql_query($sql) or die("Erro: " . mysql_error()); 
 	}	?>	

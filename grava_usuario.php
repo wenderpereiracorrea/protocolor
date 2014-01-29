@@ -26,8 +26,8 @@ $insere = "insert into usuario
 				mysql_query('SET character_set_client=utf8');
 				mysql_query('SET character_set_results=utf8');
 				$resultado = mysql_query($insere)
-or die ("Falha na execução da consulta");  
-       
+				or die ("Falha na execução da consulta");  
+  }     
   //antigo  
        
 	$sql="select * from usuario";
@@ -117,7 +117,7 @@ $sql = "UPDATE usuario SET nome = '$nome_usuario', login = '$login_usuario',senh
 				</tr> 	
 				<tr>
 					<td style="visibility:hidden"><div align='right'>ID:&nbsp;</div></td> 
-					<td style="visibility:hidden"><input name='idusuario' type='text' id='idusuario' size='12' maxlength='25' class='caixa' value='<? echo ($idusuario);		 ?>' readonly="readonly"></td>
+					<td style="visibility:hidden"><input name='idusuario' type='text' id='idusuario' size='25' maxlength='25' class='caixa' value='<? echo ($idusuario);		 ?>' readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td><div align='right'>Nome:&nbsp;</div></td> 

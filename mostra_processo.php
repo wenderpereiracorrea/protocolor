@@ -1,4 +1,5 @@
-﻿<? import_request_variables("gP"); ?>
+﻿<?php header("Content-type: text/html; charset=UTF-8");?> 
+<? import_request_variables("gP"); ?>
 <? 
 @session_start();
 include "conexao.php";
@@ -13,7 +14,7 @@ if ($tipo=="confirma")
 	mysql_query('SET character_set_client=utf8');
 	mysql_query('SET character_set_results=utf8');
 	$sql="update circulacao set observacao = 'EM USO' where idprocesso = ".$idprocesso."";
-	$sql=$sql." and observacao='EM TRÂNSITO'";
+	$sql=$sql." and observacao='EM TRANSITO'";
 	mysql_query("SET NAMES 'utf8'");
 	mysql_query('SET character_set_connection=utf8');
 	mysql_query('SET character_set_client=utf8');
@@ -110,16 +111,16 @@ if (is_numeric($idprocesso))
 		</tr>
 		<tr> 
 			<td width="24%" class="caixadestaque">Assunto :</td>
-			<td colspan="4" class="caixatitpesq"><? echo $assunto; ?></td>
+			<td colspan="4" class="caixatitpesq"><? echo utf8_encode($assunto); ?></td>
 		</tr>
 		<tr> 
 			<td class="caixadestaque">Favorecido :</td>
-            <td colspan="4" class="caixatitpesq"><? echo $favorecido; ?></td>
+            <td colspan="4" class="caixatitpesq"><? echo utf8_encode($favorecido); ?></td>
 		</tr>									
 		<tr> 
 			<td class="caixadestaque">Doc. de Origem :</td><td width="24%" class="caixatitpesq"><? echo $documento; ?></td>
 			<td width="18%" class="caixadestaque">Setor :</td>
-			<td width="34%" class="caixatitpesq"><? echo $setorsolicitante; ?></td>
+			<td width="34%" class="caixatitpesq"><? echo utf8_encode($setorsolicitante); ?></td>
 	    </tr>						
 		<tr> 
 			<td class="caixadestaque">Número :</td>
@@ -149,7 +150,7 @@ $process = mysql_query($sql) or die("Erro: " . $sql);	*/
 //****************************************************************************************
 //****************************************************************************************	
 $sql= "select * from circulacao where idprocesso = ".$idprocesso."" ;
-$sql=$sql." order by data desc, hora desc";
+$sql=$sql." order by data asc, hora asc";
 		mysql_query("SET NAMES 'utf8'");
 		mysql_query('SET character_set_connection=utf8');
 		mysql_query('SET character_set_client=utf8');
@@ -166,6 +167,7 @@ if (mysql_num_rows($process) > 0)  //  ****** SE EXISTIR HISTÓRICO O USUÁRIO  
 			<td class="caixadestaque" width="15%"><b><center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATA</center></b></td>
 			<td class="caixadestaque" width="20%"><center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SETOR</b></center></td>
 	        <td class="caixadestaque" width="65%"><center><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DESPACHO</b></center></td>
+			
 		</tr>
 <?
 		$mudacor=1;
@@ -189,13 +191,13 @@ if (mysql_num_rows($process) > 0)  //  ****** SE EXISTIR HISTÓRICO O USUÁRIO  
 			if ($contloop==0) { $localatual=$contloop; }
 			if ($mudacor > 0) { $corcaixa="caixalistaclaro"; } else { $corcaixa="caixalistaescuro"; } 
 ?>		<tr> 
-<? 	if (strstr($_SESSION['setor_usuario'],'Protocolo')) 
-		{ 			
+<? 	 			
 ?>		<td name="landatahist" class="<? echo $corcaixa; ?>" readonly="readonly" bordercolor="#000000"><? echo tdate($data,1); ?></td>
 		<td name='local' type='text' id='local' class="<? echo $corcaixa; ?>" readonly="readonly" ><?  echo($destino); ?></td>
                 <td name="despacho" type="text" id="despacho" class="<? echo $corcaixa; ?>" readonly="readonly"><?  echo strtoupper($despacho); ?>
-                    <font color="#CC0000"><?  if ($observacao=='EM TRANSITO') { echo " - OBS.: ".$observacao; $refobs=$destino; } ?></font></td>	
-<?		}
+                    <font color="#CC0000"><?  if ($observacao=='EM TRANSITO') { echo " - OBS.: ".$observacao; $refobs=$destino; } ?></font></td>
+				
+<?		
 ?>		</tr> 
 <?			$contloop = $contloop + 1;
 			$mudacor=$mudacor * (-1);	
@@ -226,6 +228,7 @@ mysql_free_result($process);   // ********** ENCERRA "SE EXISTIR HISTÓRICO"  **
 if ($_SESSION[perfil] == "1")
 { ?>
 	<input type="button" onClick="javascript:Encaminha();" name="Encaminhar" class="botao" id="Encaminhar" value="ENCAMINHAR" alt="Encaminhar Processo">
+	<input type="button" onClick="javascript:Acolhimento();" name="RECEBIMENTO" class="botao" id="RECEBIMENTO" value="RECEBIMENTO" alt="RECEBER PROCESSO">
 <? } ?>
 	
 
@@ -241,5 +244,15 @@ if ($_SESSION[perfil] == "1")
 		}
 	}
 </script>	
+<script>
+	function Acolhimento(status) {
+ window.location.href = 'recebimento.php?nprocesso=<? echo ($nprocesso); ?>';
+	}
+	function Confirma(status) {
+		if (confirm('O Acolhimento do processo em seu setor será confirmado.\n\nDeseja continuar?')) {
+			window.location.href = 'recebimento.php?nprocesso=<? echo ($nprocesso); ?>&nprocesso=<? echo ($nprocesso); ?>&tipo=confirma';		
+		}
+	}
+</script>
 </HEAD>
 </HTML>

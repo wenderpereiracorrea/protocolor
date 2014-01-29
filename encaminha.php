@@ -208,7 +208,7 @@ if (!isset($processocom) &&  !isset($processored) && !isset($pchave))
 				onkeyup='Mostra(this, 17)'></div>
 <? 	} else { 
 
-				if ($_SESSION['setor_usuario']=='SETOR DE PROTOCOLO')
+				if ($_SESSION['setor_usuario']=='Servico de Arquivo Historico e Institucional')
 				{
 ?>					<input name="processocom" type="text" id="processocom" class="cor-inativa" onFocus="Focus(this);" onBlur="Blur(this);" size="18" maxlength="17" 
 					 onChange="document.form.avancar.style.visibility='visible';document.form.avancar.focus();" 
@@ -243,7 +243,7 @@ if (!isset($processocom) &&  !isset($processored) && !isset($pchave))
                 onKeyPress="document.form.avancar.style.visibility='visible';javascript:document.form.processocom.value='';"  
                 onkeyup='Mostra(this, 6)' ></div>
 <?	} else {
-				if ($_SESSION['setor_usuario']=='SETOR DE PROTOCOLO')
+				if ($_SESSION["setor_usuario"]=='Servico de Arquivo Historico e Institucional')
 				{
 ?>		            <input name="processored" type="text" id="processored" class="cor-inativa" onFocus="Focus(this);" onBlur="Blur(this);" size="6" maxlength="6" 
         	        onChange="document.form.avancar.focus();" 

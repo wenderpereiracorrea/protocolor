@@ -84,8 +84,7 @@ $process = mysql_query($sql) or die("Erro: " . mysql_error());
 $line = mysql_fetch_array($process);
 $destinoimp = $line['setor'];
 $destinodescimp = $line['descricao'];
-$sql="select max(idcircula),despacho from circulacao where nprocesso = '".$nprocesso."'";
-$sql = $sql."group by idcircula desc";
+$sql="select MAX(despacho) as despacho from circulacao where nprocesso = '".$nprocesso."'";
 $process = mysql_query($sql) or die("Erro: " . mysql_error());
 $line = mysql_fetch_array($process);
 $despachoimp = $line['despacho'];
@@ -97,7 +96,7 @@ $despachoimp = $line['despacho'];
 </TD>
 </TABLE>
 </TD>
-<TD width="171" colspan="2" align="center"><font size="2"><STRONG><? echo $setorimp." - ".$descimp; ?></STRONG>  <br />
+<TD width="171" colspan="2" align="center"><font size="2"><STRONG><? echo $setorimp;?></STRONG>  <br />
     </font>
 </TD>
 </TABLE><br><br><br><br>
@@ -116,7 +115,7 @@ $despachoimp = $line['despacho'];
 <TR><TD><font size="3">Ao</font></TD></TR>
 <? } ?>
 
-<TR><TD><font size="3"><b><? echo $destinoimp; ?> - <? echo $destinodescimp; ?></b></TD></TR>
+<TR><TD><font size="3"><b><? echo $destinodescimp; ?></b></TD></TR>
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD>&nbsp;</TD></TR>
@@ -127,7 +126,7 @@ $despachoimp = $line['despacho'];
 <TR><TD><font size="3">Encaminhamos o processo acima referenciado a este setor para as seguintes providências:</font></TD></TR>
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD>&nbsp;</TD></TR>
-<TR><TD><font size="3"><center><font size="3"><b><? echo ucwords(lower($despachoimp)); ?></b></font></center></TD></TR>
+<TR><TD><font size="3"><center><font size="3"><b><? echo ucwords($despachoimp); ?></b></font></center></TD></TR>
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD>&nbsp;</TD></TR>
@@ -137,7 +136,7 @@ $despachoimp = $line['despacho'];
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD><center>__________________________________________________________________</center></TD></TR>
 <TR><TD>&nbsp;</TD></TR>
-<TR><TD><font size="3"><center><? echo $setorimp; ?> - <? echo $descimp; ?></center></font></TD></TR>
+<TR><TD><font size="3"><center><? echo $setorimp; ?></center></font></TD></TR>
 
 <TR><TD>&nbsp;</TD></TR>
 <TR><TD>&nbsp;</TD></TR>

@@ -1,6 +1,4 @@
-﻿<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<? header("Content-type: text/html; charset=UTF-8");?> 
-<? import_request_variables("gP"); ?>
+﻿<? import_request_variables("gP"); ?>
 <? 
 session_start ();
 include "conexao.php";
@@ -44,9 +42,9 @@ if ($_POST[alterar] == "Atualizar" and $_POST[id] == "") { ?>
 <script>alert('Selecione um Setor!!!')</script> <? }
 
 if ($_POST[alterar] == "Atualizar"  and $_POST[id] != "") {
-	mysql_query("SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
-	
-	$sqlquery = "UPDATE usuario SET senha = '".md5($_POST[senha])."', nome = '".$_POST[nome]."', perfil = '".$_POST[perfil]."', setor = '".$_POST[setor]."' WHERE idusuario = ".$_POST[id].""; 
+
+
+$sqlquery = "UPDATE usuario SET senha = '".md5($_POST[senha])."', nome = '".$_POST[nome]."', perfil = '".$_POST[perfil]."', setor = '".$_POST[setor]."' WHERE idusuario = ".$_POST[id].""; 
 	$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
 ?><script language="javascript1.2">alert('Registro Atualizado com Sucesso!!!');</script><? 
@@ -88,10 +86,6 @@ if ($_POST[consultar] == "Consultar") {
 
 		$sql2 = "select login, senha, nome, perfil, setor, idusuario
 		 from usuario where nome like '%".$_POST[cons_nome]."%' order by nome";
-		mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
 		$Resultado2 = mysql_query($sql2) or die("Erro: " . mysql_error());
 
  }
@@ -210,12 +204,9 @@ function send3(codigo5, codigo4, codigo3, codigo2, codigo1, codigo){
 <?
 
 if ($_POST[consultar] == "Consultar") {
-	
+
 		if (mysql_num_rows($Resultado2) > 0) {
-			mysql_query("SET NAMES 'utf8'");
-			mysql_query('SET character_set_connection=utf8');
-			mysql_query('SET character_set_client=utf8');
-			mysql_query('SET character_set_results=utf8');
+
 			while ($array_exibir = mysql_fetch_array($Resultado2)) {
 			
 				$codigo = $array_exibir['idusuario'];
@@ -316,4 +307,5 @@ echo "<hr>";
 
       </form>
 </body>
+
 </html>

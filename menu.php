@@ -47,7 +47,7 @@
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
 <? } ?>
-<? if ($_SESSION["setor_usuario"] == "Presidência" || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'ronaldo') { ?>
+<? if ($_SESSION["setor_usuario"] == "Presidencia" || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/lancamento.png" width="30" height="30"></td>
@@ -61,7 +61,7 @@
 <? } ?>
 
 
-<? if ($_SESSION["setor_usuario"] == 'Setor de Protocolo' || $_SESSION["setor_usuario"] == 'Serviço de Arquivo Histórico e Institucional' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'wendercorrea') { ?>
+<? if ($_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/alteracao.png" width="30" height="30"></td>
@@ -74,7 +74,7 @@
   </tr>
 <? } ?>
 
-<? if ($_SESSION["setor_usuario"] == 'Setor de Protocolo' || $_SESSION["setor_usuario"] == 'Serviço de Arquivo Histórico e Institucional' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'wendercorrea') { ?>
+<? if ($_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/alteracao.png" width="30" height="30"></td>
@@ -169,7 +169,7 @@
   </tr>
   <? } ?>
 
-<? if ($_SESSION["login"] == 'ronaldo' || $_SESSION["setor_usuario"] == 'Serviço de Arquivo Histórico e Institucional' || $_SESSION["login"] == 'wendercorrea') { ?>
+<? if ($_SESSION["login"] == 'ronaldo' || $_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/relatorio.png" width="30" height="30"></td>
@@ -203,7 +203,7 @@
   </tr>
 <? } ?>
 
-<? if ($_SESSION["login"] == 'ronaldo' || $_SESSION["setor_usuario"] == 'Serviço de Arquivo Histórico e Institucional' || $_SESSION["login"] == 'wendercorrea') { ?>
+<? if ($_SESSION["login"] == 'ronaldo' || $_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/alteracao.png" width="30" height="30"></td>

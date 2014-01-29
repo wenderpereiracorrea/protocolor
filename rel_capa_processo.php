@@ -7,7 +7,7 @@ if ($nprocesso!="")
 	{ 	
 	 	$sql="select * from processo where nprocesso = '".$nprocesso."'";
 		$process = mysql_query($sql) or die("Erro1: " . mysql_error());	
-		$sql2="select date_format(dataent, '%d/%m/%Y') from processo where nprocesso = '$nprocesso'";
+		$sql2="select date_format(dataent, '%d/%m/%Y') from processo where nprocesso = '".$nprocesso."'";
 		$data = mysql_query($sql2) or die("Erro1: " . mysql_error());
 		$data =  mysql_fetch_row($data);
 		if (mysql_num_rows($process) > 0) 
