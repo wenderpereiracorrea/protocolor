@@ -14,7 +14,7 @@ if ($_POST[consultar] == "Consultar") {
 		mysql_query('SET character_set_client=utf8');
 		mysql_query('SET character_set_results=utf8');
 		$sql2 = "select nprocesso, favorecido, assunto, idprocesso
-		 from processo where (assunto like '%".$_POST[cons_interessado]."%' or favorecido like '%".$_POST[cons_interessado]."%') and nprocesso like '%/".$_POST[cons_ano]."-%' and nprocesso like '".$_POST["up"]."%' order by nprocesso";
+		 from processo where (assunto like '%".$_POST[assuntointeressado]."%' or favorecido like '%".$_POST[assuntointeressado]."%') and nprocesso like '%/".$_POST[cons_ano]."-%' and nprocesso like '".$_POST["up"]."%' order by nprocesso";
 		$Resultado2 = mysql_query($sql2) or die("Erro: " . mysql_error());
 		$total = mysql_num_rows($Resultado2);
 
@@ -27,6 +27,7 @@ if ($_POST[consultar] == "Consultar") {
 <link href='auxiliar/styles.css' rel='stylesheet' type='text/css'>
 
 <script type="text/javascript" src="buscaProcesso.js"></script>
+<script type="text/javascript" src="buscaProcessonome.js"></script>
 </HEAD>
 
 <body>
@@ -69,7 +70,8 @@ if ($_POST[consultar] == "Consultar") {
 			&nbsp;
 
        Informe o assunto ou interessado:&nbsp;
-			<input name="cons_interessado" type="text" size="30" class="cor-inativa">
+			
+			<input type="text" id="assuntointeressado" name="assuntointeressado" accesskey="p" tabindex="1" onKeyUp="buscaInstantanea2();" size="20" />
 			&nbsp;
 
        Informe o ano:&nbsp;
