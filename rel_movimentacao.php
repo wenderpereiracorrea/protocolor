@@ -1,4 +1,3 @@
-ï»¿<?php header("Content-type: text/html; charset=UTF-8");?> 
 <?	@session_start();	
 include "conexao.php";
 include "valida_user.php";
@@ -10,7 +9,7 @@ connect();
 ?>
 
 
-<? // ******************** INÃCIO DA PÃGINA HTML ****************************** ?>
+<? // ******************** INÍCIO DA PÁGINA HTML ****************************** ?>
 <HTML>
 <HEAD>
 <SCRIPT src="funcoes.js" type=text/javascript></SCRIPT>
@@ -26,7 +25,7 @@ connect();
 <table width ="38%" align='center' border="1" cellpadding="1" cellspacing="2">
 	<tr>
 		<td class="caixaazul">
-		<b>Digite o nÃºmero do processo:</b>
+		<b>Digite o número do processo:</b>
 		</td>
 	</tr>
 	<tr>
@@ -41,8 +40,8 @@ connect();
 <tr>
 <td style="background:#6699CC; border-bottom:#333333 1px solid;">Data</td>
 <td style="background:#6699CC; border-bottom:#333333 1px solid;">Hora</td>
-<td style="background:#6699CC; border-bottom:#333333 1px solid;">UsuÃ¡rio</td>
-<td style="background:#6699CC; border-bottom:#333333 1px solid;">AÃ§Ã£o</td>
+<td style="background:#6699CC; border-bottom:#333333 1px solid;">Usuário</td>
+<td style="background:#6699CC; border-bottom:#333333 1px solid;">Ação</td>
 </tr>
 
   <? if ($consultar != "" and $nprocesso != "") {

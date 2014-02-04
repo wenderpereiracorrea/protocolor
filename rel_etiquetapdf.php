@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 import_request_variables("gP");
 
 define('FPDF_FONTPATH','fpdf/font/');
@@ -24,7 +24,7 @@ $mdir = "5"; // Margem Direita (mm)
 $msup = "25"; // Margem Superior (mm)
 $leti = "210"; // Largura da Etiqueta (mm)
 $aeti = "297"; // Altura da Etiqueta (mm)
-$ehet = "0"; // EspaÃ§o horizontal entre as Etiquetas (mm)
+$ehet = "0"; // Espaço horizontal entre as Etiquetas (mm)
 
 $pdf=new FPDF('P','mm','A5'); // Cria um arquivo novo com tamanho tipo carta
 $pdf->Open(); // inicia documento
@@ -58,11 +58,11 @@ $lnanexos = "ANEXOS: " . $anexos;
 
 if($coluna == "1") { // Se for a terceira coluna
 $coluna = 0; // $coluna volta para o valor inicial
-$linha = $linha +1; // $linha Ã© igual ela mesma +1
+$linha = $linha +1; // $linha é igual ela mesma +1
 }
 
-if($linha == "1") { // Se for a Ãºltima linha da pÃ¡gina
-$pdf->AddPage(); // Adiciona uma nova pÃ¡gina
+if($linha == "1") { // Se for a última linha da página
+$pdf->AddPage(); // Adiciona uma nova página
 $linha = 0; // $linha volta ao seu valor inicial
 }
 
@@ -70,20 +70,20 @@ $posicaoV = $linha*$aeti;
 $posicaoH = $coluna*$leti;
 
 if($coluna == "0") { // Se a coluna for 0
-$somaH = $mesq; // Soma Horizontal Ã© apenas a margem da esquerda inicial
-} else { // SenÃ£o
-$somaH = $mesq+$posicaoH; // Soma Horizontal Ã© a margem inicial mais a posiÃ§Ã£oH
+$somaH = $mesq; // Soma Horizontal é apenas a margem da esquerda inicial
+} else { // Senão
+$somaH = $mesq+$posicaoH; // Soma Horizontal é a margem inicial mais a posiçãoH
 }
 
 if($linha =="0") { // Se a linha for 0
-$somaV = $msup; // Soma Vertical Ã© apenas a margem superior inicial
-} else { // SenÃ£o
-$somaV = $msup+$posicaoV; // Soma Vertical Ã© a margem superior inicial mais a posiÃ§Ã£oV
+$somaV = $msup; // Soma Vertical é apenas a margem superior inicial
+} else { // Senão
+$somaV = $msup+$posicaoV; // Soma Vertical é a margem superior inicial mais a posiçãoV
 }
 
 //$pdf->MultiCell(100, 5.5, $lnprocesso.$lninteressado.$lnassunto.$lnanexos); // Imprime a localidade da pessoa de acordo com as coordenadas
 //$pdf->Text($somaH,$somaV,$lnprocesso); // Imprime o nome da pessoa de acordo com as coordenadas
-//$pdf->Text($somaH,$somaV+8,$lninteressado); // Imprime o endereÃ§o da pessoa de acordo com as coordenadas
+//$pdf->Text($somaH,$somaV+8,$lninteressado); // Imprime o endereço da pessoa de acordo com as coordenadas
 //$pdf->Text();// Imprime a localidade da pessoa de acordo com as coordenadas
 //$pdf->Text($somaH,$somaV+16,$lnassunto);
 
@@ -101,7 +101,7 @@ $pdf->MultiCell(0,4.3,$lnanexos,0,1,'J');
 $pdf->Ln(); 
 
 //$pdf->Text($somaH,$somaV+24,$lnanexos); // Imprime o cep da pessoa de acordo com as coordenadas */
-//$pdf->SetWidths(array(180));//CADA VALOR DESTE ARRAY SERÃ A LARGURA DE CADA COLUNA
+//$pdf->SetWidths(array(180));//CADA VALOR DESTE ARRAY SERÁ A LARGURA DE CADA COLUNA
 //  srand(microtime()*1000000);
 //  for($i=0;$i<1;$i++)
 //   	$pdf->Ln();

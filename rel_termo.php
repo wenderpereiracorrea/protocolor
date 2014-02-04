@@ -1,36 +1,35 @@
-<?php header("Content-type: text/html; charset=UTF-8");?> 
 <?php
 session_start();
-//CONFIGURAï¿½ï¿½ES DO BD MYSQL FUNARTE
+//CONFIGURAÇÕES DO BD MYSQL FUNARTE
 $servidor = "192.168.1.243"; 
 $usuario = "root"; 
 $senha = ""; 
 $bd = "protocolo"; 
 $data = date("d-m-Y");
 /*
-//CONFIGURAï¿½ï¿½ES DO BD MYSQL CASA
+//CONFIGURAÇÕES DO BD MYSQL CASA
 $servidor = "127.0.0.1"; 
 $usuario = "root"; 
 $senha = "qwerty"; 
 $bd = "patrimonio"; 
 $data = date("d-m-Y");
 */
-//Tï¿½TULO DO RELATï¿½RIO 
-$titulo = "Relatï¿½rio de Devoluï¿½ï¿½o"; 
-//LOGO QUE SERï¿½ COLOCADO NO RELATï¿½RIO 
+//TÍTULO DO RELATÓRIO 
+$titulo = "Relatório de Devolução"; 
+//LOGO QUE SERÁ COLOCADO NO RELATÓRIO 
 $imagem = "rel_termo.png"; 
 
-//ENDEREï¿½O DA BIBLIOTECA FPDF 
+//ENDEREÇO DA BIBLIOTECA FPDF 
 //$end_fpdf = "c:/pagina/biblioteca/fpdf"; 
-//NUMERO DE RESULTADOS POR Pï¿½GINA 
+//NUMERO DE RESULTADOS POR PÁGINA 
 $por_pagina = 27; 
-//ENDEREï¿½O ONDE SERï¿½ GERADO O PDF 
+//ENDEREÇO ONDE SERÁ GERADO O PDF 
 //$end_final = "c:/pagina/imasters/110/artigo_php.pdf"; 
 //TIPO DO PDF GERADO 
-//F-> SALVA NO ENDEREï¿½O ESPECIFICADO NA VAR END_FINAL 
+//F-> SALVA NO ENDEREÇO ESPECIFICADO NA VAR END_FINAL 
 $tipo_pdf = "F"; 
 
-/************** Nï¿½O MEXER DAQUI PRA BAIXO ***************/ 
+/************** NÃO MEXER DAQUI PRA BAIXO ***************/ 
 
 //CONECTA COM O MYSQL
 $conn = mysql_connect($servidor, $usuario, $senha);
@@ -55,9 +54,9 @@ $db = mysql_select_db($bd, $conn);
 //$row2 = mysql_num_rows($sql2);
 
 //VERIFICA SE RETORNOU ALGUMA LINHA
-if(!$row) { echo "Nï¿½o retornou nenhum registro"; die; } 
+if(!$row) { echo "Não retornou nenhum registro"; die; } 
 
-//CALCULA QUANTAS Pï¿½GINAS Vï¿½O SER NECESSï¿½RIAS
+//CALCULA QUANTAS PÁGINAS VÃO SER NECESSÁRIAS
 $paginas = ceil(1); 
 
 //PREPARA PARA GERAR O PDF
@@ -67,11 +66,11 @@ $pdf = new FPDF( 'L','cm','A4' );
 //margens laterais e superior
 $pdf -> SetMargins(1.5, 1.5, 1.5);
 
-//INICIALIZA AS VARIï¿½VEIS
+//INICIALIZA AS VARIÁVEIS
 $linha_atual = 0;
 $inicio = 0; 
 
-//Pï¿½GINAS
+//PÁGINAS
 for($x=1; $x<=$paginas; $x++) { 
 
 //VERIFICA
@@ -86,7 +85,7 @@ $pdf->SetFont("Arial", "B", 10);
 //$pdf->Image($imagem, 0, 8);
 $pdf->Cell(1, 1, $pdf->Image('imagebox/rel_termo.png', 2, 1,20));  
 //$pdf->Cell(0,1,'http://www.seusite.com.br',0,1,'C');
-//$pdf->Cell(0,1,'Eu, $nome, $cargo, declaramos pelo presente documento que recebi da Divisï¿½o de Patrimï¿½nio - FUNARTE, o material abaixo discriminado, pelo(s) qual(is) passo a ser responsï¿½vel:',0,1,'L');
+//$pdf->Cell(0,1,'Eu, $nome, $cargo, declaramos pelo presente documento que recebi da Divisão de Patrimônio - FUNARTE, o material abaixo discriminado, pelo(s) qual(is) passo a ser responsável:',0,1,'L');
 //$pdf->Cell(0,1,'http://www.seusite.com.br',0,1,'C');
 //$pdf->Write(0.8,'Eu, $responsavel, $cargo, 
 $pdf->Cell(25.7, 0.5, $data, 0, 0, 'R'); 
@@ -94,40 +93,40 @@ $pdf->Cell(25.7, 0.5, $data, 0, 0, 'R');
 $pdf->Ln(0.4); 
 
 //$pdf->Ln();
-//$pdf->Cell(26, 0.4, "Pï¿½gina $x de $paginas", 0, 0, 'R'); 
+//$pdf->Cell(26, 0.4, "Página $x de $paginas", 0, 0, 'R'); 
 
 //QUEBRA DE LINHA
 $pdf->Ln(); 
 
-//MONTA O O NRO PROCESSO, DEPOIS TEM Q PEGAR A VARIï¿½VEL NPROCESSO 
+//MONTA O O NRO PROCESSO, DEPOIS TEM Q PEGAR A VARIÁVEL NPROCESSO 
 $pdf->SetTextColor(0); 
 $pdf->Cell(0, 0.7, "Processo: "); 
 $pdf->Ln(); 
 
-//MONTA O CABEï¿½ALHO DO TEXTO, TEM Q VER A POSIï¿½ï¿½O DO TEXTO NA FOLHA
+//MONTA O CABEÇALHO DO TEXTO, TEM Q VER A POSIÇÃO DO TEXTO NA FOLHA
 $pdf->SetTextColor(0); 
-$pdf->Cell(0, 2.7, "ï¿½ Coordenaï¿½ï¿½o Financeira,"); 
+$pdf->Cell(0, 2.7, "À Coordenação Financeira,"); 
 $pdf->Ln();
 
-//MONTA O TEXTO INTERNO, FALTA POSICIONï¿½-LO, ISSO Sï¿½ TESTANDO
+//MONTA O TEXTO INTERNO, FALTA POSICIONÁ-LO, ISSO SÓ TESTANDO
 $pdf->SetTextColor(0); 
-$pdf->Cell(0, 5.7, "Em devoluï¿½ï¿½o,"); 
+$pdf->Cell(0, 5.7, "Em devolução,"); 
 $pdf->Ln();
 
-//MONTA O TEXTO INTERNO, FALTA POSICIONï¿½-LO, ISSO Sï¿½ TESTANDO, FALTA TB COLOCAR VARIï¿½VEL
+//MONTA O TEXTO INTERNO, FALTA POSICIONÁ-LO, ISSO SÓ TESTANDO, FALTA TB COLOCAR VARIÁVEL
 $pdf->SetTextColor(0); 
 $pdf->Cell(0, 5.7, "Em"); 
 $pdf->Ln();
 
-//MONTA O TEXTO INTERNO, FALTA POSICIONï¿½-LO, ISSO Sï¿½ TESTANDO, FALTA TB COLOCAR VARIï¿½VEL
+//MONTA O TEXTO INTERNO, FALTA POSICIONÁ-LO, ISSO SÓ TESTANDO, FALTA TB COLOCAR VARIÁVEL
 $pdf->SetTextColor(0); 
-$pdf->Cell(0, 6.7, "Anagilsa Barbosa da Nï¿½brega Franco"); 
-$pdf->Cell(0, 7.7, "Coordenaï¿½ï¿½o-Geral de Planejamento e Administraï¿½ï¿½o"); 
+$pdf->Cell(0, 6.7, "Anagilsa Barbosa da Nóbrega Franco"); 
+$pdf->Cell(0, 7.7, "Coordenação-Geral de Planejamento e Administração"); 
 $pdf->Ln();
 
-//MONTA O CABEï¿½ALHO 
+//MONTA O CABEÇALHO 
 //$pdf->SetTextColor(255); 
-//$pdf->Cell(0, 0.5, "RESPONSï¿½VEL", 1, 0, 'L', 1); 
+//$pdf->Cell(0, 0.5, "RESPONSÁVEL", 1, 0, 'L', 1); 
 //$pdf->SetX(15);
 //$pdf->Cell(0, 0.5, "CARGO", 1, 1, 'L', 1); 
 
@@ -140,11 +139,11 @@ $pdf->Ln();
 //$linha_atual++;
 //$pdf->Ln(); 
 
-//MONTA O CABEï¿½ALHO 
+//MONTA O CABEÇALHO 
 //$pdf->SetTextColor(255); 
-//$pdf->Cell(0, 0.5, "REFERï¿½NCIA", 1, 0, 'L', 1); 
+//$pdf->Cell(0, 0.5, "REFERÊNCIA", 1, 0, 'L', 1); 
 //$pdf->SetX(5);
-//$pdf->Cell(0, 0.5, "DESCRIï¿½ï¿½O DO MATERIAL", 1, 0, 'L', 1); 
+//$pdf->Cell(0, 0.5, "DESCRIÇÃO DO MATERIAL", 1, 0, 'L', 1); 
 //$pdf->SetX(22);
 //$pdf->Cell(0, 0.5, "VALOR R$", 1, 0, 'L', 1); 
 //$pdf->SetX(26);
@@ -164,10 +163,10 @@ $pdf->Ln();
 //}//FECHA FOR(REGISTROS - i)
 //}//FECHA FOR(PAGINAS - x) 
 
-//CRIA CABEï¿½ALHO DO TOTAL
-//if($fim < $row2);//VERIFICA SE ï¿½ FIM DO REGISTRO (LINHAS DO SQL)
-//$pdf->Ln(); //PULA UMA LINHA (SE Nï¿½O ESCREVER NADA ENTRE PARENTES, O Nï¿½ 1 DEFAULTs)
-//$pdf->SetTextColor(255);//PARA ESCREVER O CABEï¿½ALHO 
+//CRIA CABEÇALHO DO TOTAL
+//if($fim < $row2);//VERIFICA SE É FIM DO REGISTRO (LINHAS DO SQL)
+//$pdf->Ln(); //PULA UMA LINHA (SE NÃO ESCREVER NADA ENTRE PARENTES, O Nº 1 DEFAULTs)
+//$pdf->SetTextColor(255);//PARA ESCREVER O CABEÇALHO 
 //$pdf->SetX(20);
 //$pdf->Cell(0, 0.5, "ITENS", 1, 0, 'L', 1); 
 //$pdf->SetX(24);
@@ -182,9 +181,9 @@ $pdf->Ln();
 
 //$pdf->Ln(); 
 //$pdf->SetTextColor(0); 
-//$pdf->MultiCell(0, 0.5, "IN. SEDAP Nï¿½ 205 DE 08/04/1988:
+//$pdf->MultiCell(0, 0.5, "IN. SEDAP Nº 205 DE 08/04/1988:
 //
-//Todo Servidor Pï¿½blico poderï¿½ ser chamado ï¿½ responsabilidade pelo desaparecimento do material que lhe for confiado, para guarda ou uso, bem como pelo dano que, dolosa ou culposamente, causar a qualquer material, esteja ou nï¿½o sob sua guarda.
+//Todo Servidor Público poderá ser chamado à responsabilidade pelo desaparecimento do material que lhe for confiado, para guarda ou uso, bem como pelo dano que, dolosa ou culposamente, causar a qualquer material, esteja ou não sob sua guarda.
 //
 //										______/______/______    													                               ____________________________________________"); 
 
@@ -194,3 +193,7 @@ $pdf->Output();
 
 
 ?>
+
+
+
+

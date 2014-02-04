@@ -1,6 +1,4 @@
-ï»¿<? 
-import_request_variables("gP"); 
-error_reporting(0); ?>
+<? import_request_variables("gP"); error_reporting(0); ?>
 <? 
 @session_start();
 include "conexao.php";
@@ -41,10 +39,6 @@ function avalia_gravar(form) {
 		$sql2 = "select count(distinct p.nprocesso) as total
 		 from processo p, circulacao c
 		  where p.idprocesso = c.idprocesso and p.localizacao like '%".$_POST[cons_localizacao]."%' and data >=  '".$_POST[cons_ano]."-01-01' and data <=  '".$_POST[cons_ano]."-12-31'";
-		mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
 		$Resultado2 = mysql_query($sql2) or die("Erro: " . mysql_error());
 
 			while ($array_exibir = mysql_fetch_array($Resultado2)) {
@@ -79,7 +73,6 @@ function avalia_gravar(form) {
 
 <table width="95%" style="border:solid 1px #333333;" cellpadding="4" cellspacing="4">
 <tr>
-<a href="#" onclick="window.print(); return false;">Imprimir</a>
 <td style="background-color:#333; color:#FFFFFF; width:130px;">
 <b>Processo</b>
 </td>
@@ -109,10 +102,10 @@ $_pagi_sql = "select distinct p.nprocesso, p.favorecido, p.assunto, p.idprocesso
 		 from processo p, circulacao c
 		  where p.idprocesso = c.idprocesso and p.localizacao like '%".$_POST[cons_localizacao]."%' and data >=  '".$_POST[cons_ano]."-01-01' and data <=  '".$_POST[cons_ano]."-12-31' order by p.nprocesso"; 
 
-//quantidade de resultados por pÃ¡gina (opcional, por padrÃ£o 20) 
+//quantidade de resultados por página (opcional, por padrão 20) 
 $_pagi_cuantos = 1000; 
 
-//IncluÃ­mos o script de paginaÃ§Ã£o. Este jÃ¡ executa a consulta automaticamente 
+//Incluímos o script de paginação. Este já executa a consulta automaticamente 
 include("paginacao/paginator.inc.php"); 
 
 			while($row = mysql_fetch_array($_pagi_result)){ 
@@ -123,11 +116,11 @@ include("paginacao/paginator.inc.php");
 				$idprocesso = $row['idprocesso'];
 				$localizacao = $row['localizacao'];
 
-				// Colorir linha sim, linha nÃ£o ####################
+				// Colorir linha sim, linha não ####################
 				$cont = $cont + 1;
 				if ($cont % 2) { $bg = "#FFF"; } else {
 				$bg = "#E2E2E2"; }
-				// Colorir linha sim, linha nÃ£o ####################
+				// Colorir linha sim, linha não ####################
 
 								
 echo "<tr><td style='background-color:$bg'>";
@@ -173,5 +166,4 @@ echo "<br>";
 </center>
 
 </body>
-
 </HTML>

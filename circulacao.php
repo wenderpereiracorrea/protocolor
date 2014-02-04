@@ -1,4 +1,4 @@
-ï»¿<? import_request_variables("gP"); ?>
+<? //import_request_variables("gP"); ?>
 <? 
 error_reporting(0);
 session_start ();
@@ -7,7 +7,7 @@ connect();
 
 $date = date("d/m/Y");
 $hora= gmdate("H:i" ,time()-(3570*2));
-// Qd clica no botÃ£o excluir
+// Qd clica no botão excluir
 if ($_POST[excluir] == "Excluir" and $_POST[id] == "") { ?>
 <script>alert('Selecione um Registro!!!')</script> <? }
 
@@ -26,9 +26,9 @@ if ($_GET[excluir] == "EXCLUIR2" and $_GET[cod] != "") {
     $sqlquery = "DELETE FROM circulacao WHERE idcircula = ".$_GET[cod]."";
 	$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
-	//$hist="insert into historico (data,hora,usuario,acao) 
-		//values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Excluiu circulacao para o processo nÂ° ".$_POST[nprocesso]."')";	
-	//$process_hist = mysql_query($hist) or die("Erro: " . $hist);
+	$hist="insert into historico (data,hora,usuario,acao) 
+		values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Excluiu circulacao para o processo n° ".$_POST[nprocesso]."')";	
+	$process_hist = mysql_query($hist) or die("Erro: " . $hist);
 
 ?><script language="javascript1.2">alert('Registro Excluido com Sucesso!!!');</script><? 
 unset($excluir); }
@@ -38,22 +38,19 @@ unset($excluir); }
 
 <?
 
-// Qd clica no botÃ£o ATUALIZAR
+// Qd clica no botão ATUALIZAR
 
 if ($_POST[alterar] == "Atualizar" and $_POST[id] == "") { ?>
 <script>alert('Selecione um Setor!!!')</script> <? }
 
 if ($_POST[alterar] == "Atualizar"  and $_POST[id] != "") {
-        mysql_query("SET NAMES 'utf8'");
-        mysql_query('SET character_set_connection=utf8');
-        mysql_query('SET character_set_client=utf8');
-        mysql_query('SET character_set_results=utf8');		
+
 $sqlquery = "UPDATE circulacao SET nprocesso = '".$_POST[nprocesso]."', data = '".tdate($_POST[data],0)."', hora = '".$_POST[hora]."', origem = 'PROTOCOLO', destino = '".$_POST[destino]."', despacho = '".$_POST[despacho]."' WHERE idcircula = ".$_POST[id].""; 
 	$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
-	//$hist="insert into historico (data,hora,usuario,acao) 
-		//values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Alterou circulacao para o processo nÂ° ".$_POST[nprocesso]."')";	
-	//$process_hist = mysql_query($hist) or die("Erro: " . mysql_error());
+	$hist="insert into historico (data,hora,usuario,acao) 
+		values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Alterou circulacao para o processo n° ".$_POST[nprocesso]."')";	
+	$process_hist = mysql_query($hist) or die("Erro: " . mysql_error());
 
 ?><script language="javascript1.2">alert('Registro Atualizado com Sucesso!!!');</script><? 
 unset($alterar); }
@@ -65,10 +62,6 @@ unset($alterar); }
 if ($_POST[enviar] == "Cadastrar") {
 
 		$sql2 = "select idprocesso from processo where nprocesso = '".$_POST[nprocesso]."'";
-		mysql_query("SET NAMES 'utf8'");
-        mysql_query('SET character_set_connection=utf8');
-        mysql_query('SET character_set_client=utf8');
-        mysql_query('SET character_set_results=utf8');		
 		$Resultado2 = mysql_query($sql2) or die("Erro: " . mysql_error());
 
 		if (mysql_num_rows($Resultado2) > 0) {
@@ -85,11 +78,11 @@ $insere = "insert into circulacao
 			 values
 			 ('".$_POST[nprocesso]."', '".tdate($_POST[data],0)."', '".$_POST[hora]."', '".$_POST[origem]."', '".$_POST[destino]."', '".$_POST[despacho]."', '".$idprocesso."')";
 $resultado = mysql_query($insere)
-or die ("Falha na execuÃ§Ã£o da consulta");
+or die ("Falha na execução da consulta");
 
-//	$hist="insert into historico (data,hora,usuario,acao) 
-//		values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Inseriu circulacao para o processo nÂ° ".$_POST[nprocesso]."')";	
-//	$process_hist = mysql_query($hist) or die("Erro: " . $hist);
+	$hist="insert into historico (data,hora,usuario,acao) 
+		values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Inseriu circulacao para o processo n° ".$_POST[nprocesso]."')";	
+	$process_hist = mysql_query($hist) or die("Erro: " . $hist);
 
 ?>
 <script language="javascript" type="text/javascript">
@@ -97,15 +90,11 @@ alert('Cadastro Realizado com Sucesso!!!');
 </script><? } ?>
 
 <?
-// Qd clica no botÃ£o consultar
+// Qd clica no botão consultar
 if ($_POST[consultar] == "Consultar") {
 
 		$sql2 = "select nprocesso, hora, origem, destino, despacho, date_format(data, '%d/%m/%Y') as 'data', idcircula
 		 from circulacao where nprocesso like '%".$_POST[cons_circulacao]."%' order by nprocesso";
-		mysql_query("SET NAMES 'utf8'");
-        mysql_query('SET character_set_connection=utf8');
-        mysql_query('SET character_set_client=utf8');
-        mysql_query('SET character_set_results=utf8');		
 		$Resultado2 = mysql_query($sql2) or die("Erro: " . mysql_error());
 
  }
@@ -136,7 +125,7 @@ function handleEnter (field, event) {
 function avalia_consulta1(form) {
  
  if (form1.cons_circulacao.value == "") {
-     alert("O campo DescriÃ§Ã£o deve estar preenchido");
+     alert("O campo Descrição deve estar preenchido");
 	 form1.cons_circulacao.focus();
      return false;
   }
@@ -155,7 +144,7 @@ function avalia_enviar(form) {
 function avalia_id(form) {
  
  if (form1.id.value == "") {
-     alert("FaÃ§a uma busca e selecione um setor para alterÃ¡-lo ou editÃ¡-lo!");
+     alert("Faça uma busca e selecione um setor para alterá-lo ou editá-lo!");
 	 form1.cons_circulacao.focus();
      return false;
   }
@@ -184,13 +173,13 @@ function send3(codigo6, codigo5, codigo4, codigo3, codigo2, codigo1, codigo){
         <br>
 <table width ="60%" align='center' border="1" cellpadding="1" cellspacing="2">
           <tr> 
-            <td colspan="6" class="caixaazul"><div align="center"><strong>Controle de MovimentaÃ§Ãµes</strong>
+            <td colspan="6" class="caixaazul"><div align="center"><strong>Controle de Movimentações</strong>
 			</td>
           </tr>
 
        <tr> 
        <td colspan="6" class="caixaazul">
-       Digite parte da nÃºmero do processo:&nbsp;
+       Digite parte da número do processo:&nbsp;
 			<input name="cons_circulacao" type="text" onKeyPress="return handleEnter(this, event)" size="30" class="cor-inativa">
 			&nbsp;
 			<input type="submit" name="consultar" value="Consultar" onClick="return avalia_consulta1(this);">
@@ -206,10 +195,7 @@ function send3(codigo6, codigo5, codigo4, codigo3, codigo2, codigo1, codigo){
 if ($_POST[consultar] == "Consultar") {
 
 		if (mysql_num_rows($Resultado2) > 0) {
-			mysql_query("SET NAMES 'utf8'");
-			mysql_query('SET character_set_connection=utf8');
-			mysql_query('SET character_set_client=utf8');
-			mysql_query('SET character_set_results=utf8');		
+
 			while ($array_exibir = mysql_fetch_array($Resultado2)) {
 			
 				$codigo = $array_exibir['idcircula'];
@@ -235,7 +221,7 @@ echo "<hr>";
 
 
 <tr> 
-            <td class="caixaazul">C&oacute;digo da circulaÃ§Ã£o:</td>
+            <td class="caixaazul">C&oacute;digo da circulação:</td>
 
 <td colspan="5">
 <input type="text" name="id" size="5" readonly="true" value="<? echo $_POST[id]; ?>" onMouseOver="MM_displayStatusMsg('Campo somente de leitura, gerado automaticamente na abertura do registro.');return document.MM_returnValue" onMouseOut="MM_displayStatusMsg('');return document.MM_returnValue" style="background-color:#FFFFCC" class="cor-inativa">

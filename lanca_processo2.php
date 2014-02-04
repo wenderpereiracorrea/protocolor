@@ -1,4 +1,4 @@
-Ôªø<? import_request_variables("gP"); error_reporting(0); ?>
+<? import_request_variables("gP"); error_reporting(0); ?>
 <?	session_start();	
 include "conexao.php";
 include "valida_user.php";
@@ -14,14 +14,10 @@ if ($_POST[gravar] != "")
 {
 
 		$sql = "select * from processo where nprocesso = '".$nprocesso."'";
-		mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
 		$process = mysql_query($sql) or die("Erro: " . $sql);
 		if (mysql_num_rows($process) > 0) { ?>
 		<script>
-		alert('Este n√∫mero de processo j√° foi cadastrado na base de dados!');
+		alert('Este n˙mero de processo j· foi cadastrado na base de dados!');
 		</script>
 		<? 
 		unset ($nlancamento);unset ($dataent);unset ($nprocesso);unset ($documento);unset ($datadoc);
@@ -41,10 +37,6 @@ if ($_POST[gravar] != "")
 
 //PRIMEIRO ENCAMINHAMENTO -----------------------------------------------------
 		$sql = "select idprocesso from processo where nprocesso like '".$nprocesso."'";
-		mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
 		$process = mysql_query($sql) or die("Erro10: " . mysql_error());
 		if (mysql_num_rows($process) > 0) 
 		{
@@ -60,25 +52,25 @@ if ($_POST[gravar] != "")
 
 //	echo "<br>SQL = ".$sql;
 	$sql="insert into historico (data,hora,usuario,acao,ip) 
-			values ('".$datas."','".$hora."','".upper($login)."','Inseriu o processo n¬∞ ".$nprocesso."','".get_ip()."')";	
+			values ('".$datas."','".$hora."','".upper($login)."','Inseriu o processo n∞ ".$nprocesso."','".get_ip()."')";	
 	$process = mysql_query($sql) or die("Erro: " . $sql);		
 //	echo "<br>SQL = ".$sql;
 	unset ($nlancamento);unset ($dataent);unset ($nprocesso);unset ($documento);unset ($datadoc);
 	unset ($numero);unset ($procedencia);unset ($setorsolicitante);unset ($favorecido);unset ($cpf);
 	unset ($assunto);unset ($anexos);unset ($volumes);unset ($folhas);unset ($observacoes);
-?><script>alert('Lan√ßamento efetuado com sucesso!')</script><?
+?><script>alert('LanÁamento efetuado com sucesso!')</script><?
 } 
 
 }
 ?>
 
-  <? //**************************  C√ÅLCULO D√çGITO VERIFICADOR   ************************* ?>
+  <? //**************************  C¡LCULO DÕGITO VERIFICADOR   ************************* ?>
   <? if ($gerar != "") {
 
-// C√°lculo para 13 D√≠gitos
+// C·lculo para 13 DÌgitos
 
 if (strlen($nprocesso1) != 13) { ?>
-<script>alert('Numera√ß√£o Incorreta!')</script>
+<script>alert('NumeraÁ„o Incorreta!')</script>
 <? } else {
     $processo = $nprocesso1;
 	$d1 = (($processo{12} * 2) + ($processo{11} * 3) + ($processo{10} * 4) + ($processo{9} * 5) + ($processo{8} * 6) + ($processo{7} * 7) + ($processo{6} * 8) + ($processo{5} * 9) + ($processo{4} * 10) + ($processo{3} * 11) + ($processo{2} * 12) + ($processo{1} * 13) + ($processo{0} * 14));
@@ -161,7 +153,7 @@ if (strlen($nprocesso1) != 13) { ?>
 		$process = mysql_query($sql) or die("Erro: " . $sql);
 		if (mysql_num_rows($process) > 0) { ?>
 		<script>
-		alert('Este n√∫mero de processo j√° foi cadastrado no banco de dados!');
+		alert('Este n˙mero de processo j· foi cadastrado no banco de dados!');
 		</script>
 		<? 
 		unset ($nlancamento);unset ($dataent);unset ($nprocesso);unset ($documento);unset ($datadoc);
@@ -172,11 +164,11 @@ if (strlen($nprocesso1) != 13) { ?>
 } // ELSE
 } // if			
 			?>
-  <? // **************************  FIM DO C√ÅLCULO D√çGITO VERIFICADOR   ************************* ?>
+  <? // **************************  FIM DO C¡LCULO DÕGITO VERIFICADOR   ************************* ?>
 
 
 
-<? // ******************** IN√çCIO DA P√ÅGINA HTML ****************************** ?>
+<? // ******************** INÕCIO DA P¡GINA HTML ****************************** ?>
 <HTML>
 <HEAD>
 <SCRIPT src="funcoes.js" type=text/javascript></SCRIPT>
@@ -186,22 +178,22 @@ if (strlen($nprocesso1) != 13) { ?>
 function avalia_gravar(form) {
  
  if (calform.nprocesso.value == "") {
-     alert("O campo N√∫mero do Processo precisa ser gerado!");
+     alert("O campo N˙mero do Processo precisa ser gerado!");
 	 calform.nprocesso1.focus();
      return false;
   }
  if (calform.documento.value == "") {
-     alert("O campo Esp√©cie deve ser selecionado!");
+     alert("O campo EspÈcie deve ser selecionado!");
 	 calform.documento.focus();
      return false;
   }
  if (calform.datadoc.value == "") {
-     alert("O campo Data, localizado ao lado do campo Esp√©cie n√£o pode estar em branco!");
+     alert("O campo Data, localizado ao lado do campo EspÈcie n„o pode estar em branco!");
 	 calform.datadoc.focus();
      return false;
   }
  if (calform.procedencia.value == "") {
-     alert("O campo Proced√™ncia deve ser preenchido!");
+     alert("O campo ProcedÍncia deve ser preenchido!");
 	 calform.procedencia.focus();
      return false;
   }
@@ -216,7 +208,7 @@ function avalia_gravar(form) {
      return false;
   }
  if (calform.localatual.value == "") {
-     alert("O campo Localiza√ß√£o deve ser preenchido!");
+     alert("O campo LocalizaÁ„o deve ser preenchido!");
 	 calform.localatual.focus();
      return false;
   }
@@ -334,13 +326,13 @@ function avalia_gravar(form) {
 <table width ="38%" align='center' border="1" cellpadding="1" cellspacing="2">
 	<tr>
 		<td class="caixaazul">
-		<b>Digite o n√∫mero do processo e o sistema ir√° calcular o d√≠gito verificador:</b>
+		<b>Digite o n˙mero do processo e o sistema ir· calcular o dÌgito verificador:</b>
 		</td>
 	</tr>
 	<tr>
 		<td class="caixaazul">
 		<input type="text" name="nprocesso1" maxlength="13" onKeyPress="return txtBoxFormat(this, '9999999999999', event);">&nbsp;
-		<input name='gerar' type='submit' value='Gerar N√∫mero' class='botao'>
+		<input name='gerar' type='submit' value='Gerar N˙mero' class='botao'>
 		</td>
 	</tr>
 </table>
@@ -348,15 +340,11 @@ function avalia_gravar(form) {
 <br><br>
 
 <table width ="80%" align='center' border="1" cellpadding="1" cellspacing="2">
-	<tr class="cabe√ßalho">
-		<td colspan="4"><center>PROCESSOS COM DOIS D√çGITOS NA REPRESENTA√á√ÉO DO ANO</center></td>
+	<tr class="cabeÁalho">
+		<td colspan="4"><center>PROCESSOS COM DOIS DÕGITOS NA REPRESENTA«√O DO ANO</center></td>
 	</tr>
-	<? 	// ************** Busca o √∫ltimo n√∫mero de lan√ßamento ******************
+	<? 	// ************** Busca o ˙ltimo n˙mero de lanÁamento ******************
 		$sql = "select max(idprocesso) as max from processo";
-		mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
 		$process = mysql_query($sql) or die("Erro10: " . mysql_error());
 		if (mysql_num_rows($process) > 0) 
 		{
@@ -366,9 +354,9 @@ function avalia_gravar(form) {
 
 <? // ********* CAMPOS DE PROCESSO  ********** ?>
 	<tr>
-		<td class="caixaazul"><div align='right'>Lan√ßamento n¬∫:&nbsp;</div></td>
+		<td class="caixaazul"><div align='right'>LanÁamento n∫:&nbsp;</div></td>
 		<td>
-		<input type="text" name="nlancamento" class="cor-inativa" value="<? echo $idprocesso; ?>" size="6" readonly title="N√∫mero de Lan√ßamento">
+		<input type="text" name="nlancamento" class="cor-inativa" value="<? echo $idprocesso; ?>" size="6" readonly title="N˙mero de LanÁamento">
 		</td>
       	
 		<td class="caixaazul"><div align='right'>Data:&nbsp;</div></td>
@@ -383,18 +371,14 @@ function avalia_gravar(form) {
 		</td>
 	</tr>
 
-	<tr class="cabe√ßalho">
+	<tr class="cabeÁalho">
     	<td colspan='4'  ><center>ORIGEM</center></td>
 	</tr>
 	<tr>      
-    	<td class="caixaazul"><div align='right'>Esp√©cie:&nbsp;</div></td>
+    	<td class="caixaazul"><div align='right'>EspÈcie:&nbsp;</div></td>
 		<td colspan="3">
 		<select name='documento' id="documento" class="cor-inativa">
         <?	$sqlquery = "select * from especie order by especie";
-			mysql_query("SET NAMES 'utf8'");
-			mysql_query('SET character_set_connection=utf8');
-			mysql_query('SET character_set_client=utf8');
-			mysql_query('SET character_set_results=utf8');
 			$process = mysql_query($sqlquery) or die("Erro13: " . mysql_error());
 			if (mysql_num_rows($process) > 0) 
 			{
@@ -429,12 +413,12 @@ function avalia_gravar(form) {
     </tr>
 
     <tr>
-    	<td class="caixaazul"><div align='right'>N√∫mero:&nbsp;</div></td>
+    	<td class="caixaazul"><div align='right'>N˙mero:&nbsp;</div></td>
     	<td>
 		<input type='text' name='numero' id="numero" size='15'maxlength='30'  class="cor-inativa" value='<? echo $numero; ?>'>
 		</td>
 		
-		<td class="caixaazul"><div align='right'>Proced√™ncia:&nbsp;</div></td>
+		<td class="caixaazul"><div align='right'>ProcedÍncia:&nbsp;</div></td>
     	<td width="350" colspan="3"> 
    	  	<input type='text' name='procedencia' id="procedencia" size='40' maxlength='60' class="cor-inativa" value='<? if ($procedencia == "") { echo "FUNARTE"; } else { echo $procedencia; } ?>' onChange="javascript:this.value=this.value.toUpperCase();"></td>
 	</tr>
@@ -445,10 +429,6 @@ function avalia_gravar(form) {
 		  <select name='setorsolicitante' id="setorsolicitante" class="cor-inativa">
 		  <? 
 			$sqlquery = "select * from setor order by setor";
-			mysql_query("SET NAMES 'utf8'");
-			mysql_query('SET character_set_connection=utf8');
-			mysql_query('SET character_set_client=utf8');
-			mysql_query('SET character_set_results=utf8');
 			$process = mysql_query($sqlquery) or die("Erro16: " . mysql_error());
 			if (mysql_num_rows($process) > 0) 
 			{
@@ -484,7 +464,7 @@ function avalia_gravar(form) {
 
 <? // ********* CAMPOS DE DETALHES  ********** ?>
 
-	<tr class="cabe√ßalho">
+	<tr class="cabeÁalho">
     	<td colspan='4'><center>DETALHES</center></td>
 	</tr>  
 	<tr>
@@ -516,21 +496,17 @@ function avalia_gravar(form) {
 		<input type='text' name='folhas' id="folhas" size='5' maxlength="5" class="cor-inativa" value ='<? if ($folhas!='') { echo $folhas; } else { ?>0<? } ?>' onKeyPress="return txtBoxFormat(this, '99999', event);"></td>
 	</tr>
 	<tr>
-    	<td class="caixaazul" ><div align='right'>Observa√ß√µes :&nbsp;</div></td>
+    	<td class="caixaazul" ><div align='right'>ObservaÁıes :&nbsp;</div></td>
     	<td colspan="3">
         	<textarea name="observacoes" id="observacoes" cols="74" rows="2" wrap="hard" class="cor-inativa" onChange="javascript:this.value=this.value.toUpperCase();" ><? echo $observacoes; ?></textarea></td>
 	</tr>
 
 		<tr>
-   		  <td class="caixaazul"><div align='right'>Localiza√ß√£o:&nbsp;</div></td>
+   		  <td class="caixaazul"><div align='right'>LocalizaÁ„o:&nbsp;</div></td>
 			<td colspan="3" >
 		  <select name='localatual' id="localatual" >
 		  <? 
 			$sqlquery = "select * from setor order by setor";
-			mysql_query("SET NAMES 'utf8'");
-			mysql_query('SET character_set_connection=utf8');
-			mysql_query('SET character_set_client=utf8');
-			mysql_query('SET character_set_results=utf8');
 			$process = mysql_query($sqlquery) or die("Erro16: " . mysql_error());
 			if (mysql_num_rows($process) > 0) 
 			{
@@ -580,16 +556,16 @@ function avalia_gravar(form) {
 		</td>
 	</tr>
 
-<? // *****************  BOT√ïES  *********************  ?>
+<? // *****************  BOT’ES  *********************  ?>
 
-	<tr class="cabe√ßalho">
+	<tr class="cabeÁalho">
     	<td colspan="4" style="text-align:center;">
 		<input name='gravar' id="gravar" type='submit' value='GRAVAR' class='botao' onClick="return avalia_gravar(this);">
 		<input name='Encerrar' id="Encerrar" type='button' value='ENCERRAR' class='botao' onClick="javascript:window.location.href='corpo_do_sistema.php';">
 		</td>
 	</tr>
 </table>
-<? include "footer.php" ?>
+
 </form>
 </center>
 

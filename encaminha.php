@@ -1,4 +1,4 @@
-ï»¿<? 
+<? 
 error_reporting(0);
 session_start();
 import_request_variables("gP");
@@ -9,11 +9,11 @@ connect();
 	$sql="select * from processo P,circulacao C where";
 	$sql = $sql." P.nprocesso = C.nprocesso";
 	$sql = $sql." and C.destino = '".$setor_usuario."'";
-	//$sql = $sql." and C.observacao = 'EM TRÃ‚NSITO'";
+	//$sql = $sql." and C.observacao = 'EM TRÂNSITO'";
 	$process = mysql_query($sql) or die("Erro: " . mysql_error());	
 	if (mysql_num_rows($process) == 0) 
 	{	
-?>		<script>alert('NÃ£o hÃ¡ processos no <? echo $setor_usuario; ?> para encaminhamento!');history.back();</script><?
+?>		<script>alert('Não há processos no <? echo $setor_usuario; ?> para encaminhamento!');history.back();</script><?
 	}
 }*/
 ?>
@@ -36,7 +36,7 @@ connect();
 <?
 //****************************************************************************************
 //****************************************************************************************
-//*************************** BUSCA DA PESQUISA POR NÂº COMPLETO **************************
+//*************************** BUSCA DA PESQUISA POR Nº COMPLETO **************************
 //****************************************************************************************
 //****************************************************************************************
 if ($processocom!="") 
@@ -46,11 +46,11 @@ if ($processocom!="")
 	$processo = substr($processocom,6,6);
 	$ano = substr($processocom,13,4);
 	$caracter1 = substr($processocom,0,1);
-	if (strlen($processocom) < 17) // Verifica se o nÂº do processo estÃ¡ completo
+	if (strlen($processocom) < 17) // Verifica se o nº do processo está completo
 	{ 
 ?>
 		<script>
-			alert('ERRO\nNÃ£o foram digitados todos os nÃºmeros.\nVerifique:\nUP (5 nÃºmeros).Ex.: 01550\nPROCESSO (6 nÃºmeros).Ex.: 000123\nANO(4 nÃºmeros).Ex.:2006\n\nVocÃª digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
+			alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nUP (5 números).Ex.: 01530\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
 		</script>
 <?	
 		$processocom = "";
@@ -59,11 +59,11 @@ if ($processocom!="")
 		</script>
 <?
 	} 
-	if (strlen($processocom) == 17 && $caracter1!=0) // verifica nÂº da UP
+	if (strlen($processocom) == 17 && $caracter1!=0) // verifica nº da UP
 	{ 
 ?>
 		<script> 
-			alert('ERRO\nO nÃºmero da UP deve comeÃ§ar com 0.\nVocÃª digitou <? echo ($caracter1); ?>!'); 
+			alert('ERRO\nO número da UP deve começar com 0.\nVocê digitou <? echo ($caracter1); ?>!'); 
 		</script>
 <?
 		$processocom = ""; 
@@ -76,7 +76,7 @@ if ($processocom!="")
 	{ 
 ?>
 		<script> 
-			alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n NÃ£o chegamos lÃ¡ ainda!'); 
+			alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n Não chegamos lá ainda!'); 
 		</script>
 <?		$processocom = ""; 
 ?>		<script>
@@ -87,7 +87,7 @@ if ($processocom!="")
 	if (strlen($processocom) == 17 && $ano < 1950) // verifica ano menor que 1950 
 	{ 
 ?>		<script> 
-			alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n VocÃª nÃ£o tinha nem nascido ainda!'); 
+			alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n Você não tinha nem nascido ainda!'); 
 		</script>
 <?		$processocom = ""; 				
 ?>		<script>
@@ -109,9 +109,9 @@ if ($processocom!="")
 ?>		<script>
 <? 		if ($setorsolicita=="") 
 		{ 
-?>			alert('O processo de nÂº <? echo $up; ?>.<? echo $processo; ?>/<? echo $ano; ?> nÃ£o estÃ¡ registrado em nosso banco de dados!')
+?>			alert('O processo de nº <? echo $up; ?>.<? echo $processo; ?>/<? echo $ano; ?> não está registrado em nosso banco de dados!')
 <?		} else {
-?>			alert('O processo de nÂº <? echo $up; ?>.<? echo $processo; ?>/<? echo $ano; ?>, do setor <? echo $setorsolicita; ?>, nÃ£o estÃ¡ registrado em nosso banco de dados!')
+?>			alert('O processo de nº <? echo $up; ?>.<? echo $processo; ?>/<? echo $ano; ?>, do setor <? echo $setorsolicita; ?>, não está registrado em nosso banco de dados!')
 <?		}
 ?>		window.location.href='pesquisa.php?$processocom=""';
 		</script>
@@ -126,14 +126,14 @@ if ($processocom!="")
 }
 //****************************************************************************************
 //****************************************************************************************
-//******************** FIM DE BUSCA DA PESQUISA POR NÂº COMPLETO **************************
+//******************** FIM DE BUSCA DA PESQUISA POR Nº COMPLETO **************************
 //****************************************************************************************
 //****************************************************************************************
 
 
 //****************************************************************************************
 //****************************************************************************************
-//*************************** BUSCA DA PESQUISA POR NÂº PARCIAL ***************************
+//*************************** BUSCA DA PESQUISA POR Nº PARCIAL ***************************
 //****************************************************************************************
 //****************************************************************************************
 if ($processored!="") 
@@ -141,7 +141,7 @@ if ($processored!="")
 	if (strlen($processored) < 6)
 	{
 ?>		<script language="javascript">
-			alert('ERRO\nNÃ£o foram digitados todos os nÃºmeros.\nVerifique:\nPROCESSO (6 nÃºmeros).Ex.: 000123\nVocÃª digitou: <? echo($processored); ?>');
+			alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nPROCESSO (6 números).Ex.: 000123\nVocê digitou: <? echo($processored); ?>');
 		</script><?
 		$processored = "";
 	} 
@@ -160,9 +160,9 @@ if ($processored!="")
 ?>		<script>
 <?		if ($setorsolicita=="") 
 		{
-?>			alert(' NÃ£o hÃ¡ registros de processos com o nÂº <? echo $processored; ?> em nosso banco de dados!')
+?>			alert(' Não há registros de processos com o nº <? echo $processored; ?> em nosso banco de dados!')
 <?		} else {
-?>			alert(' NÃ£o hÃ¡ registros de processos com o nÂº <? echo $processored; ?>, do setor <? echo $setorsolicita; ?>, em nosso banco de dados!')
+?>			alert(' Não há registros de processos com o nº <? echo $processored; ?>, do setor <? echo $setorsolicita; ?>, em nosso banco de dados!')
 <?		}
 ?>		window.location.href='pesquisa.php';
 		</script>
@@ -180,19 +180,19 @@ if ($processored!="")
 }	  
 //****************************************************************************************
 //****************************************************************************************
-//*************************** FIM DE BUSCA DA PESQUISA POR NÂº PARCIAL ********************
+//*************************** FIM DE BUSCA DA PESQUISA POR Nº PARCIAL ********************
 //****************************************************************************************
 //****************************************************************************************
 
 
 
- //******************** INÃCIO DE PREENCHIMENTO DE DADOS PARA PESQUISA ******************************
+ //******************** INÍCIO DE PREENCHIMENTO DE DADOS PARA PESQUISA ******************************
 if (!isset($processocom) &&  !isset($processored) && !isset($pchave))
 {
 ?>
 	<table align="center" width="50%" cellpadding="0" cellspacing="0">
 		<tr>
-			<td align="center" colspan="10" class="caixaazul"><center>Digite o nÂº completo do processo. Ex.: 01550.000439/2006 (15 nÃºmeros)</center></td>
+			<td align="center" colspan="10" class="caixaazul"><center>Digite o nº completo do processo. Ex.: 01530.000439/2006 (15 números)</center></td>
 		</tr>
 		<tr>
         	<td>&nbsp;</td>
@@ -208,7 +208,7 @@ if (!isset($processocom) &&  !isset($processored) && !isset($pchave))
 				onkeyup='Mostra(this, 17)'></div>
 <? 	} else { 
 
-				if ($_SESSION['setor_usuario']=='Servico de Arquivo Historico e Institucional')
+				if ($_SESSION['setor_usuario']=='SETOR DE PROTOCOLO')
 				{
 ?>					<input name="processocom" type="text" id="processocom" class="cor-inativa" onFocus="Focus(this);" onBlur="Blur(this);" size="18" maxlength="17" 
 					 onChange="document.form.avancar.style.visibility='visible';document.form.avancar.focus();" 
@@ -228,7 +228,7 @@ if (!isset($processocom) &&  !isset($processored) && !isset($pchave))
         	<td>&nbsp;</td>
 		</tr>
 		<tr>
-			<td align="center" colspan="10" class="caixaazul"><center>Se nÃ£o souber, digite ao menos o nÂº do processo. Ex.: 000439(6 nÃºmeros)</center></td>
+			<td align="center" colspan="10" class="caixaazul"><center>Se não souber, digite ao menos o nº do processo. Ex.: 000439(6 números)</center></td>
 		</tr>
 		<tr>
         	<td>&nbsp;</td>
@@ -243,7 +243,7 @@ if (!isset($processocom) &&  !isset($processored) && !isset($pchave))
                 onKeyPress="document.form.avancar.style.visibility='visible';javascript:document.form.processocom.value='';"  
                 onkeyup='Mostra(this, 6)' ></div>
 <?	} else {
-				if ($_SESSION["setor_usuario"]=='Servico de Arquivo Historico e Institucional')
+				if ($_SESSION['setor_usuario']=='SETOR DE PROTOCOLO')
 				{
 ?>		            <input name="processored" type="text" id="processored" class="cor-inativa" onFocus="Focus(this);" onBlur="Blur(this);" size="6" maxlength="6" 
         	        onChange="document.form.avancar.focus();" 
@@ -275,18 +275,18 @@ if (!isset($processocom) &&  !isset($processored) && !isset($pchave))
 	</table>
 <? //******************** FIM DE PREENCHIMENTO DE DADOS PARA PESQUISA ****************************** ?>
 
-<? // *****************  BOTÃ•ES  *********************  ?>
+<? // *****************  BOTÕES  *********************  ?>
 <CENTER><BR>
 <?
 if ($processocom=="" && $processored=="" && $pchave=="" && $setorsolicita=="") 
 {
-?>	<input type="button" onClick="javascript: form.submit();" name="avancar" class="botao" id="avancar" value="AVANÃ‡AR" alt="AvanÃ§ar">
+?>	<input type="button" onClick="javascript: form.submit();" name="avancar" class="botao" id="avancar" value="AVANÇAR" alt="Avançar">
 <?
 }
 ?>
 	<input name='Encerrar' type='button' value='ENCERRAR' class='botao' onClick="javascript:window.location.href='corpo_do_sistema.php';">
 
-	<? // *****************  FIM DE BOTÃ•ES  *********************  ?>
+	<? // *****************  FIM DE BOTÕES  *********************  ?>
 
 <? if (!isset($processocom)) { ?>	
 	<script>document.form.avancar.style.visibility='hidden'; </script>

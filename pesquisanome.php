@@ -1,13 +1,13 @@
-Ôªø<?php header("Content-type: text/html; charset=UTF-8");?> 
 <?php 
 session_start();
+
 include "conexao.php";
 connect();
 $date = date("d/m/y");
 $hora= gmdate("H:i" ,time()-(3570*2));
 
 
-// Qd clica no bot√£o consultar
+// Qd clica no bot„o consultar
 if ($_POST[consultar] == "Consultar") {
 
 		$sql2 = "select nprocesso, favorecido, assunto, idprocesso
@@ -22,7 +22,7 @@ if ($_POST[consultar] == "Consultar") {
 <HEAD>
 <TITLE>PROTOCOLO - Setor de Protocolo</TITLE>
 <link href='auxiliar/styles.css' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="buscaProcesso.js"></script>
+
 <script type="text/javascript" src="buscaProcessonome.js"></script>
 
 </HEAD>
@@ -63,7 +63,7 @@ if ($_POST[consultar] == "Consultar") {
        <tr> 
        <td colspan="6" class="caixaazul">
        Origem:&nbsp;
-			<input name="up" value="01550" type="text" size="5" class="cor-inativa">
+			<input name="up" value="01530" type="text" size="5" class="cor-inativa">
 			&nbsp;
 
        Informe o assunto ou interessado:&nbsp;
@@ -108,11 +108,11 @@ if ($_POST[consultar] == "Consultar") {
 				$assunto = $array_exibir['assunto'];
 				$idprocesso = $array_exibir['idprocesso'];
 
-				// Colorir linha sim, linha n√£o ####################
+				// Colorir linha sim, linha n„o ####################
 				$cont = $cont + 1;
 				if ($cont % 2) { $bg = "#FFF"; } else {
 				$bg = "#E2E2E2"; }
-				// Colorir linha sim, linha n√£o ####################
+				// Colorir linha sim, linha n„o ####################
 
 								
 echo "<tr><td style='background-color:$bg'>";

@@ -1,4 +1,4 @@
-﻿<? 
+<? 
 import_request_variables("gP");
 session_start();
 include "conexao.php";
@@ -7,7 +7,7 @@ if ($nprocesso!="")
 	{ 	
 	 	$sql="select * from processo where nprocesso = '".$nprocesso."'";
 		$process = mysql_query($sql) or die("Erro1: " . mysql_error());	
-		$sql2="select date_format(dataent, '%d/%m/%Y') from processo where nprocesso = '".$nprocesso."'";
+		$sql2="select date_format(dataent, '%d/%m/%Y') from processo where nprocesso = '$nprocesso'";
 		$data = mysql_query($sql2) or die("Erro1: " . mysql_error());
 		$data =  mysql_fetch_row($data);
 		if (mysql_num_rows($process) > 0) 
@@ -67,7 +67,7 @@ PRE { page-break-after: always; }
   
   <tr>
     <td width="10">&nbsp;</td>
-    <td width="690"><b><font size="3">PROC. Nº.: <? echo($nprocesso); ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<? echo($data[0]); ?></font></b></td>
+    <td width="690"><b><font size="3">PROC. N�.: <? echo($nprocesso); ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<? echo($data[0]); ?></font></b></td>
   </tr>
   <td>&nbsp;</td>
   

@@ -1,4 +1,4 @@
-ï»¿<? 
+<? 
 session_start();
 import_request_variables("gP");
 include "conexao.php";
@@ -10,52 +10,35 @@ $datanova = date("Y/m/d");
 //$horanova = date("H:m");
 $horanova= gmdate("H:i" ,time()-(3570*2));
 
-$sql1 = "select MAX(destino) destino from circulacao where idprocesso = '$idprocesso'";
-$test = mysql_query($sql1);
-$array_exibir = mysql_fetch_array($test);
-$destino = $array_exibir['destino'];
+if ($_SESSION[setor_usuario] == $_SESSION[setor] or $_SESSION[setor_usuario] == "Setor de Protocolo") {
 
-if ($_SESSION[setor_usuario] == $destino || $_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional') {
-
-// VERIFICA SE ESTÃ EM TRÃ‚NSITO ******************************************
+// VERIFICA SE ESTÁ EM TRÂNSITO ******************************************
 		$sql = "select * from circulacao where idprocesso = '".$_GET[idprocesso]."' and observacao like '%".transito."%'";
 		$process = mysql_query($sql) or die("Erro: " . $sql);
 
 // RETIRADO A PEDIDO DO JORGE EM 15/09/2009 - ULTIMA LINHA TEM CHAVE COMENTADA
 		if (mysql_num_rows($process) > 0) {
-		echo "<font color='#FF0000'>Este processo estÃ¡ em trÃ¢nsito!<br><br>Para fazer o encaminhamento, favor alterar esse status atravÃ©s da opÃ§Ã£o recebimento no menu.</font>";
+		echo "<font color='#FF0000'>Este processo está em trânsito!<br><br>Para fazer o encaminhamento, favor alterar esse status através da opção recebimento no menu.</font>";
 		} else { 
 
 if ($btgravar=="GRAVAR")
 { 
 	$sql="update circulacao set observacao = 'TRANSFERIDO' where idprocesso = ".$idprocesso."";
-			mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 	$sql="update processo set localizacao = '".$novolocal."' where idprocesso = ".$idprocesso."";
-			mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 	if ($novolocal != 'ARQUIVO') 
 	{
-		$sql="insert into circulacao (idprocesso,nprocesso,data,hora,origem,destino,despacho,observacao) values ('$idprocesso','$nprocesso','$novadata','$novahora','$setor_usuario','$novolocal','$despacho','EM TRANSITO')";
+		$sql="insert into circulacao (idprocesso,nprocesso,data,hora,origem,destino,despacho,observacao) values ('$idprocesso','$nprocesso','$novadata','$novahora','$setor_usuario','$novolocal','$despacho','EM TRÂNSITO')";
 	} else {
 		$sql="insert into circulacao (idprocesso,nprocesso,data,hora,origem,destino,despacho,observacao) values ('$idprocesso','$nprocesso','$novadata','$novahora','$setor_usuario','$novolocal','$despacho','TRANSFERIDO')";
 	}
 	$process = mysql_query($sql) or die("Erro: " . mysql_error());
 	if ($nfolhas !="" && $nfolhas > 0)
 	{
-		// CÃLCULO DO NÃšMERO DE FOLHAS ***********************************************************************
+		// CÁLCULO DO NÚMERO DE FOLHAS ***********************************************************************
 		
 		$sql="select folhas from processo where idprocesso = ".$idprocesso."";
-		mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 		
 		if (mysql_num_rows($process) > 0) 
@@ -70,19 +53,16 @@ if ($btgravar=="GRAVAR")
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 
 
-		// CÃLCULO DO NÃšMERO DE FOLHAS ***********************************************************************
+		// CÁLCULO DO NÚMERO DE FOLHAS ***********************************************************************
 	}
-	//$sql="insert into historico (data,hora,usuario,acao,ip) 
-		//values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Encaminhou o processo nÂ° ".$nprocesso." para ".$novolocal."','".get_ip()."')";	
-	//$process = mysql_query($sql) or die("Erro: " . $sql);			
-	?>
-	<script>//alert('Encaminhamento gravado com sucesso!');window.location.href='mostra_processo.php?idprocesso=<? echo $idprocesso; ?>';</script>
-	<? ?>
-	<script>//window.location.href="imp_despacho.php?setor_usuario='<? echo $setor_usuario; ?>&destino="& document.form.novolocal.value;</script>
-	<?
+	$sql="insert into historico (data,hora,usuario,acao,ip) 
+		values ('" . tdate($date,0) . "','" . $hora  . "','".$_SESSION[nome]."','Encaminhou o processo n° ".$nprocesso." para ".$novolocal."','".get_ip()."')";	
+	$process = mysql_query($sql) or die("Erro: " . $sql);			
+?><script>//alert('Encaminhamento gravado com sucesso!');window.location.href='mostra_processo.php?idprocesso=<? echo $idprocesso; ?>';</script><?	
+?><script>//window.location.href="imp_despacho.php?setor_usuario='<? echo $setor_usuario; ?>&destino="& document.form.novolocal.value;</script><?
 ?><script>    var answer = confirm('Encaminhamento gravado com sucesso!\nDeseja imprimir o despacho?')
     		if (answer){
-			window.location.href="imp_despacho.php?setor_usuario=<? echo $_SESSION["setor_usuario"]; ?>&&destino=<? echo $novolocal; ?>&&nprocesso=<? echo $nprocesso; ?>"
+			window.location.href="imp_despacho.php?setor_usuario=<? echo $_SESSION[setor_usuario]; ?>&&destino=<? echo $novolocal; ?>&&nprocesso=<? echo $nprocesso; ?>"
     		} else {
 			window.location.href='mostra_processo.php?idprocesso=<? echo $idprocesso; ?>';
 			}
@@ -153,13 +133,13 @@ window.location=event.srcElement.url
 <!--[if IE]>
 <div id="ie5menu" onMouseover="highlightie5()" onMouseout="lowlightie5()" onClick="jumptoie5()">
 <div align="center"><img src="imagebox/menu.gif" width="100" height="25"></div>
-<div class="menuitems" url="lanca_processo.php?modolan=0"><img src="imagebox/ponto.gif" width="6" height="6"> LanÃ§amento</div>
-<div class="menuitems" url=""><img src="imagebox/ponto.gif" width="6" height="6"> AlteraÃ§Ã£o</div>
+<div class="menuitems" url="lanca_processo.php?modolan=0"><img src="imagebox/ponto.gif" width="6" height="6"> Lançamento</div>
+<div class="menuitems" url=""><img src="imagebox/ponto.gif" width="6" height="6"> Alteração</div>
 <div class="menuitems" url="pesquisa.php"><img src="imagebox/ponto.gif" width="6" height="6"> Pesquisa</div>
 <div class="menuitems" url="transfer.php"><img src="imagebox/ponto.gif" width="6" height="6"> Encaminhamento</div>
-<div class="menuitems" url=""><img src="imagebox/ponto.gif" width="6" height="6"> RelatÃ³rios</div>
+<div class="menuitems" url=""><img src="imagebox/ponto.gif" width="6" height="6"> Relatórios</div>
 <div class="menuitems" url=""><img src="imagebox/ponto.gif" width="6" height="6"> Etiquetas</div>
-<div class="menuitems" url=""><img src="imagebox/ponto.gif" width="6" height="6"> UsuÃ¡rios</div>
+<div class="menuitems" url=""><img src="imagebox/ponto.gif" width="6" height="6"> Usuários</div>
 <div class="menuitems" url=""><img src="imagebox/ponto.gif" width="6" height="6"> Recados</div>
 <div class="menuitems" url="sobre.php"><img src="imagebox/ponto.gif" width="6" height="6"> Sobre o Sistema</div>
 <div class="menuitems" url="logout.php"><img src="imagebox/ponto.gif" width="6" height="6"> LogOut</div>
@@ -185,7 +165,7 @@ if (document.form.novolocal.value == "")
 	}
 if (document.form.despacho.value == "") 
 	{
-		alert("A finalidade da transferÃªncia deve ser indicada!");
+		alert("A finalidade da transferência deve ser indicada!");
 		document.form.despacho.focus();
 		var ref = 1;
 		return false;
@@ -220,10 +200,6 @@ if (ref==0)
 if ($idprocesso!="") 
 {
 	$sql="select * from processo where idprocesso = '".$idprocesso."'";
-			mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
 	$process = mysql_query($sql) or die("Erro: " . mysql_error());	
 	if (mysql_num_rows($process) > 0) 
 	{ 
@@ -271,24 +247,24 @@ if ($idprocesso!="")
 				<td width="34%" class="caixatitpesq"><? echo $setorsolicitante; ?></td>
 	    	</tr>						
 			<tr> 
-				<td class="caixadestaque">NÃºmero :</td>
+				<td class="caixadestaque">Número :</td>
             	<td class="caixatitpesq"><? echo $numero; ?></td>
-				<td class="caixadestaque">EmissÃ£o :</td>
+				<td class="caixadestaque">Emissão :</td>
 				<td class="caixatitpesq"><? echo tdate($datadoc,1) ?></td>
 			</tr>						
 			<tr> 
         		<td class="caixadestaque">Volumes :</td>
            		<td class="caixatitpesq"><? echo $volumes; ?></td>
-           	 	<td class="caixadestaque">NÂº de Folhas :</td>
+           	 	<td class="caixadestaque">Nº de Folhas :</td>
             	<td class="caixatitpesq"><? echo $folhas; ?></td>
 			</tr>																														
 		</table>
 <?
 } 	/******************** FIM DE DADOS DO PROCESSO ****************************** 
-	******************** BUSCA HISTÃ“RICO DO PROCESSO  **************************/
+	******************** BUSCA HISTÓRICO DO PROCESSO  **************************/
 	$sql= "select * from circulacao where idprocesso = ".$idprocesso."" ;
 	$sql=$sql." order by idcircula desc";
-	$process = mysql_query($sql) or die ("ConexÃ£o falhou!"); 
+	$process = mysql_query($sql) or die ("Conexão falhou!"); 
 //	if (mysql_num_rows($process) > 0)
 //	{ 
 
@@ -307,13 +283,13 @@ if ($idprocesso!="")
 				<td class="caixatitpesq"><? echo tdate($dataent,1); ?></td>
 			</tr>
         	<tr>
-  	    		<td class="caixadestaque">LocalizaÃ§Ã£o:</td>
+  	    		<td class="caixadestaque">Localização:</td>
          		<td class="caixatitpesq"><? echo $local; ?></td>
 			</tr>
 			<tr> 
 				<td width="24%" class="caixadestaque">Destino:</td>
 				<td class="caixatitpesq">
-                	<select name='novolocal' class="caixa" >
+                	<select name='novolocal' class="caixa" onChange="javascript:form.submit();">
 <? 		
 					$sqlquery = "select * from setor";
 					//$sqlquery = $sqlquery." where grupo ='".$_SESSION['grupo']."'";
@@ -327,7 +303,7 @@ if ($idprocesso!="")
 						} else {
 							echo "<option value='$novolocal'>$novolocal</option>\n";
 						}
-						if ($_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional') 
+						if ($_SESSION['setor_usuario']=='SETOR DE PROTOCOLO') 
 						{
 ?>							<option value='ARQUIVO'>ARQUIVO - ARQUIVO MORTO</option>
 <?						}
@@ -349,7 +325,7 @@ if ($idprocesso!="")
 	           </td>
 			</tr>
 <? 	//}
-	mysql_free_result($process);   // ********** ENCERRA "SE EXISTIR HISTÃ“RICO"  ************** ?>
+	mysql_free_result($process);   // ********** ENCERRA "SE EXISTIR HISTÓRICO"  ************** ?>
 			<tr>
 	        <td class="caixadestaque">Folhas:</td>
 			<td>
@@ -366,7 +342,7 @@ if ($idprocesso!="")
 			    <BR><BR><center>
 <b><font color="#990000">Informe o destino;</font></b><br>
 <b><font color="#990000">Digite o despacho;</font></b><br>
-<b><font color="#990000">Informe o nÃºmero de folhas acrescentadas.</font></b>
+<b><font color="#990000">Informe o número de folhas acrescentadas.</font></b>
 <BR><BR></center>
 
 <input name="idprocesso" type="hidden" value="<? echo $idprocesso; ?>">
@@ -379,13 +355,13 @@ if ($idprocesso!="")
 <input name="ano" type="hidden" value="<? echo $ano; ?>">
 <input name="novadata" type="hidden" value="<? echo $datanova; ?>">
 <input name="novahora" type="hidden" value="<? echo $horanova; ?>">
-<input type="submit" onFocus=";document.form.aviso.value='Clique em Gravar ou tecle Enter para salvar a transferÃªncia!'" onClick="if (document.form.nfolhas.value > (200*<? echo $volumes; ?>)) { ExcedeFolhas(); } " name="btgravar" class="botao" id="btgravar" value="GRAVAR">
+<input type="submit" onFocus=";document.form.aviso.value='Clique em Gravar ou tecle Enter para salvar a transferência!'" onClick="if (document.form.nfolhas.value > (200*<? echo $volumes; ?>)) { ExcedeFolhas(); } " name="btgravar" class="botao" id="btgravar" value="GRAVAR">
 <script language="javascript">document.form.nfolhas.focus();</script>
 <? // } ?>
 <? //if ($novolocal=='') { ($_POST[idprocesso]!=''); ?>
-	<? // *****************  BOTÃ•ES  *********************  ?>
+	<? // *****************  BOTÕES  *********************  ?>
 	<input name='Retornar' type='button' value='RETORNAR' class='botao' onclick='javascript:history.back();'>&nbsp;&nbsp;<input name='Encerrar' type='button' value='ENCERRAR' class='botao' onClick="javascript:window.location.href='corpo_do_sistema.php';">&nbsp;&nbsp;
-	<? // *****************  FIM DE BOTÃ•ES  *********************  ?>
+	<? // *****************  FIM DE BOTÕES  *********************  ?>
 	</center>
 <? // ***************FIM DE MOSTRA RESULTADO ***************** ?>
 
@@ -401,7 +377,7 @@ if ($novolocal!="" && $despacho!="" && $nfolhas!="")
 <script language="javascript">
 
 function ExcedeFolhas() {
-	alert('Este processo nÃ£o pode ser encaminhado com este nÂº de folhas!\n Encaminhe-o ao Protocolo e solicite a abertura de novo tomo(<? echo $volumes + 1; ?>)');
+	alert('Este processo não pode ser encaminhado com este nº de folhas!\n Encaminhe-o ao Protocolo e solicite a abertura de novo tomo(<? echo $volumes + 1; ?>)');
 	window.location.href='corpo_do_sistema.php';
 }
 
@@ -422,7 +398,7 @@ function MostraMais() {
 <? 	if ($despacho=="") { ?>
 	document.form.despacho.focus();
 <?	}	?>
-<? 	if ($novolocal!="" && $despacho=="" && ($_SESSION["setor_usuario"] != $destino || $_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional')) {
+<? 	if ($novolocal!="" && $despacho=="" && $setor_usuario=='PROTOCOLO') {
 	$sql="update circulacao set despacho = 'TRANSFERIDO PELO PROTOCOLO' where idprocesso = ".$idprocesso." and destino = '".$local."'";
 	$process = mysql_query($sql) or die("Erro: " . mysql_error()); 
 	}	?>	
@@ -443,4 +419,4 @@ function Blur(obj) {
 </HEAD>
 </HTML>
 <? } ?>
-<? } else { echo "<center><b>Este processo sÃ³ pode ser encaminhado pelo setor em que se encontra ou pelo Protocolo!</b></center>"; } ?>
+<? } else { echo "<center><b>Este processo só pode ser encaminhado pelo setor em que se encontra ou pelo Protocolo!</b></center>"; } ?>

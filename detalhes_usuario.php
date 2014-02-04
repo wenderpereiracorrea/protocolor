@@ -1,43 +1,25 @@
-Ôªø<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<?php header("Content-type: text/html; charset=UTF-8");?> 
 <? import_request_variables("gP"); ?>
 <? 
 session_start();
 include "conexao.php";
 include "valida_user.php";
 connect();
-if ($_POST[Gravar] == "Gravar"){ 
+if($modo=='gravando'){ 
 $data = tdate($data,0);
-$senha_usuario = md5($senha_usuario);
  $sql = "UPDATE usuario SET nome = '$nome_usuario', login = '$login_usuario',senha = '$senha_usuario', lembrete = '$lembrete', perfil = '$perfila', cpf = '$cpf', setor = '$setor' WHERE idusuario = '$idusuario'";
-	mysql_query("SET NAMES 'utf8'");
-	mysql_query('SET character_set_connection=utf8');
-	mysql_query('SET character_set_client=utf8');
-	mysql_query('SET character_set_results=utf8');
 	$Resultado = mysql_query($sql) or die("Erro: " . mysql_error());
 ?>
 <script language="javascript">alert('Registro Atualizado com Sucesso!');window.location.href='corpo_do_sistema.php';</script>
 <? } ?>
-<? if ($_POST[alterarsetor] == "alterarsetor")
-{
-	   	mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');
-		$sql = "UPDATE usuario SET nome = '$nome_usuario', login = '$login_usuario', lembrete = '$lembrete', perfil = '$perfila', cpf = '$cpf', setor = '$setor' WHERE idusuario = '$idusuario'";
-		$process = mysql_query($sql) or die("Erro: " . mysql_error());
-		?><script language="javascript">alert(' Atualizado setor');window.location.href='corpo_do_sistema.php';</script><?
-		} ?>
-
 <? if($modo=='excluindo'){ 
 		$sql = "delete from usuario where idusuario = $idusuario";
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
-		?><script language="javascript">alert(' Usu√°rio exclu√≠do');window.location.href='corpo_do_sistema.php';</script><?
+		?><script language="javascript">alert(' Usu·rio excluÌdo');window.location.href='corpo_do_sistema.php';</script><?
 		} ?>
 	<html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-	<title>DIPAT - Divis√£o de Patrim√¥nio</title>
+	<title>DIPAT - Divis„o de PatrimÙnio</title>
 	<script>
 		var ie = /msie/i.test(navigator.userAgent);      
 		var ieBox = ie && (document.compatMode == null || document.compatMode == "BackCompat");      	
@@ -64,20 +46,14 @@ $senha_usuario = md5($senha_usuario);
 	<table align="center" width="20%" cellpadding="0" cellspacing="0"> 
 	<BR><TR align='center'> 
 			<td align="center" colspan="2" class="titulo"></strong> 
-						<div align="center">&nbsp;DETALHES DO USU√ÅRIO&nbsp;</strong></div>
+						<div align="center">&nbsp;DETALHES DO USU¡RIO&nbsp;</strong></div>
 			</td>
 	</table>
-
 	<?	
 		$sql="select * from usuario";
 		$sql = $sql." where idusuario = ".$idusu."";	
-		$sql = $sql." order by nome";
-		mysql_query("SET NAMES 'utf8'");
-		mysql_query('SET character_set_connection=utf8');
-		mysql_query('SET character_set_client=utf8');
-		mysql_query('SET character_set_results=utf8');		
-
-                $process = mysql_query($sql) or die("Erro: " . mysql_error());	
+		$sql = $sql." order by nome";	
+		$process = mysql_query($sql) or die("Erro: " . mysql_error());	
 		if (mysql_num_rows($process) > 0) 
 		{
 			$line = mysql_fetch_array($process);
@@ -109,10 +85,10 @@ $senha_usuario = md5($senha_usuario);
 					<td><div align='right'>Login:&nbsp;</div></td>
 					<td><input type='text' name='login_usuario' size='12'maxlength='12' class='caixa' value='<? echo $login_usuario?>' onClick='javascript:document.form.Gravar.style.visibility = "visible";'></td>
 				</tr> 
-        <? if ($_SESSION['perfil']==1) { ?>
+<? if ($_SESSION['perfil']==1) { ?>
 				<tr>
 					<td><div align='right'>Senha:&nbsp;</div></td> 
-					<td><input name='senha_usuario' type="password" id='senha_usuario' size='8' maxlength='18' class='caixa' value='<? echo $senha_usuario?>' onChange='javascript:document.form.Gravar.style.visibility = "visible";'></td>
+					<td><input name='senha_usuario' type="password" id='senha_usuario' size='8' maxlength='8' class='caixa' value='<? echo $senha_usuario?>' onChange='javascript:document.form.Gravar.style.visibility = "visible";'></td>
 				</tr>
 				<tr>
 					<td><div align='right'>Lembrete:&nbsp;</div></td> 
@@ -127,15 +103,11 @@ $senha_usuario = md5($senha_usuario);
 					<td><div align='right'>CPF:&nbsp;</div></td> 
 			 	<td><input name='cpf' type='text' id='cpf' size='15' maxlength='15' class='caixa' value='<? echo $cpf?>' onClick='javascript:document.form.Gravar.style.visibility = "visible";' ></td>
 				</tr> 		
-            <? } ?>
+<? } ?>
 				<tr>
 					<td><div align='right'>Setor:&nbsp;</div></td> 
-					<td><select name='setor' id='setor' onFocus='Focus();' class="cor-inativa" title='Setor do Usu√°rio (Funarte)' onChange='javascript:document.form.Gravar.style.visibility = "visible";document.form.Gravar.focus();' onBlur="Blur(this);"><? 
+					<td><select name='setor' id='setor' onFocus='Focus();' class="cor-inativa" title='Setor do Usu·rio (Funarte)' onChange='javascript:document.form.Gravar.style.visibility = "visible";document.form.Gravar.focus();' onBlur="Blur(this);"><? 
 			$sqlquery = "select * from setor order by setor";
-			mysql_query("SET NAMES 'utf8'");
-			mysql_query('SET character_set_connection=utf8');
-			mysql_query('SET character_set_client=utf8');
-			mysql_query('SET character_set_results=utf8');
 			$process = mysql_query($sqlquery) or die("Erro16: " . mysql_error());
 			if (mysql_num_rows($process) > 0) 
 			{
@@ -166,14 +138,13 @@ $senha_usuario = md5($senha_usuario);
 	<br><br>
 	<center>
 	<? if ($_SESSION['perfil']==1) { ?>
-			<button type="submit" id="Gravar" class="botao" onClick="javascript:confirmausu();" name="Gravar" value="Gravar" alt="Gravar"> <i class="icon-plus icon-white"></i> Gravar </button>
-			<button type="submit" id="alterarsetor" class="botao" name="alterarsetor" value="alterarsetor"> <i class="icon-plus icon-white"></i> Alterar Setor </button>
-			
-			<input type="button" onClick="javascript:confirmausu();" name="Excluir" class="botao" id="Excluir" value="EXCLUIR" alt="Excluir Usu√°rio">&nbsp;&nbsp;
+			<input type="button" onClick="javascript:confirmausu();" name="Gravar" class="botao" id="Gravar" value="GRAVAR" alt="Gravar">
+			<input type="hidden" name="modo" value="gravando">
+			<input type="button" onClick="javascript:window.location.href='detalhes_usuario.php?modo=excluindo';" name="Excluir" class="botao" id="Excluir" value="EXCLUIR" alt="Excluir Usu·rio">&nbsp;&nbsp;
 	<? } ?>
-	<? // *****************  BOT√ïES  *********************  ?>
+	<? // *****************  BOT’ES  *********************  ?>
 	<input name='Retornar' type='button' value='RETORNAR' class='botao' onclick='javascript:history.back();'>&nbsp;&nbsp;<input name='Encerrar' type='button' value='ENCERRAR' class='botao' onClick="javascript:window.location.href='corpo_do_sistema.php';">&nbsp;&nbsp;
-	<? // *****************  FIM DE BOT√ïES  *********************  ?>
+	<? // *****************  FIM DE BOT’ES  *********************  ?>
 	</center>
 	</form>
 	<script language="javascript">
@@ -181,17 +152,8 @@ $senha_usuario = md5($senha_usuario);
 	</script>
 	<script language="javascript">
 		function confirmausu() {
-		        if (confirm('Confirma Altera√ß√£o?')){
+		        if (confirm('Confirma AlteraÁ„o?')){
  	           		form.submit();
-				}
-		}
-
-	</script>
-        	<script language="javascript">
-		function confirmaaltesetor() {
-		        if (confirm('Confirma Altera√ß√£o?')){
- 	           		form.submit();
-                                window.location.href='detalhes_usuario.php?modo=alterarsetor;
 				}
 		}
 
