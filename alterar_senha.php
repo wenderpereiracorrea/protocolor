@@ -1,3 +1,4 @@
+Ôªø<?php header("Content-type: text/html; charset=UTF-8");?> 
 <? import_request_variables("gP"); ?>
 <?	@session_start();	
 include "conexao.php";
@@ -9,23 +10,39 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 
 
 if ($_POST[gravar] != "") {
-if ($_SESSION[senha] != $_POST[senha_atual]) {
-echo "<center><b>A senha atual n„o est· correta!</b></center><br><br>";
+if ($_SESSION[senha] != md5($_POST[senha_atual])) {
+echo "<center><b>A senha atual n√£o est√° correta!</b></center><br><br>";
 } else {
 		$sql = "update usuario set ";
-		$sql.= "senha = '". $_POST[senha_nova]."' ";
+		$sql.= "senha = '". md5($_POST[senha_nova])."' ";
 		$sql.= "where idusuario = ". $_SESSION[idusuario]."";
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 echo "<center><b>Senha atualizada com sucesso!</b></center><br><br>";
+$_SESSION["senha"] = md5($_POST[senha_nova]);
 }
 }
 ?>
 
-<? // ******************** INÕCIO DA P¡GINA HTML ****************************** ?>
+<? // ******************** IN√çCIO DA P√ÅGINA HTML ****************************** ?>
 <HTML>
 <HEAD>
 <SCRIPT src="funcoes.js" type=text/javascript></SCRIPT>
 <link href='auxiliar/styles.css' rel='stylesheet' type='text/css'>
+
+<SCRIPT src="funcoes.js" type=text/javascript></SCRIPT>
+<!--  vallida√ß√£o bootstrao  e jquery validation -->	
+<!-- jQUERY PARA VALIDA√á√ÉO-->
+<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css" />
+<link rel="stylesheet" href="css/template.css" type="text/css" />
+<script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="js/languages/jquery.validationEngine-pt_BR.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<script>
+	    jQuery(document).ready(function () {  // binds form submission and fields to the validation engine
+	    jQuery("#form1").validationEngine();
+		});
+</script>
 
 <script>
 function avalia_gravar(form) {
@@ -41,7 +58,7 @@ function avalia_gravar(form) {
      return false;
   }
  if (calform.senha_nova.value != calform.senha_nova2.value) {
-     alert("As senhas n„o conferem!");
+     alert("As senhas n√£o conferem!");
 	 calform.senha_nova.focus();
      return false;
   }
@@ -64,7 +81,7 @@ function avalia_gravar(form) {
 </table>
 <BR><BR><BR>
 
-<form action="alterar_senha.php" method="POST" name="calform" target="_self">
+<form id="form1" action="alterar_senha.php" method="POST" name="calform" target="_self">
 
 <table width="40%" align='center' border="1" cellpadding="1" cellspacing="2">
 	<tr>
@@ -72,7 +89,7 @@ function avalia_gravar(form) {
 		<b>Digite a senha atual:</b>
 		</td>
 		<td class="caixaazul">
-		<input type="password" name="senha_atual" size="40">&nbsp;
+		<input type="password" class="validate[required]" name="senha_atual" size="40">&nbsp;
 		</td>
 	</tr>
 
@@ -81,7 +98,7 @@ function avalia_gravar(form) {
 		<b>Digite a nova senha:</b>
 		</td>
 		<td class="caixaazul">
-		<input type="password" name="senha_nova" size="40">&nbsp;
+		<input type="password" class="validate[required,minSize[4]]" id="senha_nova" name="senha_nova" size="40">&nbsp;
 		</td>
 	</tr>
 
@@ -90,11 +107,11 @@ function avalia_gravar(form) {
 		<b>Redigite a nova senha:</b>
 		</td>
 		<td class="caixaazul">
-		<input type="password" name="senha_nova2" size="40">&nbsp;
+		<input type="password" class="validate[required,minSize[4]],equals[senha_nova]]" id= "senha_nova2" name="senha_nova2" size="40">&nbsp;
 		</td>
 	</tr>
 
-	<tr class="cabeÁalho">
+	<tr class="cabe√ßalho">
     	<td colspan="4" style="text-align:center;">
 		<input name='gravar' id="gravar" type='submit' value='GRAVAR' class='botao' onClick="return avalia_gravar(this);">
 		</td>

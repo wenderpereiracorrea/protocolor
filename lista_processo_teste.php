@@ -53,13 +53,13 @@ if ($lista_setor!="")
 ?>		<BR><BR>	
 		<table align="center" border="1" width="70%" cellpadding="0" cellspacing="0"> 				
 			<tr>
-				<td align="center" colspan="10" class="caixadestaque"><center>Clique na linha do processo para visualizá-lo.</center></td>
+				<td align="center" colspan="10" class="caixadestaque"><center>Clique na linha do processo para visualizï¿½-lo.</center></td>
 			</tr>
 		</table>
 <?        
 } else {
 	if ($setor_usuario!="") 
-	{ ?><script>alert('Setor Usuário =<? echo $setor_usuario; ?>');</script><?
+	{ ?><script>alert('Setor Usuï¿½rio =<? echo $setor_usuario; ?>');</script><?
 		$sql="select * from processo P,circulacao C where";
 		$sql = $sql." P.processo = C.nprocesso";
 		$sql = $sql." and C.destino = '".$setor_usuario."'";
@@ -122,13 +122,13 @@ if ($lista_setor!="")
 ?>		<BR><BR>	
 		<table align="center" border="1" width="70%" cellpadding="0" cellspacing="0"> 				
 			<tr>
-				<td align="center" colspan="10" class="caixadestaque"><center>Clique na linha do processo para visualizá-lo.</center></td>
+				<td align="center" colspan="10" class="caixadestaque"><center>Clique na linha do processo para visualizï¿½-lo.</center></td>
 			</tr>
 		</table>
 <?	} else {
-?> <script>alert('Não é Maior que zero!');</script>
+?> <script>alert('Nï¿½o ï¿½ Maior que zero!');</script>
 		<script>
-			alert('Não existe registro de processos no <? echo $setor_usuario; ?>!');
+			alert('NÃ£o existe registro de processos no <? echo $setor_usuario; ?>!');
 			//window.location.href='corpo_do_sistema.php';
         </script>
 <?	}
@@ -140,7 +140,7 @@ if ($lista_setor!="")
 <br><br>
 <center>
 <input name='Encerrar' type='button' value='ENCERRAR' class='botao' onClick="javascript:window.location.href='corpo_do_sistema.php';">&nbsp;&nbsp;
-	<? // *****************  FIM DE BOTÕES  *********************  ?>
+	<? // *****************  FIM DE BOTï¿½ES  *********************  ?>
 </center>
   </form>
 <script language="javascript">

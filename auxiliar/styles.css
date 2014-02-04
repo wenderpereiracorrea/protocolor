@@ -311,21 +311,26 @@ body{
 	
 	.titulo{  
 	background-color:#9999CC;
-	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: center;
-	font-size::8pt;
-	font:larger ;
-	color:#FFFFFF ;
+	font:larger;
+	color:#FFFFFF;
 	margin-left:0;
-	margin-top:0;	
-	border-bottom:groove;
-	border-left:groove;
-	border-right:groove;	
-	}	
+	font-family: ": Verdana", Arial, Helvetica, sans-serif;
+    border-left-style: groove;
+    border-left-color: inherit;
+    border-left-width: medium;
+    border-right-style: groove;
+    border-right-color: inherit;
+    border-right-width: medium;
+    border-bottom-style: groove;
+    border-bottom-color: inherit;
+    border-bottom-width: medium;
+}	
 
 	.titgrande{  
 	background-color:#669966;
-	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: center;
 	font-size:18px;
 	color:#FFFFFF;
@@ -338,7 +343,7 @@ body{
 
 	.titpreto{  
 	background-color:#9999CC;
-	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: center;
 	font:bold;
 	color:#000000;
@@ -348,7 +353,7 @@ body{
 
 	.titpretonew{  
 	background-color:#9999CC;
-	font-family:: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: center;
 	font-size:12px;
 	font:bold;
@@ -385,7 +390,7 @@ body{
 	color: #000000;
 	}
 
-	.cabeçalho {
+	.cabeï¿½alho {
 	background-color:#666699;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	text-align: justify;
@@ -421,11 +426,13 @@ body{
  
  div
  {font-size:11px;
- font-family: verdana,arial;}
+ font-family: verdana,arial;
+    text-align: left;
+}
 
  a
  {color:#000000;
- text-decoration:none;x}
+ text-decoration:none;}
  
  a:hover
  {color:#ff0000;

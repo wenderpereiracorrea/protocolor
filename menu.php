@@ -1,79 +1,15 @@
-<?php
-error_reporting(0); 
-     include "conexao.php";
-     include "valida_user.php";
+Ôªø
+<? session_start(); ?>
+<?
+	include "conexao.php";
     $date = date("d/m/y");
     $hora= gmdate("H:i" ,time()-(3570*2));
-
 ?>
-
-
-
-<html>
-<head><title><?  echo $Title ?></title>
-<base target="principal">
-
-
-<script language="JavaScript" type="text/JavaScript">
-//detectando navegador
-sAgent = navigator.userAgent;
-bIsIE = sAgent.indexOf("MSIE") > -1;
-bIsNav = sAgent.indexOf("Mozilla") > -1 && !bIsIE;
-
-//setando as variaveis de controle de eventos do mouse
-var xmouse = 0;
-var ymouse = 0;
-document.onmousemove = MouseMove;
-
-//funcoes de controle de eventos do mouse:
-function MouseMove(e){
- if (e) { MousePos(e); } else { MousePos();}
-}
-
-function MousePos(e) {
- if (bIsNav){
-  xmouse = e.pageX;
-  ymouse = e.pageY;
- } 
- if (bIsIE) {
-  xmouse = document.body.scrollLeft + event.x;
-  ymouse = document.body.scrollTop + event.y;
- }
-}
-
-//funcao que mostra e esconde o hint
-function Hint(objNome, action){
- //action = 1 -> Esconder
- //action = 2 -> Mover
- 
- if (bIsIE) {
-  objHint = document.all[objNome]; 
- }
- if (bIsNav) {
-  objHint = document.getElementById(objNome);
-  event = objHint;
- }
- 
- switch (action){
-  case 1: //Esconder
-   objHint.style.visibility = "hidden";
-   break;
-  case 2: //Mover
-   objHint.style.visibility = "visible";
-   objHint.style.left = xmouse + 15;
-   objHint.style.top = ymouse + 15;
-   break;
- }
- 
-}
-
-</script>
-
-</head>
-
-<body bgcolor="<?  echo $cor_pagina ?>">
-
-&nbsp;&nbsp;
+<div class="container-fluid">
+	<div class="row-fluid">
+<div class="span2 ">
+<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css" />
+<link rel="stylesheet" href="css/template.css" type="text/css" />
 <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="178">
   <tr>
     <td width="35" height="1" bgcolor="#426DAE">&nbsp;</td>
@@ -87,7 +23,19 @@ function Hint(objNome, action){
     <td width="124" height="3"></td>
     <td width="11" height="3"></td>
   </tr>
-<? if ($_SESSION["perfil"] == 1) { ?>
+<? if ($_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
+  <tr>
+    <td width="35" height="30" bgcolor="#FFFFFF">
+    <img border="0" src="imagebox/lancamento.png" width="30" height="30"></td>
+    <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
+    <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
+    <font face="verdana" size="1">
+    <a target="principal" style="text-decoration: none" href="lanca_protocolo_sistema.php?modolan=0">
+    <font color="#FFFFFF">Protocolar</font></a></a></font></b></td>
+    <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
+  </tr>
+<? } ?>  
+<? if ($_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/lancamento.png" width="30" height="30"></td>
@@ -95,12 +43,11 @@ function Hint(objNome, action){
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
     <a target="principal" style="text-decoration: none" href="lanca_processo.php?modolan=0">
-    <font color="#FFFFFF">LanÁamento</font></a></a></font></b></td>
+    <font color="#FFFFFF">Lan√ßar processo</font></a></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
 <? } ?>
-
-<? if ($_SESSION["setor_usuario"] == "ADM.PAL¡CIO GUSTAVO CAPANEMA") { ?>
+<? if ($_SESSION["setor_usuario"] == "Presidencia" || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/lancamento.png" width="30" height="30"></td>
@@ -108,13 +55,13 @@ function Hint(objNome, action){
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
     <a target="principal" style="text-decoration: none" href="lanca_processo_jupiara.php?modolan=0">
-    <font color="#FFFFFF">LanÁamento</font></a></a></font></b></td>
+    <font color="#FFFFFF">Lan√ßamento Presid√™ncia</font></a></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
 <? } ?>
 
 
-<? if ($_SESSION["login"] == 'jorge' || $_SESSION["login"] == 'paulinho' || $_SESSION["login"] == 'Tsantana' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'Eliton') { ?>
+<? if ($_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/alteracao.png" width="30" height="30"></td>
@@ -122,12 +69,12 @@ function Hint(objNome, action){
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
     <a target="principal" style="text-decoration: none" href="altera_processo.php">
-    <font color="#FFFFFF">AlteraÁ„o</font></a></font></b></td>
+    <font color="#FFFFFF">Altera√ß√£o</font></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
 <? } ?>
 
-<? if ($_SESSION["login"] == 'jorge' || $_SESSION["login"] == 'Tsantana' || $_SESSION["login"] == 'ronaldo') { ?>
+<? if ($_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/alteracao.png" width="30" height="30"></td>
@@ -135,7 +82,7 @@ function Hint(objNome, action){
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
     <a target="principal" style="text-decoration: none" href="circulacao.php">
-    <font color="#FFFFFF">CirculaÁ„o</font></a></font></b></td>
+    <font color="#FFFFFF">Circula√ß√£o</font></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
 <? } ?>
@@ -146,28 +93,16 @@ function Hint(objNome, action){
     <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
-	<a  target="principal" href="pesquisa.php" style="text-decoration: none">
+	<a  target="principal" href="pesquisanome.php" style="text-decoration: none">
 	 <font color="#FFFFFF">Pesquisa</font></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>  
-<tr>
-<? if ($_SESSION["perfil"] == 1 or $_SESSION["perfil"] == 2 or $_SESSION["perfil"] == 3) { ?>
-    <td width="35" height="30" bgcolor="#FFFFFF">
-    <img border="0" src="imagebox/pesquisa.png" width="30" height="30"></td>
-    <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
-    <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
-    <font face="verdana" size="1">
-	<a  target="principal" href="pesquisanome.php" style="text-decoration: none">
-	 <font color="#FFFFFF">Pesquisa nome</font></a></font></b></td>
-    <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
-  </tr>  
- <? } ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/relatorio.png" width="30" height="30"></td>
     <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
-    <font face="verdana" size="1"><a href="listagem_setor.php" style="text-decoration: none">
+    <font face="verdana" size="1"><a  target="principal" href="listagem_setor.php" style="text-decoration: none">
     <font color="#FFFFFF">Processos por setor</font></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
@@ -180,7 +115,7 @@ function Hint(objNome, action){
     <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
-    <a href="encaminha.php" style="text-decoration: none">
+    <a target="principal" href="encaminha.php" style="text-decoration: none">
      <font color="#FFFFFF">Encaminhamento</font></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
@@ -192,7 +127,7 @@ function Hint(objNome, action){
     <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
-    <a href="recebimento.php" style="text-decoration: none">
+    <a target="principal" href="recebimento.php" style="text-decoration: none">
      <font color="#FFFFFF">Recebimento</font></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
@@ -203,13 +138,13 @@ function Hint(objNome, action){
     <img border="0" src="imagebox/relatorio.png" width="30" height="30"></td>
     <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
-    <font face="verdana" size="1"><a href="menu_rel.php" style="text-decoration: none">
-    <font color="#FFFFFF">RelatÛrios</font></a></font></b></td>
+    <font face="verdana" size="1"><a target="principal" href="menu_rel.php" style="text-decoration: none">
+    <font color="#FFFFFF">Relat√≥rios</font></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
   <? } ?>
 <? if ($_SESSION["perfil"] == 1) { ?>
-  <tr>
+  <!--<tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/etiqueta.png" width="30" height="30"></td>
     <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
@@ -218,18 +153,31 @@ function Hint(objNome, action){
     <a  target="principal" href="etiqueta.php" style="text-decoration: none">
 	<font color="#FFFFFF">Etiquetas</font></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
-  </tr>
+  </tr>-->
   <? } ?>
-
-<? if ($_SESSION["login"] == 'ronaldo') { ?>
+  
+  <? if ($_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'ronaldo' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
-    <img border="0" src="imagebox/usuarios.png" width="30" height="30"></td>
+    <img border="0" src="imagebox/etiqueta.png" width="30" height="30"></td>
     <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
-    <a href="lista_usuario.php" style="text-decoration: none">
-    <font color="#FFFFFF">Usu·rios</font></a></font></b></td>
+    <a  target="principal" href="processo" style="text-decoration: none">
+	<font color="#FFFFFF">Etiquetas</font></a></font></b></td>
+    <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
+  </tr>
+  <? } ?>
+
+<? if ($_SESSION["login"] == 'ronaldo' || $_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
+  <tr>
+    <td width="35" height="30" bgcolor="#FFFFFF">
+    <img border="0" src="imagebox/relatorio.png" width="30" height="30"></td>
+    <td width="8" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
+    <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
+    <font face="verdana" size="1">
+    <a target="principal" href="lista_usuario.php" style="text-decoration: none">
+    <font color="#FFFFFF">Usu√°rios.</font></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
   <? } ?>
@@ -255,7 +203,7 @@ function Hint(objNome, action){
   </tr>
 <? } ?>
 
-<? if ($_SESSION["login"] == 'ronaldo') { ?>
+<? if ($_SESSION["login"] == 'ronaldo' || $_SESSION["setor_usuario"] == 'Servico de Arquivo Historico e Institucional' || $_SESSION["login"] == 'wendercorrea' || $_SESSION["login"] == 'viniciuspandin') { ?>
   <tr>
     <td width="35" height="30" bgcolor="#FFFFFF">
     <img border="0" src="imagebox/alteracao.png" width="30" height="30"></td>
@@ -263,7 +211,7 @@ function Hint(objNome, action){
     <td width="124" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF"><b>
     <font face="verdana" size="1">
     <a target="principal" style="text-decoration: none" href="usuarios.php">
-    <font color="#FFFFFF">Usu·rios</font></a></font></b></td>
+    <font color="#FFFFFF">Usu√°rios.</font></a></font></b></td>
     <td width="11" bgcolor="#426DAE" height="30" style="border-top: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF">&nbsp;</td>
   </tr>
 <? } ?>
@@ -289,7 +237,7 @@ function Hint(objNome, action){
 <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="178"><tr>
 <td colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="-1" color="#CC0000"><b><p>
 <center>Acesso Restrito!</center>
-<center>Entre com o login</center> <center>e senha de autorizaÁ„o</center>
+<center>Entre com o login</center> <center>e senha de autoriza√ß√£o</center>
 </p></b></font></td>
           <tr>
             <td align="right"><font face="verdana" size="1" color="#666666"><b>Login:</b></font></td>
@@ -309,4 +257,12 @@ document.form.login1.focus();
 <? $opres = 0; } ?>
 </body>
 
-</html>
+
+</div>
+	<link rel="stylesheet" href="css/validationEngine.jquery.css"type="text/css" />
+	<link href="css/index.css" rel="stylesheet">
+	<script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="js/languages/jquery.validationEngine-pt_BR.js"	type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.validationEngine.js"	type="text/javascript" charset="utf-8"></script>
+	<script src="js/jsValidate.js" type="text/javascript"></script>
+    <script src="bootstrap/js/bootstrap-collapse.js"></script>

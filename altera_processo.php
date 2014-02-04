@@ -1,4 +1,4 @@
-<? import_request_variables("gP"); error_reporting(0); ?>
+ï»¿<? import_request_variables("gP"); error_reporting(0); ?>
 <? 
 session_start();
 include "conexao.php";
@@ -35,7 +35,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 <table align="center" width="50%" cellpadding="0" cellspacing="0"> 
 <TR align='center'> 
 	<td align="center" colspan="2" class="titulo"></strong> 
-		<div align="center">&nbsp;ALTERAÇÃO DE PROCESSO&nbsp;</strong></div>
+		<div align="center">&nbsp;ALTERAÃ‡ÃƒO DE PROCESSO&nbsp;</strong></div>
 	</td>
 </tr>		
 </table>
@@ -53,29 +53,29 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 <? if (isset($_POST['gravando'])) 
 	{ 	
 
-		// *****************DISTRIBUIÇÃO DO NÚMERO DE PROCESSO *****************
+		// *****************DISTRIBUIÃ‡ÃƒO DO NÃšMERO DE PROCESSO *****************
 		if ($nprocesso!="" && $up!=""  && $processo!="" && $ano!="") 
 		{ 
 		$caracter1 = substr($processo,0,1);
 		$criaproc = 1;
 		
-		// ************ CONFERÊNCIA DE NÚMERO DE PROCESSO ***************
-		if (strlen($nprocesso) < 17 && $tipodoc!=1) // Verifica se o nº do processo está completo
+		// ************ CONFERÃŠNCIA DE NÃšMERO DE PROCESSO ***************
+		if (strlen($nprocesso) < 17 && $tipodoc!=1) // Verifica se o nÂº do processo estÃ¡ completo
 		{ ?>
 			<script language="javascript">
 			var frase;
-			frase="ERRO\nNão foram digitados todos os números.\n\nVerifique:\nUP (5 números).";
-			frase=frase + "Ex.: 01530\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).";
-			frase=frase + "Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>";
+			frase="ERRO\nNÃ£o foram digitados todos os nÃºmeros.\n\nVerifique:\nUP (5 nÃºmeros).";
+			frase=frase + "Ex.: 01530\nPROCESSO (6 nÃºmeros).Ex.: 000123\nANO(4 nÃºmeros).";
+			frase=frase + "Ex.:2006\n\nVocÃª digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>";
 			alert(frase);
 			</script><?
-			$nprocesso = ""; //limpa o nº do processo
+			$nprocesso = ""; //limpa o nÂº do processo
 			$criaproc = 0; 
 		} 
-		if (strlen($nprocesso) == 17 && $caracter1!=0 && $tipodoc!=1) // verifica nº da UP
+		if (strlen($nprocesso) == 17 && $caracter1!=0 && $tipodoc!=1) // verifica nÂº da UP
 		{ ?> 
 			<script language="javascript"> 
-				alert('ERRO\nO número da UP deve começar com 0.\nVocê digitou <? echo ($caracter1); ?>!'); 
+				alert('ERRO\nO nÃºmero da UP deve comeÃ§ar com 0.\nVocÃª digitou <? echo ($caracter1); ?>!'); 
 			</script><?
 			$nprocesso = "";
 			$criaproc = 0;
@@ -83,7 +83,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		if (strlen($nprocesso) == 17 && $ano > 2009 && $tipodoc!=1) // verifica ano maior que 2008
 		{ ?> 
 			<script language="javascript"> 
-				alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n Não chegamos lá ainda!'); 
+				alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n NÃ£o chegamos lÃ¡ ainda!'); 
 			</script><?
 			$nprocesso = "";
 			$criaproc = 0;
@@ -91,7 +91,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		if (strlen($nprocesso) == 17 && $ano < 1950 && $tipodoc!=1) // verifica ano menor que 1950 
 		{ ?> 
 			<script language="javascript"> 
-				alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n Você não tinha nem nascido ainda!'); 
+				alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n VocÃª nÃ£o tinha nem nascido ainda!'); 
 			</script><?
 			$nprocesso = "";
 			$criaproc = 0;
@@ -104,7 +104,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			$process = mysql_query($sql) or die("Erro1: " .$sql);
 			if (mysql_num_rows($process) > 0) 
 			{
-				?><script>alert('O Processo nº <? echo $processo ?> já existe!');window.location.href='altera_processo.php';</script><?
+				?><script>alert('O Processo nÂº <? echo $processo ?> jÃ¡ existe!');window.location.href='altera_processo.php';</script><?
 				$criaproc=0;	
 			}
 			$sql = "select processo from temp_processo where processo = ".$processo."";
@@ -114,7 +114,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			$process = mysql_query($sql) or die("Erro2: " .$sql);
 			if (mysql_num_rows($process) > 0) 
 			{
-				?><script>alert('O Processo nº <? echo $processo ?> está sendo lançado por outro usuário!');</script><?	
+				?><script>alert('O Processo nÂº <? echo $processo ?> estÃ¡ sendo lanÃ§ado por outro usuÃ¡rio!');</script><?	
 					$nprocesso="";
 					$criaproc=0;
 					?><script>window.location.href='altera_processo.php';</script><?
@@ -128,7 +128,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		$process = mysql_query($sql) or die("Erro5: " .$sql);
 		if (mysql_num_rows($process) > 0) 
 		{
-			?><script>alert('O Processo nº <? echo $nprocesso ?> está sendo lançado por outro usuário!');</script><?	
+			?><script>alert('O Processo nÂº <? echo $nprocesso ?> estÃ¡ sendo lanÃ§ado por outro usuÃ¡rio!');</script><?	
 			?><script>window.location.href='altera_processo.php';</script><?
 		}
 	} 
@@ -137,7 +137,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		unset ($up,$processo,$ano,$nprocesso);	?>
 		<script>window.location.href='altera_processo.php'</script><?
 	}	
-//**************************  CÁLCULO DÍGITO VERIFICADOR   *************************
+//**************************  CÃLCULO DÃGITO VERIFICADOR   *************************
   		if ($up!=""  && $processo!="" && $ano!="")
 		{ 
 			$numprocesso = $up.$processo.$ano;
@@ -176,7 +176,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			$process = mysql_query($sqlquery) or die("Erro11: " . mysql_error());	
 			if (mysql_num_rows($process) > 0) 
 			{ ?>
-				<script>alert('O Processo nº <? echo $nprocesso ?> já existe!');</script><?
+				<script>alert('O Processo nÂº <? echo $nprocesso ?> jÃ¡ existe!');</script><?
 				$nprocesso="";	?>
 				<script>document.calform.submit();</script><?
 			} else {
@@ -199,7 +199,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			$process = mysql_query($sqlquery) or die("Erro11: " . mysql_error());	
 			if (mysql_num_rows($process) > 0) 
 			{ ?>
-				<script>alert('O Processo nº <? echo $nprocesso ?> já existe!\n\nA alteração não será realizada!');</script><?
+				<script>alert('O Processo nÂº <? echo $nprocesso ?> jÃ¡ existe!\n\nA alteraÃ§Ã£o nÃ£o serÃ¡ realizada!');</script><?
 				$nprocesso="";	?>
 				<script>window.location.href='altera_processo.php'</script><?
 			}mysql_free_result($process);
@@ -237,7 +237,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 				$nprocesso = $line['nprocesso'];
 			}		 
 		$sql="insert into historico (data,hora,usuario,acao,ip) 
-			values ('" .tdate($date,0). "','" . $hora  . "','".ucwords($nome)."','Alterou o processo n° ".$nprocesso."','".get_ip()."')";	
+			values ('" .tdate($date,0). "','" . $hora  . "','".ucwords($nome)."','Alterou o processo nÂ° ".$nprocesso."','".get_ip()."')";	
 		$process = mysql_query($sql) or die("Erro: " . $sql);
 		$sql = "update circulacao set ";
 		$sql.= "nprocesso = '". $nprocesso."' ";
@@ -245,14 +245,14 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		$process = mysql_query($sql) or die("Erro: " . mysql_error());
 		 ?>		
 		<script language="javascript">
-			alert('Suas alterações foram realizadas com sucesso!');
+			alert('Suas alteraÃ§Ãµes foram realizadas com sucesso!');
 			window.location.href = 'altera_processo.php';
 		</script>	
  <? } ?>		
 
 
 
-<? // ************ Conferência de nº de processo completo *************** ?>
+<? // ************ ConferÃªncia de nÂº de processo completo *************** ?>
 <? /* if ($processocom!="") 
 	{
 		$fase = "Pesquisa";
@@ -261,10 +261,10 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		$ano = substr($processocom,13,4);
 		$caracter1 = substr($processocom,0,1);
 
-		if (strlen($processocom) < 17) // Verifica se o nº do processo está completo
+		if (strlen($processocom) < 17) // Verifica se o nÂº do processo estÃ¡ completo
 			{ ?>
 				<script language="javascript">
-					alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nUP (5 números).Ex.: 01530\nPROCESSO (6 números).Ex.: 000123\nANO(4 números).Ex.:2006\n\nVocê digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
+					alert('ERRO\nNÃ£o foram digitados todos os nÃºmeros.\nVerifique:\nUP (5 nÃºmeros).Ex.: 01530\nPROCESSO (6 nÃºmeros).Ex.: 000123\nANO(4 nÃºmeros).Ex.:2006\n\nVocÃª digitou: <? echo($up); ?><? echo($processo); ?><? echo($ano); ?>');
 				</script><?
 				$processocom = "";
 				$fase = "Digitacao";
@@ -274,10 +274,10 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 				</script>
 				<?
 			} 
-		if (strlen($processocom) == 17 && $caracter1!=0) // verifica nº da UP
+		if (strlen($processocom) == 17 && $caracter1!=0) // verifica nÂº da UP
 			{ ?> 
 				<script language="javascript"> 
-					alert('ERRO\nO número da UP deve começar com 0.\nVocê digitou <? echo ($caracter1); ?>!'); 
+					alert('ERRO\nO nÃºmero da UP deve comeÃ§ar com 0.\nVocÃª digitou <? echo ($caracter1); ?>!'); 
 				</script><?
 				$processocom = ""; 
 				$fase = "Digitacao";
@@ -290,7 +290,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		if (strlen($processocom) == 17 && $ano > 2009) // verifica ano maior que 2008
 			{ ?> 
 				<script language="javascript"> 
-					alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n Não chegamos lá ainda!'); 
+					alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n NÃ£o chegamos lÃ¡ ainda!'); 
 				</script><?
 				$processocom = ""; 
 				$fase = "Digitacao";
@@ -303,7 +303,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		if (strlen($processocom) == 17 && $ano < 1950) // verifica ano menor que 1950 
 			{ ?> 
 				<script language="javascript"> 
-					alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n Você não tinha nem nascido ainda!'); 
+					alert('ERRO\nFoi digitado o ano de <? echo ($ano); ?>!\n VocÃª nÃ£o tinha nem nascido ainda!'); 
 				</script><?
 				$processocom = ""; 				
 				$fase = "Digitacao";
@@ -313,20 +313,20 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 				</script>
 		<?	} 
 	} */ ?>
-<? // ************ Fim da Conferência de nº de processo completo *************** ?>
+<? // ************ Fim da ConferÃªncia de nÂº de processo completo *************** ?>
 
 
 
-<? // ************ Conferência de nº de processo parcial *************** ?>
+<? // ************ ConferÃªncia de nÂº de processo parcial *************** ?>
 <? if ($processored!="") 
 	{
 		$fase = "Pesquisa";
 		$caracter1 = substr($processored,0,1);
 	 
-		if (strlen($processored) < 6) // Verifica se o nº do processo está completo
+		if (strlen($processored) < 6) // Verifica se o nÂº do processo estÃ¡ completo
 			{ ?>
 				<script language="javascript">
-					alert('ERRO\nNão foram digitados todos os números.\nVerifique:\nPROCESSO (6 números).Ex.: 000123\nVocê digitou: <? echo($processored); ?>');
+					alert('ERRO\nNÃ£o foram digitados todos os nÃºmeros.\nVerifique:\nPROCESSO (6 nÃºmeros).Ex.: 000123\nVocÃª digitou: <? echo($processored); ?>');
 				</script><?
 				$processored = "";
 				$fase = "Digitacao";
@@ -336,10 +336,10 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 				</script>
 				<?
 			} 
-		if (strlen($processored) == 6 && $caracter1!=0) // verifica nº da UP
+		if (strlen($processored) == 6 && $caracter1!=0) // verifica nÂº da UP
 			{ ?> 
 				<script language="javascript"> 
-					alert('ERRO\nO número do processo deve ter 6 números e começar com 0.\nVocê digitou <? echo ($processored); ?>!'); 
+					alert('ERRO\nO nÃºmero do processo deve ter 6 nÃºmeros e comeÃ§ar com 0.\nVocÃª digitou <? echo ($processored); ?>!'); 
 				</script><?
 				$processored = ""; 
 				$fase = "Digitacao";
@@ -351,9 +351,9 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			} 
 	} ?>
 
-<? // ************ Fim da Conferência de nº de processo parcial *************** ?>
+<? // ************ Fim da ConferÃªncia de nÂº de processo parcial *************** ?>
 
-<? // ******************** Busca pelo nº do processo completo *********************** ?>
+<? // ******************** Busca pelo nÂº do processo completo *********************** ?>
 <? 	if ($processocom!="") 
 		{
 			$sql="select * from processo where nprocesso like '".$processocom."%'";
@@ -367,9 +367,9 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			$process = mysql_query($sql) or die("Erro: " . mysql_error());		
 		}
 
- // ******************** Fim de Busca pelo nº do processo completo ********************** ?>
+ // ******************** Fim de Busca pelo nÂº do processo completo ********************** ?>
  
-<? // ***************INÍCIO DE MOSTRA RESULTADO ***************** ?> 
+<? // ***************INÃCIO DE MOSTRA RESULTADO ***************** ?> 
 <? 	if ($processocom!="" || $processored!="") 
 		{ ?>
 		<?	if (mysql_num_rows($process) > 0 && mysql_num_rows($process) == 1) 
@@ -405,7 +405,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 							<td class="caixadestaque">Processo :</td><td><input name="nprocesso" class="caixa" value="<? echo $up; ?>.<? echo substr($nprocesso,6,11); ?>" onChange="javascript:var stringer = document.form.nprocesso.value;document.form.up.value = stringer.substr(0,5);document.form.processo.value = stringer.substr(6,6);document.form.ano.value = stringer.substr(13,4);" readonly="true"></td>
 						</tr>
 						<tr> 
-							<td class="caixadestaque">Assunto :</td><td><textarea name="assunto" cols="80%" rows="1" wrap="hard" class="caixa"><? echo ucwords(strtoupper($assunto)); ?></textarea ></td>
+							<td class="caixadestaque">Assunto :</td><td><textarea name="assunto" cols="80%" rows="1" wrap="hard" class="caixa"><? echo utf8_encode (ucwords(strtoupper($assunto))); ?></textarea ></td>
 						</tr>
 						<tr> 
 						<tr> 
@@ -418,10 +418,10 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 							<td class="caixadestaque">Origem :</td><td class="caixatitpesq"><input name="documento" type="text" value="<? echo ucwords(strtoupper($documento)); ; ?>" size="40%" ></td>
 						</tr>
 						<tr> 
-							<td class="caixadestaque">Procedência :</td><td class="caixatitpesq"><input name="procedencia" type="text" value="<? echo ucwords(strtoupper($procedencia)); ?>" size="80%" ></td>
+							<td class="caixadestaque">ProcedÃªncia :</td><td class="caixatitpesq"><input name="procedencia" type="text" value="<? echo ucwords(strtoupper($procedencia)); ?>" size="80%" ></td>
 						</tr>
 						<tr> 
-							<td class="caixadestaque">Número :</td><td class="caixatitpesq" colspan="2"><input name="numero" type="text" value="<? echo $numero; ?>"></td>
+							<td class="caixadestaque">NÃºmero :</td><td class="caixatitpesq" colspan="2"><input name="numero" type="text" value="<? echo $numero; ?>"></td>
 						</tr>
 						<tr> 
 							<td class="caixadestaque">Data :</td><td class="caixatitpesq"><input type='text' name='datadoc' size='10' OnKeyDown='FormataData(form, this.name, event)' onFocus="javascript:form.datadoc.select();" onkeyup='Mostra(this, 10)' value="<? echo tdate($datadoc,1); ?>" onChange="javascript:verifica_datadoc()"></td>
@@ -435,7 +435,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		$sqlquery = "select * from setor order by descricao";
 		$processA = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 		if (mysql_num_rows($processA) > 0) {
-					echo "<option value='$setorsolicitante'>".$setorsolicitante."</option>\n";
+					echo "<option value='$setorsolicitante'>".utf8_encode ($setorsolicitante)."</option>\n";
 					while ($line = mysql_fetch_array($processA)) {
 						$setor = $line['setor'];
 						$descricao = $line['descricao'];
@@ -451,7 +451,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 </select></td>
 						</tr>						
 						<tr> 
-							<td class="caixadestaque">Localização :</td><td class="caixatitpesq"><select name='localizacao' class='caixa'>
+							<td class="caixadestaque">LocalizaÃ§Ã£o :</td><td class="caixatitpesq"><select name='localizacao' class='caixa'>
 <? if ($localizacao!="") {
 		$sqlquery = "select * from setor order by descricao";
 		$processB = mysql_query($sqlquery) or die("Erro: " . mysql_error());
@@ -483,7 +483,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 					</table>
 					<br><br>				
 					<table align="center" cellpadding="0" cellspacing="0"> 
-				<tr><td align="center" colspan="2" class="caixaazul"><center>Faça as alterações necessárias e clique em Gravar.</center></td></tr>
+				<tr><td align="center" colspan="2" class="caixaazul"><center>FaÃ§a as alteraÃ§Ãµes necessÃ¡rias e clique em Gravar.</center></td></tr>
 				</table>
 				<input type="hidden" name="idprocesso" value="<? echo ($idprocesso); ?>">
 
@@ -497,7 +497,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 					<tr align='center'>
 					<? if ($processored!='') { ?> 
 						<td align="center" colspan="2" class="titpreto"></strong> 
-						<div align="center">&nbsp;<font size="-2">PROCESSOS EXISTENTES COM O Nº: <? echo $processored; ?>&nbsp;</font></strong></div>
+						<div align="center">&nbsp;<font size="-2">PROCESSOS EXISTENTES COM O NÂº: <? echo $processored; ?>&nbsp;</font></strong></div>
 						</td>
 					<? } ?>
 				</table>
@@ -541,7 +541,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			<BR><BR>	
 			<table align="center" border="1" width="70%" cellpadding="0" cellspacing="0"> 				
 			<tr>
-				<td align="center" colspan="10" class="caixaverde"><center>Clique na linha do processo para visualizá-lo.</center></td>
+				<td align="center" colspan="10" class="caixaverde"><center>Clique na linha do processo para visualizÃ¡-lo.</center></td>
 			</tr>
 			</table>
 			<?	}	?>
@@ -553,7 +553,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 
 <script language="javascript">
 		function confirma_exc() {
-			if (confirm("Todos os dados referentes ao processo <? echo $up; ?>.<? echo $nprocesso; ?>/<? echo $ano; ?>-<? echo $dv; ?> serão excluidos, inclusive o caminho do processo.\n\nTem certeza que deseja fazer isto?") == true) {
+			if (confirm("Todos os dados referentes ao processo <? echo $up; ?>.<? echo $nprocesso; ?>/<? echo $ano; ?>-<? echo $dv; ?> serÃ£o excluidos, inclusive o caminho do processo.\n\nTem certeza que deseja fazer isto?") == true) {
 			window.location.href = 'excluir_processo.php?idprocesso=<? echo($idprocesso); ?>';
 			}
 		}
@@ -561,7 +561,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 
 
 
-<? //******************** INÍCIO DE PREENCHIMENTO DE DADOS PARA PESQUISA ****************************** ?>
+<? //******************** INÃCIO DE PREENCHIMENTO DE DADOS PARA PESQUISA ****************************** ?>
 <? if (!isset($processocom) &&  !isset($processored))
 	{
 		$fase = "Digitacao"; 
@@ -572,7 +572,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 			<? if ($processocom=="") 
 				{ ?>
 				 <tr>
-					<td align="center" colspan="10" class="caixaazul"><center>Digite o nº completo do processo. Ex.: 01530.000439/2006 (15 números)</center></td>
+					<td align="center" colspan="10" class="caixaazul"><center>Digite o nÂº completo do processo. Ex.: 01530.000439/2006 (15 nÃºmeros)</center></td>
 				</tr>
 			<? 	} ?>
 			<tr><td>&nbsp;</td></tr>
@@ -589,7 +589,7 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 		<? if ($processocom=="") { ?>
 		<tr>
 			<td align="center" colspan="10" class="caixaazul"><center>
-			    Ou digite ao menos o nº do processo. Ex.: 000439(6 números)
+			    Ou digite ao menos o nÂº do processo. Ex.: 000439(6 nÃºmeros)
 			</center></td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
@@ -630,9 +630,9 @@ function FormataData(pForm, pCampo,pTeclaPres) {
 <TR align="center"><TD align="center"><center>
 <? if ($listaproc==1 && ($processocom!="" || $processored!="")) { ?>
 		<input type="button" onClick="javascript:confirma();" name="Gravar" class="botao" id="Gravar" value="GRAVAR" alt="Gravar">&nbsp;&nbsp;<input type="hidden" name="gravando" value="gravando"><? } ?>
-<? // *****************  BOTÕES  *********************  ?>
+<? // *****************  BOTÃ•ES  *********************  ?>
 <input name='Retornar' type='button' value='RETORNAR' class='botao' onclick='javascript:history.back();'>&nbsp;&nbsp;<input name='Encerrar' type='button' value='ENCERRAR' class='botao' onClick="javascript:window.location.href='corpo_do_sistema.php';">&nbsp;&nbsp;</center>
-<? // *****************  FIM DE BOTÕES  *********************  ?>
+<? // *****************  FIM DE BOTÃ•ES  *********************  ?>
 </center>
 </table>
 <script language="javascript">

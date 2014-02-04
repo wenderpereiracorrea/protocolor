@@ -1,28 +1,22 @@
-<? session_start(); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+ï»¿<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Sistema de Protocolo - Funarte</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- Le styles -->
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="bootstrap/css/docs.css" rel="stylesheet">
+	<link href="bootstrap/js/google-code-prettify/prettify.css"
+	rel="stylesheet">
+	
+		<link rel="stylesheet" href="css/template.css" type="text/css" />
+	  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+	  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+	  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+	  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+	  <link rel="shortcut icon" href="assets/ico/favicon.png">
+	<script language="javascript">window.defaultStatus='Seja Bem Vindo(a) <? echo ucwords($_SESSION["login"]); ?>. VocÃª estÃ¡ logado desde as <? echo ($hora); ?> hrs. Acesso nÃºmero <? echo ($num_registros); ?> .'</script>
 </head>
-<body marginheight="0" leftmargin="0" rightmargin="0" topmargin="0">
-
-<!--<table border="0" width="100%" cellspacing="0" cellpadding="0">
-<tr><td>
-<img src="imagebox/intranet.gif" alt="Intranet Funarte" name="n00000001" width="1024" height="71" border="0" id="n00000001" />
-</td>
-</tr></table>
--->
-
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-<tr>
-<td style="padding-left:10px;">
-<h2>Funarte - Sistema de Controle de Movimentação de Processos</h2>
-</td>
-<td style="text-align:right; padding-right:10px;">
-<b>Usuário</b>: <font color="#990000"><? echo $_SESSION[nome]; ?></font><br>
-<b>Setor</b>: <font color="#990000"><? echo $_SESSION[setor_usuario]; ?></font>
-</td>
-</tr></table><hr>
-</body>
-</html>
+ 	

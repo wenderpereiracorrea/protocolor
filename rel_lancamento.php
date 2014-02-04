@@ -1,9 +1,9 @@
-<? import_request_variables("gP"); ?>
+ï»¿<? import_request_variables("gP"); ?>
 <? 
 session_start();
 include "conexao.php";
 connect();
-	// ******************* TRANSFORMA A APRESENTAÇÃO DA DATA ****** INÍCIO *********************// ******************* TRANSFORMA A APRESENTAÇÃO DA DATA ****** FIM *********************	
+	// ******************* TRANSFORMA A APRESENTAÃ‡ÃƒO DA DATA ****** INÃCIO *********************// ******************* TRANSFORMA A APRESENTAÃ‡ÃƒO DA DATA ****** FIM *********************	
 
 ?>
 <HTML>
@@ -62,19 +62,19 @@ function FormataDataFim(pForm, pCampo,pTeclaPres) {
 function avalia_pesquisar(form) {
  
  if (calform.datainipesq.value != "" && calform.datafimpesq.value == "") {
-     alert("Para fazer a pesquisa por período é necessário o preenchimento das duas datas!");
+     alert("Para fazer a pesquisa por perÃ­odo Ã© necessÃ¡rio o preenchimento das duas datas!");
 	 calform.datafimpesq.focus();
      return false;
   }
 
  if (calform.datafimpesq.value != "" && calform.datainipesq.value == "") {
-     alert("Para fazer a pesquisa por período é necessário o preenchimento das duas datas!");
+     alert("Para fazer a pesquisa por perÃ­odo Ã© necessÃ¡rio o preenchimento das duas datas!");
 	 calform.datainipesq.focus();
      return false;
   }
 
  if (calform.datafimpesq.value == "" && calform.datainipesq.value == "" && calform.nprocesso.value == "") {
-     alert("Escolha um critério!");
+     alert("Escolha um critÃ©rio!");
 	 calform.datainipesq.focus();
      return false;
   }
@@ -87,7 +87,7 @@ function avalia_pesquisar(form) {
 <TABLE width="30%" BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
 	<tr align='center'> 
 		<td align="center" colspan="5" class="titulo">
-			<div align="center"><strong>&nbsp;HISTÓRICO DE LANÇAMENTOS&nbsp;</strong></div>
+			<div align="center"><strong>&nbsp;HISTÃ“RICO DE LANÃ‡AMENTOS&nbsp;</strong></div>
 		</td>
 	</tr>
 </TABLE>
@@ -103,6 +103,7 @@ Data Inicial:
 
 <tr><td>
 <div align="right"><input name="pesquisar" value="Pesquisar" class="botao" onClick="return avalia_pesquisar(this);" type="submit">
+<a href="#" onclick="window.print(); return false;">Imprimir</a>
 </div>
 </td></tr>
 </TABLE>
@@ -111,4 +112,5 @@ Data Inicial:
 
 </center>
 </HEAD>
+
 </HTML>

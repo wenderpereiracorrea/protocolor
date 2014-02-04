@@ -1,9 +1,10 @@
+Ôªø<?php header("Content-type: text/html; charset=UTF-8");?> 
 <? import_request_variables("gP"); ?>
 <? 
 session_start();
 include "conexao.php";
 connect();
-	// ******************* TRANSFORMA A APRESENTA«√O DA DATA ****** INÕCIO *********************// ******************* TRANSFORMA A APRESENTA«√O DA DATA ****** FIM *********************	
+	// ******************* TRANSFORMA A APRESENTA√á√ÉO DA DATA ****** IN√çCIO *********************// ******************* TRANSFORMA A APRESENTA√á√ÉO DA DATA ****** FIM *********************	
 
 ?>
 <HTML>
@@ -62,7 +63,7 @@ function FormataDataFim(pForm, pCampo,pTeclaPres) {
 <TABLE width="30%" BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
 	<tr align='center'> 
 		<td align="center" colspan="5" class="titulo">
-			<div align="center"><strong>&nbsp;HIST”RICO&nbsp;</strong></div>
+			<div align="center"><strong>&nbsp;HIST√ìRICO&nbsp;</strong></div>
 		</td>
 	</tr>
 </TABLE>
@@ -75,6 +76,10 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 <select name='pesqnome'  class="caixa" onChange="form.submit();" >
 				<?
 					$sqlquery = "select * from usuario order by login";
+					mysql_query("SET NAMES 'utf8'");
+					mysql_query('SET character_set_connection=utf8');
+					mysql_query('SET character_set_client=utf8');
+					mysql_query('SET character_set_results=utf8');
 					$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 					if ($pesqnome<>'') {
 						echo "<option value='$pesqnome'>$pesqnome</option>\n";
@@ -92,15 +97,21 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 &nbsp;</center></td></tr>
 </TABLE><br><br>
 <input name="pesquisar" value="Pesquisar" class="botao" type="submit">
+<a href="#" onclick="window.print(); return false;">Imprimir</a>
 <BR><BR>	
 <TABLE width="80%" BORDER=0 align="center" cellpadding="1" cellspacing="1">
 	<tr>
-	  <td width="3%" style="visibility:hidden"><center>ID</center></td><td width="15%" class="caixadestaque"><center><a href="rel_movimento.php?ordem=data&pesqnome=<? echo $pesqnome; ?>">DATA</a></center></td><td width="10%" class="caixadestaque"><center>HORA</center></td><td width="10%" class="caixadestaque"><center><a href="rel_movimento.php?ordem=maquina&pesqnome=<? echo $pesqnome; ?>">M¡QUINA</a></center></td><td width="15%" class="caixadestaque"><center><a href="rel_movimento.php?ordem=usuario&pesqnome=<? echo $pesqnome; ?>">USU¡RIO</a></center></td><td width="47%" class="caixadestaque"><center><a href="rel_movimento.php?ordem=acao&pesqnome=<? echo $pesqnome; ?>">A«√O</a></center></td>
+	  <td width="3%" style="visibility:hidden"><center>ID</center></td><td width="15%" class="caixadestaque"><center><a href="rel_movimento.php?ordem=data&pesqnome=<? echo $pesqnome; ?>">DATA</a></center></td><td width="10%" class="caixadestaque"><center>HORA</center></td><td width="10%" class="caixadestaque"><center><a href="rel_movimento.php?ordem=maquina&pesqnome=<? echo $pesqnome; ?>">M√ÅQUINA</a></center></td><td width="15%" class="caixadestaque"><center><a href="rel_movimento.php?ordem=usuario&pesqnome=<? echo $pesqnome; ?>">USU√ÅRIO</a></center></td><td width="47%" class="caixadestaque"><center><a href="rel_movimento.php?ordem=acao&pesqnome=<? echo $pesqnome; ?>">A√á√ÉO</a></center></td>
 	</tr>
 <? 
 		if ($datainipesq<>"" && $datainipesq<>"") { 
 
 		$sqlquery = "select * from historico ";
+		mysql_query("SET NAMES 'utf8'");
+		mysql_query('SET character_set_connection=utf8');
+		mysql_query('SET character_set_client=utf8');
+		mysql_query('SET character_set_results=utf8');
+
 		
 		//if ($pesqnome<>"") {
 		$sqlquery = $sqlquery." where usuario <> '".$pesqnome."'";
@@ -113,10 +124,10 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 			$sqlquery = $sqlquery." and data <= '".tdate($datafimpesq,0)."'";
 		}
 		if ($ordem == "") {			
-			$sqlquery = $sqlquery." order by id desc, hora desc";
+			$sqlquery = $sqlquery." order by id desc";
 		}
 		if ($ordem == "data") {			
-			$sqlquery = $sqlquery." order by data desc, hora desc";
+			$sqlquery = $sqlquery." order by data desc";
 		}
 		if ($ordem == "maquina") {			
 			$sqlquery = $sqlquery." order by ip";
@@ -127,6 +138,10 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 		if ($ordem == "acao") {			
 			$sqlquery = $sqlquery." order by acao";
 		} 
+		mysql_query("SET NAMES 'utf8'");
+		mysql_query('SET character_set_connection=utf8');
+		mysql_query('SET character_set_client=utf8');
+		mysql_query('SET character_set_results=utf8');
 		$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 		if (mysql_num_rows($process) > 0) {
 					while ($line = mysql_fetch_array($process)) {
@@ -138,7 +153,10 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 						$acao = $line['acao'];
 						?>
 						<tr>
-							<td style="visibility:hidden"><? echo ($id); ?></td><td class="caixa"><? echo tdate($data,1); ?></td><td class="caixa"><? echo ($hora); ?></td><td class="caixa"><? echo ($ip); ?></td><td class="caixa"><? echo ($usuario_hist); ?></td><td class="caixa"><? echo ($acao); ?></td>
+							<td style="visibility:hidden"><? echo ($id); ?>
+							</td><td class="caixa"><? echo tdate($data,1); ?>
+							</td><td class="caixa"><? echo ($hora); ?>
+				</td><td class="caixa"><? echo ($ip); ?></td><td class="caixa"><? echo ($usuario_hist); ?></td><td class="caixa"><? echo ($acao); ?></td>
 						</tr>
 						<?
 					}
@@ -150,4 +168,5 @@ Data Inicial:<input type='text' name='datainipesq' size='10' class='caixa' onKey
 </form>
 </center>
 </HEAD>
+
 </HTML>

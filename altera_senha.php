@@ -1,3 +1,4 @@
+Ôªø<?php header("Content-type: text/html; charset=UTF-8");?> 
 <?
 include "header.php";
 include "conexao.php";
@@ -114,11 +115,11 @@ if ($login!="" && $senha!="" && $novasenha=="")
 	{
 		?><script>document.form.novasenha.focus();</script><?
 	} else {
-		?><script>alert('Seu login ou senha atual est„o incorretos.\nSolicite auxÌlio ao Protocolo.');window.location.href="index.php";</script><?
+		?><script>alert('Seu login ou senha atual est√£o incorretos.\nSolicite aux√≠lio ao Protocolo.');window.location.href="index.php";</script><?
 	}
 }
 if ($login!="" && $senha!="" && $novasenha!="") 
-{ ?><script>var answer = confirm('ATEN«√O! \n\n Sua senha atual ser· alterada!\nTem certeza que deseja continuar? ')
+{ ?><script>var answer = confirm('ATEN√á√ÉO! \n\n Sua senha atual ser√° alterada!\nTem certeza que deseja continuar? ')
 	if (answer){ 
 		window.location.href="grava_novasenha.php?login=<? echo $login; ?>&senha=<? echo $senha; ?>&novasenha=<? echo $novasenha; ?>"; 
 	} else { 

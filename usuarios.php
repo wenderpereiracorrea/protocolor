@@ -1,11 +1,11 @@
-<? import_request_variables("gP"); ?>
+Ôªø<? import_request_variables("gP"); ?>
 <? 
 session_start ();
 include "conexao.php";
 include "valida_user.php";
 connect();
 
-// Qd clica no bot„o excluir
+// Qd clica no bot√£o excluir
 if ($excluir == "Excluir" and $id == "") { ?>
 <script>alert('Selecione um Registro!!!')</script> <? }
 
@@ -22,6 +22,10 @@ window.location.href='usuarios.php?excluir=';
 if ($excluir == "EXCLUIR2" and $_GET[cod] != "") {
 
     $sqlquery = "DELETE FROM usuario WHERE idusuario = ".$_GET[cod]."";
+	mysql_query("SET NAMES 'utf8'");
+	mysql_query('SET character_set_connection=utf8');
+	mysql_query('SET character_set_client=utf8');
+	mysql_query('SET character_set_results=utf8');
 	$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
 ?><script language="javascript1.2">alert('Registro Excluido com Sucesso!!!');</script><? 
@@ -32,7 +36,7 @@ unset($excluir); }
 
 <?
 
-// Qd clica no bot„o ATUALIZAR
+// Qd clica no bot√£o ATUALIZAR
 
 if ($_POST[alterar] == "Atualizar" and $_POST[id] == "") { ?>
 <script>alert('Selecione um Setor!!!')</script> <? }
@@ -40,7 +44,7 @@ if ($_POST[alterar] == "Atualizar" and $_POST[id] == "") { ?>
 if ($_POST[alterar] == "Atualizar"  and $_POST[id] != "") {
 
 
-$sqlquery = "UPDATE usuario SET senha = '".$_POST[senha]."', nome = '".$_POST[nome]."', perfil = '".$_POST[perfil]."', setor = '".$_POST[setor]."' WHERE idusuario = ".$_POST[id].""; 
+$sqlquery = "UPDATE usuario SET senha = '".md5($_POST[senha])."', nome = '".$_POST[nome]."', perfil = '".$_POST[perfil]."', setor = '".$_POST[setor]."' WHERE idusuario = ".$_POST[id].""; 
 	$process = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 
 ?><script language="javascript1.2">alert('Registro Atualizado com Sucesso!!!');</script><? 
@@ -51,18 +55,25 @@ unset($alterar); }
 
 <? 
 if ($_POST[enviar] == "Cadastrar") {
-
+					mysql_query("SET NAMES 'utf8'");
+					mysql_query('SET character_set_connection=utf8');
+					mysql_query('SET character_set_client=utf8');
+					mysql_query('SET character_set_results=utf8');
 					$sqlquery = "select * from usuario where login = '".$_POST[login]."'";
 					$processq = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 					if (mysql_num_rows($processq) > 0) 
-					{ echo "Este login j· est· sendo utilizado por outro usu·rio!"; } else {
+					{ echo "Este login j√° est√° sendo utilizado por outro usu√°rio!"; } else {
 
 $insere = "insert into usuario
              (login, senha, nome, perfil, setor)
 			 values
-			 ('".$_POST[login]."', '".$_POST[senha]."', '".$_POST[nome]."', '".$_POST[perfil]."', '".$_POST[setor]."')";
-$resultado = mysql_query($insere)
-or die ("Falha na execuÁ„o da consulta");
+			 ('".$_POST[login]."', '".md5($_POST[senha])."', '".$_POST[nome]."', '".$_POST[perfil]."', '".$_POST[setor]."')";
+				mysql_query("SET NAMES 'utf8'");
+				mysql_query('SET character_set_connection=utf8');
+				mysql_query('SET character_set_client=utf8');
+				mysql_query('SET character_set_results=utf8');
+				$resultado = mysql_query($insere)
+or die ("Falha na execu√ß√£o da consulta");
 
 ?>
 <script language="javascript" type="text/javascript">
@@ -70,7 +81,7 @@ alert('Cadastro Realizado com Sucesso!!!');
 </script><? } } ?>
 
 <?
-// Qd clica no bot„o consultar
+// Qd clica no bot√£o consultar
 if ($_POST[consultar] == "Consultar") {
 
 		$sql2 = "select login, senha, nome, perfil, setor, idusuario
@@ -130,7 +141,7 @@ function avalia_enviar(form) {
 function avalia_id(form) {
  
  if (form1.id.value == "") {
-     alert("FaÁa uma busca e selecione um setor para alter·-lo ou edit·-lo!");
+     alert("Fa√ßa uma busca e selecione um setor para alter√°-lo ou edit√°-lo!");
 	 form1.cons_nome.focus();
      return false;
   }
@@ -150,15 +161,30 @@ function send3(codigo5, codigo4, codigo3, codigo2, codigo1, codigo){
 </script>
 
 <SCRIPT src="funcoes.js" type=text/javascript></SCRIPT>
+<!--  vallida√ß√£o bootstrao  e jquery validation -->	
+<!-- jQUERY PARA VALIDA√á√ÉO-->
+<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css" />
+<link rel="stylesheet" href="css/template.css" type="text/css" />
+<!--<script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="js/languages/jquery.validationEngine-pt_BR.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>-->
+</head>
+<script>
+	    jQuery(document).ready(function () {  // binds form submission and fields to the validation engine
+	    jQuery("#form1").validationEngine();
+		});
+</script>
+<!--  vallida√ß√£o bootstrao  e jquery validation -->	
+
 <link href='auxiliar/styles.css' rel='stylesheet' type='text/css'>
 </head>
 
 <body topmargin="0">
-      <form name="form1" method="post" action="usuarios.php">
+      <form name="form1" id="form1" method="post" action="usuarios.php">
         <br>
 <table width ="60%" align='center' border="1" cellpadding="1" cellspacing="2">
           <tr> 
-            <td colspan="6" class="caixaazul"><div align="center"><strong>Controle de Usu·rios</strong>
+            <td colspan="6" class="caixaazul"><div align="center"><strong>Controle de Usu√°rios</strong>
 			</td>
           </tr>
 
@@ -185,7 +211,7 @@ if ($_POST[consultar] == "Consultar") {
 			
 				$codigo = $array_exibir['idusuario'];
 				$codigo1 = $array_exibir['login'];
-				$codigo2 = $array_exibir['senha'];
+				$codigo2 = md5($array_exibir['senha']);
 				$codigo3 = $array_exibir['nome'];
 				$codigo4 = $array_exibir['perfil'];
 				$codigo5 = $array_exibir['setor'];
@@ -205,7 +231,7 @@ echo "<hr>";
 
 
 <tr> 
-            <td class="caixaazul">C&oacute;digo do usu·rio:</td>
+            <td class="caixaazul">C&oacute;digo do usu√°rio:</td>
 
 <td colspan="5">
 <input type="text" name="id" size="5" readonly="true" value="<? echo $_POST[id]; ?>" onMouseOver="MM_displayStatusMsg('Campo somente de leitura, gerado automaticamente na abertura do registro.');return document.MM_returnValue" onMouseOut="MM_displayStatusMsg('');return document.MM_returnValue" style="background-color:#FFFFCC" class="cor-inativa">
@@ -216,26 +242,26 @@ echo "<hr>";
             <td class="caixaazul">Login:</td>
 
 <td colspan="5">
-<input type="text" name="login" size="40" value="<? echo $_POST[login]; ?>" class="cor-inativa" maxlength="150">
+<input type="text" name="login" class="validate[required,minSize[4]]" size="40" value="<? echo $_POST[login]; ?>" class="cor-inativa" maxlength="150">
 </td></tr>
 
 <tr> 
             <td class="caixaazul">Senha:</td>
 <td colspan="5">
-<input type="text" name="senha" size="40" value="<? echo $_POST[senha]; ?>" class="cor-inativa" maxlength="150"></td>
+<input type="text" name="senha" class="validate[required,minSize[4]]" size="40" value="<? echo $_POST[senha]; ?>" class="cor-inativa" maxlength="150"></td>
 
 </tr>
 
 <tr> 
             <td class="caixaazul">Nome:</td>
 <td colspan="5">
-<input type="text" name="nome" size="40" value="<? echo $_POST[nome]; ?>" class="cor-inativa" maxlength="150"></td>
+<input type="text" name="nome" class="validate[required,minSize[4]]" size="40" value="<? echo $_POST[nome]; ?>" class="cor-inativa" maxlength="150"></td>
 
 </tr>
 <tr> 
             <td class="caixaazul">Perfil:</td>
 <td colspan="5">
-<select name="perfil">
+<select class="validate[required]" name="perfil">
 <option value=""></option>
 <option value="1">Administrador</option>
 <option value="3">Operador</option>
@@ -245,11 +271,15 @@ echo "<hr>";
 <tr> 
             <td class="caixaazul">Setor:</td>
 <td colspan="5">
-                	<select name='setor'>
+                	<select class="validate[required" name='setor'>
 <option value=""></option>
 <? 		
 					$sqlquery = "select * from setor";
 					$sqlquery = $sqlquery." order by setor";
+					mysql_query("SET NAMES 'utf8'");
+					mysql_query('SET character_set_connection=utf8');
+					mysql_query('SET character_set_client=utf8');
+					mysql_query('SET character_set_results=utf8');
 					$processq = mysql_query($sqlquery) or die("Erro: " . mysql_error());
 					if (mysql_num_rows($processq) > 0) 
 					{
@@ -277,4 +307,5 @@ echo "<hr>";
 
       </form>
 </body>
+
 </html>

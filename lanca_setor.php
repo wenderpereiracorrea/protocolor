@@ -9,16 +9,23 @@ if ($sigset!="" && $descset!="")
 {
 	$sql = "select * from setor where setor = '".$sigset."'";
 	$sql = $sql." or descricao = '".$descset."'";
-	$process = mysql_query($sql) or die("Erro: " .$sql);
+	$process = mysql_query($sql);
+	include "validaerrobanco.php";    
 	if (mysql_num_rows($process) > 0) 
 	{
-?>		<script>alert('O código "<? echo $sigset; ?>" ou a descrição "<? echo $descset; ?>" já estão cadastrados!');window.close();</script>
+?>		<script>
+			alert('O código "<? echo $sigset; ?>" ou a descrição "<? echo $descset; ?>" já estão cadastrados!');window.close();
+		</script>
 <?
 	} else {
 			$sqlIns="insert into setor(codigo,setor,descricao)";
 			$sqlIns = $sqlIns." values ('".$codigo."','".$sigset."','".ucwords(lower($descset))."')";
-			$processIns = mysql_query($sqlIns) or die("Erro: " . $sqlIns);
-?>			<script>send(<? echo $sigset; ?>);window.opener.document.calform.novolocal.value=codigo;//window.close();</script>
+			$processIns = mysql_query($sqlIns);
+			include "validaerrobanco.php";    
+			
+?>			<script>send(<? echo $sigset; ?>);
+			window.opener.document.calform.novolocal.value=codigo;//window.close();
+			</script>
 <?
 	}
 }

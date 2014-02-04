@@ -1,7 +1,7 @@
-<? 
+Ôªø<? 
 session_start();
 	include "conexao.php";
-	//include "layout.php";
+	include "layout.php";
 	connect();
 ?>
 <html>
@@ -18,7 +18,7 @@ session_start();
 
 <TR align='center'> 
 		<td align="center" colspan="2" class="titulo">
-			<div align="center"><strong>RELAT”RIOS&nbsp;</strong></div>
+			<div align="center"><strong>RELAT√ìRIOS&nbsp;</strong></div>
 		</td>
   </tr>
 	
@@ -35,41 +35,35 @@ session_start();
 	<tr>
 	<tr>
 		<td><center>
-			<input name="bt_historico" type="button" class="botao" value='HistÛrico'  onclick='javascript:window.location.href="rel_movimento.php";' onMouseMove='document.form.aviso.value="HistÛrico de movimentaÁ„o de usu·rios"' onMouseOut='document.form.aviso.value=""'>
+			<a  target="_Blank" name="bt_historico" class="botao" href="rel_movimento.php" style="text-decoration: none"><i class="icon-question-sign icon-white"></i> Hist√≥rico</a>
+			
 		</center></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td></tr>
 	<tr>
 		<td><center>
-			<input name="bt_lancamento" type="button"  class="botao" value='LanÁamentos' onclick='javascript:window.location.href="rel_lancamento.php";' onMouseMove='document.form.aviso.value="RelatÛrio de lanÁamentos de processos"' onMouseOut='document.form.aviso.value=""'>
-		</center></td>
+			<a  target="_Blank" name="bt_historico" class="botao" href="rel_lancamento.php" style="text-decoration: none"><i class="icon-question-sign icon-white"></i> Lan√ßamento  </a>
+			</center></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td></tr>
 	<tr>
 	<tr>
 		<td><center>
-			<input name='bt_transito' type='button' class='botao' value='Em Tr‚nsito' onclick='javascript:window.location.href="rel_transito.php";' onMouseMove='document.form.aviso.value="RelatÛrio de processos em tr‚nsito"' onMouseOut='document.form.aviso.value=""'>
-		</center></td>
+			<a  target="_Blank" name="bt_historico" class="botao" href="rel_transito.php" style="text-decoration: none"><i class="icon-question-sign icon-white"></i> Em Tr√¢nsito  </a>
+			</center></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td></tr>
 	<tr>	
 	<tr>
 		<td><center>
-			<input name='bt_setor' type='button' class='botao' value='DistribuiÁ„o' onclick='javascript:window.location.href="listagem_setor.php";' onMouseMove='document.form.aviso.value="RelatÛrio de distribuiÁ„o de processos nos setores"' onMouseOut='document.form.aviso.value=""'>
-		</center></td>
+			<a  target="_Blank" name="bt_historico" class="botao" href="listagem_setor.php" style="text-decoration: none"><i class="icon-question-sign icon-white"></i> Distribui√ß√£o </a>
+			</center></td>
 	</tr>
-	<!--tr>
-		<td>&nbsp;</td></tr>
-	<tr>	
-	<tr>
-		<td><center>
-			<input name="Sair" value="Sair" class="botao" onclick='javascript: window.location.href = "corpo_do_sistema.php"' type="button">
-		</center></td>
-	</tr-->	
 	</form>
 </table>
 </body>
+
 </html>

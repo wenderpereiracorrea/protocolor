@@ -1,3 +1,4 @@
+<meta http-equiv="refresh" content="1; url=index.php">
 <?php
 	include "valida_user.php";
     include "conexao.php";
@@ -17,3 +18,4 @@
 <script language="JavaScript">
 	window.location.href = 'index.php';
 </script>
+

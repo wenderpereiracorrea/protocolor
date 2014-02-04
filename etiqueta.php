@@ -1,4 +1,4 @@
-<?
+Ôªø<?
 error_reporting(0);
 session_start();	
 import_request_variables("gP");
@@ -11,7 +11,7 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 
 ?>
 
-  <? //**************************  C¡LCULO DÕGITO VERIFICADOR   ************************* ?>
+  <? //**************************  C√ÅLCULO D√çGITO VERIFICADOR   ************************* ?>
   <? if ($gerar != "") {
 
 				//Pega o num do processo e tira o ponto e a barra
@@ -24,16 +24,16 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 				$M=1;
 				$NUM=$numprocesso;
 				$TOTD1=0;
-				//Loop para os 14 dÌgitos (sem barra e sem ponto)
+				//Loop para os 14 d√≠gitos (sem barra e sem ponto)
 				for ($i=14; $i>=0;$i--) 
 				{ 
-					//Incrementa a vari·vel M
+					//Incrementa a vari√°vel M
 					$M=$M+1;
-					//Faz um c·lculo em cada substring e soma na vari·vel TOTD1
+					//Faz um c√°lculo em cada substring e soma na vari√°vel TOTD1
 					$TOTD1 = $TOTD1+(substr($NUM,$i,1)*$M); 
 				}
 				
-				//C·lculo do dÌgito 1
+				//C√°lculo do d√≠gito 1
 				$D1=11-($TOTD1 % 11);
 				if ($D1 > 9) 
 				{ 
@@ -47,7 +47,7 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 					$M=$M+1;
 					$TOTD2 = $TOTD2+(substr($NUM,$i,1)*$M); 
 				}
-				//C·lculo do dÌgito 2
+				//C√°lculo do d√≠gito 2
 				$D2=11-($TOTD2 % 11);
 				if ($D2 > 9) 
 				{ 
@@ -65,7 +65,7 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 				
 				} 
 				else {
-				?><script>alert('NumeraÁ„o incorreta!!!')</script><?
+				?><script>alert('Numera√ß√£o incorreta!!!')</script><?
 				}
 
 		
@@ -82,11 +82,11 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 
 			}
 			?>
-  <? // **************************  FIM DO C¡LCULO DÕGITO VERIFICADOR   ************************* ?>
+  <? // **************************  FIM DO C√ÅLCULO D√çGITO VERIFICADOR   ************************* ?>
 
 
 
-<? // ******************** INÕCIO DA P¡GINA HTML ****************************** ?>
+<? // ******************** IN√çCIO DA P√ÅGINA HTML ****************************** ?>
 <HTML>
 <HEAD>
 <SCRIPT src="funcoes.js" type=text/javascript></SCRIPT>
@@ -103,7 +103,7 @@ $hora= gmdate("H:i" ,time()-(3570*2));
 <table width="60%" align='center' border="1" cellpadding="1" cellspacing="2">
 	<tr>
 		<td class="caixaazul">
-		<b>Digite o n˙mero do processo, o sistema ir· calcular o dÌgito verificador e redirecion·-lo ‡ p·gina para impress„o da etiqueta:</b>
+		<b>Digite o n√∫mero do processo, o sistema ir√° calcular o d√≠gito verificador e redirecion√°-lo √† p√°gina para impress√£o da etiqueta:</b>
 		</td>
 	</tr>
 	<tr>
